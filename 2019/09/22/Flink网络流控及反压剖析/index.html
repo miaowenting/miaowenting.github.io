@@ -40,7 +40,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+  <link href="/miaowenting.gitee.io/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -48,21 +48,21 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+<link href="/miaowenting.gitee.io/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+<link href="/miaowenting.gitee.io/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/miaowenting.gitee.io/images/apple-touch-icon-next.png?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/miaowenting.gitee.io/images/favicon-32x32-next.png?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+  <link rel="icon" type="image/png" sizes="16x16" href="/miaowenting.gitee.io/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/miaowenting.gitee.io/images/logo.svg?v=5.1.4" color="#222">
 
 
 
@@ -74,7 +74,7 @@
 
 
 
-  <link rel="alternate" href="/atom.xml" title="Matty's Blog" type="application/atom+xml">
+  <link rel="alternate" href="/miaowenting.gitee.io/atom.xml" title="Matty's Blog" type="application/atom+xml">
 
 
 
@@ -84,61 +84,61 @@
 <meta name="description" content="网络流控是为了在上下游速度不匹配的情况下，如何防止下游出现过载的手段网络流控有静态限速和动态反压两种手段Flink 1.5以前是基于TCP流控+bounded buffer来实现反压Flink 1.5之后实现了自己托管的credit-based流控机制，在应用层模拟TCP流控的机制 本文将对以上几点逐一介绍，并介绍几种常见的反压问题的处理方式。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Flink网络流控及反压剖析">
-<meta property="og:url" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/index.html">
+<meta property="og:url" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2019/09/22/Flink网络流控及反压剖析/index.html">
 <meta property="og:site_name" content="Matty&#39;s Blog">
 <meta property="og:description" content="网络流控是为了在上下游速度不匹配的情况下，如何防止下游出现过载的手段网络流控有静态限速和动态反压两种手段Flink 1.5以前是基于TCP流控+bounded buffer来实现反压Flink 1.5之后实现了自己托管的credit-based流控机制，在应用层模拟TCP流控的机制 本文将对以上几点逐一介绍，并介绍几种常见的反压问题的处理方式。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/%E7%BD%91%E7%BB%9C%E6%B5%81%E6%8E%A7%E7%9A%84%E6%A6%82%E5%BF%B5.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/%E9%9D%99%E6%80%81%E9%99%90%E9%80%9F.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/%E5%8A%A8%E6%80%81%E5%8F%8D%E9%A6%88%E4%B8%8E%E8%87%AA%E5%8A%A8%E5%8F%8D%E5%8E%8B.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/storm%E5%8F%8D%E5%8E%8B.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/spark-streaming%E5%8F%8D%E5%8E%8B.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/Flink%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E7%9A%84%E6%95%B0%E6%8D%AE%E6%B5%81%E5%90%91.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/TCP_Packet.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/TCP%E6%B5%81%E6%8E%A7_%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3_1.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/TCP%E6%B5%81%E6%8E%A7_%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3_2.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/TCP%E6%B5%81%E6%8E%A7_%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3_3.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/TCP%E6%B5%81%E6%8E%A7_%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3_4.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/TCP%E6%B5%81%E6%8E%A7_%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3_5.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/TCP%E6%B5%81%E6%8E%A7_%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3_6.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/TCP%E6%B5%81%E6%8E%A7_%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3_7.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/TCP%E6%B5%81%E6%8E%A7_%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3_8.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/TCP%E6%B5%81%E6%8E%A7_%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3_9.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/TCP%E6%B5%81%E6%8E%A7_%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3_10.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/%E7%BC%96%E8%AF%91%E9%98%B6%E6%AE%B5_%E7%94%9F%E6%88%90JobGraph.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/%E8%BF%90%E8%A1%8C%E9%98%B6%E6%AE%B5_%E8%B0%83%E5%BA%A6ExecutionGraph.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/%E5%8F%8D%E5%8E%8B%E4%BC%A0%E6%92%AD%E4%B8%A4%E9%98%B6%E6%AE%B5.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/%E8%B7%A8TaskManager%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E6%B5%81%E5%90%91.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/%E8%B7%A8TaskManager%E5%8F%8D%E5%8E%8B%E8%BF%87%E7%A8%8B_1.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/%E8%B7%A8TaskManager%E5%8F%8D%E5%8E%8B%E8%BF%87%E7%A8%8B_2.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/%E8%B7%A8TaskManager%E5%8F%8D%E5%8E%8B%E8%BF%87%E7%A8%8B_3.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/%E8%B7%A8TaskManager%E5%8F%8D%E5%8E%8B%E8%BF%87%E7%A8%8B_4.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/%E8%B7%A8TaskManager%E5%8F%8D%E5%8E%8B%E8%BF%87%E7%A8%8B_5.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/%E8%B7%A8TaskManager%E5%8F%8D%E5%8E%8B%E8%BF%87%E7%A8%8B_6.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/%E8%B7%A8TaskManager%E5%8F%8D%E5%8E%8B%E8%BF%87%E7%A8%8B_7.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/%E8%B7%A8TaskManager%E5%8F%8D%E5%8E%8B%E8%BF%87%E7%A8%8B_8.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/%E8%B7%A8TaskManager%E5%8F%8D%E5%8E%8B%E8%BF%87%E7%A8%8B_9.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/TaskManager%E5%86%85%E5%8F%8D%E5%8E%8B%E8%BF%87%E7%A8%8B_1.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/TaskManager%E5%86%85%E5%8F%8D%E5%8E%8B%E8%BF%87%E7%A8%8B_2.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/TaskManager%E5%86%85%E5%8F%8D%E5%8E%8B%E8%BF%87%E7%A8%8B_3.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/TaskManager%E5%86%85%E5%8F%8D%E5%8E%8B%E8%BF%87%E7%A8%8B_4.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/TCP-based%E5%8F%8D%E5%8E%8B%E7%9A%84%E5%BC%8A%E7%AB%AF.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/Credit-based%E5%8F%8D%E5%8E%8B.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/Credit-based%E5%8F%8D%E5%8E%8B%E8%BF%87%E7%A8%8B_1.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/Credit-based%E5%8F%8D%E5%8E%8B%E8%BF%87%E7%A8%8B_2.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/%E5%8F%8D%E5%8E%8B%E4%B8%8D%E8%A7%A6%E5%8F%91%E6%97%B6%E7%9A%84%E9%9D%99%E6%80%81%E9%99%90%E9%80%9F.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2019/09/22/Flink网络流控及反压剖析/%E7%BD%91%E7%BB%9C%E6%B5%81%E6%8E%A7%E7%9A%84%E6%A6%82%E5%BF%B5.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2019/09/22/Flink网络流控及反压剖析/%E9%9D%99%E6%80%81%E9%99%90%E9%80%9F.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2019/09/22/Flink网络流控及反压剖析/%E5%8A%A8%E6%80%81%E5%8F%8D%E9%A6%88%E4%B8%8E%E8%87%AA%E5%8A%A8%E5%8F%8D%E5%8E%8B.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2019/09/22/Flink网络流控及反压剖析/storm%E5%8F%8D%E5%8E%8B.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2019/09/22/Flink网络流控及反压剖析/spark-streaming%E5%8F%8D%E5%8E%8B.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2019/09/22/Flink网络流控及反压剖析/Flink%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E7%9A%84%E6%95%B0%E6%8D%AE%E6%B5%81%E5%90%91.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2019/09/22/Flink网络流控及反压剖析/TCP_Packet.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2019/09/22/Flink网络流控及反压剖析/TCP%E6%B5%81%E6%8E%A7_%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3_1.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2019/09/22/Flink网络流控及反压剖析/TCP%E6%B5%81%E6%8E%A7_%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3_2.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2019/09/22/Flink网络流控及反压剖析/TCP%E6%B5%81%E6%8E%A7_%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3_3.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2019/09/22/Flink网络流控及反压剖析/TCP%E6%B5%81%E6%8E%A7_%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3_4.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2019/09/22/Flink网络流控及反压剖析/TCP%E6%B5%81%E6%8E%A7_%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3_5.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2019/09/22/Flink网络流控及反压剖析/TCP%E6%B5%81%E6%8E%A7_%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3_6.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2019/09/22/Flink网络流控及反压剖析/TCP%E6%B5%81%E6%8E%A7_%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3_7.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2019/09/22/Flink网络流控及反压剖析/TCP%E6%B5%81%E6%8E%A7_%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3_8.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2019/09/22/Flink网络流控及反压剖析/TCP%E6%B5%81%E6%8E%A7_%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3_9.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2019/09/22/Flink网络流控及反压剖析/TCP%E6%B5%81%E6%8E%A7_%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3_10.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2019/09/22/Flink网络流控及反压剖析/%E7%BC%96%E8%AF%91%E9%98%B6%E6%AE%B5_%E7%94%9F%E6%88%90JobGraph.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2019/09/22/Flink网络流控及反压剖析/%E8%BF%90%E8%A1%8C%E9%98%B6%E6%AE%B5_%E8%B0%83%E5%BA%A6ExecutionGraph.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2019/09/22/Flink网络流控及反压剖析/%E5%8F%8D%E5%8E%8B%E4%BC%A0%E6%92%AD%E4%B8%A4%E9%98%B6%E6%AE%B5.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2019/09/22/Flink网络流控及反压剖析/%E8%B7%A8TaskManager%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E6%B5%81%E5%90%91.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2019/09/22/Flink网络流控及反压剖析/%E8%B7%A8TaskManager%E5%8F%8D%E5%8E%8B%E8%BF%87%E7%A8%8B_1.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2019/09/22/Flink网络流控及反压剖析/%E8%B7%A8TaskManager%E5%8F%8D%E5%8E%8B%E8%BF%87%E7%A8%8B_2.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2019/09/22/Flink网络流控及反压剖析/%E8%B7%A8TaskManager%E5%8F%8D%E5%8E%8B%E8%BF%87%E7%A8%8B_3.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2019/09/22/Flink网络流控及反压剖析/%E8%B7%A8TaskManager%E5%8F%8D%E5%8E%8B%E8%BF%87%E7%A8%8B_4.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2019/09/22/Flink网络流控及反压剖析/%E8%B7%A8TaskManager%E5%8F%8D%E5%8E%8B%E8%BF%87%E7%A8%8B_5.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2019/09/22/Flink网络流控及反压剖析/%E8%B7%A8TaskManager%E5%8F%8D%E5%8E%8B%E8%BF%87%E7%A8%8B_6.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2019/09/22/Flink网络流控及反压剖析/%E8%B7%A8TaskManager%E5%8F%8D%E5%8E%8B%E8%BF%87%E7%A8%8B_7.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2019/09/22/Flink网络流控及反压剖析/%E8%B7%A8TaskManager%E5%8F%8D%E5%8E%8B%E8%BF%87%E7%A8%8B_8.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2019/09/22/Flink网络流控及反压剖析/%E8%B7%A8TaskManager%E5%8F%8D%E5%8E%8B%E8%BF%87%E7%A8%8B_9.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2019/09/22/Flink网络流控及反压剖析/TaskManager%E5%86%85%E5%8F%8D%E5%8E%8B%E8%BF%87%E7%A8%8B_1.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2019/09/22/Flink网络流控及反压剖析/TaskManager%E5%86%85%E5%8F%8D%E5%8E%8B%E8%BF%87%E7%A8%8B_2.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2019/09/22/Flink网络流控及反压剖析/TaskManager%E5%86%85%E5%8F%8D%E5%8E%8B%E8%BF%87%E7%A8%8B_3.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2019/09/22/Flink网络流控及反压剖析/TaskManager%E5%86%85%E5%8F%8D%E5%8E%8B%E8%BF%87%E7%A8%8B_4.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2019/09/22/Flink网络流控及反压剖析/TCP-based%E5%8F%8D%E5%8E%8B%E7%9A%84%E5%BC%8A%E7%AB%AF.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2019/09/22/Flink网络流控及反压剖析/Credit-based%E5%8F%8D%E5%8E%8B.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2019/09/22/Flink网络流控及反压剖析/Credit-based%E5%8F%8D%E5%8E%8B%E8%BF%87%E7%A8%8B_1.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2019/09/22/Flink网络流控及反压剖析/Credit-based%E5%8F%8D%E5%8E%8B%E8%BF%87%E7%A8%8B_2.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2019/09/22/Flink网络流控及反压剖析/%E5%8F%8D%E5%8E%8B%E4%B8%8D%E8%A7%A6%E5%8F%91%E6%97%B6%E7%9A%84%E9%9D%99%E6%80%81%E9%99%90%E9%80%9F.png">
 <meta property="og:updated_time" content="2020-03-02T06:04:12.526Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Flink网络流控及反压剖析">
 <meta name="twitter:description" content="网络流控是为了在上下游速度不匹配的情况下，如何防止下游出现过载的手段网络流控有静态限速和动态反压两种手段Flink 1.5以前是基于TCP流控+bounded buffer来实现反压Flink 1.5之后实现了自己托管的credit-based流控机制，在应用层模拟TCP流控的机制 本文将对以上几点逐一介绍，并介绍几种常见的反压问题的处理方式。">
-<meta name="twitter:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/%E7%BD%91%E7%BB%9C%E6%B5%81%E6%8E%A7%E7%9A%84%E6%A6%82%E5%BF%B5.png">
+<meta name="twitter:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2019/09/22/Flink网络流控及反压剖析/%E7%BD%91%E7%BB%9C%E6%B5%81%E6%8E%A7%E7%9A%84%E6%A6%82%E5%BF%B5.png">
 
 
 
 <script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/',
+    root: '/miaowenting.gitee.io/',
     scheme: 'Mist',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
@@ -161,7 +161,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/">
+  <link rel="canonical" href="http://miaowenting.gitee.io/miaowenting.gitee.io/2019/09/22/Flink网络流控及反压剖析/">
 
 
 
@@ -195,7 +195,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
+      <a href="/miaowenting.gitee.io/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Matty's Blog</span>
         <span class="logo-line-after"><i></i></span>
@@ -223,7 +223,7 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
+          <a href="/miaowenting.gitee.io/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
@@ -233,7 +233,7 @@
       
         
         <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
+          <a href="/miaowenting.gitee.io/about/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
             
@@ -243,7 +243,7 @@
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
+          <a href="/miaowenting.gitee.io/tags/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
@@ -253,7 +253,7 @@
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
+          <a href="/miaowenting.gitee.io/categories/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
             
@@ -263,7 +263,7 @@
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
+          <a href="/miaowenting.gitee.io/archives/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
@@ -336,12 +336,12 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/">
+    <link itemprop="mainEntityOfPage" href="http://miaowenting.gitee.io/miaowenting.gitee.io/miaowenting.gitee.io/2019/09/22/Flink网络流控及反压剖析/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="miaowenting">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/2.JPG">
+      <meta itemprop="image" content="/miaowenting.gitee.io/images/2.JPG">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -388,7 +388,7 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Flink/" itemprop="url" rel="index">
+                  <a href="/miaowenting.gitee.io/categories/Flink/" itemprop="url" rel="index">
                     <span itemprop="name">Flink</span>
                   </a>
                 </span>
@@ -611,7 +611,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/17/Flink-1-9-0-with-Hive/" rel="next" title="Flink 1.9.0 with Hive">
+              <a href="/miaowenting.gitee.io/2019/09/17/Flink-1-9-0-with-Hive/" rel="next" title="Flink 1.9.0 with Hive">
                 <i class="fa fa-chevron-left"></i> Flink 1.9.0 with Hive
               </a>
             
@@ -621,7 +621,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/10/19/Apache-Flink/" rel="prev" title="Apache Flink">
+              <a href="/miaowenting.gitee.io/2019/10/19/Apache-Flink/" rel="prev" title="Apache Flink">
                 Apache Flink <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -689,7 +689,7 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/images/2.JPG" alt="miaowenting">
+              <img class="site-author-image" itemprop="image" src="/miaowenting.gitee.io/images/2.JPG" alt="miaowenting">
             
               <p class="site-author-name" itemprop="name">miaowenting</p>
               <p class="site-description motion-element" itemprop="description"></p>
@@ -700,7 +700,7 @@
             
               <div class="site-state-item site-state-posts">
               
-                <a href="/archives/">
+                <a href="/miaowenting.gitee.io/archives/">
               
                   <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">日志</span>
@@ -712,7 +712,7 @@
               
               
               <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
+                <a href="/miaowenting.gitee.io/categories/index.html">
                   <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
@@ -725,7 +725,7 @@
 
           
             <div class="feed-link motion-element">
-              <a href="/atom.xml" rel="alternate">
+              <a href="/miaowenting.gitee.io/atom.xml" rel="alternate">
                 <i class="fa fa-rss"></i>
                 RSS
               </a>
@@ -880,57 +880,57 @@
 
   
   
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+    <script type="text/javascript" src="/miaowenting.gitee.io/lib/jquery/index.js?v=2.1.3"></script>
   
 
   
   
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+    <script type="text/javascript" src="/miaowenting.gitee.io/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
   
 
   
   
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+    <script type="text/javascript" src="/miaowenting.gitee.io/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
   
 
   
   
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+    <script type="text/javascript" src="/miaowenting.gitee.io/lib/velocity/velocity.min.js?v=1.2.1"></script>
   
 
   
   
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+    <script type="text/javascript" src="/miaowenting.gitee.io/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
   
 
   
   
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+    <script type="text/javascript" src="/miaowenting.gitee.io/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
   
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/miaowenting.gitee.io/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/miaowenting.gitee.io/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/miaowenting.gitee.io/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/miaowenting.gitee.io/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/miaowenting.gitee.io/js/src/bootstrap.js?v=5.1.4"></script>
 
 
 
@@ -980,7 +980,7 @@
     } else if (/json$/i.test(search_path)) {
       isXml = false;
     }
-    var path = "/" + search_path;
+    var path = "/miaowenting.gitee.io/" + search_path;
     // monitor main search box;
 
     var onPopupClose = function (e) {
