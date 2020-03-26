@@ -1,0 +1,1430 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Matty's Blog" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="XXX">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据库-MySQL">
+<meta property="og:url" content="http://yoursite.com/2020/01/10/数据库-MySQL/index.html">
+<meta property="og:site_name" content="Matty&#39;s Blog">
+<meta property="og:description" content="XXX">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2020/01/10/数据库-MySQL/MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB.png">
+<meta property="og:image" content="http://yoursite.com/2020/01/10/数据库-MySQL/SQL%E6%9F%A5%E8%AF%A2%E7%94%A8%E6%88%B7%E7%9A%84%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E7%99%BB%E9%99%86%E5%A4%A9%E6%95%B0_%E9%A2%98%E7%9B%AE.png">
+<meta property="og:image" content="http://yoursite.com/2020/01/10/数据库-MySQL/SQL%E6%9F%A5%E8%AF%A2%E7%94%A8%E6%88%B7%E7%9A%84%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E7%99%BB%E9%99%86%E5%A4%A9%E6%95%B0_%E6%AD%A5%E9%AA%A41.png">
+<meta property="og:image" content="http://yoursite.com/2020/01/10/数据库-MySQL/SQL%E6%9F%A5%E8%AF%A2%E7%94%A8%E6%88%B7%E7%9A%84%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E7%99%BB%E9%99%86%E5%A4%A9%E6%95%B0_%E6%AD%A5%E9%AA%A42.png">
+<meta property="og:image" content="http://yoursite.com/2020/01/10/数据库-MySQL/SQL%E6%9F%A5%E8%AF%A2%E7%94%A8%E6%88%B7%E7%9A%84%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E7%99%BB%E9%99%86%E5%A4%A9%E6%95%B0_%E6%AD%A5%E9%AA%A43.png">
+<meta property="og:updated_time" content="2020-03-24T07:00:20.917Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数据库-MySQL">
+<meta name="twitter:description" content="XXX">
+<meta name="twitter:image" content="http://yoursite.com/2020/01/10/数据库-MySQL/MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/01/10/数据库-MySQL/">
+
+
+
+
+
+  <title>数据库-MySQL | Matty's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Matty's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/10/数据库-MySQL/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="miaowenting">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/2.JPG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Matty's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">数据库-MySQL</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-10T17:12:35+08:00">
+                2020-01-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/DB/" itemprop="url" rel="index">
+                    <span itemprop="name">DB</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>XXX</p>
+<a id="more"></a>
+
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><h3 id="EXPLAIN你的Select查询"><a href="#EXPLAIN你的Select查询" class="headerlink" title="EXPLAIN你的Select查询"></a>EXPLAIN你的Select查询</h3><p>使用 EXPLAIN 关键字可以让你知道 MySQL 是如何处理你的 SQL 语句的。这可以帮你分析你的查询语句或是表结构的性能瓶颈。<br>EXPLAIN 的查询结果还会告诉你你的索引主键被如何利用的，你的数据表是如何被搜索和排序的……</p>
+<h3 id="当只有一行数据时，使用LIMIT-1"><a href="#当只有一行数据时，使用LIMIT-1" class="headerlink" title="当只有一行数据时，使用LIMIT 1"></a>当只有一行数据时，使用LIMIT 1</h3><p>当你查询表的有些时候，你已经知道结果只会有一条结果，但因为你可能需要去 fetch 游标，或是你也许会去检查返回的记录数。<br>在这种情况下，加上 LIMIT 1 可以增加性能。这样一来， MySQL 数据库引擎会在找到一条数据后停止搜索，而不是继续往后查少下一条符合记录的数据。</p>
+<h3 id="为搜索字段建索引"><a href="#为搜索字段建索引" class="headerlink" title="为搜索字段建索引"></a>为搜索字段建索引</h3><p>索引并不一定就是给主键或是唯一字段的，如果表中的某个字段会经常用来做搜索，那么，请为其建立索引吧。</p>
+<h3 id="在Join表的时候使用相当类型的列，并将其索引"><a href="#在Join表的时候使用相当类型的列，并将其索引" class="headerlink" title="在Join表的时候使用相当类型的列，并将其索引"></a>在Join表的时候使用相当类型的列，并将其索引</h3><p>如果你的应用程序有很多Join查询，应该确认两个表中Join的字段是被建过索引的，这样，MySQL内部会启动为你优化join的SQL语句的机制。<br>而且，这些被用来join的字段，应该是相同类型的。例如：如果你要把Decimal字段和一个int字段join在一起，MySQL就无法使用它们的索引。对于那些String类型，需要有相同的字符集才行。</p>
+<h3 id="千万不要-order-by-rand"><a href="#千万不要-order-by-rand" class="headerlink" title="千万不要 order by rand()"></a>千万不要 order by rand()</h3><h3 id="避免-select"><a href="#避免-select" class="headerlink" title="避免 select *"></a>避免 select *</h3><p>从数据库里读出越多的数据，那么查询就会越慢。并且，如果你的数据库服务器和web服务器是两台独立的服务器的话，这还会增加网络传输的负载。<br>所以，你应该养成一个需要什么就取什么的好习惯。</p>
+<h3 id="永远为每张表设置一个ID"><a href="#永远为每张表设置一个ID" class="headerlink" title="永远为每张表设置一个ID"></a>永远为每张表设置一个ID</h3><p>我们应该为数据库里的每张表都设置一个 ID 做为其主键，而且最好的是一个 INT 型的(推荐使用 UNSIGNED)，并设置上自动增加的 AUTO_INCREMENT 标志。<br>就算是你 users 表有一个主键叫 “email”的字段，你也别让它成为主键。使用 VARCHAR 类型来当主键会使用得性能下降。另外，在你的程序中，你应该使用表的 ID 来构造你的数据结构。<br>而且，在 MySQL 数据引擎下，还有一些操作需要使用主键，在这些情况下，主键的性能和设置变得非常重要，比如，集群，分区……</p>
+<h3 id="使用-enum-而不是-varchar"><a href="#使用-enum-而不是-varchar" class="headerlink" title="使用 enum 而不是 varchar"></a>使用 enum 而不是 varchar</h3><h3 id="无缓冲的查询"><a href="#无缓冲的查询" class="headerlink" title="无缓冲的查询"></a>无缓冲的查询</h3><h3 id="把-IP-地址换成-unsigned-int"><a href="#把-IP-地址换成-unsigned-int" class="headerlink" title="把 IP 地址换成 unsigned int"></a>把 IP 地址换成 unsigned int</h3><h3 id="固定长度的表会更快"><a href="#固定长度的表会更快" class="headerlink" title="固定长度的表会更快"></a>固定长度的表会更快</h3><h3 id="垂直分割"><a href="#垂直分割" class="headerlink" title="垂直分割"></a>垂直分割</h3><h3 id="拆分大的-delete-或-insert-语句"><a href="#拆分大的-delete-或-insert-语句" class="headerlink" title="拆分大的 delete 或 insert 语句"></a>拆分大的 delete 或 insert 语句</h3><p>如果你需要在一个在线的网站上去执行一个大的 delete 或 insert 查询，你需要非常小心，要避免你的操作让你的整个网站停止相应。因为这两个操作是会锁表的，表一锁住了，别的操作都进不来了。<br>Apache 会有很多的子进程或线程。所以，其工作起来相当有效率，而我们的服务器也不希望有太多的子进程，线程和数据库链接，这是极大的占服务器资源的事情，尤其是内存。<br>如果你把你的表锁上一段时间，比如 30 秒钟，那么对于一个有很高访问量的站点来说，这 30 秒所积累的访问进程/线程，数据库链接，打开的文件数，可能不仅仅会让你的 web 服务 Crash，还可能会让你的整台服务器马上掛了。<br>所以，如果你有一个大的处理，你定你一定把其拆分，使用 LIMIT 条件是一个好的方法。</p>
+<h3 id="越小的列会越快"><a href="#越小的列会越快" class="headerlink" title="越小的列会越快"></a>越小的列会越快</h3><p>如果一个表只会有几列罢了(比如说字典表，配置表)，那么，我们就没有理由使用 INT 来做主键，使用 MEDIUMINT, SMALLINT 或是更小的 TINYINT 会更<br>经济一些。如果你不需要记录时间，使用 DATE 要比 DATETIME 好得多。</p>
+<h3 id="选择正确的存储引擎"><a href="#选择正确的存储引擎" class="headerlink" title="选择正确的存储引擎"></a>选择正确的存储引擎</h3><p>MyISAM 适合于一些需要大量查询的应用，但其对于有大量写操作并不是很好。甚至你只是需要 update 一个字段，整个表都会被锁起来，而别的进程，就算是读进程都无法操作直到读操作完成。另外， MyISAM 对于 <code>select count(*)</code> 这类的计算是超快无比的。</p>
+<p>InnoDB 的趋势会是一个非常复杂的存储引擎，对于一些小的应用，它会比MyISAM 还慢。他是它支持“行锁” ，于是在写操作比较多的时候，会更优秀。并且，他还支持更多的高级应用，比如：事务</p>
+<h3 id="小心“永久链接”"><a href="#小心“永久链接”" class="headerlink" title="小心“永久链接”"></a>小心“永久链接”</h3><p>“永久链接”的目的是用来减少重新创建 MySQL 链接的次数。当一个链接被创建了，它会永远处在连接的状态，就算是数据库操作已经结束了。而且，自从我们的 Apache 开始重用它的子进程后——也就是说，下一次的 HTTP 请求会重用 Apache 的子进程，并重用相同的 MySQL 链接。</p>
+<p>PHP 手册： mysql_pconnect()</p>
+<p>在理论上来说，这听起来非常的不错。但是从个人经验(也是大多数人的)上来说，这个功能制造出来的麻烦事更多。因为，你只有有限的链接数，内存问题，文件句柄数，等等。而且， Apache 运行在极端并行的环境中，会创建很多很多的了进程。这就是为什么这种“永久链接”的机制工作地不好的原因。在你决定要使用“永久链接”之前，你需要好好地考虑一下你的整个系统的架构。</p>
+<h3 id="尽可能的使用-not-null"><a href="#尽可能的使用-not-null" class="headerlink" title="尽可能的使用 not null"></a>尽可能的使用 not null</h3><p>除非你有一个很特别的原因去使用 NULL 值，你应该总是让你的字段保持NOT NULL。这看起来好像有点争议，请往下看。</p>
+<p>首先，问问你自己“Empty”和“NULL”有多大的区别(如果是 INT，那就是 0 和 NULL)?如果你觉得它们之间没有什么区别，那么你就不要使用 NULL。(你知道吗?在 Oracle 里， NULL 和 Empty 的字符串是一样的!)</p>
+<p>不要以为 NULL 不需要空间，其需要额外的空间，并且，在你进行比较的时候，你的程序会更复杂。 当然，这里并不是说你就不能使用 NULL 了，现实情况是很复杂的，依然会有些情况下，你需要使用 NULL 值。</p>
+<h3 id="MySQL中有哪几种锁？"><a href="#MySQL中有哪几种锁？" class="headerlink" title="MySQL中有哪几种锁？"></a>MySQL中有哪几种锁？</h3><p>MyISAM 支持表锁， InnoDB 支持表锁和行锁，默认为行锁<br>表级锁：开销小，加锁快，不会出现死锁。锁定粒度大，发生锁冲突的概率最高，并发量最低<br>行级锁：开销大，加锁慢，会出现死锁。锁力度小，发生锁冲突的概率小，并发度最高</p>
+<h3 id="数据库设计范式"><a href="#数据库设计范式" class="headerlink" title="数据库设计范式"></a>数据库设计范式</h3><h4 id="第一范式（1NF）"><a href="#第一范式（1NF）" class="headerlink" title="第一范式（1NF）"></a>第一范式（1NF）</h4><p>强调的是列的原子性，即列不能够再分成其他几列。<br>考虑这样一个表：【联系人】（姓名，性别，电话）<br>如果在实际场景中，一个联系人有家庭电话和公司电话，那么这种表结构设计就没有达到 1NF。要符合 1NF 我们只需把列（电话）拆分，即：【联系人】（姓名，性别，家庭电话，公司电话）。1NF 很好辨别，但是 2NF 和 3NF 就容易搞混淆。 </p>
+<p>说明：在任何一个关系数据库中，第一范式（1NF）是对关系模式的设计基本要求，一般设计中都必须满足第一范式（1NF）。不过有些关系模型中突破了1NF的限制，这种称为非1NF的关系模型。换句话说，是否必须满足1NF的最低要求，主要依赖于所使用的关系模型。</p>
+<h4 id="第二范式（2NF）"><a href="#第二范式（2NF）" class="headerlink" title="第二范式（2NF）"></a>第二范式（2NF）</h4><p>首先是 1NF，另外包含两部分内容，一是表必须有一个主键；二是没有包含在主键中的列必须完全依赖于主键，而不能只依赖于主键的一部分。 </p>
+<p>考虑一个订单明细表：【OrderDetail】（OrderID，ProductID，UnitPrice，Discount，Quantity，ProductName）。<br>因为我们知道在一个订单中可以订购多种产品，所以单单一个 OrderID 是不足以成为主键的，主键应该是（OrderID，ProductID）。显而易见 Discount（折扣），Quantity（数量）完全依赖（取决）于主键（OderID，ProductID），而 UnitPrice，ProductName 只依赖于 ProductID。所以 OrderDetail 表不符合 2NF。不符合 2NF 的设计容易产生冗余数据。<br>可以把【OrderDetail】表拆分为【OrderDetail】（OrderID，ProductID，Discount，Quantity）和【Product】（ProductID，UnitPrice，ProductName）来消除原订单表中UnitPrice，ProductName多次重复的情况。</p>
+<p> 第二范式（2NF）要求实体的属性完全依赖于主关键字。所谓完全依赖是指不能存在仅依赖主关键字一部分的属性，如果存在，那么这个属性和主关键字的这一部分应该分离出来形成一个新的实体，新实体与原实体之间是一对多的关系。为实现区分通常需要为表加上一个列，以存储各个实例的唯一标识。简而言之，第二范式就是在第一范式的基础上属性完全依赖于主键。</p>
+<h4 id="第三范式（3NF）"><a href="#第三范式（3NF）" class="headerlink" title="第三范式（3NF）"></a>第三范式（3NF）</h4><p>在1NF基础上，任何非主属性不依赖于其它非主属性[在2NF基础上消除传递依赖]。</p>
+<p>第三范式（3NF）是第二范式（2NF）的一个子集，即满足第三范式（3NF）必须满足第二范式（2NF）。</p>
+<p>首先是 2NF，另外非主键列必须直接依赖于主键，不能存在传递依赖。即不能存在：非主键列 A 依赖于非主键列 B，非主键列 B 依赖于主键的情况。 考虑一个订单表【Order】（OrderID，OrderDate，CustomerID，CustomerName，CustomerAddr，CustomerCity）主键是（OrderID）。 </p>
+<p>其中 OrderDate，CustomerID，CustomerName，CustomerAddr，CustomerCity 等非主键列都完全依赖于主键（OrderID），所以符合 2NF。不过问题是 CustomerName，CustomerAddr，CustomerCity 直接依赖的是 CustomerID（非主键列），而不是直接依赖于主键，它是通过传递才依赖于主键，所以不符合 3NF。<br>通过拆分【Order】为【Order】（OrderID，OrderDate，CustomerID）和【Customer】（CustomerID，CustomerName，CustomerAddr，CustomerCity）从而达到 3NF。 </p>
+<p>第二范式（2NF）和第三范式（3NF）的概念很容易混淆，区分它们的关键点在于，2NF：非主键列是否完全依赖于主键，还是依赖于主键的一部分；3NF：非主键列是直接依赖于主键，还是直接依赖于非主键列。</p>
+<h3 id="列举常见的关系型数据库和非关系型数据库？"><a href="#列举常见的关系型数据库和非关系型数据库？" class="headerlink" title="列举常见的关系型数据库和非关系型数据库？"></a>列举常见的关系型数据库和非关系型数据库？</h3><p>关系型数据库：Oracle、DB2、Microsoft SQL Server、Microsoft Access、MySQL<br>非关系型数据库：NoSql、Cloudant、MongoDb、redis、HBase</p>
+<h4 id="关系型数据库"><a href="#关系型数据库" class="headerlink" title="关系型数据库"></a>关系型数据库</h4><p>关系型数据库的特性<br>1、关系型数据库，是指采用了关系模型来组织数据的数据库；<br>2、关系型数据库的最大特点就是事务的一致性；<br>3、简单来说，关系模型指的就是二维表格模型，而一个关系型数据库就是由二维表及其之间的联系所组成的一个数据组织。<br>关系型数据库的优点<br>1、容易理解：二维表结构是非常贴近逻辑世界一个概念，关系模型相对网状、层次等其他模型来说更容易理解；<br>2、使用方便：通用的SQL语言使得操作关系型数据库非常方便；<br>3、易于维护：丰富的完整性(实体完整性、参照完整性和用户定义的完整性)大大减低了数据冗余和数据不一致的概率；<br>4、支持SQL，可用于复杂的查询。<br>关系型数据库的缺点<br>1、为了维护一致性所付出的巨大代价就是其读写性能比较差；<br>2、固定的表结构；<br>3、高并发读写需求；<br>4、海量数据的高效率读写；</p>
+<h4 id="非关系型数据库"><a href="#非关系型数据库" class="headerlink" title="非关系型数据库"></a>非关系型数据库</h4><p>非关系型数据库的特性<br>1、使用键值对存储数据；<br>2、分布式；<br>3、一般不支持ACID特性；<br>4、非关系型数据库严格上不是一种数据库，应该是一种数据结构化存储方法的集合。<br>非关系型数据库的优点<br>1、无需经过sql层的解析，读写性能很高；<br>2、基于键值对，数据没有耦合性，容易扩展；<br>3、存储数据的格式：nosql的存储格式是key,value形式、文档形式、图片形式等等，文档形式、图片形式等等，<br>而关系型数据库则只支持基础类型。<br>非关系型数据库的缺点<br>1、不提供sql支持，学习和使用成本较高；<br>2、无事务处理，附加功能bi和报表等支持也不好；</p>
+<h3 id="常见的MySQL数据库引擎是MyiSAM和inmoDB"><a href="#常见的MySQL数据库引擎是MyiSAM和inmoDB" class="headerlink" title="常见的MySQL数据库引擎是MyiSAM和inmoDB"></a>常见的MySQL数据库引擎是MyiSAM和inmoDB</h3><p>比较：<br>MyISAM：<br>1、它不支持事务，也不支持外键，其优势是访问的速度快<br>innoDB：<br>1、InnoDB支持事务安全，对比MyISAM引擎，InnoDB写的效率差一些，并且会占据更多的磁盘空间。<br>2、MySQL支持外键的存储引擎只有InnoDB</p>
+<h3 id="什么是事务？什么是锁？MySQL如何支持事务？"><a href="#什么是事务？什么是锁？MySQL如何支持事务？" class="headerlink" title="什么是事务？什么是锁？MySQL如何支持事务？"></a>什么是事务？什么是锁？MySQL如何支持事务？</h3><p>事务：主要用于处理操作量大，复杂度高的数据。一般来说，事务是必须满足4个条件（ACID）：<br>原子性：所谓原子操作是指不会被线程调度机制打断的操作；这种操作一旦开始，就一直运行到结束，中间不会有任何 context switch （切换到另一个线程）。事务在执行过程中发生错误，会被回滚（Rollback）到事务开始前的状态，就像这个事务从来没有执行过一样。<br>一致性：在事务开始之前和事务结束以后，数据库的完整性没有被破坏。这表示写入的资料必须完全符合所有的预设规则，这包含资料的精确度、串联性以及后续数据库可以自发性地完成预定的工作。<br>隔离性：数据库允许多个并发事务同时对其数据进行读写和修改的能力，隔离性可以防止多个事务并发执行时由于交叉执行，而导致数据的不一致。事务隔离分为不同级别，包括读未提交（Read uncommitted）、读提交（read committed）、可重复读（repeatable read）和串行化（Serializable）。<br>持久性：事务处理结束后，对数据的修改就是永久的，即便系统故障也不会丢失。</p>
+<ul>
+<li>锁：是实现事务的关键，所可以保证事务的完整性和并发行，与现实生活中的锁一样，可以使某些数据的拥有者，在某段时间内不能使用某些数据或者数据结构。</li>
+</ul>
+<p>注意：MySQL 中只有使用了 Innodb 数据库引擎的数据库或表才支持事务。</p>
+<h3 id="简述触发器、函数、视图、存储过程"><a href="#简述触发器、函数、视图、存储过程" class="headerlink" title="简述触发器、函数、视图、存储过程"></a>简述触发器、函数、视图、存储过程</h3><p>触发器:使用触发器可以定制用户对表进行【增、删、改】操作时前后的行为,触发器无法由用户直接调用，而知由于对表的【增/删/改】操作被动引发的<br>函数:是MySQL数据库提供的内部函数(当然也可以自定义函数)。这些内部函数可以帮助用户更加方便的处理表中的数据<br>视图:视图是虚拟表或逻辑表，它被定义为具有连接的SQL SELECT查询语句。<br>存储过程:存储过程是存储在数据库目录中的一坨的声明性SQL语句，数据库中的一个重要对象,有效提高了程序的性能</p>
+<h3 id="MySQL索引种类"><a href="#MySQL索引种类" class="headerlink" title="MySQL索引种类"></a>MySQL索引种类</h3><p>普通索引、唯一索引、联合索引、全文索引、空间索引</p>
+<h3 id="索引在什么情况下遵循最左前缀的规则？"><a href="#索引在什么情况下遵循最左前缀的规则？" class="headerlink" title="索引在什么情况下遵循最左前缀的规则？"></a>索引在什么情况下遵循最左前缀的规则？</h3><p>在建立了联合索引的前提条件下，数据库会一直从左向右的顺序依次查找，直到遇到了范围查询(&gt;,&lt;,between,like等)</p>
+<h3 id="列举创建索引但是无法命中索引的8种情况"><a href="#列举创建索引但是无法命中索引的8种情况" class="headerlink" title="列举创建索引但是无法命中索引的8种情况"></a>列举创建索引但是无法命中索引的8种情况</h3><ul>
+<li>查询条件中有or、not in、not exist等</li>
+<li>小表查询</li>
+<li>like查询是以%开头</li>
+<li>如果列类型是字符串，那一定要在条件中将数据使用引号引用起来,否则不使用索引</li>
+<li>没有使用索引字段查询</li>
+<li>对索引列进行运算，需要建立函数索引</li>
+<li>单独引用联合索引中的非第一位置的索引</li>
+<li>没有查询条件</li>
+</ul>
+<h3 id="如何开启慢日志查询？"><a href="#如何开启慢日志查询？" class="headerlink" title="如何开启慢日志查询？"></a>如何开启慢日志查询？</h3><p>参数说明：<br>slow_query_log： 慢查询开启状态<br>slow_query_log_file：慢查询日志存放的位置（这个目录需要MySQL的运行帐号的可写权限，一般设置为MySQL的数据存放目录）<br>long_query_time：查询超过多少秒才记录<br>开启慢日志查询方法一：全局变量设置<br>1、将 slow_query_log 全局变量设置为“ON”状态。指令示例：mysql&gt; set global slow_query_log=’ON’;<br>2、设置慢查询日志存放的位置：mysql&gt; set global slow_query_log_file=’/usr/local/mysql/data/slow.log’;<br>3、查询超过1秒就记录：mysql&gt; set global long_query_time=1;<br>开启慢日志查询方法二： 配置文件设置<br>修改配置文件my.cnf，在[mysqld]下的下方加入：<br>[mysqld]<br>slow_query_log = ON<br>slow_query_log_file = /usr/local/mysql/data/slow.log<br>long_query_time = 1<br>修改完参数后重启数据库服务就可以了</p>
+<h3 id="数据库导入导出命令（结构和数据）？"><a href="#数据库导入导出命令（结构和数据）？" class="headerlink" title="数据库导入导出命令（结构和数据）？"></a>数据库导入导出命令（结构和数据）？</h3><p>导出数据库结构和数据：mysqldump -u用户名 -p密码 数据库名&gt; 路径+导出的文件名.sql<br>导出数据库所有表结构：mysqldump -u用户名 -p密码 -d 数据库名&gt;路径+文件名.sql<br>导出数据表结构和数据：mysqldump -u用户名 -p密码 数据库名 表名&gt;路径+文件名.sql<br>导出数据表结构：mysqldump -u用户名 -p密码 -d 数据库名 表名&gt;路径+文件名.sql</p>
+<h3 id="数据库优化思路"><a href="#数据库优化思路" class="headerlink" title="数据库优化思路"></a>数据库优化思路</h3><h4 id="SQL语句优化"><a href="#SQL语句优化" class="headerlink" title="SQL语句优化"></a>SQL语句优化</h4><p>1）应尽量避免在 where 子句中使用!=或&lt;&gt;操作符，否则将引擎放弃使用索引而进行全表扫描。<br>2）应尽量避免在 where 子句中对字段进行 null 值判断，否则将导致引擎放弃使用索引而进行全表扫描，如：select id from t where num is null<br>可以在num上设置默认值0，确保表中num列没有null值，然后这样查询：<br>select id from t where num=0<br>3）很多时候用 exists 代替 in 是一个好的选择<br>4）用Where子句替换HAVING 子句 因为HAVING 只会在检索出所有记录之后才对结果集进行过滤</p>
+<h4 id="索引优化"><a href="#索引优化" class="headerlink" title="索引优化"></a>索引优化</h4><p>合理使用：普通索引、唯一索引(主键索引、唯一索引)、联合索引、全文索引、空间索引</p>
+<p>MySQL的最大索引个数不能超过5个，为啥？？？</p>
+<p>MySQL一张表的数据量不能超过2000万，为啥？？？</p>
+<h4 id="数据库结构优化"><a href="#数据库结构优化" class="headerlink" title="数据库结构优化"></a>数据库结构优化</h4><p>1）范式优化：<br>比如消除冗余（节省空间。。）<br>2）反范式优化：<br>比如适当加冗余等（减少join）<br>3）拆分表：<br>分区将数据在物理上分隔开，不同分区的数据可以制定保存在处于不同磁盘上的数据文件里。这样，当对这个表进行查询时，只需要在表分区中进行扫描，而不必进行全表扫描，明显缩短了查询时间，另外处于不同磁盘的分区也将对这个表的数据传输分散在不同的磁盘I/O，一个精心设置的分区可以将数据传输对磁盘I/O竞争均匀地分散开。对数据量大的时时表可采取此方法。可按月自动建表分区。<br>4）拆分其实又分垂直拆分和水平拆分：<br>案例： 简单购物系统暂设涉及如下表：<br>1.产品表（数据量10w，稳定）<br>2.订单表（数据量200w，且有增长趋势）<br>3.用户表 （数据量100w，且有增长趋势） 以mysql为例讲述下水平拆分和垂直拆分，mysql能容忍的数量级在百万静态数据可以到千万。<br>垂直拆分：解决问题：表与表之间的io竞争 。不解决问题：单表中数据量增长出现的压力。<br>方案： 把产品表和用户表放到一个server上 订单表单独放到一个server上<br>水平拆分： 解决问题：单表中数据量增长出现的压力 不解决问题：表与表之间的io争夺。<br>方案： 用户表通过性别拆分为男用户表和女用户表，订单表通过已完成和完成中拆分为已完成订单和未完成订单， 产品表、未完成订单放一个server上；已完成订单表和男用户表放一个server上；女用户表放一个server上(女的爱购物 哈哈)</p>
+<h4 id="服务器硬件优化"><a href="#服务器硬件优化" class="headerlink" title="服务器硬件优化"></a>服务器硬件优化</h4><h3 id="limit-1"><a href="#limit-1" class="headerlink" title="limit 1"></a>limit 1</h3><p>在对name做了唯一索引前提下，简述以下区别：<br>select * from tb where name = ‘Oldboy-Wupeiqi’ # 全局遍历找所有<br>select * from tb where name = ‘Oldboy-Wupeiqi’ limit 1 # 锁定一条就结束</p>
+<h3 id="什么是数据库约束，常见的约束有哪几种？"><a href="#什么是数据库约束，常见的约束有哪几种？" class="headerlink" title="什么是数据库约束，常见的约束有哪几种？"></a>什么是数据库约束，常见的约束有哪几种？</h3><p>数据库约束用于保证数据库、表数据的完整性（正确性和一致性）。可以通过定义约束\索引\触发器来保证数据的完整性。<br>总体来讲,约束可以分为:<br>主键约束：primary key；<br>外键约束：foreign key；<br>唯一约束：unique；<br>检查约束：check；<br>空值约束：not null；<br>默认值约束：default；</p>
+<h3 id="从数据库中随机取50条数据"><a href="#从数据库中随机取50条数据" class="headerlink" title="从数据库中随机取50条数据"></a>从数据库中随机取50条数据</h3><p>select * from 表 order by rand() limit 50;</p>
+<h3 id="什么是sql注入？"><a href="#什么是sql注入？" class="headerlink" title="什么是sql注入？"></a>什么是sql注入？</h3><p>SQL注入攻击指的是通过构建特殊的输入作为参数传入Web应用程序，而这些输入大都是SQL语法里的一些组合，通过执行SQL语句进而执行攻击者所要的操作，其主要原因是程序没有细致地过滤用户输入的数据，致使非法数据侵入系统。</p>
+<h3 id="关于sql语句应该考虑哪些安全性？"><a href="#关于sql语句应该考虑哪些安全性？" class="headerlink" title="关于sql语句应该考虑哪些安全性？"></a>关于sql语句应该考虑哪些安全性？</h3><ul>
+<li>防止sql注入，对特殊字符进行转义，过滤或者使用预编译的sql语句绑定变量。</li>
+<li>最小权限原则，特别是不要用root账户，为不同的类型的动作或者组建使用不同的账户。</li>
+<li>当sql运行出错时，不要把数据库返回的错误信息全部显示给用户，以防止泄漏服务器和数据库相关信息。</li>
+</ul>
+<h3 id="一张表，里面有ID自增主键，当insert了17条记录之后，删除了第15，16，17条记录，再把MySQL重启，再insert一条记录，这条记录的ID是18还是15？"><a href="#一张表，里面有ID自增主键，当insert了17条记录之后，删除了第15，16，17条记录，再把MySQL重启，再insert一条记录，这条记录的ID是18还是15？" class="headerlink" title="一张表，里面有ID自增主键，当insert了17条记录之后，删除了第15，16，17条记录，再把MySQL重启，再insert一条记录，这条记录的ID是18还是15？"></a>一张表，里面有ID自增主键，当insert了17条记录之后，删除了第15，16，17条记录，再把MySQL重启，再insert一条记录，这条记录的ID是18还是15？</h3><p>如果表的类型是MyISAM，那么是18。<br>因为MyISAM表会把自增主键的最大ID记录到数据文件里，重启MySQL自增主键的最大ID也不会丢失。<br>如果表的类型是InnoDB，那么是15。<br>InnoDB表只是把自增主键的最大ID记录到内存中，所以重启数据库或者是对表进行OPTIMIZE操作，都会导致最大ID丢失。</p>
+<h3 id="简述数据库的读写分离？"><a href="#简述数据库的读写分离？" class="headerlink" title="简述数据库的读写分离？"></a>简述数据库的读写分离？</h3><p>读写分离为了确保数据库产品的稳数据定性，很多数据库拥有双机热备功能。也就是，第一台数据库服务器，是对外提供增删改业务的生产服务器；第二台数据库服务器，主要进行读的操作。</p>
+<h3 id="简述数据库分库分表？（水平、垂直）"><a href="#简述数据库分库分表？（水平、垂直）" class="headerlink" title="简述数据库分库分表？（水平、垂直）"></a>简述数据库分库分表？（水平、垂直）</h3><p>垂直分库：就是按照功能的不同，把没有关联的数据放到不同的数据库和服务器中<br>水平分库：根据一定的规则将一个表的数据划分到不同的数据库中，两个数据库的表结构一样</p>
+<h3 id="mysql的锁类型"><a href="#mysql的锁类型" class="headerlink" title="mysql的锁类型"></a>mysql的锁类型</h3><p>行锁、表锁、页面锁</p>
+<h3 id="排他锁和共享锁"><a href="#排他锁和共享锁" class="headerlink" title="排他锁和共享锁"></a>排他锁和共享锁</h3><h3 id="mysql索引是怎么实现的？大致描述下B-树的大致结构"><a href="#mysql索引是怎么实现的？大致描述下B-树的大致结构" class="headerlink" title="mysql索引是怎么实现的？大致描述下B+树的大致结构"></a>mysql索引是怎么实现的？大致描述下B+树的大致结构</h3><h3 id="事务及其特性"><a href="#事务及其特性" class="headerlink" title="事务及其特性"></a>事务及其特性</h3><p>事务拥有四个重要的特性：原子性（Atomicity）、一致性（Consistency）、隔离性（Isolation）、持久性（Durability），人们习惯称之为 ACID 特性。下面我逐一对其进行解释。</p>
+<ul>
+<li><p>原子性（Atomicity）<br>事务开始后所有操作，要么全部做完，要么全部不做，不可能停滞在中间环节。事务执行过程中出错，会回滚到事务开始前的状态，所有的操作就像没有发生一样。例如，如果一个事务需要新增 100 条记录，但是在新增了 10 条记录之后就失败了，那么数据库将回滚对这 10 条新增的记录。也就是说事务是一个不可分割的整体，就像化学中学过的原子，是物质构成的基本单位。</p>
+</li>
+<li><p>一致性（Consistency）<br>指事务将数据库从一种状态转变为另一种一致的的状态。事务开始前和结束后，数据库的完整性约束没有被破坏。例如工号带有唯一属性，如果经过一个修改工号的事务后，工号变的非唯一了，则表明一致性遭到了破坏。</p>
+</li>
+<li><p>隔离性（Isolation）<br>要求每个读写事务的对象对其他事务的操作对象能互相分离，即该事务提交前对其他事务不可见。 也可以理解为多个事务并发访问时，事务之间是隔离的，一个事务不应该影响其它事务运行效果。这指的是在并发环境中，当不同的事务同时操纵相同的数据时，每个事务都有各自的完整数据空间。由并发事务所做的修改必须与任何其他并发事务所做的修改隔离。例如一个用户在更新自己的个人信息的同时，是不能看到系统管理员也在更新该用户的个人信息（此时更新事务还未提交）。</p>
+</li>
+</ul>
+<p>注：MySQL 通过锁机制来保证事务的隔离性。</p>
+<ul>
+<li>持久性（Durability）<br>事务一旦提交，则其结果就是永久性的。即使发生宕机的故障，数据库也能将数据恢复，也就是说事务完成后，事务对数据库的所有更新将被保存到数据库，不能回滚。这只是从事务本身的角度来保证，排除 RDBMS（关系型数据库管理系统，例如 Oracle、MySQL 等）本身发生的故障。</li>
+</ul>
+<p>注：MySQL 使用 redo log 来保证事务的持久性。</p>
+<h3 id="mysql事务隔离级别"><a href="#mysql事务隔离级别" class="headerlink" title="mysql事务隔离级别"></a>mysql事务隔离级别</h3><h4 id="READ-UNCOMMITTED（读未提交）"><a href="#READ-UNCOMMITTED（读未提交）" class="headerlink" title="READ UNCOMMITTED（读未提交）"></a>READ UNCOMMITTED（读未提交）</h4><p>该隔离级别的事务会读到其它未提交事务的数据，此现象也称之为脏读。</p>
+<ol>
+<li><p>准备两个终端，在此命名为 mysql 终端 1 和 mysql 终端 2，再准备一张测试表 test，写入一条测试数据并调整隔离级别为 READ UNCOMMITTED，任意一个终端执行即可。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SET</span> @@session.transaction_isolation = <span class="string">'READ-UNCOMMITTED'</span>;</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">database</span> <span class="keyword">test</span>;</span><br><span class="line"><span class="keyword">use</span> <span class="keyword">test</span>;</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> <span class="keyword">test</span>(<span class="keyword">id</span> <span class="built_in">int</span> primary <span class="keyword">key</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">test</span>(<span class="keyword">id</span>) <span class="keyword">values</span>(<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>登录 mysql 终端 1，开启一个事务，将 ID 为 1 的记录更新为 2。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">begin</span>;</span><br><span class="line"><span class="keyword">update</span> <span class="keyword">test</span> <span class="keyword">set</span> <span class="keyword">id</span> = <span class="number">2</span> <span class="keyword">where</span> <span class="keyword">id</span> = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">test</span>; <span class="comment">-- 此时看到一条ID为2的记录</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>登录 mysql 终端 2，开启一个事务后查看表中的数据。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> <span class="keyword">test</span>;</span><br><span class="line"><span class="keyword">begin</span>;</span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">test</span>; <span class="comment">-- 此时看到一条 ID 为 2 的记录</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>最后一步读取到了 mysql 终端 1 中未提交的事务（没有 commit 提交动作），即产生了脏读，大部分业务场景都不允许脏读出现，但是此隔离级别下数据库的并发是最好的。</p>
+<h4 id="READ-COMMITTED-读提交"><a href="#READ-COMMITTED-读提交" class="headerlink" title="READ COMMITTED (读提交)"></a>READ COMMITTED (读提交)</h4><p>一个事务可以读取另一个已提交的事务，多次读取会造成不一样的结果，此现象称为不可重复读问题，Oracle 和 SQL Server 的默认隔离级别。</p>
+<ol>
+<li><p>准备两个终端，在此命名为 mysql 终端 1 和 mysql 终端 2，再准备一张测试表 test，写入一条测试数据并调整隔离级别为 READ COMMITTED，任意一个终端执行即可。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SET</span> @@session.transaction_isolation = <span class="string">'READ-COMMITTED'</span>;</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">database</span> <span class="keyword">test</span>;</span><br><span class="line"><span class="keyword">use</span> <span class="keyword">test</span>;</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> <span class="keyword">test</span>(<span class="keyword">id</span> <span class="built_in">int</span> primary <span class="keyword">key</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">test</span>(<span class="keyword">id</span>) <span class="keyword">values</span>(<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>登录 mysql 终端 1，开启一个事务，将 ID 为 1 的记录更新为 2，并确认记录数变更过来。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">begin</span>;</span><br><span class="line"><span class="keyword">update</span> <span class="keyword">test</span> <span class="keyword">set</span> <span class="keyword">id</span> = <span class="number">2</span> <span class="keyword">where</span> <span class="keyword">id</span> = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">test</span>; <span class="comment">-- 此时看到一条记录为 2</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>登录 mysql 终端 2，开启一个事务后，查看表中的数据。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> <span class="keyword">test</span>;</span><br><span class="line"><span class="keyword">begin</span>;</span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">test</span>; <span class="comment">-- 此时看一条 ID 为 1 的记录</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>登录 mysql 终端 1，提交事务。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">commit</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>切换到 mysql 终端 2。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">test</span>; <span class="comment">-- 此时看到一条 ID 为 2 的记录</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>mysql 终端 2 在开启了一个事务之后，在第一次读取 test 表（此时 mysql 终端 1 的事务还未提交）时 ID 为 1，在第二次读取 test 表（此时 mysql 终端 1 的事务已经提交）时 ID 已经变为 2，说明在此隔离级别下已经读取到已提交的事务。</p>
+<h4 id="REPEATABLE-READ-可重复读"><a href="#REPEATABLE-READ-可重复读" class="headerlink" title="REPEATABLE READ (可重复读)"></a>REPEATABLE READ (可重复读)</h4><p>该隔离级别是 MySQL 默认的隔离级别，在同一个事务里，select 的结果是事务开始时时间点的状态，因此，同样的 select 操作读到的结果会是一致的，但是，会有幻读现象。MySQL 的 InnoDB 引擎可以通过 next-key locks 机制（参考下文”行锁的算法”一节）来避免幻读。</p>
+<ol>
+<li><p>准备两个终端，在此命名为 mysql 终端 1 和 mysql 终端 2，准备一张测试表 test 并调整隔离级别为 REPEATABLE READ，任意一个终端执行即可。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SET</span> @@session.transaction_isolation = <span class="string">'REPEATABLE-READ'</span>;</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">database</span> <span class="keyword">test</span>;</span><br><span class="line"><span class="keyword">use</span> <span class="keyword">test</span>;</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> <span class="keyword">test</span>(<span class="keyword">id</span> <span class="built_in">int</span> primary <span class="keyword">key</span>,<span class="keyword">name</span> <span class="built_in">varchar</span>(<span class="number">20</span>));</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>登录 mysql 终端 1，开启一个事务。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">begin</span>;</span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">test</span>; <span class="comment">-- 无记录</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>登录 mysql 终端 2，开启一个事务。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">begin</span>;</span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">test</span>; <span class="comment">-- 无记录</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>切换到 mysql 终端 1，增加一条记录并提交。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">test</span>(<span class="keyword">id</span>,<span class="keyword">name</span>) <span class="keyword">values</span>(<span class="number">1</span>,<span class="string">'a'</span>);</span><br><span class="line"><span class="keyword">commit</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>切换到 msyql 终端 2。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">test</span>; <span class="comment">--此时查询还是无记录</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>通过这一步可以证明，在该隔离级别下已经读取不到别的已提交的事务，如果想看到 mysql 终端 1 提交的事务，在 mysql 终端 2 将当前事务提交后再次查询就可以读取到 mysql 终端 1 提交的事务。我们接着实验，看看在该隔离级别下是否会存在别的问题。</p>
+<ol start="6">
+<li>此时接着在 mysql 终端 2 插入一条数据。<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">test</span>(<span class="keyword">id</span>,<span class="keyword">name</span>) <span class="keyword">values</span>(<span class="number">1</span>,<span class="string">'b'</span>); <span class="comment">-- 此时报主键冲突的错误</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>也许到这里您心里可能会有疑问，明明在第 5 步没有数据，为什么在这里会报错呢？其实这就是该隔离级别下可能产生的问题，MySQL 称之为幻读。注意我在这里强调的是 MySQL 数据库，Oracle 数据库对于幻读的定义可能有所不同。</p>
+<h4 id="SERIALIZABLE-序列化"><a href="#SERIALIZABLE-序列化" class="headerlink" title="SERIALIZABLE (序列化)"></a>SERIALIZABLE (序列化)</h4><p>在该隔离级别下事务都是串行顺序执行的，MySQL 数据库的 InnoDB 引擎会给读操作隐式加一把读共享锁，从而避免了脏读、不可重读复读和幻读问题。</p>
+<ol>
+<li><p>准备两个终端，在此命名为 mysql 终端 1 和 mysql 终端 2，分别登入 mysql，准备一张测试表 test 并调整隔离级别为 SERIALIZABLE，任意一个终端执行即可。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SET</span> @@session.transaction_isolation = <span class="string">'SERIALIZABLE'</span>;</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">database</span> <span class="keyword">test</span>;</span><br><span class="line"><span class="keyword">use</span> <span class="keyword">test</span>;</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> <span class="keyword">test</span>(<span class="keyword">id</span> <span class="built_in">int</span> primary <span class="keyword">key</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>登录 mysql 终端 1，开启一个事务，并写入一条数据。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">begin</span>;</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">test</span>(<span class="keyword">id</span>) <span class="keyword">values</span>(<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>登录 mysql 终端 2，开启一个事务。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">begin</span>;</span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">test</span>; <span class="comment">-- 此时会一直卡住</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>立马切换到 mysql 终端 1,提交事务。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">commit</span>;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>一旦事务提交，msyql 终端 2 会立马返回 ID 为 1 的记录，否则会一直卡住，直到超时，其中超时参数是由 innodb_lock_wait_timeout 控制。由于每条 select 语句都会加锁，所以该隔离级别的数据库并发能力最弱，但是有些资料表明该结论也不一定对，如果感兴趣，您可以自行做个压力测试。</p>
+<p><img src="MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB.png" alt></p>
+<table>
+<thead>
+<tr>
+<th>隔离级别</th>
+<th>脏读</th>
+<th>不可重复读</th>
+<th>幻读</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>读未提交</td>
+<td>可以出现</td>
+<td>可以出现</td>
+<td>可以出现</td>
+</tr>
+<tr>
+<td>读提交</td>
+<td>不允许出现</td>
+<td>可以出现</td>
+<td>可以出现</td>
+</tr>
+<tr>
+<td>可重复读</td>
+<td>不允许出现</td>
+<td>不允许出现</td>
+<td>可以出现</td>
+</tr>
+<tr>
+<td>序列化</td>
+<td>不允许出现</td>
+<td>不允许出现</td>
+<td>不允许出现</td>
+</tr>
+</tbody></table>
+<h3 id="mysql中的锁"><a href="#mysql中的锁" class="headerlink" title="mysql中的锁"></a>mysql中的锁</h3><p>锁也是数据库管理系统区别文件系统的重要特征之一。锁机制使得在对数据库进行并发访问时，可以保障数据的完整性和一致性。对于锁的实现，各个数据库厂商的实现方法都会有所不同。本文讨论 MySQL 中的 InnoDB 引擎的锁。</p>
+<h4 id="锁的类型"><a href="#锁的类型" class="headerlink" title="锁的类型"></a>锁的类型</h4><p>InnoDB 实现了两种类型的行级锁：</p>
+<ul>
+<li><p>共享锁（S锁）：允许事务读取一行数据。<br>可以使用 SQL 语句 select * from tableName where … lock in share mode; 手动加 S 锁。</p>
+</li>
+<li><p>独占锁（X锁）：允许事务删除或更新一行数据。<br>可以使用 SQL 语句 select * from tableName where … for update; 手动加 X 锁。</p>
+</li>
+</ul>
+<p>S 锁和 S 锁是兼容的，X 锁和其它锁都不兼容，举个例子，事务 T1 获取了一个行 r1 的 S 锁，另外事务 T2 可以立即获得行 r1 的 S 锁，此时 T1 和 T2 共同获得行 r1 的 S 锁，此种情况称为锁兼容，但是另外一个事务 T2 此时如果想获得行 r1 的 X 锁，则必须等待 T1 对行 r 锁的释放，此种情况也成为锁冲突。</p>
+<p>为了实现多粒度的锁机制，InnoDB 还有两种内部使用的意向锁，由 InnoDB 自动添加，且都是表级别的锁。</p>
+<ul>
+<li><p>意向共享锁（IS）：事务即将给表中的各个行设置共享锁，事务给数据行加 S 锁前必须获得该表的 IS 锁。</p>
+</li>
+<li><p>意向排他锁（IX）：事务即将给表中的各个行设置排他锁，事务给数据行加 X 锁前必须获得该表 IX 锁。</p>
+</li>
+</ul>
+<p>意向锁的主要目的是为了使得行锁和表锁共存。表 2 列出了行级锁和表级意向锁的兼容性。</p>
+<p>行级锁和表级意向锁的兼容性：</p>
+<table>
+<thead>
+<tr>
+<th>锁类型</th>
+<th>X</th>
+<th>IX</th>
+<th>S</th>
+<th>IS</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>X</td>
+<td>冲突</td>
+<td>冲突</td>
+<td>冲突</td>
+<td>冲突</td>
+</tr>
+<tr>
+<td>IX</td>
+<td>冲突</td>
+<td>兼容</td>
+<td>冲突</td>
+<td>兼容</td>
+</tr>
+<tr>
+<td>S</td>
+<td>冲突</td>
+<td>冲突</td>
+<td>兼容</td>
+<td>兼容</td>
+</tr>
+<tr>
+<td>IS</td>
+<td>冲突</td>
+<td>兼容</td>
+<td>兼容</td>
+<td>兼容</td>
+</tr>
+</tbody></table>
+<h4 id="行锁的算法"><a href="#行锁的算法" class="headerlink" title="行锁的算法"></a>行锁的算法</h4><p>InnoDB 存储引擎使用三种行锁的算法用来满足相关事务隔离级别的要求。</p>
+<ul>
+<li><p>Record Locks<br>该锁为索引记录上的锁，如果表中没有定义索引，InnoDB 会默认为该表创建一个隐藏的聚簇索引，并使用该索引锁定记录。</p>
+</li>
+<li><p>Gap Locks<br>该锁会锁定一个范围，但是不括记录本身。可以通过修改隔离级别为 READ COMMITTED 或者配置 innodb_locks_unsafe_for_binlog 参数为 ON。</p>
+</li>
+<li><p>Next-key Locks<br>该锁就是 Record Locks 和 Gap Locks 的组合，即锁定一个范围并且锁定该记录本身。InnoDB 使用 Next-key Locks 解决幻读问题。需要注意的是，如果索引有唯一属性，则 InnnoDB 会自动将 Next-key Locks 降级为 Record Locks。举个例子，如果一个索引有 1, 3, 5 三个值，则该索引锁定的区间为 (-∞,1], (1,3], (3,5], (5,+ ∞)。</p>
+</li>
+</ul>
+<h4 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h4><p>死锁是指两个或两个以上的进程在执行过程中，由于竞争资源或者由于彼此通信而造成的一种阻塞的现象，若无外力作用，它们都将无法推进下去。此时称系统处于死锁状态或系统产生了死锁，这些永远在互相等待的进程称为死锁进程。</p>
+<p>InnoDB 引擎采取的是 wait-for graph 等待图的方法来自动检测死锁，如果发现死锁会自动回滚一个事务。</p>
+<p>下面我们通过一个示例来了解死锁。</p>
+<ol>
+<li><p>准备两个终端，在此命名为 mysql 终端 1 和 mysql 终端 2，分别登入 mysql，再准备一张测试表 test 写入两条测试数据，并调整隔离级别为 SERIALIZABLE，任意一个终端执行即可。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SET</span> @@session.transaction_isolation = <span class="string">'REPEATABLE-READ'</span>;</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">database</span> <span class="keyword">test</span>;</span><br><span class="line"><span class="keyword">use</span> <span class="keyword">test</span>;</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> <span class="keyword">test</span>(<span class="keyword">id</span> <span class="built_in">int</span> primary <span class="keyword">key</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">test</span>(<span class="keyword">id</span>) <span class="keyword">values</span>(<span class="number">1</span>),(<span class="number">2</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>登录 mysql 终端 1，开启一个事务，手动给 ID 为 1 的记录加 X 锁。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">begin</span>;</span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">test</span> <span class="keyword">where</span> <span class="keyword">id</span> = <span class="number">1</span> <span class="keyword">for</span> <span class="keyword">update</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>登录 mysql 终端 2，开启一个事务，手动给 ID 为 2 的记录加 X 锁。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">begin</span>;</span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">test</span> <span class="keyword">where</span> <span class="keyword">id</span> = <span class="number">2</span> <span class="keyword">for</span> <span class="keyword">update</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>切换到 mysql 终端 1，手动给 ID 为 2 的记录加 X 锁，此时会一直卡住，因为此时在等待第 3 步中 X 锁的释放，直到超时，超时时间由 innodb_lock_wait_timeout 控制。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">test</span> <span class="keyword">where</span> <span class="keyword">id</span> = <span class="number">2</span> <span class="keyword">for</span> <span class="keyword">update</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在锁超时前立刻切换到 mysql 终端 2，手动给 ID 为 1 的记录加 X 锁，此时又会等待第 2 步中 X 所的释放，两个终端都在等待资源的释放，所以 InnoDB 引擎会立马检测到死锁产生，自动回滚一个事务，以防止死锁一直占用资源。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">test</span> <span class="keyword">where</span> <span class="keyword">id</span> = <span class="number">1</span> <span class="keyword">for</span> <span class="keyword">update</span>;</span><br><span class="line">ERROR 1213 (40001): Deadlock found when trying to get <span class="keyword">lock</span>; try restarting transaction</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>此时，通过 show engine innodb status\G 命令可以看到 LATEST DETECTED DEADLOCK 相关信息，即表明有死锁发生；或者通过配置 innodb_print_all_deadlocks（MySQL 5.6.2 版本开始提供）参数为 ON 将死锁相关信息打印到 MySQL 的错误日志。</p>
+<h4 id="锁的优化建议"><a href="#锁的优化建议" class="headerlink" title="锁的优化建议"></a>锁的优化建议</h4><p>锁如果利用不好，会给业务造成大量的卡顿现象，在了解了锁相关的一些知识点后，我们可以有意识的去避免锁带来的一些问题。</p>
+<ol>
+<li>合理设计索引，让 InnoDB 在索引键上面加锁的时候尽可能准确，尽可能的缩小锁定范围，避免造成不必要的锁定而影响其他 Query 的执行。</li>
+<li>尽可能减少基于范围的数据检索过滤条件，避免因为间隙锁带来的负面影响而锁定了不该锁定的记录。</li>
+<li>尽量控制事务的大小，减少锁定的资源量和锁定时间长度。</li>
+<li>在业务环境允许的情况下，尽量使用较低级别的事务隔离，以减少 MySQL 因为实现事务隔离级别所带来的附加成本。</li>
+</ol>
+<h2 id="SQL语法"><a href="#SQL语法" class="headerlink" title="SQL语法"></a>SQL语法</h2><h3 id="SQL查询用户的最长连续登录天数"><a href="#SQL查询用户的最长连续登录天数" class="headerlink" title="SQL查询用户的最长连续登录天数"></a>SQL查询用户的最长连续登录天数</h3><p>有一个用户登录表格，表有两个字段 uid, time分别表示用户id与登录时间， 表名为 user_login,登录时间的格式为 yyyy-MM-dd HH:mm:ss<br>请书写一段脚本，来统计每个用户的最近3个月内的最长连续登录天数。</p>
+<p>首先要思考，怎么才算连续登录呢？就是一号登录，2号也登录了，这样就连续2天登录，那我们怎么知道2号他有没有登录呢？</p>
+<p>目标是最长，连续。有序 -&gt; 连续 -&gt; 最大</p>
+<p><img src="SQL%E6%9F%A5%E8%AF%A2%E7%94%A8%E6%88%B7%E7%9A%84%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E7%99%BB%E9%99%86%E5%A4%A9%E6%95%B0_%E9%A2%98%E7%9B%AE.png" alt></p>
+<ol>
+<li>让用户分组排序，计算出序号</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 1.根据用户id分组，对登录时间time做topN排序</span></span><br><span class="line"><span class="keyword">SELECT</span> </span><br><span class="line"> UID,</span><br><span class="line"> date1,</span><br><span class="line"> row_number() <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> UID <span class="keyword">order</span> <span class="keyword">by</span> date1) <span class="keyword">as</span> <span class="keyword">sort</span></span><br><span class="line"> <span class="keyword">FROM</span> user_login</span><br></pre></td></tr></table></figure>
+
+<p><img src="SQL%E6%9F%A5%E8%AF%A2%E7%94%A8%E6%88%B7%E7%9A%84%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E7%99%BB%E9%99%86%E5%A4%A9%E6%95%B0_%E6%AD%A5%E9%AA%A41.png" alt></p>
+<ol start="2">
+<li>将连续登录的记录分到一组</li>
+</ol>
+<p>分析数据规律，因为日期排序是连续的，我们统计的间隔天数都是一个起始日期，所以，如果登录日期是连续的，那么，排序-间隔天数的差值应该也是一样的。<br>按照date-sort分组，<br>如果连续，那么日期之间的差值也是相等的。</p>
+<p>如果连续的话，当sort=3时，日期应该是2017-1-3，而不是2017-1-4。 那么到2017-01-04的时候，相当于连续中断了，需要开启一个新的分组。<br>所以根据差值来分组，然后统计个数，就是区间的连续登录天数了。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> </span><br><span class="line">UID,</span><br><span class="line"><span class="keyword">date_sub</span>(date1,<span class="keyword">sort</span>) <span class="keyword">as</span> login_group,</span><br><span class="line"><span class="keyword">min</span>(date1) <span class="keyword">as</span> start_date1,</span><br><span class="line"><span class="keyword">max</span>(date1) <span class="keyword">as</span> end_date1,</span><br><span class="line"><span class="keyword">count</span>(<span class="number">1</span>) <span class="keyword">as</span> continuous_days</span><br><span class="line"><span class="keyword">FROM</span> (</span><br><span class="line">    <span class="comment">-- 第一段首先根据用户分组，登陆时间排序，结果按照登陆时间升序排列</span></span><br><span class="line">    <span class="keyword">SELECT</span> </span><br><span class="line">    UID,</span><br><span class="line">    date1,</span><br><span class="line">    row_number() <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> UID <span class="keyword">order</span> <span class="keyword">by</span> date1) <span class="keyword">as</span> <span class="keyword">sort</span></span><br><span class="line">    <span class="keyword">FROM</span> user_login</span><br><span class="line">) a</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> UID,<span class="keyword">date_sub</span>(date1,<span class="keyword">sort</span>)</span><br></pre></td></tr></table></figure>
+
+<p><img src="SQL%E6%9F%A5%E8%AF%A2%E7%94%A8%E6%88%B7%E7%9A%84%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E7%99%BB%E9%99%86%E5%A4%A9%E6%95%B0_%E6%AD%A5%E9%AA%A42.png" alt></p>
+<ol start="3">
+<li>再以uid分组，去取max(continuous_days)</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> </span><br><span class="line">UID,</span><br><span class="line"><span class="keyword">max</span>(continuous_days) <span class="keyword">as</span> maxday</span><br><span class="line"></span><br><span class="line"><span class="keyword">FROM</span> </span><br><span class="line">(</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> </span><br><span class="line">UID,</span><br><span class="line"><span class="keyword">date_sub</span>(date1,<span class="keyword">sort</span>) <span class="keyword">as</span> login_group,</span><br><span class="line"><span class="keyword">min</span>(date1) <span class="keyword">as</span> start_date1,</span><br><span class="line"><span class="keyword">max</span>(date1) <span class="keyword">as</span> end_date1,</span><br><span class="line"><span class="keyword">count</span>(<span class="number">1</span>) <span class="keyword">as</span> continuous_days</span><br><span class="line"><span class="keyword">FROM</span> (</span><br><span class="line">    <span class="comment">-- 第一段首先根据用户分组，登陆时间排序，结果按照登陆时间升序排列</span></span><br><span class="line">    <span class="keyword">SELECT</span> </span><br><span class="line">    UID,</span><br><span class="line">    date1,</span><br><span class="line">    row_number() <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> UID <span class="keyword">order</span> <span class="keyword">by</span> date1) <span class="keyword">as</span> <span class="keyword">sort</span></span><br><span class="line">    <span class="keyword">FROM</span> user_login</span><br><span class="line">) a</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> UID,<span class="keyword">date_sub</span>(date1,<span class="keyword">sort</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">)b</span><br><span class="line"></span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> UID</span><br></pre></td></tr></table></figure>
+
+<p><img src="SQL%E6%9F%A5%E8%AF%A2%E7%94%A8%E6%88%B7%E7%9A%84%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E7%99%BB%E9%99%86%E5%A4%A9%E6%95%B0_%E6%AD%A5%E9%AA%A43.png" alt></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/01/10/Apache-Zookeeper/" rel="next" title="Apache Zookeeper">
+                <i class="fa fa-chevron-left"></i> Apache Zookeeper
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/01/10/About-Hadoop/" rel="prev" title="About Hadoop">
+                About Hadoop <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/2.JPG" alt="miaowenting">
+            
+              <p class="site-author-name" itemprop="name">miaowenting</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/miaowenting" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://ci.apache.org/projects/flink/flink-docs-stable/" title="flink文档" target="_blank">flink文档</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href title="flink社区" target="_blank">flink社区</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题"><span class="nav-number">1.</span> <span class="nav-text">问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#EXPLAIN你的Select查询"><span class="nav-number">1.1.</span> <span class="nav-text">EXPLAIN你的Select查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#当只有一行数据时，使用LIMIT-1"><span class="nav-number">1.2.</span> <span class="nav-text">当只有一行数据时，使用LIMIT 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为搜索字段建索引"><span class="nav-number">1.3.</span> <span class="nav-text">为搜索字段建索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在Join表的时候使用相当类型的列，并将其索引"><span class="nav-number">1.4.</span> <span class="nav-text">在Join表的时候使用相当类型的列，并将其索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#千万不要-order-by-rand"><span class="nav-number">1.5.</span> <span class="nav-text">千万不要 order by rand()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#避免-select"><span class="nav-number">1.6.</span> <span class="nav-text">避免 select *</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#永远为每张表设置一个ID"><span class="nav-number">1.7.</span> <span class="nav-text">永远为每张表设置一个ID</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-enum-而不是-varchar"><span class="nav-number">1.8.</span> <span class="nav-text">使用 enum 而不是 varchar</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#无缓冲的查询"><span class="nav-number">1.9.</span> <span class="nav-text">无缓冲的查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#把-IP-地址换成-unsigned-int"><span class="nav-number">1.10.</span> <span class="nav-text">把 IP 地址换成 unsigned int</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#固定长度的表会更快"><span class="nav-number">1.11.</span> <span class="nav-text">固定长度的表会更快</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#垂直分割"><span class="nav-number">1.12.</span> <span class="nav-text">垂直分割</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拆分大的-delete-或-insert-语句"><span class="nav-number">1.13.</span> <span class="nav-text">拆分大的 delete 或 insert 语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#越小的列会越快"><span class="nav-number">1.14.</span> <span class="nav-text">越小的列会越快</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选择正确的存储引擎"><span class="nav-number">1.15.</span> <span class="nav-text">选择正确的存储引擎</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#小心“永久链接”"><span class="nav-number">1.16.</span> <span class="nav-text">小心“永久链接”</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#尽可能的使用-not-null"><span class="nav-number">1.17.</span> <span class="nav-text">尽可能的使用 not null</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MySQL中有哪几种锁？"><span class="nav-number">1.18.</span> <span class="nav-text">MySQL中有哪几种锁？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库设计范式"><span class="nav-number">1.19.</span> <span class="nav-text">数据库设计范式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#第一范式（1NF）"><span class="nav-number">1.19.1.</span> <span class="nav-text">第一范式（1NF）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第二范式（2NF）"><span class="nav-number">1.19.2.</span> <span class="nav-text">第二范式（2NF）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第三范式（3NF）"><span class="nav-number">1.19.3.</span> <span class="nav-text">第三范式（3NF）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#列举常见的关系型数据库和非关系型数据库？"><span class="nav-number">1.20.</span> <span class="nav-text">列举常见的关系型数据库和非关系型数据库？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#关系型数据库"><span class="nav-number">1.20.1.</span> <span class="nav-text">关系型数据库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#非关系型数据库"><span class="nav-number">1.20.2.</span> <span class="nav-text">非关系型数据库</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常见的MySQL数据库引擎是MyiSAM和inmoDB"><span class="nav-number">1.21.</span> <span class="nav-text">常见的MySQL数据库引擎是MyiSAM和inmoDB</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是事务？什么是锁？MySQL如何支持事务？"><span class="nav-number">1.22.</span> <span class="nav-text">什么是事务？什么是锁？MySQL如何支持事务？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#简述触发器、函数、视图、存储过程"><span class="nav-number">1.23.</span> <span class="nav-text">简述触发器、函数、视图、存储过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MySQL索引种类"><span class="nav-number">1.24.</span> <span class="nav-text">MySQL索引种类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#索引在什么情况下遵循最左前缀的规则？"><span class="nav-number">1.25.</span> <span class="nav-text">索引在什么情况下遵循最左前缀的规则？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#列举创建索引但是无法命中索引的8种情况"><span class="nav-number">1.26.</span> <span class="nav-text">列举创建索引但是无法命中索引的8种情况</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何开启慢日志查询？"><span class="nav-number">1.27.</span> <span class="nav-text">如何开启慢日志查询？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库导入导出命令（结构和数据）？"><span class="nav-number">1.28.</span> <span class="nav-text">数据库导入导出命令（结构和数据）？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库优化思路"><span class="nav-number">1.29.</span> <span class="nav-text">数据库优化思路</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#SQL语句优化"><span class="nav-number">1.29.1.</span> <span class="nav-text">SQL语句优化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#索引优化"><span class="nav-number">1.29.2.</span> <span class="nav-text">索引优化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据库结构优化"><span class="nav-number">1.29.3.</span> <span class="nav-text">数据库结构优化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#服务器硬件优化"><span class="nav-number">1.29.4.</span> <span class="nav-text">服务器硬件优化</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#limit-1"><span class="nav-number">1.30.</span> <span class="nav-text">limit 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是数据库约束，常见的约束有哪几种？"><span class="nav-number">1.31.</span> <span class="nav-text">什么是数据库约束，常见的约束有哪几种？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#从数据库中随机取50条数据"><span class="nav-number">1.32.</span> <span class="nav-text">从数据库中随机取50条数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是sql注入？"><span class="nav-number">1.33.</span> <span class="nav-text">什么是sql注入？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于sql语句应该考虑哪些安全性？"><span class="nav-number">1.34.</span> <span class="nav-text">关于sql语句应该考虑哪些安全性？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一张表，里面有ID自增主键，当insert了17条记录之后，删除了第15，16，17条记录，再把MySQL重启，再insert一条记录，这条记录的ID是18还是15？"><span class="nav-number">1.35.</span> <span class="nav-text">一张表，里面有ID自增主键，当insert了17条记录之后，删除了第15，16，17条记录，再把MySQL重启，再insert一条记录，这条记录的ID是18还是15？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#简述数据库的读写分离？"><span class="nav-number">1.36.</span> <span class="nav-text">简述数据库的读写分离？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#简述数据库分库分表？（水平、垂直）"><span class="nav-number">1.37.</span> <span class="nav-text">简述数据库分库分表？（水平、垂直）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mysql的锁类型"><span class="nav-number">1.38.</span> <span class="nav-text">mysql的锁类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#排他锁和共享锁"><span class="nav-number">1.39.</span> <span class="nav-text">排他锁和共享锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mysql索引是怎么实现的？大致描述下B-树的大致结构"><span class="nav-number">1.40.</span> <span class="nav-text">mysql索引是怎么实现的？大致描述下B+树的大致结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事务及其特性"><span class="nav-number">1.41.</span> <span class="nav-text">事务及其特性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mysql事务隔离级别"><span class="nav-number">1.42.</span> <span class="nav-text">mysql事务隔离级别</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#READ-UNCOMMITTED（读未提交）"><span class="nav-number">1.42.1.</span> <span class="nav-text">READ UNCOMMITTED（读未提交）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#READ-COMMITTED-读提交"><span class="nav-number">1.42.2.</span> <span class="nav-text">READ COMMITTED (读提交)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#REPEATABLE-READ-可重复读"><span class="nav-number">1.42.3.</span> <span class="nav-text">REPEATABLE READ (可重复读)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SERIALIZABLE-序列化"><span class="nav-number">1.42.4.</span> <span class="nav-text">SERIALIZABLE (序列化)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mysql中的锁"><span class="nav-number">1.43.</span> <span class="nav-text">mysql中的锁</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#锁的类型"><span class="nav-number">1.43.1.</span> <span class="nav-text">锁的类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#行锁的算法"><span class="nav-number">1.43.2.</span> <span class="nav-text">行锁的算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#死锁"><span class="nav-number">1.43.3.</span> <span class="nav-text">死锁</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#锁的优化建议"><span class="nav-number">1.43.4.</span> <span class="nav-text">锁的优化建议</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL语法"><span class="nav-number">2.</span> <span class="nav-text">SQL语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SQL查询用户的最长连续登录天数"><span class="nav-number">2.1.</span> <span class="nav-text">SQL查询用户的最长连续登录天数</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">miaowenting</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
