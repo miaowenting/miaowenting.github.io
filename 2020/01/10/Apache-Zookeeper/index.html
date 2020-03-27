@@ -98,13 +98,14 @@
 <meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/01/10/Apache-Zookeeper/%E5%AE%A2%E6%88%B7%E7%AB%AFB%E4%BC%9A%E7%BB%99%E5%AE%A2%E6%88%B7%E7%AB%AFA%E7%9A%84%E9%A1%BA%E5%BA%8F%E8%8A%82%E7%82%B9%E5%8A%A0%E4%B8%80%E4%B8%AA%E7%9B%91%E5%90%AC%E5%99%A8.png">
 <meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/01/10/Apache-Zookeeper/%E5%AE%A2%E6%88%B7%E7%AB%AFA%E9%87%8A%E6%94%BE%E9%94%81%E5%88%A0%E9%99%A4%E5%AF%B9%E5%BA%94%E7%9A%84%E9%A1%BA%E5%BA%8F%E8%8A%82%E7%82%B9.png">
 <meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/01/10/Apache-Zookeeper/%E5%AE%A2%E6%88%B7%E7%AB%AFB%E8%8E%B7%E5%8F%96%E9%94%81.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/01/10/Apache-Zookeeper/Zookeeper%E9%80%89%E4%B8%BB%E6%B5%81%E7%A8%8B.png">
 <meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/01/10/Apache-Zookeeper/zookeeper%E5%88%86%E5%B8%83%E5%BC%8F%E9%98%9F%E5%88%97%E6%9E%B6%E6%9E%84%E5%9B%BE.png">
 <meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/01/10/Apache-Zookeeper/offer%E6%B5%81%E7%A8%8B%E5%9B%BE.png">
 <meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/01/10/Apache-Zookeeper/poll%E6%B5%81%E7%A8%8B%E5%9B%BE.png">
 <meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/01/10/Apache-Zookeeper/%E5%86%99Leader.png">
 <meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/01/10/Apache-Zookeeper/%E5%86%99Observer_Follower.png">
 <meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/01/10/Apache-Zookeeper/%E8%AF%BB%E6%93%8D%E4%BD%9C.png">
-<meta property="og:updated_time" content="2020-03-27T06:33:37.735Z">
+<meta property="og:updated_time" content="2020-03-27T06:51:18.815Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Apache Zookeeper">
 <meta name="twitter:description" content="本文将全局介绍 Zookeeper 的整体架构。">
@@ -437,38 +438,11 @@
 <p>应用：</p>
 <p><a href="https://miaowenting.site/2020/02/26/%E5%85%B3%E4%BA%8E%E5%AE%9E%E6%97%B6%E5%B9%B3%E5%8F%B0%E7%9A%84%E6%80%9D%E8%80%83%E4%B8%8E%E6%80%BB%E7%BB%93/#more" target="_blank" rel="noopener">关于实时平台的思考与总结</a> </p>
 <p>中的事件管理。</p>
-<h2 id="Zookeeper选主流程"><a href="#Zookeeper选主流程" class="headerlink" title="Zookeeper选主流程"></a>Zookeeper选主流程</h2><pre><code>三个核心选举原则：
-Zookeeper集群中只有超过半数以上的服务器启动，集群才能正常工作；
-在集群正常工作之前，myid小的服务器给myid大的服务器投票，直到集群正常工作，选出Leader；
-选出Leader之后，之前的服务器状态由Looking改变为Following，以后的服务器都是Follower。
-
-下面以一个简单的例子来说明整个选举的过程：
-
-假设有五台服务器组成的Zookeeper集群，它们的id从1-5，同时它们都是最新启动的，也就是没有历史数据，在存放数据量这一点上，都是一样的。
-![](Zookeeper选主流程.png)
-
-假设这些服务器从id1-5，依序启动：
-因为一共5台服务器，只有超过半数以上，即最少启动3台服务器，集群才能正常工作。
-（1）服务器1启动，发起一次选举。
-服务器1投自己一票。此时服务器1票数一票，不够半数以上（3票），选举无法完成；
-服务器1状态保持为LOOKING；
-（2）服务器2启动，再发起一次选举。
-服务器1和2分别投自己一票，此时服务器1发现服务器2的id比自己大，更改选票投给服务器2；
-此时服务器1票数0票，服务器2票数2票，不够半数以上（3票），选举无法完成；
-服务器1，2状态保持LOOKING；
-（3）服务器3启动，发起一次选举。
-与上面过程一样，服务器1和2先投自己一票，然后因为服务器3id最大，两者更改选票投给为服务器3；
-此次投票结果：服务器1为0票，服务器2为0票，服务器3为3票。此时服务器3的票数已经超过半数（3票），服务器3当选Leader。
-服务器1，2更改状态为FOLLOWING，服务器3更改状态为LEADING；
-（4）服务器4启动，发起一次选举。
-此时服务器1，2，3已经不是LOOKING状态，不会更改选票信息。交换选票信息结果：服务器3为3票，服务器4为1票。
-此时服务器4服从多数，更改选票信息为服务器3；
-服务器4并更改状态为FOLLOWING；
-（5）服务器5启动，同4一样投票给3，此时服务器3一共5票，服务器5为0票；
-服务器5并更改状态为FOLLOWING；
-（6）选举结果
-最终Leader是服务器3，状态为LEADING；
-其余服务器是Follower，状态为FOLLOWING。</code></pre><h2 id="Zookeeper队列"><a href="#Zookeeper队列" class="headerlink" title="Zookeeper队列"></a>Zookeeper队列</h2><p>队列的特点：FIFO先进先出</p>
+<h2 id="Zookeeper选主流程"><a href="#Zookeeper选主流程" class="headerlink" title="Zookeeper选主流程"></a>Zookeeper选主流程</h2><p>三个核心选举原则：<br>Zookeeper集群中只有超过半数以上的服务器启动，集群才能正常工作；<br>在集群正常工作之前，myid小的服务器给myid大的服务器投票，直到集群正常工作，选出Leader；<br>选出Leader之后，之前的服务器状态由Looking改变为Following，以后的服务器都是Follower。</p>
+<p>下面以一个简单的例子来说明整个选举的过程：</p>
+<p>假设有五台服务器组成的Zookeeper集群，它们的id从1-5，同时它们都是最新启动的，也就是没有历史数据，在存放数据量这一点上，都是一样的。<br><img src="Zookeeper%E9%80%89%E4%B8%BB%E6%B5%81%E7%A8%8B.png" alt></p>
+<p>假设这些服务器从id1-5，依序启动：<br>因为一共5台服务器，只有超过半数以上，即最少启动3台服务器，集群才能正常工作。<br>（1）服务器1启动，发起一次选举。<br>    服务器1投自己一票。此时服务器1票数一票，不够半数以上（3票），选举无法完成；<br>    服务器1状态保持为LOOKING；<br>（2）服务器2启动，再发起一次选举。<br>    服务器1和2分别投自己一票，此时服务器1发现服务器2的id比自己大，更改选票投给服务器2；<br>    此时服务器1票数0票，服务器2票数2票，不够半数以上（3票），选举无法完成；<br>    服务器1，2状态保持LOOKING；<br>（3）服务器3启动，发起一次选举。<br>    与上面过程一样，服务器1和2先投自己一票，然后因为服务器3id最大，两者更改选票投给为服务器3；<br>    此次投票结果：服务器1为0票，服务器2为0票，服务器3为3票。此时服务器3的票数已经超过半数（3票），服务器3当选Leader。<br>    服务器1，2更改状态为FOLLOWING，服务器3更改状态为LEADING；<br>（4）服务器4启动，发起一次选举。<br>    此时服务器1，2，3已经不是LOOKING状态，不会更改选票信息。交换选票信息结果：服务器3为3票，服务器4为1票。<br>    此时服务器4服从多数，更改选票信息为服务器3；<br>    服务器4并更改状态为FOLLOWING；<br>（5）服务器5启动，同4一样投票给3，此时服务器3一共5票，服务器5为0票；<br>    服务器5并更改状态为FOLLOWING；<br>（6）选举结果<br>    最终Leader是服务器3，状态为LEADING；<br>    其余服务器是Follower，状态为FOLLOWING。</p>
+<h2 id="Zookeeper队列"><a href="#Zookeeper队列" class="headerlink" title="Zookeeper队列"></a>Zookeeper队列</h2><p>队列的特点：FIFO先进先出</p>
 <p>BlockingQueue</p>
 <p>offer() 向队列尾增加数据<br>poll()  读取队列头的数据</p>
 <p>在传统的单进程编程中，我们使用队列来存储一些数据结构，用来在多线程之间共享或传递数据。<br>分布式环境下，同样需要一个类似单进程队列的组件，用来实现跨进程、跨主机、跨网络的数据共享和数据传递，这就是我们的分布式队列。<br>zookeeper 通过持久顺序节点实现分布式队列。</p>
