@@ -89,8 +89,8 @@
 <meta property="og:description" content="本文将全局介绍 Kafka 的整体架构。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/18/Apache-Kafka/Kafka%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84%E5%9B%BE.png">
-<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/18/Apache-Kafka/%E9%80%BB%E8%BE%91Topic.png">
-<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/18/Apache-Kafka/%E9%80%BB%E8%BE%91Partition.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/18/Apache-Kafka/%E9%80%BB%E8%BE%91Topic1.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/18/Apache-Kafka/%E9%80%BB%E8%BE%91Partition1.png">
 <meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/18/Apache-Kafka/partition%E6%97%A5%E5%BF%97%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84.png">
 <meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/18/Apache-Kafka/%E5%89%AF%E6%9C%AC.png">
 <meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/18/Apache-Kafka/HW_LEO_1.png">
@@ -130,7 +130,7 @@
 <meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/18/Apache-Kafka/DelayedOperationPurgatory%E7%BB%84%E4%BB%B6%E5%AE%9E%E7%8E%B0.png">
 <meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/18/Apache-Kafka/DelayedProduce.png">
 <meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/18/Apache-Kafka/DelayedFetch.png">
-<meta property="og:updated_time" content="2020-03-27T07:31:43.301Z">
+<meta property="og:updated_time" content="2020-03-27T07:35:09.893Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Apache Kafka">
 <meta name="twitter:description" content="本文将全局介绍 Kafka 的整体架构。">
@@ -435,15 +435,10 @@
 <ul>
 <li><p>消息<br>消息是Kafka中最基本的数据单元。消息由一串字节构成，主要由key和value构成，key和value也都是byte数组。</p>
 </li>
-<li><p>Topic<br>Topic是用于存储消息的逻辑概念，可以看作一个消息集合。每个Topic可以有多个生产者向其推送消息，也可以有多个Consumer消费其中的消息。</p>
+<li><p>Topic<br>Topic是用于存储消息的逻辑概念，可以看作一个消息集合。每个Topic可以有多个生产者向其推送消息，也可以有多个Consumer消费其中的消息。<br><img src="%E9%80%BB%E8%BE%91Topic1.png" alt></p>
 </li>
-</ul>
-<p><img src="%E9%80%BB%E8%BE%91Topic.png" alt></p>
-<ul>
-<li>Partition<br>每个Topic可以划分为多个Partition，同一Topic下的不同分区包含的消息是不同的。每个消息在被添加到分区时，都会被分配一个offset，它是消息在此分区中的唯一编号，Kafka通过offset保证消息在分区内的顺序。</li>
-</ul>
-<p><img src="%E9%80%BB%E8%BE%91Partition.png" alt></p>
-<ul>
+<li><p>Partition<br>每个Topic可以划分为多个Partition，同一Topic下的不同分区包含的消息是不同的。每个消息在被添加到分区时，都会被分配一个offset，它是消息在此分区中的唯一编号，Kafka通过offset保证消息在分区内的顺序。<br><img src="%E9%80%BB%E8%BE%91Partition1.png" alt></p>
+</li>
 <li><p>Log<br>分区在逻辑上对应一个Log，当生产者将消息写入分区时，实际上是写入到分区对应的Log中。Log是一个逻辑概念，可以对应到磁盘上的一个目录。Log由多个Segment组成，每个Segment对应一个日志文件和索引文件。<br><img src="partition%E6%97%A5%E5%BF%97%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84.png" alt></p>
 </li>
 <li><p>保留策略(Retention Policy)和日志压缩(Log Compaction)<br>一种是设置消息的保留时间，另一种是设置日志文件大小阈值。Kafka后台启动线程，定期将相同的key进行合并。</p>
