@@ -152,7 +152,7 @@
 <meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/03/23/数据结构和算法/%E7%BA%A2%E9%BB%91%E6%A0%91.png">
 <meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/03/23/数据结构和算法/B%E6%A0%91.png">
 <meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/03/23/数据结构和算法/B+%E6%A0%91.png">
-<meta property="og:updated_time" content="2020-03-24T09:03:44.654Z">
+<meta property="og:updated_time" content="2020-03-29T02:36:54.233Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据结构和算法">
 <meta name="twitter:description" content="本文将介绍常见的数据结构，算法思想，排序算法、树等。">
@@ -1238,7 +1238,14 @@
 </ul>
 <p><img src="%E5%89%AA%E7%BB%B3%E5%AD%90.png" alt></p>
 <h2 id="经典排序算法"><a href="#经典排序算法" class="headerlink" title="经典排序算法"></a>经典排序算法</h2><p>参考：<br><a href="https://www.cnblogs.com/onepixel/p/7674659.html" target="_blank" rel="noopener">十大经典排序算法（动图演示）</a></p>
-<h3 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h3><h3 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h3><h3 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h3><h3 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h3><h3 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h3><h3 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h3><h3 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h3><h3 id="计数排序"><a href="#计数排序" class="headerlink" title="计数排序"></a>计数排序</h3><h3 id="桶排序"><a href="#桶排序" class="headerlink" title="桶排序"></a>桶排序</h3><h3 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h3><h3 id="算法复杂度"><a href="#算法复杂度" class="headerlink" title="算法复杂度"></a>算法复杂度</h3><h2 id="树"><a href="#树" class="headerlink" title="树"></a>树</h2><p>参考：<br><a href="https://blog.csdn.net/whoamiyang/article/details/51926985" target="_blank" rel="noopener">树</a></p>
+<h3 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h3><p>相邻的元素进行两两比较，满足条件则交换，这样一趟会将最小或最大的元素”浮”到顶端。</p>
+<h3 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h3><p>每一趟从待排序的元素中选择最小(大)的一个元素作为首元素。</p>
+<h3 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h3><p>每一步将一个待排序的元素，插入到前面已经排好的有序序列中，直到插完所有的元素。</p>
+<h3 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h3><p>“分”而治之</p>
+<h3 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h3><p>先选定一个基数，将小于基数的放到前面，大于基数的放到后面<br>循环往复</p>
+<h3 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h3><p>分组，不断除以2<br>交换元素</p>
+<h3 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h3><p>PriorityQueue</p>
+<h3 id="计数排序"><a href="#计数排序" class="headerlink" title="计数排序"></a>计数排序</h3><h3 id="桶排序"><a href="#桶排序" class="headerlink" title="桶排序"></a>桶排序</h3><h3 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h3><h3 id="算法复杂度"><a href="#算法复杂度" class="headerlink" title="算法复杂度"></a>算法复杂度</h3><h2 id="树"><a href="#树" class="headerlink" title="树"></a>树</h2><p>参考：<br><a href="https://blog.csdn.net/whoamiyang/article/details/51926985" target="_blank" rel="noopener">树</a></p>
 <h3 id="普通二叉树"><a href="#普通二叉树" class="headerlink" title="普通二叉树"></a>普通二叉树</h3><p><img src="%E6%99%AE%E9%80%9A%E4%BA%8C%E5%8F%89%E6%A0%91.png" alt></p>
 <p>如果根节点选择的是最小或最大的树，那么二叉树就完全退化成了线性结构，树的高度会很高，查找复杂度变高。</p>
 <h3 id="平衡二叉树"><a href="#平衡二叉树" class="headerlink" title="平衡二叉树"></a>平衡二叉树</h3><p><img src="%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91.png" alt></p>
@@ -1408,7 +1415,7 @@
               
                 <a href="/miaowenting.gitee.io/archives/">
               
-                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-count">31</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
