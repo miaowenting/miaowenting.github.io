@@ -84,26 +84,26 @@
 <meta name="description" content="本文将介绍什么是分布式事务，分布式事务解决什么问题，不同场景下方案的选择。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="分布式事务">
-<meta property="og:url" content="http://yoursite.com/2020/03/14/分布式事务/index.html">
+<meta property="og:url" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/03/14/分布式事务/index.html">
 <meta property="og:site_name" content="Matty&#39;s Blog">
 <meta property="og:description" content="本文将介绍什么是分布式事务，分布式事务解决什么问题，不同场景下方案的选择。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2020/03/14/分布式事务/%E4%BA%8B%E5%8A%A1%E7%9A%84%E5%85%B7%E4%BD%93%E5%AE%9A%E4%B9%89.png">
-<meta property="og:image" content="http://yoursite.com/2020/03/14/分布式事务/%E4%BA%92%E8%81%94%E7%BD%91%E5%B8%B8%E7%94%A8%E7%9A%84%E4%BA%A4%E6%98%93%E4%B8%9A%E5%8A%A1.png">
-<meta property="og:image" content="http://yoursite.com/2020/03/14/分布式事务/CAP%E7%90%86%E8%AE%BA%E5%9B%BE.png">
-<meta property="og:image" content="http://yoursite.com/2020/03/14/分布式事务/%E4%B8%A4%E9%98%B6%E6%AE%B5%E6%8F%90%E4%BA%A4_%E6%AD%A3%E5%B8%B8.png">
-<meta property="og:image" content="http://yoursite.com/2020/03/14/分布式事务/%E4%B8%89%E9%98%B6%E6%AE%B5%E6%8F%90%E4%BA%A4_%E6%AD%A3%E5%B8%B8.png">
-<meta property="og:image" content="http://yoursite.com/2020/03/14/分布式事务/TCC%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86_%E6%AD%A3%E5%B8%B8">
-<meta property="og:image" content="http://yoursite.com/2020/03/14/分布式事务/%E6%9C%AC%E5%9C%B0%E6%B6%88%E6%81%AF%E8%A1%A8%E6%96%B9%E6%A1%88.png">
-<meta property="og:image" content="http://yoursite.com/2020/03/14/分布式事务/RocketMQ%E4%BA%8B%E5%8A%A1.png">
-<meta property="og:image" content="http://yoursite.com/2020/03/14/分布式事务/RocketMO%E4%BA%8B%E5%8A%A1%E4%BD%BF%E7%94%A8.png">
-<meta property="og:image" content="http://yoursite.com/2020/03/14/分布式事务/Soga%E4%BA%8B%E5%8A%A1%E6%96%B9%E6%A1%88.png">
-<meta property="og:image" content="http://yoursite.com/2020/03/14/分布式事务/%E5%90%84%E6%96%B9%E6%A1%88%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%E6%AF%94%E8%BE%83.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/03/14/分布式事务/%E4%BA%8B%E5%8A%A1%E7%9A%84%E5%85%B7%E4%BD%93%E5%AE%9A%E4%B9%89.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/03/14/分布式事务/%E4%BA%92%E8%81%94%E7%BD%91%E5%B8%B8%E7%94%A8%E7%9A%84%E4%BA%A4%E6%98%93%E4%B8%9A%E5%8A%A1.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/03/14/分布式事务/CAP%E7%90%86%E8%AE%BA%E5%9B%BE.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/03/14/分布式事务/%E4%B8%A4%E9%98%B6%E6%AE%B5%E6%8F%90%E4%BA%A4_%E6%AD%A3%E5%B8%B8.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/03/14/分布式事务/%E4%B8%89%E9%98%B6%E6%AE%B5%E6%8F%90%E4%BA%A4_%E6%AD%A3%E5%B8%B8.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/03/14/分布式事务/TCC%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86_%E6%AD%A3%E5%B8%B8">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/03/14/分布式事务/%E6%9C%AC%E5%9C%B0%E6%B6%88%E6%81%AF%E8%A1%A8%E6%96%B9%E6%A1%88.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/03/14/分布式事务/RocketMQ%E4%BA%8B%E5%8A%A1.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/03/14/分布式事务/RocketMO%E4%BA%8B%E5%8A%A1%E4%BD%BF%E7%94%A8.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/03/14/分布式事务/Soga%E4%BA%8B%E5%8A%A1%E6%96%B9%E6%A1%88.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/03/14/分布式事务/%E5%90%84%E6%96%B9%E6%A1%88%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%E6%AF%94%E8%BE%83.png">
 <meta property="og:updated_time" content="2020-03-15T05:16:32.712Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="分布式事务">
 <meta name="twitter:description" content="本文将介绍什么是分布式事务，分布式事务解决什么问题，不同场景下方案的选择。">
-<meta name="twitter:image" content="http://yoursite.com/2020/03/14/分布式事务/%E4%BA%8B%E5%8A%A1%E7%9A%84%E5%85%B7%E4%BD%93%E5%AE%9A%E4%B9%89.png">
+<meta name="twitter:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/03/14/分布式事务/%E4%BA%8B%E5%8A%A1%E7%9A%84%E5%85%B7%E4%BD%93%E5%AE%9A%E4%B9%89.png">
 
 
 
@@ -133,7 +133,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/03/14/分布式事务/">
+  <link rel="canonical" href="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/03/14/分布式事务/">
 
 
 
@@ -308,7 +308,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/14/分布式事务/">
+    <link itemprop="mainEntityOfPage" href="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/03/14/分布式事务/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="miaowenting">

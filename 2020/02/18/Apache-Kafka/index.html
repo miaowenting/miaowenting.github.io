@@ -84,57 +84,57 @@
 <meta name="description" content="本文将全局介绍 Kafka 的整体架构。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Apache Kafka">
-<meta property="og:url" content="http://yoursite.com/2020/02/18/Apache-Kafka/index.html">
+<meta property="og:url" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/18/Apache-Kafka/index.html">
 <meta property="og:site_name" content="Matty&#39;s Blog">
 <meta property="og:description" content="本文将全局介绍 Kafka 的整体架构。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2020/02/18/Apache-Kafka/Kafka%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84%E5%9B%BE.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/18/Apache-Kafka/%E9%80%BB%E8%BE%91Topic1.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/18/Apache-Kafka/%E9%80%BB%E8%BE%91Partition1.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/18/Apache-Kafka/partition%E6%97%A5%E5%BF%97%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/18/Apache-Kafka/%E5%89%AF%E6%9C%AC.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/18/Apache-Kafka/HW_LEO_1.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/18/Apache-Kafka/HW_LEO_2.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/18/Apache-Kafka/Consumer.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/18/Apache-Kafka/Consumer_Group.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/18/Apache-Kafka/Kafka%E6%BA%90%E7%A0%81%E7%BB%93%E6%9E%84.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/18/Apache-Kafka/Kafka%E6%BA%90%E7%A0%81%E7%BB%84%E6%88%90.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/18/Apache-Kafka/%E5%AE%9A%E4%BD%8DLogSegment.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/18/Apache-Kafka/%E5%AE%9A%E4%BD%8Dindex%E9%A1%B9%E5%8F%8Aposition.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/18/Apache-Kafka/LogManager%E6%A8%A1%E5%9D%97%E5%AE%9E%E7%8E%B0.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/18/Apache-Kafka/%E5%88%B7%E5%86%99%E9%A1%B5%E9%9D%A2%E7%BC%93%E5%AD%98%E6%97%A5%E5%BF%97%E5%88%B0%E7%A3%81%E7%9B%98.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/18/Apache-Kafka/%E6%97%A5%E5%BF%97%E5%8E%8B%E7%BC%A9clean%E4%B8%8Edirty%E9%83%A8%E5%88%86%E5%88%92%E5%88%86.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/18/Apache-Kafka/ReplicaManager%E6%A8%A1%E5%9D%97%E5%AE%9E%E7%8E%B0.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/18/Apache-Kafka/kafka_on_zookeeper.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/18/Apache-Kafka/KafkaController%E6%A8%A1%E5%9D%97%E5%AE%9E%E7%8E%B0.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/18/Apache-Kafka/ConsumerCoordinator%E7%9A%84%E5%AE%9E%E7%8E%B0.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/18/Apache-Kafka/GroupCoordinator%E7%9A%84%E5%AE%9E%E7%8E%B0.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/18/Apache-Kafka/%E6%9F%A5%E6%89%BEGroupCoordinator.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/18/Apache-Kafka/%E5%8F%91%E9%80%81JoinGroupRequest.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/18/Apache-Kafka/%E5%8F%91%E9%80%81SyncGroupRequest.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/18/Apache-Kafka/Selector.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/18/Apache-Kafka/broker%E7%AB%AF%E7%BD%91%E7%BB%9C%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/18/Apache-Kafka/Reactor%E5%8D%95%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/18/Apache-Kafka/Reactor%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/18/Apache-Kafka/%E4%B8%BB%E4%BB%8EReactor%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/18/Apache-Kafka/Kafka%E6%96%B0%E8%80%81%E7%89%88%E6%9C%AC%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B%E5%AF%B9%E6%AF%94.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/18/Apache-Kafka/V1_Message.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/18/Apache-Kafka/V2_Record.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/18/Apache-Kafka/Producer%E5%86%99%E6%B5%81%E7%A8%8B%E5%9B%BE.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/18/Apache-Kafka/Producer%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%B8%8Ebroker%E7%AB%AF%E4%BA%A4%E4%BA%92%E7%9A%84%E5%8D%8F%E8%AE%AE%E6%A0%BC%E5%BC%8F.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/18/Apache-Kafka/%E8%AF%B7%E6%B1%82%E6%95%B0%E6%8D%AE%E4%BB%8E%E7%94%9F%E4%BA%A7%E8%80%85%E5%8F%91%E9%80%81%E5%88%B0%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%9A%84%E6%B5%81%E8%BD%AC%E8%BF%87%E7%A8%8B.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/18/Apache-Kafka/TimingWheel%E6%97%B6%E9%97%B4%E6%A0%BC%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/18/Apache-Kafka/%E5%88%B0%E6%9C%9F%E6%97%B6%E9%97%B4%E5%92%8Cbucket%E9%80%89%E6%8B%A9.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/18/Apache-Kafka/%E5%8D%95%E5%B1%82%E6%97%B6%E9%97%B4%E8%BD%AE%E6%B7%BB%E5%8A%A0%E4%BB%BB%E5%8A%A1%E5%8F%8A%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/18/Apache-Kafka/%E5%A4%9A%E5%B1%82%E6%97%B6%E9%97%B4%E8%BD%AE%E7%9A%84%E4%BB%BB%E5%8A%A1%E6%B5%81%E8%BD%AC%E8%BF%87%E7%A8%8B.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/18/Apache-Kafka/DelayedOperationPurgatory%E7%BB%84%E4%BB%B6%E5%AE%9E%E7%8E%B0.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/18/Apache-Kafka/DelayedProduce.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/18/Apache-Kafka/DelayedFetch.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/18/Apache-Kafka/Kafka%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84%E5%9B%BE.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/18/Apache-Kafka/%E9%80%BB%E8%BE%91Topic1.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/18/Apache-Kafka/%E9%80%BB%E8%BE%91Partition1.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/18/Apache-Kafka/partition%E6%97%A5%E5%BF%97%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/18/Apache-Kafka/%E5%89%AF%E6%9C%AC.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/18/Apache-Kafka/HW_LEO_1.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/18/Apache-Kafka/HW_LEO_2.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/18/Apache-Kafka/Consumer.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/18/Apache-Kafka/Consumer_Group.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/18/Apache-Kafka/Kafka%E6%BA%90%E7%A0%81%E7%BB%93%E6%9E%84.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/18/Apache-Kafka/Kafka%E6%BA%90%E7%A0%81%E7%BB%84%E6%88%90.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/18/Apache-Kafka/%E5%AE%9A%E4%BD%8DLogSegment.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/18/Apache-Kafka/%E5%AE%9A%E4%BD%8Dindex%E9%A1%B9%E5%8F%8Aposition.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/18/Apache-Kafka/LogManager%E6%A8%A1%E5%9D%97%E5%AE%9E%E7%8E%B0.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/18/Apache-Kafka/%E5%88%B7%E5%86%99%E9%A1%B5%E9%9D%A2%E7%BC%93%E5%AD%98%E6%97%A5%E5%BF%97%E5%88%B0%E7%A3%81%E7%9B%98.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/18/Apache-Kafka/%E6%97%A5%E5%BF%97%E5%8E%8B%E7%BC%A9clean%E4%B8%8Edirty%E9%83%A8%E5%88%86%E5%88%92%E5%88%86.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/18/Apache-Kafka/ReplicaManager%E6%A8%A1%E5%9D%97%E5%AE%9E%E7%8E%B0.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/18/Apache-Kafka/kafka_on_zookeeper.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/18/Apache-Kafka/KafkaController%E6%A8%A1%E5%9D%97%E5%AE%9E%E7%8E%B0.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/18/Apache-Kafka/ConsumerCoordinator%E7%9A%84%E5%AE%9E%E7%8E%B0.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/18/Apache-Kafka/GroupCoordinator%E7%9A%84%E5%AE%9E%E7%8E%B0.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/18/Apache-Kafka/%E6%9F%A5%E6%89%BEGroupCoordinator.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/18/Apache-Kafka/%E5%8F%91%E9%80%81JoinGroupRequest.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/18/Apache-Kafka/%E5%8F%91%E9%80%81SyncGroupRequest.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/18/Apache-Kafka/Selector.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/18/Apache-Kafka/broker%E7%AB%AF%E7%BD%91%E7%BB%9C%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/18/Apache-Kafka/Reactor%E5%8D%95%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/18/Apache-Kafka/Reactor%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/18/Apache-Kafka/%E4%B8%BB%E4%BB%8EReactor%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/18/Apache-Kafka/Kafka%E6%96%B0%E8%80%81%E7%89%88%E6%9C%AC%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B%E5%AF%B9%E6%AF%94.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/18/Apache-Kafka/V1_Message.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/18/Apache-Kafka/V2_Record.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/18/Apache-Kafka/Producer%E5%86%99%E6%B5%81%E7%A8%8B%E5%9B%BE.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/18/Apache-Kafka/Producer%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%B8%8Ebroker%E7%AB%AF%E4%BA%A4%E4%BA%92%E7%9A%84%E5%8D%8F%E8%AE%AE%E6%A0%BC%E5%BC%8F.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/18/Apache-Kafka/%E8%AF%B7%E6%B1%82%E6%95%B0%E6%8D%AE%E4%BB%8E%E7%94%9F%E4%BA%A7%E8%80%85%E5%8F%91%E9%80%81%E5%88%B0%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%9A%84%E6%B5%81%E8%BD%AC%E8%BF%87%E7%A8%8B.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/18/Apache-Kafka/TimingWheel%E6%97%B6%E9%97%B4%E6%A0%BC%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/18/Apache-Kafka/%E5%88%B0%E6%9C%9F%E6%97%B6%E9%97%B4%E5%92%8Cbucket%E9%80%89%E6%8B%A9.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/18/Apache-Kafka/%E5%8D%95%E5%B1%82%E6%97%B6%E9%97%B4%E8%BD%AE%E6%B7%BB%E5%8A%A0%E4%BB%BB%E5%8A%A1%E5%8F%8A%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/18/Apache-Kafka/%E5%A4%9A%E5%B1%82%E6%97%B6%E9%97%B4%E8%BD%AE%E7%9A%84%E4%BB%BB%E5%8A%A1%E6%B5%81%E8%BD%AC%E8%BF%87%E7%A8%8B.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/18/Apache-Kafka/DelayedOperationPurgatory%E7%BB%84%E4%BB%B6%E5%AE%9E%E7%8E%B0.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/18/Apache-Kafka/DelayedProduce.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/18/Apache-Kafka/DelayedFetch.png">
 <meta property="og:updated_time" content="2020-03-27T07:37:28.519Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Apache Kafka">
 <meta name="twitter:description" content="本文将全局介绍 Kafka 的整体架构。">
-<meta name="twitter:image" content="http://yoursite.com/2020/02/18/Apache-Kafka/Kafka%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84%E5%9B%BE.png">
+<meta name="twitter:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/18/Apache-Kafka/Kafka%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84%E5%9B%BE.png">
 
 
 
@@ -164,7 +164,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/02/18/Apache-Kafka/">
+  <link rel="canonical" href="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/18/Apache-Kafka/">
 
 
 
@@ -339,7 +339,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/18/Apache-Kafka/">
+    <link itemprop="mainEntityOfPage" href="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/18/Apache-Kafka/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="miaowenting">

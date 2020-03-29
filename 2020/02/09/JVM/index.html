@@ -84,34 +84,34 @@
 <meta name="description" content="本文介绍JVM内存结构、类加载、GC、JVM调优等方面。《深入理解Java虚拟机: JVM高级特性与最佳实践》">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JVM">
-<meta property="og:url" content="http://yoursite.com/2020/02/09/JVM/index.html">
+<meta property="og:url" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/09/JVM/index.html">
 <meta property="og:site_name" content="Matty&#39;s Blog">
 <meta property="og:description" content="本文介绍JVM内存结构、类加载、GC、JVM调优等方面。《深入理解Java虚拟机: JVM高级特性与最佳实践》">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2020/02/09/JVM/JVM%E7%BB%84%E6%88%90.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/09/JVM/%E5%A0%86%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/09/JVM/Mark_Word.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/09/JVM/%E9%80%9A%E8%BF%87%E5%8F%A5%E6%9F%84%E8%AE%BF%E9%97%AE%E5%AF%B9%E8%B1%A1.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/09/JVM/%E9%80%9A%E8%BF%87%E7%9B%B4%E6%8E%A5%E6%8C%87%E9%92%88%E8%AE%BF%E9%97%AE%E5%AF%B9%E8%B1%A1.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/09/JVM/HeapOOM.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/09/JVM/JavaVMStackSOF.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/09/JVM/JavaVMStackOOM.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/09/JVM/JavaMethodAreaOOM.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/09/JVM/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E7%AE%97%E6%B3%95.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/09/JVM/%E5%88%86%E4%BB%A3%E6%94%B6%E9%9B%86%E7%AE%97%E6%B3%95.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/09/JVM/Serial-%E6%96%B0%E7%94%9F%E4%BB%A3%E4%B8%B2%E8%A1%8C%E6%94%B6%E9%9B%86%E5%99%A8.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/09/JVM/ParNew-%E6%96%B0%E7%94%9F%E4%BB%A3%E4%B8%B2%E8%A1%8C%E6%94%B6%E9%9B%86%E5%99%A8.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/09/JVM/ParNew%E4%B8%8ESerial_Old%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8%E8%BF%90%E8%A1%8C%E8%BF%87%E7%A8%8B.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/09/JVM/Parallel_Scavenge%E5%92%8CParallel_Old%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8%E8%BF%90%E8%A1%8C%E8%BF%87%E7%A8%8B.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/09/JVM/CMS-%E8%80%81%E5%B9%B4%E4%BB%A3%E5%B9%B6%E5%8F%91%E6%94%B6%E9%9B%86%E5%99%A8.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/09/JVM/G1%E7%9A%84%E5%86%85%E5%AD%98%E5%88%86%E5%8C%BA.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/09/JVM/%E7%B1%BB%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/09/JVM/%E5%87%A0%E7%A7%8D%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%E7%9A%84%E5%B1%82%E6%AC%A1%E5%85%B3%E7%B3%BB.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/09/JVM/JVM%E7%BB%84%E6%88%90.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/09/JVM/%E5%A0%86%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/09/JVM/Mark_Word.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/09/JVM/%E9%80%9A%E8%BF%87%E5%8F%A5%E6%9F%84%E8%AE%BF%E9%97%AE%E5%AF%B9%E8%B1%A1.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/09/JVM/%E9%80%9A%E8%BF%87%E7%9B%B4%E6%8E%A5%E6%8C%87%E9%92%88%E8%AE%BF%E9%97%AE%E5%AF%B9%E8%B1%A1.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/09/JVM/HeapOOM.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/09/JVM/JavaVMStackSOF.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/09/JVM/JavaVMStackOOM.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/09/JVM/JavaMethodAreaOOM.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/09/JVM/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E7%AE%97%E6%B3%95.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/09/JVM/%E5%88%86%E4%BB%A3%E6%94%B6%E9%9B%86%E7%AE%97%E6%B3%95.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/09/JVM/Serial-%E6%96%B0%E7%94%9F%E4%BB%A3%E4%B8%B2%E8%A1%8C%E6%94%B6%E9%9B%86%E5%99%A8.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/09/JVM/ParNew-%E6%96%B0%E7%94%9F%E4%BB%A3%E4%B8%B2%E8%A1%8C%E6%94%B6%E9%9B%86%E5%99%A8.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/09/JVM/ParNew%E4%B8%8ESerial_Old%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8%E8%BF%90%E8%A1%8C%E8%BF%87%E7%A8%8B.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/09/JVM/Parallel_Scavenge%E5%92%8CParallel_Old%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8%E8%BF%90%E8%A1%8C%E8%BF%87%E7%A8%8B.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/09/JVM/CMS-%E8%80%81%E5%B9%B4%E4%BB%A3%E5%B9%B6%E5%8F%91%E6%94%B6%E9%9B%86%E5%99%A8.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/09/JVM/G1%E7%9A%84%E5%86%85%E5%AD%98%E5%88%86%E5%8C%BA.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/09/JVM/%E7%B1%BB%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/09/JVM/%E5%87%A0%E7%A7%8D%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%E7%9A%84%E5%B1%82%E6%AC%A1%E5%85%B3%E7%B3%BB.png">
 <meta property="og:updated_time" content="2020-03-24T08:13:00.837Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JVM">
 <meta name="twitter:description" content="本文介绍JVM内存结构、类加载、GC、JVM调优等方面。《深入理解Java虚拟机: JVM高级特性与最佳实践》">
-<meta name="twitter:image" content="http://yoursite.com/2020/02/09/JVM/JVM%E7%BB%84%E6%88%90.png">
+<meta name="twitter:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/09/JVM/JVM%E7%BB%84%E6%88%90.png">
 
 
 
@@ -141,7 +141,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/02/09/JVM/">
+  <link rel="canonical" href="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/09/JVM/">
 
 
 
@@ -316,7 +316,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/09/JVM/">
+    <link itemprop="mainEntityOfPage" href="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/09/JVM/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="miaowenting">

@@ -84,24 +84,24 @@
 <meta name="description" content="本文介绍Netty的线程模型以及服务端、客户端启动、客户端接入等流程。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Netty线程模型">
-<meta property="og:url" content="http://yoursite.com/2020/02/09/Netty线程模型/index.html">
+<meta property="og:url" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/09/Netty线程模型/index.html">
 <meta property="og:site_name" content="Matty&#39;s Blog">
 <meta property="og:description" content="本文介绍Netty的线程模型以及服务端、客户端启动、客户端接入等流程。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2020/02/09/Netty线程模型/bind%E6%B5%81%E7%A8%8B%E5%9B%BE.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/09/Netty线程模型/%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%8E%A5%E5%85%A5%E6%B5%81%E7%A8%8B%E5%9B%BE.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/09/Netty线程模型/Bootstrap%E5%90%AF%E5%8A%A8%E6%97%B6%E5%BA%8F%E5%9B%BE.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/09/Netty线程模型/TCP%E7%B2%98%E5%8C%85%E6%8B%86%E5%8C%85%E9%97%AE%E9%A2%98.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/09/Netty线程模型/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%8F%AA%E6%94%B6%E5%88%B02%E6%9D%A1%E6%B6%88%E6%81%AF.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/09/Netty线程模型/%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%B9%9F%E5%8F%AA%E6%94%B6%E5%88%B0%E4%B8%80%E6%9D%A1%E5%BA%94%E7%AD%94%E6%B6%88%E6%81%AF.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/09/Netty线程模型/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%AD%A3%E5%B8%B8%E6%94%B6%E5%88%B0%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%9A%84100%E6%AC%A1%E8%AF%B7%E6%B1%82.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/09/Netty线程模型/image/%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%AD%A3%E5%B8%B8%E6%94%B6%E5%88%B0%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%9A%84100%E6%AC%A1%E5%BA%94%E7%AD%94%E6%B6%88%E6%81%AF.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/09/Netty线程模型/select%E8%B0%83%E7%94%A8%E8%BF%87%E7%A8%8B.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/09/Netty线程模型/bind%E6%B5%81%E7%A8%8B%E5%9B%BE.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/09/Netty线程模型/%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%8E%A5%E5%85%A5%E6%B5%81%E7%A8%8B%E5%9B%BE.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/09/Netty线程模型/Bootstrap%E5%90%AF%E5%8A%A8%E6%97%B6%E5%BA%8F%E5%9B%BE.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/09/Netty线程模型/TCP%E7%B2%98%E5%8C%85%E6%8B%86%E5%8C%85%E9%97%AE%E9%A2%98.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/09/Netty线程模型/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%8F%AA%E6%94%B6%E5%88%B02%E6%9D%A1%E6%B6%88%E6%81%AF.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/09/Netty线程模型/%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%B9%9F%E5%8F%AA%E6%94%B6%E5%88%B0%E4%B8%80%E6%9D%A1%E5%BA%94%E7%AD%94%E6%B6%88%E6%81%AF.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/09/Netty线程模型/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%AD%A3%E5%B8%B8%E6%94%B6%E5%88%B0%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%9A%84100%E6%AC%A1%E8%AF%B7%E6%B1%82.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/09/Netty线程模型/image/%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%AD%A3%E5%B8%B8%E6%94%B6%E5%88%B0%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%9A%84100%E6%AC%A1%E5%BA%94%E7%AD%94%E6%B6%88%E6%81%AF.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/09/Netty线程模型/select%E8%B0%83%E7%94%A8%E8%BF%87%E7%A8%8B.png">
 <meta property="og:updated_time" content="2020-03-24T09:24:50.735Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Netty线程模型">
 <meta name="twitter:description" content="本文介绍Netty的线程模型以及服务端、客户端启动、客户端接入等流程。">
-<meta name="twitter:image" content="http://yoursite.com/2020/02/09/Netty线程模型/bind%E6%B5%81%E7%A8%8B%E5%9B%BE.png">
+<meta name="twitter:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/09/Netty线程模型/bind%E6%B5%81%E7%A8%8B%E5%9B%BE.png">
 
 
 
@@ -131,7 +131,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/02/09/Netty线程模型/">
+  <link rel="canonical" href="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/09/Netty线程模型/">
 
 
 
@@ -306,7 +306,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/09/Netty线程模型/">
+    <link itemprop="mainEntityOfPage" href="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/09/Netty线程模型/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="miaowenting">

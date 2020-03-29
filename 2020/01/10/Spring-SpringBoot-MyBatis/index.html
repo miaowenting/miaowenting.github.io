@@ -84,41 +84,41 @@
 <meta name="description" content="本文将全局介绍 MyBatis 的整体架构。 参考：《MyBatis技术内幕》">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Spring-SpringBoot-MyBatis">
-<meta property="og:url" content="http://yoursite.com/2020/01/10/Spring-SpringBoot-MyBatis/index.html">
+<meta property="og:url" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/01/10/Spring-SpringBoot-MyBatis/index.html">
 <meta property="og:site_name" content="Matty&#39;s Blog">
 <meta property="og:description" content="本文将全局介绍 MyBatis 的整体架构。 参考：《MyBatis技术内幕》">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2020/01/10/Spring-SpringBoot-MyBatis/MyBatis%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84.png">
-<meta property="og:image" content="http://yoursite.com/2020/01/10/Spring-SpringBoot-MyBatis/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2%E6%93%8D%E4%BD%9C.png">
-<meta property="og:image" content="http://yoursite.com/2020/01/10/Spring-SpringBoot-MyBatis/TypeHandler%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%AD%90%E7%B1%BB.png">
-<meta property="og:image" content="http://yoursite.com/2020/01/10/Spring-SpringBoot-MyBatis/IntegerTypeHandler%E5%AE%9E%E7%8E%B0.png">
-<meta property="og:image" content="http://yoursite.com/2020/01/10/Spring-SpringBoot-MyBatis/TypeHandlerRegistry%E4%B8%AD%E7%9A%84%E6%A0%B8%E5%BF%83%E5%AD%97%E6%AE%B5.png">
-<meta property="og:image" content="http://yoursite.com/2020/01/10/Spring-SpringBoot-MyBatis/%E6%97%A5%E5%BF%97%E9%80%82%E9%85%8D%E5%99%A8.png">
-<meta property="og:image" content="http://yoursite.com/2020/01/10/Spring-SpringBoot-MyBatis/useJdkLogging.png">
-<meta property="og:image" content="http://yoursite.com/2020/01/10/Spring-SpringBoot-MyBatis/Jdk14LoggingImpl_1.png">
-<meta property="og:image" content="http://yoursite.com/2020/01/10/Spring-SpringBoot-MyBatis/Jdk14LoggingImpl_2.png">
-<meta property="og:image" content="http://yoursite.com/2020/01/10/Spring-SpringBoot-MyBatis/BaseJdbcLogger%E7%B1%BB%E5%9B%BE.png">
-<meta property="og:image" content="http://yoursite.com/2020/01/10/Spring-SpringBoot-MyBatis/ConnectionLogger%E4%BB%A3%E7%90%86%E5%AF%B9%E8%B1%A1.png">
-<meta property="og:image" content="http://yoursite.com/2020/01/10/Spring-SpringBoot-MyBatis/xml%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9.png">
-<meta property="og:image" content="http://yoursite.com/2020/01/10/Spring-SpringBoot-MyBatis/DOM%E8%A7%A3%E6%9E%90%E7%9A%84%E5%B1%9E%E6%80%A7%E7%BB%93%E6%9E%84.png">
-<meta property="og:image" content="http://yoursite.com/2020/01/10/Spring-SpringBoot-MyBatis/SAX.png">
-<meta property="og:image" content="http://yoursite.com/2020/01/10/Spring-SpringBoot-MyBatis/StAx.png">
-<meta property="og:image" content="http://yoursite.com/2020/01/10/Spring-SpringBoot-MyBatis/XPath%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%9A%84%E8%A1%A8%E8%BE%BE%E5%BC%8F.png">
-<meta property="og:image" content="http://yoursite.com/2020/01/10/Spring-SpringBoot-MyBatis/XPathParser%E7%B1%BB%E7%BB%93%E6%9E%84%E5%9B%BE.png">
-<meta property="og:image" content="http://yoursite.com/2020/01/10/Spring-SpringBoot-MyBatis/DataSource%E5%92%8CDataSourceFactory%E7%B1%BB%E5%9B%BE.png">
-<meta property="og:image" content="http://yoursite.com/2020/01/10/Spring-SpringBoot-MyBatis/%E8%8E%B7%E5%8F%96Connection%E7%9A%84%E6%B5%81%E7%A8%8B%E5%9B%BE.png">
-<meta property="og:image" content="http://yoursite.com/2020/01/10/Spring-SpringBoot-MyBatis/Transaction%E6%8E%A5%E5%8F%A3%E7%B1%BB%E5%9B%BE.png">
-<meta property="og:image" content="http://yoursite.com/2020/01/10/Spring-SpringBoot-MyBatis/%E7%BC%93%E5%AD%98.png">
-<meta property="og:image" content="http://yoursite.com/2020/01/10/Spring-SpringBoot-MyBatis/MyBatis%E6%89%A7%E8%A1%8C%E4%B8%80%E6%9D%A1SQL%E8%AF%AD%E5%8F%A5%E7%9A%84%E5%A4%A7%E8%87%B4%E8%BF%87%E7%A8%8B.png">
-<meta property="og:image" content="http://yoursite.com/2020/01/10/Spring-SpringBoot-MyBatis/IoC.png">
-<meta property="og:image" content="http://yoursite.com/2020/01/10/Spring-SpringBoot-MyBatis/AOP%E8%81%94%E7%9B%9F%E5%AE%9A%E4%B9%89%E7%9A%84AOP%E4%BD%93%E7%B3%BB%E6%9E%B6%E6%9E%84.png">
-<meta property="og:image" content="http://yoursite.com/2020/01/10/Spring-SpringBoot-MyBatis/SpringMVC%E7%9A%84%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B.png">
-<meta property="og:image" content="http://yoursite.com/2020/01/10/Spring-SpringBoot-MyBatis/SpringBoot%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B%E5%9B%BE.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/01/10/Spring-SpringBoot-MyBatis/MyBatis%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/01/10/Spring-SpringBoot-MyBatis/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2%E6%93%8D%E4%BD%9C.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/01/10/Spring-SpringBoot-MyBatis/TypeHandler%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%AD%90%E7%B1%BB.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/01/10/Spring-SpringBoot-MyBatis/IntegerTypeHandler%E5%AE%9E%E7%8E%B0.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/01/10/Spring-SpringBoot-MyBatis/TypeHandlerRegistry%E4%B8%AD%E7%9A%84%E6%A0%B8%E5%BF%83%E5%AD%97%E6%AE%B5.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/01/10/Spring-SpringBoot-MyBatis/%E6%97%A5%E5%BF%97%E9%80%82%E9%85%8D%E5%99%A8.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/01/10/Spring-SpringBoot-MyBatis/useJdkLogging.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/01/10/Spring-SpringBoot-MyBatis/Jdk14LoggingImpl_1.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/01/10/Spring-SpringBoot-MyBatis/Jdk14LoggingImpl_2.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/01/10/Spring-SpringBoot-MyBatis/BaseJdbcLogger%E7%B1%BB%E5%9B%BE.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/01/10/Spring-SpringBoot-MyBatis/ConnectionLogger%E4%BB%A3%E7%90%86%E5%AF%B9%E8%B1%A1.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/01/10/Spring-SpringBoot-MyBatis/xml%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/01/10/Spring-SpringBoot-MyBatis/DOM%E8%A7%A3%E6%9E%90%E7%9A%84%E5%B1%9E%E6%80%A7%E7%BB%93%E6%9E%84.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/01/10/Spring-SpringBoot-MyBatis/SAX.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/01/10/Spring-SpringBoot-MyBatis/StAx.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/01/10/Spring-SpringBoot-MyBatis/XPath%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%9A%84%E8%A1%A8%E8%BE%BE%E5%BC%8F.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/01/10/Spring-SpringBoot-MyBatis/XPathParser%E7%B1%BB%E7%BB%93%E6%9E%84%E5%9B%BE.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/01/10/Spring-SpringBoot-MyBatis/DataSource%E5%92%8CDataSourceFactory%E7%B1%BB%E5%9B%BE.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/01/10/Spring-SpringBoot-MyBatis/%E8%8E%B7%E5%8F%96Connection%E7%9A%84%E6%B5%81%E7%A8%8B%E5%9B%BE.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/01/10/Spring-SpringBoot-MyBatis/Transaction%E6%8E%A5%E5%8F%A3%E7%B1%BB%E5%9B%BE.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/01/10/Spring-SpringBoot-MyBatis/%E7%BC%93%E5%AD%98.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/01/10/Spring-SpringBoot-MyBatis/MyBatis%E6%89%A7%E8%A1%8C%E4%B8%80%E6%9D%A1SQL%E8%AF%AD%E5%8F%A5%E7%9A%84%E5%A4%A7%E8%87%B4%E8%BF%87%E7%A8%8B.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/01/10/Spring-SpringBoot-MyBatis/IoC.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/01/10/Spring-SpringBoot-MyBatis/AOP%E8%81%94%E7%9B%9F%E5%AE%9A%E4%B9%89%E7%9A%84AOP%E4%BD%93%E7%B3%BB%E6%9E%B6%E6%9E%84.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/01/10/Spring-SpringBoot-MyBatis/SpringMVC%E7%9A%84%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/01/10/Spring-SpringBoot-MyBatis/SpringBoot%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B%E5%9B%BE.png">
 <meta property="og:updated_time" content="2020-03-29T06:30:21.938Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring-SpringBoot-MyBatis">
 <meta name="twitter:description" content="本文将全局介绍 MyBatis 的整体架构。 参考：《MyBatis技术内幕》">
-<meta name="twitter:image" content="http://yoursite.com/2020/01/10/Spring-SpringBoot-MyBatis/MyBatis%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84.png">
+<meta name="twitter:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/01/10/Spring-SpringBoot-MyBatis/MyBatis%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84.png">
 
 
 
@@ -148,7 +148,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/01/10/Spring-SpringBoot-MyBatis/">
+  <link rel="canonical" href="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/01/10/Spring-SpringBoot-MyBatis/">
 
 
 
@@ -323,7 +323,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/10/Spring-SpringBoot-MyBatis/">
+    <link itemprop="mainEntityOfPage" href="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/01/10/Spring-SpringBoot-MyBatis/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="miaowenting">

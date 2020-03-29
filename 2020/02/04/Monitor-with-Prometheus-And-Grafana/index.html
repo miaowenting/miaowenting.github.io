@@ -84,35 +84,35 @@
 <meta name="description" content="Prometheus 是一套开源的系统监控、报警、时间序列数据库的组合。Prometheus 基本原理是通过Http协议周期性抓取被监控组件的状态，而输出这些被监控的组件的Http接口为 Exporter。Grafana 是一个可视化仪表盘，它拥有美观的图标和布局展示，默认支持 CloudWatch、Graphite、ES、InfluxDB、Mysql、PostgreSQL、Prometheus、">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Monitor with Prometheus And Grafana">
-<meta property="og:url" content="http://yoursite.com/2020/02/04/Monitor-with-Prometheus-And-Grafana/index.html">
+<meta property="og:url" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/04/Monitor-with-Prometheus-And-Grafana/index.html">
 <meta property="og:site_name" content="Matty&#39;s Blog">
 <meta property="og:description" content="Prometheus 是一套开源的系统监控、报警、时间序列数据库的组合。Prometheus 基本原理是通过Http协议周期性抓取被监控组件的状态，而输出这些被监控的组件的Http接口为 Exporter。Grafana 是一个可视化仪表盘，它拥有美观的图标和布局展示，默认支持 CloudWatch、Graphite、ES、InfluxDB、Mysql、PostgreSQL、Prometheus、">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2020/02/04/Monitor-with-Prometheus-And-Grafana/start-prometheus.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/04/Monitor-with-Prometheus-And-Grafana/premetheus-web-ui.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/04/Monitor-with-Prometheus-And-Grafana/start-mysql-exporter.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/04/Monitor-with-Prometheus-And-Grafana/mysql-exporter-metrics.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/04/Monitor-with-Prometheus-And-Grafana/start-node-exporter.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/04/Monitor-with-Prometheus-And-Grafana/prometheus-graph-node-load1.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/04/Monitor-with-Prometheus-And-Grafana/start-pushgateway.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/04/Monitor-with-Prometheus-And-Grafana/prometheus-targets.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/04/Monitor-with-Prometheus-And-Grafana/start-grafana.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/04/Monitor-with-Prometheus-And-Grafana/grafana-web-ui.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/04/Monitor-with-Prometheus-And-Grafana/grafana-add-prometheus-datasource.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/04/Monitor-with-Prometheus-And-Grafana/grafana-upload-json-file.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/04/Monitor-with-Prometheus-And-Grafana/grafana-mysql-overview.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/04/Monitor-with-Prometheus-And-Grafana/grafana-node-exporter-server-metrics.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/04/Monitor-with-Prometheus-And-Grafana/flink-upload-SocketWindowWordCount-jar.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/04/Monitor-with-Prometheus-And-Grafana/flink-metrics-show-1.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/04/Monitor-with-Prometheus-And-Grafana/flink-metrics-show-2.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/04/Monitor-with-Prometheus-And-Grafana/Flink_Dashboard_10369.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/04/Monitor-with-Prometheus-And-Grafana/Flink_Dashboard_8966.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/04/Monitor-with-Prometheus-And-Grafana/Flink_Dashboard_11049.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/04/Monitor-with-Prometheus-And-Grafana/start-prometheus.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/04/Monitor-with-Prometheus-And-Grafana/premetheus-web-ui.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/04/Monitor-with-Prometheus-And-Grafana/start-mysql-exporter.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/04/Monitor-with-Prometheus-And-Grafana/mysql-exporter-metrics.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/04/Monitor-with-Prometheus-And-Grafana/start-node-exporter.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/04/Monitor-with-Prometheus-And-Grafana/prometheus-graph-node-load1.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/04/Monitor-with-Prometheus-And-Grafana/start-pushgateway.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/04/Monitor-with-Prometheus-And-Grafana/prometheus-targets.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/04/Monitor-with-Prometheus-And-Grafana/start-grafana.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/04/Monitor-with-Prometheus-And-Grafana/grafana-web-ui.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/04/Monitor-with-Prometheus-And-Grafana/grafana-add-prometheus-datasource.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/04/Monitor-with-Prometheus-And-Grafana/grafana-upload-json-file.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/04/Monitor-with-Prometheus-And-Grafana/grafana-mysql-overview.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/04/Monitor-with-Prometheus-And-Grafana/grafana-node-exporter-server-metrics.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/04/Monitor-with-Prometheus-And-Grafana/flink-upload-SocketWindowWordCount-jar.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/04/Monitor-with-Prometheus-And-Grafana/flink-metrics-show-1.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/04/Monitor-with-Prometheus-And-Grafana/flink-metrics-show-2.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/04/Monitor-with-Prometheus-And-Grafana/Flink_Dashboard_10369.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/04/Monitor-with-Prometheus-And-Grafana/Flink_Dashboard_8966.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/04/Monitor-with-Prometheus-And-Grafana/Flink_Dashboard_11049.png">
 <meta property="og:updated_time" content="2020-02-04T13:14:05.730Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Monitor with Prometheus And Grafana">
 <meta name="twitter:description" content="Prometheus 是一套开源的系统监控、报警、时间序列数据库的组合。Prometheus 基本原理是通过Http协议周期性抓取被监控组件的状态，而输出这些被监控的组件的Http接口为 Exporter。Grafana 是一个可视化仪表盘，它拥有美观的图标和布局展示，默认支持 CloudWatch、Graphite、ES、InfluxDB、Mysql、PostgreSQL、Prometheus、">
-<meta name="twitter:image" content="http://yoursite.com/2020/02/04/Monitor-with-Prometheus-And-Grafana/start-prometheus.png">
+<meta name="twitter:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/04/Monitor-with-Prometheus-And-Grafana/start-prometheus.png">
 
 
 
@@ -142,7 +142,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/02/04/Monitor-with-Prometheus-And-Grafana/">
+  <link rel="canonical" href="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/04/Monitor-with-Prometheus-And-Grafana/">
 
 
 
@@ -317,7 +317,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/04/Monitor-with-Prometheus-And-Grafana/">
+    <link itemprop="mainEntityOfPage" href="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/04/Monitor-with-Prometheus-And-Grafana/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="miaowenting">
