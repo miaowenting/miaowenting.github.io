@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[插件化技术]]></title>
     <url>%2F2020%2F03%2F29%2F%E6%8F%92%E4%BB%B6%E5%8C%96%E6%8A%80%E6%9C%AF%2F</url>
-    <content type="text"><![CDATA[本文将介绍代码设计中的插件化实现。涉及到的关键技术点 ClassLoader 和 ServiceLoader Flink中的插件化应用自定义ClassLoaderServiceLoader最佳实践解决大数据引擎及版本众多问题WMRouter中对ServiceLoader的改进与使用]]></content>
+    <content type="text"><![CDATA[本文将介绍代码设计中的插件化实现。涉及到的关键技术点 自定义ClassLoader 和 ServiceLoader 。接着，会说下插件化技术的典型应用场景。 Flink中的插件化应用自定义ClassLoaderServiceLoader最佳实践解决大数据引擎及版本众多问题WMRouter中对ServiceLoader的改进与使用]]></content>
       <categories>
         <category>Java</category>
       </categories>
