@@ -81,16 +81,21 @@
 
 
 
-<meta name="description" content="本文将总结下离线平台的相关实现。Flink平台化需要改进的点等等。">
+<meta name="description" content="本文将总结下离线平台的相关实现。Flink平台化需要改进的点等等。 参考：《数据中台》">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于数据中台的思考与总结">
 <meta property="og:url" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/03/24/关于数据中台的思考与总结/index.html">
 <meta property="og:site_name" content="Matty&#39;s Blog">
-<meta property="og:description" content="本文将总结下离线平台的相关实现。Flink平台化需要改进的点等等。">
+<meta property="og:description" content="本文将总结下离线平台的相关实现。Flink平台化需要改进的点等等。 参考：《数据中台》">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/03/24/关于数据中台的思考与总结/%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%8F%B0%E4%BA%A7%E5%93%81%E6%9E%B6%E6%9E%84.png">
 <meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/03/24/关于数据中台的思考与总结/%E4%BE%9D%E8%B5%96%E6%8E%A8%E8%8D%90.png">
-<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/03/24/关于数据中台的思考与总结/%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%8F%B0%E6%95%B0%E6%8D%AE%E4%BD%93%E7%B3%BB%E6%9E%B6%E6%9E%84.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/03/24/关于数据中台的思考与总结/%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%8F%B0%E5%9C%B0%E4%BA%A7%E8%A1%8C%E4%B8%9A%E6%95%B0%E6%8D%AE%E4%BD%93%E7%B3%BB.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/03/24/关于数据中台的思考与总结/%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%8F%B0%E8%AF%81%E5%88%B8%E8%A1%8C%E4%B8%9A%E6%95%B0%E6%8D%AE%E4%BD%93%E7%B3%BB.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/03/24/关于数据中台的思考与总结/%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%8F%B0%E9%9B%B6%E5%94%AE%E8%A1%8C%E4%B8%9A%E6%95%B0%E6%8D%AE%E4%BD%93%E7%B3%BB.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/03/24/关于数据中台的思考与总结/%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%8F%B0%E5%88%B6%E9%80%A0%E8%A1%8C%E4%B8%9A%E6%95%B0%E6%8D%AE%E4%BD%93%E7%B3%BB.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/03/24/关于数据中台的思考与总结/%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%8F%B0%E4%BC%A0%E5%AA%92%E8%A1%8C%E4%B8%9A%E6%95%B0%E6%8D%AE%E4%BD%93%E7%B3%BB.png">
+<meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/03/24/关于数据中台的思考与总结/%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%8F%B0%E6%A3%80%E5%8A%A1%E8%A1%8C%E4%B8%9A%E6%95%B0%E6%8D%AE%E4%BD%93%E7%B3%BB.png">
 <meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/03/24/关于数据中台的思考与总结/%E5%AE%A2%E6%88%B7%E6%A0%87%E7%AD%BE%E4%BD%93%E7%B3%BB.png">
 <meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/03/24/关于数据中台的思考与总结/%E8%8B%8F%E5%AE%81%E7%A6%BB%E7%BA%BF%E5%B9%B3%E5%8F%B0%E4%BA%A7%E5%93%81%E5%8A%9F%E8%83%BD%E5%9B%BE.png">
 <meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/03/24/关于数据中台的思考与总结/%E8%8B%8F%E5%AE%81%E8%B0%83%E5%BA%A6%E6%A8%A1%E5%9D%97%E5%8A%9F%E8%83%BD%E5%9B%BE.png">
@@ -108,10 +113,10 @@
 <meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/03/24/关于数据中台的思考与总结/%E6%95%B0%E4%BB%93%E5%B8%B8%E7%94%A8%E5%88%86%E5%B1%82.png">
 <meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/03/24/关于数据中台的思考与总结/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E6%A8%A1%E5%9E%8B.png">
 <meta property="og:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/03/24/关于数据中台的思考与总结/%E9%9B%B6%E5%94%AE%E8%A1%8C%E4%B8%9A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88.png">
-<meta property="og:updated_time" content="2020-03-27T06:56:25.755Z">
+<meta property="og:updated_time" content="2020-03-29T06:08:43.267Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于数据中台的思考与总结">
-<meta name="twitter:description" content="本文将总结下离线平台的相关实现。Flink平台化需要改进的点等等。">
+<meta name="twitter:description" content="本文将总结下离线平台的相关实现。Flink平台化需要改进的点等等。 参考：《数据中台》">
 <meta name="twitter:image" content="http://miaowenting.gitee.io/miaowenting.gitee.io/2020/03/24/关于数据中台的思考与总结/%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%8F%B0%E4%BA%A7%E5%93%81%E6%9E%B6%E6%9E%84.png">
 
 
@@ -407,6 +412,7 @@
 
       
         <p>本文将总结下离线平台的相关实现。<br>Flink平台化需要改进的点等等。</p>
+<p>参考：<br>《数据中台》</p>
 <a id="more"></a>
 
 <h2 id="数据中台"><a href="#数据中台" class="headerlink" title="数据中台"></a>数据中台</h2><p><img src="%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%8F%B0%E4%BA%A7%E5%93%81%E6%9E%B6%E6%9E%84.png" alt></p>
@@ -464,7 +470,21 @@
 <li>降低成本：数据体系的建设使得数据能被业务共享，这避免了大量烟囱式的重复建设，节约了计算、存储和人力成本。</li>
 <li>方便易用：易用的总体原则是越往后越能方便地直接使用数据，把一些复杂的处理尽可能前置，必要时做适当的冗余处理。</li>
 </ul>
-<p><img src="%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%8F%B0%E6%95%B0%E6%8D%AE%E4%BD%93%E7%B3%BB%E6%9E%B6%E6%9E%84.png" alt></p>
+<p>不同行业的数据体系建设：</p>
+<ul>
+<li><p>地产行业<br><img src="%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%8F%B0%E5%9C%B0%E4%BA%A7%E8%A1%8C%E4%B8%9A%E6%95%B0%E6%8D%AE%E4%BD%93%E7%B3%BB.png" alt></p>
+</li>
+<li><p>证券行业<br><img src="%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%8F%B0%E8%AF%81%E5%88%B8%E8%A1%8C%E4%B8%9A%E6%95%B0%E6%8D%AE%E4%BD%93%E7%B3%BB.png" alt></p>
+</li>
+<li><p>零售行业<br><img src="%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%8F%B0%E9%9B%B6%E5%94%AE%E8%A1%8C%E4%B8%9A%E6%95%B0%E6%8D%AE%E4%BD%93%E7%B3%BB.png" alt></p>
+</li>
+<li><p>制造行业<br><img src="%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%8F%B0%E5%88%B6%E9%80%A0%E8%A1%8C%E4%B8%9A%E6%95%B0%E6%8D%AE%E4%BD%93%E7%B3%BB.png" alt></p>
+</li>
+<li><p>传媒行业<br><img src="%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%8F%B0%E4%BC%A0%E5%AA%92%E8%A1%8C%E4%B8%9A%E6%95%B0%E6%8D%AE%E4%BD%93%E7%B3%BB.png" alt></p>
+</li>
+<li><p>检务行业<br><img src="%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%8F%B0%E6%A3%80%E5%8A%A1%E8%A1%8C%E4%B8%9A%E6%95%B0%E6%8D%AE%E4%BD%93%E7%B3%BB.png" alt></p>
+</li>
+</ul>
 <ol>
 <li>贴源数据层ODS<br>对各业务系统数据进行采集、汇聚，尽可能保留原始业务流程数据，与业务系统基本保持一致，仅做简单整合、非结构化数据结构化处理或者增加标识数据日期描述信息，不做深度清洗加工。<br>表名：ODS_系统简称_业务系统表名<br>字段名：与业务系统字段名保持一致，字段类型也尽可能保持一致<br>对于数据量比较大的业务表，采用增量同步的方式，则要同时建立增量表和全量表，增量表命名加后缀：ODS_系统简称_业务系统表名_delta。<br>对于日志、文件等半结构数据，不仅要存储原始数据，还要存储结构化之后的数据。</li>
 </ol>
