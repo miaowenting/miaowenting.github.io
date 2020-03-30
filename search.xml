@@ -11,7 +11,7 @@
   <entry>
     <title><![CDATA[朋友只是人生过客]]></title>
     <url>%2F2020%2F03%2F28%2F%E6%9C%8B%E5%8F%8B%E5%8F%AA%E6%98%AF%E4%BA%BA%E7%94%9F%E8%BF%87%E5%AE%A2%2F</url>
-    <content type="text"><![CDATA[散了很好啊 就是人的每一分钟都在变化所以也要接受别人有变化如果那个人跟你一日为友就终身为友你应该心里很紧张才对 就是怎么啦 我们两个都从此不变化了吗所以 如果有了变化然后人际关系跟着有了变化他（她）是你某一阶段最好的朋友然后他当完了他该当的朋友他就去当别人的朋友了就接受人生的变化是最好的态度 不要轻易去依赖一个人它会成为你的习惯当分别来临时你失去的不是某个人而是某一种精神寄托无论何时何地都要学会独立行走它会让你走的更坦然更处变不惊]]></content>
+    <content type="text"><![CDATA[散了很好啊 就是人的每一分钟都在变化所以也要接受别人有变化 如果那个人跟你一日为友就终身为友你应该心里很紧张才对 就是怎么啦 我们两个都从此不变化了吗所以 如果有了变化然后人际关系跟着有了变化他（她）是你某一阶段最好的朋友然后他当完了他该当的朋友他就去当别人的朋友了就接受人生的变化是最好的态度 不要轻易去依赖一个人它会成为你的习惯当分别来临时你失去的不是某个人而是某一种精神寄托无论何时何地都要学会独立行走它会让你走的更坦然更处变不惊]]></content>
       <categories>
         <category>随笔</category>
       </categories>
@@ -239,10 +239,5 @@
       <categories>
         <category>Flink</category>
       </categories>
-  </entry>
-  <entry>
-    <title><![CDATA[Hello World]]></title>
-    <url>%2F2019%2F09%2F16%2Fhello-world%2F</url>
-    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
   </entry>
 </search>
