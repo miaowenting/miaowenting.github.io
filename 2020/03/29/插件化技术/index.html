@@ -93,7 +93,7 @@
 <meta property="og:image" content="http://yoursite.com/2020/03/29/插件化技术/JDBC%E9%A9%B1%E5%8A%A8%E5%8C%85%E7%9A%84%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B.png">
 <meta property="og:image" content="http://yoursite.com/2020/03/29/插件化技术/MySQL%E7%9A%84SPI%E9%A9%B1%E5%8A%A8%E7%B1%BB.png">
 <meta property="og:image" content="http://yoursite.com/2020/03/29/插件化技术/Oracle%E7%9A%84SPI%E9%A9%B1%E5%8A%A8%E7%B1%BB.png">
-<meta property="og:updated_time" content="2020-04-04T18:13:16.642Z">
+<meta property="og:updated_time" content="2020-04-04T18:57:02.485Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="插件化技术">
 <meta name="twitter:description" content="本文将介绍代码设计中的插件化实现。涉及到的关键技术点 自定义ClassLoader 和 ServiceLoader 。接着，会说下插件化技术的典型应用场景。">
@@ -394,7 +394,7 @@
         <p>本文将介绍代码设计中的插件化实现。涉及到的关键技术点 <code>自定义ClassLoader</code> 和 <code>ServiceLoader</code> 。<br>接着，会说下插件化技术的典型应用场景。</p>
 <a id="more"></a>
 
-<h2 id="ClassLoader"><a href="#ClassLoader" class="headerlink" title="ClassLoader"></a>ClassLoader</h2><h3 id="类加载的过程"><a href="#类加载的过程" class="headerlink" title="类加载的过程"></a>类加载的过程</h3><p>参考：<a href="https://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/09/JVM/#more" target="_blank" rel="noopener">JVM</a> 中关于类的生命周期介绍。</p>
+<h2 id="ClassLoader"><a href="#ClassLoader" class="headerlink" title="ClassLoader"></a>ClassLoader</h2><h3 id="类加载的过程"><a href="#类加载的过程" class="headerlink" title="类加载的过程"></a>类加载的过程</h3><p>参考：<a href="https://miaowenting.gitee.io/miaowenting.gitee.io/2020/02/09/JVM/#more" target="_blank" rel="noopener">JVM</a> 中关于<code>3.2 类的生命周期</code> 介绍。</p>
 <h3 id="显式与隐式加载"><a href="#显式与隐式加载" class="headerlink" title="显式与隐式加载"></a>显式与隐式加载</h3><p>显式：在代码中通过调用 ClassLoader 加载 class 对象，如直接使用 Class.forName(name) 或 this.getClass().getClassLoader().loadClass() 加载 class 对象<br>隐式：通过虚拟机自动加载到内存中，如在加载某个类的 class 文件时，该类的 class 文件中引用了另外一个类的对象，此时额外引用的类将通过 JVM 自动加载到内存中</p>
 <p>一段源程序代码：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">hello</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> b = <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">int</span> c = a + b;</span><br><span class="line">    <span class="keyword">return</span> c;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    System.out.println(hello());</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -520,6 +520,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2020/04/05/Flink源码剖析-Flink-Metrics实现/" rel="prev" title="Flink源码剖析--Flink Metrics实现">
+                Flink源码剖析--Flink Metrics实现 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -597,7 +601,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-count">31</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
