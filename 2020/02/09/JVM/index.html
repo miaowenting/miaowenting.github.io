@@ -107,7 +107,7 @@
 <meta property="og:image" content="http://yoursite.com/2020/02/09/JVM/G1%E7%9A%84%E5%86%85%E5%AD%98%E5%88%86%E5%8C%BA.png">
 <meta property="og:image" content="http://yoursite.com/2020/02/09/JVM/%E7%B1%BB%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png">
 <meta property="og:image" content="http://yoursite.com/2020/02/09/JVM/%E5%87%A0%E7%A7%8D%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%E7%9A%84%E5%B1%82%E6%AC%A1%E5%85%B3%E7%B3%BB.png">
-<meta property="og:updated_time" content="2020-03-30T05:05:34.460Z">
+<meta property="og:updated_time" content="2020-04-04T07:30:51.313Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JVM">
 <meta name="twitter:description" content="本文介绍JVM内存结构、类加载、GC、JVM调优等方面。《深入理解Java虚拟机: JVM高级特性与最佳实践》">
@@ -462,7 +462,7 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">javac demo.java</span><br></pre></td></tr></table></figure>
 
 <p>对class文件反汇编：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">javap demo.class &gt; demo.txt</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">javap -c demo.class &gt; demo.txt</span><br></pre></td></tr></table></figure>
 
 <p>通过文件编译工具来查看demo.txt的内容：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">Compiled from &quot;Demo.java&quot;</span><br><span class="line">public class Demo &#123;</span><br><span class="line">  public Demo();</span><br><span class="line">    Code:</span><br><span class="line">       0: aload_0</span><br><span class="line">       1: invokespecial #1                  // Method java/lang/Object.&quot;&lt;init&gt;&quot;:()V</span><br><span class="line">       4: return</span><br><span class="line"></span><br><span class="line">  static int hello();</span><br><span class="line">    Code:</span><br><span class="line">       0: iconst_1 // 把第一个整型变量推到操作数栈</span><br><span class="line">       1: istore_0 // 让它出栈，并存储到局部变量表</span><br><span class="line">       2: iconst_2</span><br><span class="line">       3: istore_1</span><br><span class="line">       4: iload_0 // 加载第一个数据入操作数栈</span><br><span class="line">       5: iload_1 // 加载第二个数据入操作数栈</span><br><span class="line">       6: iadd // 将两个数相加，结束入操作数栈</span><br><span class="line">       7: istore_2 // 将结果出栈，存到局部变量表</span><br><span class="line">       8: iload_2 // 加载它入操作数栈</span><br><span class="line">       9: ireturn // 返回</span><br><span class="line"></span><br><span class="line">  public static void main(java.lang.String[]);</span><br><span class="line">    Code:</span><br><span class="line">       0: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;</span><br><span class="line">       3: invokestatic  #3                  // Method hello:()I</span><br><span class="line">       6: invokevirtual #4                  // Method java/io/PrintStream.println:(I)V</span><br><span class="line">       9: return</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -620,41 +620,44 @@
 <li>从专有数据库中提取.class文件</li>
 <li>从Java源文件动态编译为.class文件</li>
 </ul>
-<h4 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h4><ol>
+<h4 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h4><p>目的在于确保class文件的字节流中包含的信息符合当前虚拟机的要求，不会危害虚拟机自身安全。</p>
+<ol>
 <li>文件格式验证：验证字节流是否符合Class文件格式的规范，并且能被当前版本的虚拟机处理。</li>
-<li>元数据验证：对字节码描述的信息进行语义分析，以保证其描述的信息符合Java语言规范的要求。是否有父类（除了java.lang.Object都应该有父类），<br>是否继承了被final修饰的类，是否实现了接口中的所有方法。</li>
+<li>元数据验证：对字节码描述的信息进行语义分析，以保证其描述的信息符合Java语言规范的要求。是否有父类（除了java.lang.Object都应该有父类），是否继承了被final修饰的类，是否实现了接口中的所有方法。</li>
 <li>字节码验证：通过数据流和控制流分析，确定程序语义是合法的、符合逻辑的。</li>
 <li>符号引用验证：符号引用中通过字符串描述的全限定名是否能找到对应的类；符号引用中通过字符串描述的全限定名是否能找到对应的类；符号引用中的类、字段、方法的访问性（private、protected、public、default）是否可被当前类访问。符号引用中的类、字段、方法的访问性（private、protected、public、default）是否可被当前类访问。</li>
 </ol>
-<h4 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h4><p>进行内存分配，仅包括类变量（被static修饰的变量），而不包括实例变量。</p>
+<h4 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h4><p>进行内存分配，仅包括类变量（被static修饰的变量），而不包括实例变量。类变量会分配在方法区中，而实例变量是会随着对象一起分配到Java堆中。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> value=<span class="number">123</span>；</span><br></pre></td></tr></table></figure>
 
 <p>变量value在准备阶段过后的初始值为0而不是123，因为这时候尚未开始执行任何Java方法，而把value赋值为123的putstatic指令是程序被编译后，存放于类构造器＜clinit＞()方法之中，所以把value赋值为123的动作将在初始化阶段才会执行。</p>
+<p>而用final修饰的static，在编译的时候就会分配了。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> value=<span class="number">123</span>；</span><br></pre></td></tr></table></figure>
 
 <p>编译时Javac将会为value生成ConstantValue属性，在准备阶段虚拟机就会根据ConstantValue的设置将value赋值为123。</p>
-<h4 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h4><p>解析阶段是虚拟机将常量池内的符号引用替换为直接引用的过程，符号引用在前一章讲解Class文件格式的时候已经出现过多次，在Class文件中它以CONSTANT_Class_info、CONSTANT_Fieldref_info、CONSTANT_Methodref_info等类型的常量出现。</p>
+<h4 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h4><p>解析阶段是虚拟机将常量池内的符号引用替换为直接引用的过程，符号引用在前一章讲解Class文件格式的时候已经出现过多次，在Class文件中它以CONSTANT_Class_info、CONSTANT_Fieldref_info、CONSTANT_Methodref_info等类型的常量出现，就是一组符号来描述目标，可以是任何字面量。而直接引用就是直接指向目标的指针、相对偏移量或一个间接定位到目标的句柄。</p>
 <ol>
 <li>类或接口解析</li>
 <li>字段解析</li>
 <li>类方法解析</li>
 <li>接口方法解析</li>
 </ol>
-<h4 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h4><p>到了初始化阶段，才真正执行类中定义的Java代码。初始化阶段是执行类构造器＜clinit＞()方法的过程。</p>
-<h3 id="类加载器"><a href="#类加载器" class="headerlink" title="类加载器"></a>类加载器</h3><p><img src="%E5%87%A0%E7%A7%8D%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%E7%9A%84%E5%B1%82%E6%AC%A1%E5%85%B3%E7%B3%BB.png" alt></p>
+<h4 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h4><p>到了初始化阶段，才真正执行类中定义的Java代码。初始化阶段是执行类构造器＜clinit＞()方法的过程。类加载的最后阶段，若该类有超类，则对其进行初始化，执行静态初始化器和静态初始化成员变量（如前面只初始化了默认值的static变量将会在这个阶段赋值，成员变量也将被初始化）。</p>
+<h3 id="类加载器"><a href="#类加载器" class="headerlink" title="类加载器"></a>类加载器</h3><p>类加载器的任务是根据一个类的全限定名来读取此类的二进制字节流到JVM中，然后转换为一个与目标类对应的java.lang.Class对象实例。</p>
+<p><img src="%E5%87%A0%E7%A7%8D%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%E7%9A%84%E5%B1%82%E6%AC%A1%E5%85%B3%E7%B3%BB.png" alt></p>
 <p>站在Java虚拟机的角度，只存在两种不同的类加载器: 启动类加载器，是虚拟机自身的一部分；所有其它的类加载器，独立于虚拟机之外，并且全部继承自java.lang.ClassLoader，这些类加载器需要由启动类加载器加载到内存中之后才能去加载器他的类。</p>
 <ul>
 <li>启动类加载器</li>
 </ul>
-<p>负责加载存放在JDK\jre\lib下，或被 -Xbootclasspath参数指定的路径中的，并且能够被虚拟机识别的类库（如rt.jar，所有java.开头的类均被Bootstrap ClassLoader加载）。启动类加载器是无法被Java程序直接引用的。</p>
+<p>负责加载存放在 <code>JDK\jre\lib</code> 下，或被 <code>-Xbootclasspath</code> 参数指定的路径下的，并且能够被虚拟机识别的类库（如rt.jar，所有java.开头的类均被Bootstrap ClassLoader加载）。启动类加载器是无法被Java程序直接引用的，主要加载的是JVM自身需要的类，这个类加载使用C++语言实现的，</p>
 <ul>
 <li>扩展类加载器</li>
 </ul>
-<p>该加载器由sun.misc.Launcher$ExtClassLoader实现，它负责加载JDK\jre\lib\ext目录中，或者由java.ext.dirs系统变量指定的路径中的所有类库（如javax.开头的类），开发者可以直接使用扩展类加载器。</p>
+<p>该加载器由sun.misc.Launcher$ExtClassLoader实现，它负责加载<code>JDK\jre\lib\ext</code>目录中，或者由<code>java.ext.dirs</code>系统变量指定的路径中的所有类库（如javax.开头的类），开发者可以直接使用扩展类加载器。</p>
 <ul>
 <li>应用程序类加载器</li>
 </ul>
-<p>该加载器由sun.misc.Launcher$AppClassLoader实现，它负责加载用户类路径（Classpath）所指定的类，开发者可以直接使用该类加载器，如果应用程序中没有自定义过自己的类加载器，一般情况下这个就是程序中默认的类加载器。</p>
+<p>该加载器由sun.misc.Launcher$AppClassLoader实现，它负责加载用户类路径 <code>java -classpath</code> 或 <code>-Djava.class.path</code>所指定的类库，也就是我们经常用到的classpath路径。开发者可以直接使用该类加载器，如果应用程序中没有自定义过自己的类加载器，一般情况下这个就是程序中默认的类加载器。<br>通过 <code>ClassLoader#getSystemClassLoader()</code> 可以直接获取到该类加载器。</p>
 <p>类加载的几种方式：</p>
 <ol>
 <li>命令行启动应用时由JVM初始化加载</li>
@@ -664,7 +667,7 @@
 </ol>
 <h3 id="双亲委派模型"><a href="#双亲委派模型" class="headerlink" title="双亲委派模型"></a>双亲委派模型</h3><p>如果一个类加载器收到了类加载的请求，它首先不会自己去尝试加载这个类，而是把请求委托给父类加载器去完成，依次向上，因此，所有类加载请求最终都应该被传递到顶层的启动类加载器中，只有当父加载器在它的搜索范围中没有找到所需的类时，即无法完成该加载，子加载器才会尝试自己去加载该类。</p>
 <p>当 AppClassLoader 加载一个class时，它首先不会自己去尝试加载这个类，而是被类加载请求委派给父类加载器 ExtClassLoader 去完成。<br>当 ExtClassLoader 加载一个class时，它首先不会自己去尝试加载这个类，而是被类加载请求委派给父类加载器 BootstrapClassLoader 去完成。<br>如果 BootstrapClassLoader 加载失败，会使用 ExtClassLoader 来尝试加载<br>如果 ExtClassLoader 也加载失败，则会使用 AppClassLoader 来加载，如果 AppClassLoader 也加载失败，则会报出异常 ClassNotFoundException</p>
-<p>双亲委派模型的意义：<br>系统类防止内存中出现多份同样的字节码<br>保证Java程序安全稳定运行</p>
+<p>双亲委派模型的意义：<br>系统类防止内存中出现多份同样的字节码，避免类的重复加载<br>保证Java程序安全稳定运行，Java核心api中定义类型不会被随意替换</p>
 <h2 id="JVM调优"><a href="#JVM调优" class="headerlink" title="JVM调优"></a>JVM调优</h2><h3 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h3><h4 id="jstat：虚拟机统计信息监视工具"><a href="#jstat：虚拟机统计信息监视工具" class="headerlink" title="jstat：虚拟机统计信息监视工具"></a>jstat：虚拟机统计信息监视工具</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">jstat -gcutil pid [interval] [count]</span><br><span class="line"></span><br><span class="line">jstat -gcutil 2764 250 20</span><br></pre></td></tr></table></figure>
 
 <h4 id="jinfo-Java配置信息工具"><a href="#jinfo-Java配置信息工具" class="headerlink" title="jinfo: Java配置信息工具"></a>jinfo: Java配置信息工具</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">jinfo -heap pid</span><br><span class="line"></span><br><span class="line">jinfo -flag CMSInitiatingOccupancyFraction pid : 查询参数值，-XX:CMSInitiatingOccupancyFraction=85</span><br></pre></td></tr></table></figure>
