@@ -107,7 +107,7 @@
 <meta property="og:image" content="http://yoursite.com/2020/02/09/JVM/G1%E7%9A%84%E5%86%85%E5%AD%98%E5%88%86%E5%8C%BA.png">
 <meta property="og:image" content="http://yoursite.com/2020/02/09/JVM/%E7%B1%BB%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png">
 <meta property="og:image" content="http://yoursite.com/2020/02/09/JVM/%E5%87%A0%E7%A7%8D%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%E7%9A%84%E5%B1%82%E6%AC%A1%E5%85%B3%E7%B3%BB.png">
-<meta property="og:updated_time" content="2020-04-04T18:57:02.351Z">
+<meta property="og:updated_time" content="2020-04-05T09:14:13.219Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JVM">
 <meta name="twitter:description" content="本文介绍JVM内存结构、类加载、GC、JVM调优等方面。《深入理解Java虚拟机: JVM高级特性与最佳实践》">
@@ -643,6 +643,15 @@
 <li>接口方法解析</li>
 </ol>
 <h4 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h4><p>到了初始化阶段，才真正执行类中定义的Java代码。初始化阶段是执行类构造器＜clinit＞()方法的过程。类加载的最后阶段，若该类有超类，则对其进行初始化，执行静态初始化器和静态初始化成员变量（如前面只初始化了默认值的static变量将会在这个阶段赋值，成员变量也将被初始化）。</p>
+<p>初始化类中的静态变量，并执行类中的static代码、构造函数。<br>JVM规范严格定义了何时需要对类进行初始化：</p>
+<ul>
+<li>通过new 关键字、反射、clone、反序列化机制实例化对象时</li>
+<li>调用类的静态方法时</li>
+<li>使用类的静态字段或对其赋值时</li>
+<li>通过反射调用类的方法时</li>
+<li>初始化该类的子类时（初始化子类前其父类必须已经被初始化）</li>
+<li>JVM启动时被标记为启动类的类（简单理解为具有main方法的类）</li>
+</ul>
 <h3 id="类加载器"><a href="#类加载器" class="headerlink" title="类加载器"></a>类加载器</h3><p>类加载器的任务是根据一个类的全限定名来读取此类的二进制字节流到JVM中，然后转换为一个与目标类对应的java.lang.Class对象实例。</p>
 <p><img src="%E5%87%A0%E7%A7%8D%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%E7%9A%84%E5%B1%82%E6%AC%A1%E5%85%B3%E7%B3%BB.png" alt></p>
 <p>站在Java虚拟机的角度，只存在两种不同的类加载器: 启动类加载器，是虚拟机自身的一部分；所有其它的类加载器，独立于虚拟机之外，并且全部继承自java.lang.ClassLoader，这些类加载器需要由启动类加载器加载到内存中之后才能去加载器他的类。</p>
