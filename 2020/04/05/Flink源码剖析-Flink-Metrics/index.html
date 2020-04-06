@@ -84,20 +84,20 @@
 <meta name="description" content="本文将详细介绍下Flink中的指标实现，包括自带的指标名和如何自定义指标。还会介绍下现在已经支持的reporter，如jmx、slf4j、influxdb、graphite、prometheus、pushgateway等。最后介绍下flink指标平台化实践。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Flink源码剖析--Flink Metrics实现">
-<meta property="og:url" content="http://yoursite.com/2020/04/05/Flink源码剖析-Flink-Metrics实现/index.html">
+<meta property="og:url" content="http://yoursite.com/2020/04/05/Flink源码剖析-Flink-Metrics/index.html">
 <meta property="og:site_name" content="Matty&#39;s Blog">
 <meta property="og:description" content="本文将详细介绍下Flink中的指标实现，包括自带的指标名和如何自定义指标。还会介绍下现在已经支持的reporter，如jmx、slf4j、influxdb、graphite、prometheus、pushgateway等。最后介绍下flink指标平台化实践。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2020/04/05/Flink源码剖析-Flink-Metrics实现/Metric%E7%B1%BB%E5%9B%BE.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/05/Flink源码剖析-Flink-Metrics实现/MetricConfig%E7%B1%BB%E5%9B%BE.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/05/Flink源码剖析-Flink-Metrics实现/MetricGroup%E7%B1%BB%E5%9B%BE.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/05/Flink源码剖析-Flink-Metrics实现/MetricReporter%E7%B1%BB%E5%9B%BE.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/05/Flink源码剖析-Flink-Metrics实现/InfluxdbReporter%E7%B1%BB%E5%9B%BE.png">
+<meta property="og:image" content="http://yoursite.com/2020/04/05/Flink源码剖析-Flink-Metrics/Metric%E7%B1%BB%E5%9B%BE.png">
+<meta property="og:image" content="http://yoursite.com/2020/04/05/Flink源码剖析-Flink-Metrics/MetricConfig%E7%B1%BB%E5%9B%BE.png">
+<meta property="og:image" content="http://yoursite.com/2020/04/05/Flink源码剖析-Flink-Metrics/MetricGroup%E7%B1%BB%E5%9B%BE.png">
+<meta property="og:image" content="http://yoursite.com/2020/04/05/Flink源码剖析-Flink-Metrics/MetricReporter%E7%B1%BB%E5%9B%BE.png">
+<meta property="og:image" content="http://yoursite.com/2020/04/05/Flink源码剖析-Flink-Metrics/InfluxdbReporter%E7%B1%BB%E5%9B%BE.png">
 <meta property="og:updated_time" content="2020-04-06T07:57:10.446Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Flink源码剖析--Flink Metrics实现">
 <meta name="twitter:description" content="本文将详细介绍下Flink中的指标实现，包括自带的指标名和如何自定义指标。还会介绍下现在已经支持的reporter，如jmx、slf4j、influxdb、graphite、prometheus、pushgateway等。最后介绍下flink指标平台化实践。">
-<meta name="twitter:image" content="http://yoursite.com/2020/04/05/Flink源码剖析-Flink-Metrics实现/Metric%E7%B1%BB%E5%9B%BE.png">
+<meta name="twitter:image" content="http://yoursite.com/2020/04/05/Flink源码剖析-Flink-Metrics/Metric%E7%B1%BB%E5%9B%BE.png">
 
 
 
@@ -127,7 +127,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/04/05/Flink源码剖析-Flink-Metrics实现/">
+  <link rel="canonical" href="http://yoursite.com/2020/04/05/Flink源码剖析-Flink-Metrics/">
 
 
 
@@ -302,7 +302,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/05/Flink源码剖析-Flink-Metrics实现/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/05/Flink源码剖析-Flink-Metrics/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="miaowenting">
