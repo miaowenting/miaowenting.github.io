@@ -104,11 +104,13 @@
 <meta property="og:image" content="http://yoursite.com/2020/04/14/UML/%E6%B3%9B%E5%8C%96%E5%85%B3%E7%B3%BB%E7%A4%BA%E4%BE%8B.png">
 <meta property="og:image" content="http://yoursite.com/2020/04/14/UML/%E5%AE%9E%E7%8E%B0%E5%85%B3%E7%B3%BB%E7%A4%BA%E4%BE%8B.png">
 <meta property="og:image" content="http://yoursite.com/2020/04/14/UML/%E5%85%B3%E8%81%94%E5%85%B3%E7%B3%BB%E7%A4%BA%E4%BE%8B.png">
+<meta property="og:image" content="http://yoursite.com/2020/04/14/UML/%E5%8F%8C%E5%90%91%E5%85%B3%E8%81%94%E5%85%B3%E7%B3%BB%E7%A4%BA%E4%BE%8B.png">
+<meta property="og:image" content="http://yoursite.com/2020/04/14/UML/%E8%87%AA%E5%85%B3%E8%81%94%E5%85%B3%E7%B3%BB%E7%A4%BA%E4%BE%8B.png">
 <meta property="og:image" content="http://yoursite.com/2020/04/14/UML/%E4%BE%9D%E8%B5%96%E5%85%B3%E7%B3%BB%E7%A4%BA%E4%BE%8B.png">
 <meta property="og:image" content="http://yoursite.com/2020/04/14/UML/%E8%81%9A%E5%90%88%E5%85%B3%E7%B3%BB%E7%A4%BA%E4%BE%8B.png">
 <meta property="og:image" content="http://yoursite.com/2020/04/14/UML/%E7%BB%84%E5%90%88%E5%85%B3%E7%B3%BB%E7%A4%BA%E4%BE%8B.png">
 <meta property="og:image" content="http://yoursite.com/2020/04/14/UML/idea%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E7%9A%84UML%E7%B1%BB%E5%9B%BE.png">
-<meta property="og:updated_time" content="2020-04-15T09:00:39.115Z">
+<meta property="og:updated_time" content="2020-04-15T13:04:32.014Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="UML">
 <meta name="twitter:description" content="本文介绍Java开发中的软技能之一，UML图。UML 即统一建模语言，它是一种开放的方法，用于说明、可视化、构建和编写一个正在开发的、面向对象的、软件密集系统的制品的开放方法。UML 展现了一系列最佳工程实践，这些最佳实践在对大规模，复杂系统进行建模方面，特别是在软件架构层次已经被验证有效。我们知道开发一个软件系统，不光只有程序员参与，另外还有分析师、设计师、测试人员等等，为了让不同人能够理解交流">
@@ -496,9 +498,11 @@
 <p><img src="%E5%85%B3%E8%81%94%E5%85%B3%E7%B3%BB%E7%A4%BA%E4%BE%8B.png" alt></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">	<span class="keyword">public</span> Cat pet;</span><br><span class="line">	<span class="keyword">public</span> Head head;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>(1) 单向关联<br>用带箭头的实线表示，箭头指向被引用或被包含的类。</p>
-<p>(2) 双向关联<br>用不带箭头的实线来连接两个类。</p>
-<p>(3) 自关联<br>系统中可能会存在一些类的属性对象类型为该类本身，例如单例模式。</p>
+<p>(1) 单向关联<br>用带箭头的实线表示，箭头指向被引用或被包含的类。上面演示的就是一个单向关联关系。</p>
+<p>(2) 双向关联<br>用不带箭头的实线来连接两个类，所谓的双向关联就是双方各自持有对方类型的成员变量。例如 Customer 类中维护一个 Product[] 数组，表示一个顾客购买了哪些商品；在 Product 类中维护一个 Customer 类型的成员变量表示这个产品被哪个顾客所购买。</p>
+<p><img src="%E5%8F%8C%E5%90%91%E5%85%B3%E8%81%94%E5%85%B3%E7%B3%BB%E7%A4%BA%E4%BE%8B.png" alt></p>
+<p>(3) 自关联<br>系统中可能会存在一些类的属性对象类型为该类本身，例如二叉树中的 TreeNode 定义。</p>
+<p><img src="%E8%87%AA%E5%85%B3%E8%81%94%E5%85%B3%E7%B3%BB%E7%A4%BA%E4%BE%8B.png" alt></p>
 <h4 id="依赖（Dependence）"><a href="#依赖（Dependence）" class="headerlink" title="依赖（Dependence）"></a>依赖（Dependence）</h4><p>就是一个类 A 使用到了另一个类 B ，这种使用关系是具有偶然性的、临时性的、非常弱的，但是类 B 的变化会影响到 A。<br>表现在代码层面，就是类 B 作为参数被类 A 在某个 method 方法中使用。如 Cat 类的 playToy 方法的参数就引用了 Doll 类，因此他们是依赖关系。</p>
 <p><img src="%E4%BE%9D%E8%B5%96%E5%85%B3%E7%B3%BB%E7%A4%BA%E4%BE%8B.png" alt></p>
 <h4 id="聚合（Aggregation）"><a href="#聚合（Aggregation）" class="headerlink" title="聚合（Aggregation）"></a>聚合（Aggregation）</h4><p>聚合关系强调的整体和部分、拥有的关系，即 has-a 的关系，其中部分可以脱离整体而存在，他们可以具有各自的生命周期。<br>如 Doll 类由 Body 和 Cloth 组成，即使失去了 Cloth，Doll 也可以正常存在。<br>表现在代码层面，和关联关系是一致的，只能从语义级别来区分。</p>
