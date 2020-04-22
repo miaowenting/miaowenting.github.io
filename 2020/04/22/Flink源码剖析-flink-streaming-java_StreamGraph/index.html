@@ -83,35 +83,35 @@
 
 <meta name="description" content="本文主要围绕 Flink 源码中 flink-streaming-java 模块。介绍如何使用 DataStream API 进行 Flink 流任务开发，flink-streaming-java 模块中的一些重要类，贯穿着介绍下从 DataStreamAPI 到 StreamGraph 的构建过程。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Flink源码剖析-flink-streaming-java">
-<meta property="og:url" content="http://yoursite.com/2020/04/22/Flink源码剖析-flink-streaming-java/index.html">
+<meta property="og:title" content="Flink源码剖析-flink-streaming-java_StreamGraph">
+<meta property="og:url" content="http://yoursite.com/2020/04/22/Flink源码剖析-flink-streaming-java_StreamGraph/index.html">
 <meta property="og:site_name" content="Matty&#39;s Blog">
 <meta property="og:description" content="本文主要围绕 Flink 源码中 flink-streaming-java 模块。介绍如何使用 DataStream API 进行 Flink 流任务开发，flink-streaming-java 模块中的一些重要类，贯穿着介绍下从 DataStreamAPI 到 StreamGraph 的构建过程。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2020/04/22/Flink源码剖析-flink-streaming-java/DataStream_API%E6%93%8D%E4%BD%9C%E6%A6%82%E8%A7%88.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/22/Flink源码剖析-flink-streaming-java/DataStream%E5%9F%BA%E6%9C%AC%E8%BD%AC%E6%8D%A2.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/22/Flink源码剖析-flink-streaming-java/%E7%89%A9%E7%90%86%E5%88%86%E7%BB%84_global.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/22/Flink源码剖析-flink-streaming-java/%E7%89%A9%E7%90%86%E5%88%86%E7%BB%84_broadcast.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/22/Flink源码剖析-flink-streaming-java/%E7%89%A9%E7%90%86%E5%88%86%E7%BB%84_forward.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/22/Flink源码剖析-flink-streaming-java/%E7%89%A9%E7%90%86%E5%88%86%E7%BB%84_shuffle.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/22/Flink源码剖析-flink-streaming-java/%E7%89%A9%E7%90%86%E5%88%86%E7%BB%84_reblance.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/22/Flink源码剖析-flink-streaming-java/%E7%89%A9%E7%90%86%E5%88%86%E7%BB%84_rescale.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/22/Flink源码剖析-flink-streaming-java/StreamExecutionEnvironment%E5%AD%90%E7%B1%BB.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/22/Flink源码剖析-flink-streaming-java/StreamExecutionEnvironment%E7%B1%BB%E5%9B%BE.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/22/Flink源码剖析-flink-streaming-java/StreamExecutionEnvironment%E7%B1%BB%E4%B8%AD%E7%9A%84%E9%87%8D%E8%A6%81%E5%B1%9E%E6%80%A7%E5%92%8C%E6%96%B9%E6%B3%95.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/22/Flink源码剖析-flink-streaming-java/Transformation%E5%AD%90%E7%B1%BB.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/22/Flink源码剖析-flink-streaming-java/Transformation%E7%B1%BB%E4%B8%AD%E7%9A%84%E9%87%8D%E8%A6%81%E5%B1%9E%E6%80%A7.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/22/Flink源码剖析-flink-streaming-java/DataStream%E5%AD%90%E7%B1%BB.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/22/Flink源码剖析-flink-streaming-java/DataStream%E7%B1%BB%E4%B8%AD%E7%9A%84%E9%87%8D%E8%A6%81%E5%B1%9E%E6%80%A7%E5%92%8C%E6%96%B9%E6%B3%95.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/22/Flink源码剖析-flink-streaming-java/StreamOperator%E5%AD%90%E7%B1%BB.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/22/Flink源码剖析-flink-streaming-java/StreamOperator%E7%B1%BB%E4%B8%AD%E7%9A%84%E9%87%8D%E8%A6%81%E5%B1%9E%E6%80%A7%E5%92%8C%E6%96%B9%E6%B3%95.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/22/Flink源码剖析-flink-streaming-java/Function%E5%AD%90%E7%B1%BB.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/22/Flink源码剖析-flink-streaming-java/DataStream_API%E7%B1%BB%E4%B9%8B%E9%97%B4%E7%9A%84%E5%B1%82%E7%BA%A7%E5%85%B3%E7%B3%BB.png">
-<meta property="og:updated_time" content="2020-04-22T08:59:37.717Z">
+<meta property="og:image" content="http://yoursite.com/2020/04/22/Flink源码剖析-flink-streaming-java_StreamGraph/DataStream_API%E6%93%8D%E4%BD%9C%E6%A6%82%E8%A7%88.png">
+<meta property="og:image" content="http://yoursite.com/2020/04/22/Flink源码剖析-flink-streaming-java_StreamGraph/DataStream%E5%9F%BA%E6%9C%AC%E8%BD%AC%E6%8D%A2.png">
+<meta property="og:image" content="http://yoursite.com/2020/04/22/Flink源码剖析-flink-streaming-java_StreamGraph/%E7%89%A9%E7%90%86%E5%88%86%E7%BB%84_global.png">
+<meta property="og:image" content="http://yoursite.com/2020/04/22/Flink源码剖析-flink-streaming-java_StreamGraph/%E7%89%A9%E7%90%86%E5%88%86%E7%BB%84_broadcast.png">
+<meta property="og:image" content="http://yoursite.com/2020/04/22/Flink源码剖析-flink-streaming-java_StreamGraph/%E7%89%A9%E7%90%86%E5%88%86%E7%BB%84_forward.png">
+<meta property="og:image" content="http://yoursite.com/2020/04/22/Flink源码剖析-flink-streaming-java_StreamGraph/%E7%89%A9%E7%90%86%E5%88%86%E7%BB%84_shuffle.png">
+<meta property="og:image" content="http://yoursite.com/2020/04/22/Flink源码剖析-flink-streaming-java_StreamGraph/%E7%89%A9%E7%90%86%E5%88%86%E7%BB%84_reblance.png">
+<meta property="og:image" content="http://yoursite.com/2020/04/22/Flink源码剖析-flink-streaming-java_StreamGraph/%E7%89%A9%E7%90%86%E5%88%86%E7%BB%84_rescale.png">
+<meta property="og:image" content="http://yoursite.com/2020/04/22/Flink源码剖析-flink-streaming-java_StreamGraph/StreamExecutionEnvironment%E5%AD%90%E7%B1%BB.png">
+<meta property="og:image" content="http://yoursite.com/2020/04/22/Flink源码剖析-flink-streaming-java_StreamGraph/StreamExecutionEnvironment%E7%B1%BB%E5%9B%BE.png">
+<meta property="og:image" content="http://yoursite.com/2020/04/22/Flink源码剖析-flink-streaming-java_StreamGraph/StreamExecutionEnvironment%E7%B1%BB%E4%B8%AD%E7%9A%84%E9%87%8D%E8%A6%81%E5%B1%9E%E6%80%A7%E5%92%8C%E6%96%B9%E6%B3%95.png">
+<meta property="og:image" content="http://yoursite.com/2020/04/22/Flink源码剖析-flink-streaming-java_StreamGraph/Transformation%E5%AD%90%E7%B1%BB.png">
+<meta property="og:image" content="http://yoursite.com/2020/04/22/Flink源码剖析-flink-streaming-java_StreamGraph/Transformation%E7%B1%BB%E4%B8%AD%E7%9A%84%E9%87%8D%E8%A6%81%E5%B1%9E%E6%80%A7.png">
+<meta property="og:image" content="http://yoursite.com/2020/04/22/Flink源码剖析-flink-streaming-java_StreamGraph/DataStream%E5%AD%90%E7%B1%BB.png">
+<meta property="og:image" content="http://yoursite.com/2020/04/22/Flink源码剖析-flink-streaming-java_StreamGraph/DataStream%E7%B1%BB%E4%B8%AD%E7%9A%84%E9%87%8D%E8%A6%81%E5%B1%9E%E6%80%A7%E5%92%8C%E6%96%B9%E6%B3%95.png">
+<meta property="og:image" content="http://yoursite.com/2020/04/22/Flink源码剖析-flink-streaming-java_StreamGraph/StreamOperator%E5%AD%90%E7%B1%BB.png">
+<meta property="og:image" content="http://yoursite.com/2020/04/22/Flink源码剖析-flink-streaming-java_StreamGraph/StreamOperator%E7%B1%BB%E4%B8%AD%E7%9A%84%E9%87%8D%E8%A6%81%E5%B1%9E%E6%80%A7%E5%92%8C%E6%96%B9%E6%B3%95.png">
+<meta property="og:image" content="http://yoursite.com/2020/04/22/Flink源码剖析-flink-streaming-java_StreamGraph/Function%E5%AD%90%E7%B1%BB.png">
+<meta property="og:image" content="http://yoursite.com/2020/04/22/Flink源码剖析-flink-streaming-java_StreamGraph/DataStream_API%E7%B1%BB%E4%B9%8B%E9%97%B4%E7%9A%84%E5%B1%82%E7%BA%A7%E5%85%B3%E7%B3%BB.png">
+<meta property="og:updated_time" content="2020-04-22T16:55:36.437Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Flink源码剖析-flink-streaming-java">
+<meta name="twitter:title" content="Flink源码剖析-flink-streaming-java_StreamGraph">
 <meta name="twitter:description" content="本文主要围绕 Flink 源码中 flink-streaming-java 模块。介绍如何使用 DataStream API 进行 Flink 流任务开发，flink-streaming-java 模块中的一些重要类，贯穿着介绍下从 DataStreamAPI 到 StreamGraph 的构建过程。">
-<meta name="twitter:image" content="http://yoursite.com/2020/04/22/Flink源码剖析-flink-streaming-java/DataStream_API%E6%93%8D%E4%BD%9C%E6%A6%82%E8%A7%88.png">
+<meta name="twitter:image" content="http://yoursite.com/2020/04/22/Flink源码剖析-flink-streaming-java_StreamGraph/DataStream_API%E6%93%8D%E4%BD%9C%E6%A6%82%E8%A7%88.png">
 
 
 
@@ -141,13 +141,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/04/22/Flink源码剖析-flink-streaming-java/">
+  <link rel="canonical" href="http://yoursite.com/2020/04/22/Flink源码剖析-flink-streaming-java_StreamGraph/">
 
 
 
 
 
-  <title>Flink源码剖析-flink-streaming-java | Matty's Blog</title>
+  <title>Flink源码剖析-flink-streaming-java_StreamGraph | Matty's Blog</title>
   
 
 
@@ -316,7 +316,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/22/Flink源码剖析-flink-streaming-java/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/22/Flink源码剖析-flink-streaming-java_StreamGraph/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="miaowenting">
@@ -333,7 +333,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Flink源码剖析-flink-streaming-java</h1>
+          <h1 class="post-title" itemprop="name headline">Flink源码剖析-flink-streaming-java_StreamGraph</h1>
         
 
         <div class="post-meta">
@@ -600,6 +600,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2020/04/22/Flink源码剖析-flink-streaming-java_JobGraph/" rel="prev" title="Flink源码剖析-flink-streaming-java_JobGraph">
+                Flink源码剖析-flink-streaming-java_JobGraph <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -677,7 +681,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">34</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
