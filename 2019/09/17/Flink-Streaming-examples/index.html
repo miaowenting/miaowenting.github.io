@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Matty's Blog" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="本文主要分析下flink源码中flink-examples-streaming模块，为了方便分析，会把代码都拷贝在文中。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flink Streaming examples">
+<meta property="og:url" content="http://yoursite.com/2019/09/17/Flink-Streaming-examples/index.html">
+<meta property="og:site_name" content="Matty&#39;s Blog">
+<meta property="og:description" content="本文主要分析下flink源码中flink-examples-streaming模块，为了方便分析，会把代码都拷贝在文中。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2019/09/17/Flink-Streaming-examples/%E7%AA%97%E5%8F%A3%E5%90%88%E5%B9%B6%E8%BF%87%E7%A8%8B%E7%A4%BA%E4%BE%8B.png">
+<meta property="og:updated_time" content="2020-04-05T09:14:13.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Flink Streaming examples">
+<meta name="twitter:description" content="本文主要分析下flink源码中flink-examples-streaming模块，为了方便分析，会把代码都拷贝在文中。">
+<meta name="twitter:image" content="http://yoursite.com/2019/09/17/Flink-Streaming-examples/%E7%AA%97%E5%8F%A3%E5%90%88%E5%B9%B6%E8%BF%87%E7%A8%8B%E7%A4%BA%E4%BE%8B.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/09/17/Flink-Streaming-examples/">
+
+
+
+
+
+  <title>Flink Streaming examples | Matty's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Matty's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/17/Flink-Streaming-examples/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="miaowenting">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/2.JPG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Matty's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Flink Streaming examples</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-17T14:46:36+08:00">
+                2019-09-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Flink/" itemprop="url" rel="index">
+                    <span itemprop="name">Flink</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>本文主要分析下flink源码中flink-examples-streaming模块，为了方便分析，会把代码都拷贝在文中。</p>
+<a id="more"></a>
+
+<h2 id="wordcount"><a href="#wordcount" class="headerlink" title="wordcount"></a>wordcount</h2><p>实时统计单词数量，每来一个计算一次并输出一次。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WordCount</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// *************************************************************************</span></span><br><span class="line">	<span class="comment">// PROGRAM</span></span><br><span class="line">	<span class="comment">// *************************************************************************</span></span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">final</span> ParameterTool params = ParameterTool.fromArgs(args);</span><br><span class="line">		<span class="keyword">final</span> StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();</span><br><span class="line">		env.getConfig().setGlobalJobParameters(params);</span><br><span class="line">		DataStream&lt;String&gt; text;</span><br><span class="line">		<span class="keyword">if</span> (params.has(<span class="string">"input"</span>)) &#123;</span><br><span class="line">			<span class="comment">// read the text file from given input path</span></span><br><span class="line">			text = env.readTextFile(params.get(<span class="string">"input"</span>));</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="comment">// get default test text data</span></span><br><span class="line">			text = env.fromElements(<span class="keyword">new</span> String[] &#123;</span><br><span class="line">				<span class="string">"miao,She is a programmer"</span>,</span><br><span class="line">				<span class="string">"wu,He is a programmer"</span>,</span><br><span class="line">				<span class="string">"zhao,She is a programmer"</span></span><br><span class="line">			&#125;);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		DataStream&lt;Tuple2&lt;String, Integer&gt;&gt; counts =</span><br><span class="line">			<span class="comment">// split up the lines in pairs (2-tuples) containing: (word,1)</span></span><br><span class="line">			text.flatMap(<span class="keyword">new</span> Tokenizer())</span><br><span class="line">			<span class="comment">// group by the tuple field "0" and sum up tuple field "1"</span></span><br><span class="line">			.keyBy(<span class="number">0</span>).sum(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">		<span class="comment">// emit result</span></span><br><span class="line">		<span class="keyword">if</span> (params.has(<span class="string">"output"</span>)) &#123;</span><br><span class="line">			counts.writeAsText(params.get(<span class="string">"output"</span>));</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			System.out.println(<span class="string">"Printing result to stdout. Use --output to specify output path."</span>);</span><br><span class="line">			counts.print();</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// execute program</span></span><br><span class="line">		env.execute(<span class="string">"Streaming WordCount"</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// *************************************************************************</span></span><br><span class="line">	<span class="comment">// USER FUNCTIONS</span></span><br><span class="line">	<span class="comment">// *************************************************************************</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">Tokenizer</span> <span class="keyword">implements</span> <span class="title">FlatMapFunction</span>&lt;<span class="title">String</span>, <span class="title">Tuple2</span>&lt;<span class="title">String</span>, <span class="title">Integer</span>&gt;&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">		<span class="meta">@Override</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">flatMap</span><span class="params">(String value, Collector&lt;Tuple2&lt;String, Integer&gt;&gt; out)</span> </span>&#123;</span><br><span class="line">			<span class="comment">// normalize and split the line</span></span><br><span class="line">			String[] tokens = value.toLowerCase().split(<span class="string">"\\W+"</span>);</span><br><span class="line"></span><br><span class="line">			<span class="comment">// emit the pairs</span></span><br><span class="line">			<span class="keyword">for</span> (String token : tokens) &#123;</span><br><span class="line">				<span class="keyword">if</span> (token.length() &gt; <span class="number">0</span>) &#123;</span><br><span class="line">					out.collect(<span class="keyword">new</span> Tuple2&lt;&gt;(token, <span class="number">1</span>));</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出的结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">5&gt; (miao,1)</span><br><span class="line">6&gt; (a,1)</span><br><span class="line">8&gt; (wu,1)</span><br><span class="line">4&gt; (programmer,1)</span><br><span class="line">6&gt; (zhao,1)</span><br><span class="line">2&gt; (he,1)</span><br><span class="line">3&gt; (she,1)</span><br><span class="line">8&gt; (is,1)</span><br><span class="line">4&gt; (programmer,2)</span><br><span class="line">6&gt; (a,2)</span><br><span class="line">6&gt; (a,3)</span><br><span class="line">3&gt; (she,2)</span><br><span class="line">8&gt; (is,2)</span><br><span class="line">4&gt; (programmer,3)</span><br><span class="line">8&gt; (is,3)</span><br></pre></td></tr></table></figure>
+
+<h2 id="socket"><a href="#socket" class="headerlink" title="socket"></a>socket</h2><p>监听socket端口输入的单词，进行单词统计。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SocketWindowWordCount</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// the host and the port to connect to</span></span><br><span class="line">		<span class="keyword">final</span> String hostname;</span><br><span class="line">		<span class="keyword">final</span> <span class="keyword">int</span> port;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="keyword">final</span> ParameterTool params = ParameterTool.fromArgs(args);</span><br><span class="line">			hostname = params.has(<span class="string">"hostname"</span>) ? params.get(<span class="string">"hostname"</span>) : <span class="string">"localhost"</span>;</span><br><span class="line">			port = <span class="number">9999</span>;</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">final</span> StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();</span><br><span class="line"></span><br><span class="line">		<span class="comment">// get input data by connecting to the socket</span></span><br><span class="line">		<span class="comment">// 数据来源是从socket读取，元素可以用分隔符切分</span></span><br><span class="line">		DataStream&lt;String&gt; text = env.socketTextStream(hostname, port, <span class="string">"\n"</span>);</span><br><span class="line"></span><br><span class="line">		<span class="comment">// parse the data, group it, window it, and aggregate the counts</span></span><br><span class="line">		DataStream&lt;WordWithCount&gt; windowCounts = text</span><br><span class="line"></span><br><span class="line">			.flatMap(<span class="keyword">new</span> FlatMapFunction&lt;String, WordWithCount&gt;() &#123;</span><br><span class="line">				<span class="meta">@Override</span></span><br><span class="line">				<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">flatMap</span><span class="params">(String value, Collector&lt;WordWithCount&gt; out)</span> </span>&#123;</span><br><span class="line">					<span class="keyword">for</span> (String word : value.split(<span class="string">"\\s"</span>)) &#123;</span><br><span class="line">						out.collect(<span class="keyword">new</span> WordWithCount(word, <span class="number">1L</span>));</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;)</span><br><span class="line"></span><br><span class="line">			.keyBy(<span class="string">"word"</span>)</span><br><span class="line">			.timeWindow(Time.seconds(<span class="number">10</span>))</span><br><span class="line"></span><br><span class="line">			.reduce(<span class="keyword">new</span> ReduceFunction&lt;WordWithCount&gt;() &#123;</span><br><span class="line">				<span class="comment">// 统计单词个数</span></span><br><span class="line">				<span class="comment">// reduce返回单个的结果值，并且reduce每处理一个元素总是创建一个新值。常用的average,sum,min,max,count,使用reduce方法都可以实现</span></span><br><span class="line">				<span class="meta">@Override</span></span><br><span class="line">				<span class="function"><span class="keyword">public</span> WordWithCount <span class="title">reduce</span><span class="params">(WordWithCount a, WordWithCount b)</span> </span>&#123;</span><br><span class="line">					<span class="keyword">return</span> <span class="keyword">new</span> WordWithCount(a.word, a.count + b.count);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;);</span><br><span class="line"></span><br><span class="line">		<span class="comment">// print the results with a single thread, rather than in parallel</span></span><br><span class="line">		windowCounts.print().setParallelism(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">		env.execute(<span class="string">"Socket Window WordCount"</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// ------------------------------------------------------------------------</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * Data type for words with count.</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">WordWithCount</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">public</span> String word;</span><br><span class="line">		<span class="keyword">public</span> <span class="keyword">long</span> count;</span><br><span class="line"></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="title">WordWithCount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="title">WordWithCount</span><span class="params">(String word, <span class="keyword">long</span> count)</span> </span>&#123;</span><br><span class="line">			<span class="keyword">this</span>.word = word;</span><br><span class="line">			<span class="keyword">this</span>.count = count;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="meta">@Override</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">			<span class="keyword">return</span> word + <span class="string">" : "</span> + count;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>本机启用监听端口：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -l 9999</span><br></pre></td></tr></table></figure>
+
+<p>socket监听端口输入以下内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">miao she is a programmer</span><br><span class="line">wu he is a programmer</span><br><span class="line">zhao she is a programmer</span><br></pre></td></tr></table></figure>
+
+<p>输出的结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">she : 2</span><br><span class="line">programmer : 3</span><br><span class="line">he : 1</span><br><span class="line">a : 3</span><br><span class="line">zhao : 1</span><br><span class="line">miao : 1</span><br><span class="line">wu : 1</span><br><span class="line">is : 3</span><br></pre></td></tr></table></figure>
+
+<h2 id="async"><a href="#async" class="headerlink" title="async"></a>async</h2><p>主要通过以下示例了解下AsyncFunction作用到DataStream上的使用方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AsyncIOExample</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Logger LOG = LoggerFactory.getLogger(AsyncIOExample.class);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String EXACTLY_ONCE_MODE = <span class="string">"exactly_once"</span>;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String EVENT_TIME = <span class="string">"EventTime"</span>;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String INGESTION_TIME = <span class="string">"IngestionTime"</span>;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String ORDERED = <span class="string">"ordered"</span>;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// obtain execution environment</span></span><br><span class="line">		StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();</span><br><span class="line"></span><br><span class="line">		<span class="comment">// parse parameters</span></span><br><span class="line">		<span class="keyword">final</span> ParameterTool params = ParameterTool.fromArgs(args);</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 状态存放路径</span></span><br><span class="line">		<span class="keyword">final</span> String statePath;</span><br><span class="line">		<span class="comment">// checkpoint模式</span></span><br><span class="line">		<span class="keyword">final</span> String cpMode;</span><br><span class="line">		<span class="comment">// source生成的最大值</span></span><br><span class="line">		<span class="keyword">final</span> <span class="keyword">int</span> maxCount;</span><br><span class="line">		<span class="comment">// RichAsyncFunction 中 线程休眠的因子</span></span><br><span class="line">		<span class="keyword">final</span> <span class="keyword">long</span> sleepFactor;</span><br><span class="line">		<span class="comment">// 模拟RichAsyncFunction出错的概率因子</span></span><br><span class="line">		<span class="keyword">final</span> <span class="keyword">float</span> failRatio;</span><br><span class="line">		<span class="comment">// 标志RichAsyncFunction 中的消息是有序还是无序的</span></span><br><span class="line">		<span class="keyword">final</span> String mode;</span><br><span class="line">		<span class="comment">// 设置任务的并行度</span></span><br><span class="line">		<span class="keyword">final</span> <span class="keyword">int</span> taskNum;</span><br><span class="line">		<span class="comment">// 使用的Flink时间类型</span></span><br><span class="line">		<span class="keyword">final</span> String timeType;</span><br><span class="line">		<span class="comment">// 优雅停止RichAsyncFunction中线程池的等待毫秒数</span></span><br><span class="line">		<span class="keyword">final</span> <span class="keyword">long</span> shutdownWaitTS;</span><br><span class="line">		<span class="comment">// RichAsyncFunction中执行异步操作的超时时间</span></span><br><span class="line">		<span class="keyword">final</span> <span class="keyword">long</span> timeout;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="comment">// check the configuration for the job</span></span><br><span class="line">			statePath = params.get(<span class="string">"fsStatePath"</span>, <span class="keyword">null</span>);</span><br><span class="line">			cpMode = params.get(<span class="string">"checkpointMode"</span>, <span class="string">"exactly_once"</span>);</span><br><span class="line">			maxCount = params.getInt(<span class="string">"maxCount"</span>, <span class="number">100000</span>);</span><br><span class="line">			sleepFactor = params.getLong(<span class="string">"sleepFactor"</span>, <span class="number">100</span>);</span><br><span class="line">			failRatio = params.getFloat(<span class="string">"failRatio"</span>, <span class="number">0.001f</span>);</span><br><span class="line"><span class="comment">//			failRatio = params.getFloat("failRatio", 0.5f);</span></span><br><span class="line">			mode = params.get(<span class="string">"waitMode"</span>, <span class="string">"ordered"</span>);</span><br><span class="line">			taskNum = params.getInt(<span class="string">"waitOperatorParallelism"</span>, <span class="number">1</span>);</span><br><span class="line">			timeType = params.get(<span class="string">"eventType"</span>, <span class="string">"EventTime"</span>);</span><br><span class="line">			shutdownWaitTS = params.getLong(<span class="string">"shutdownWaitTS"</span>, <span class="number">20000</span>);</span><br><span class="line">			timeout = params.getLong(<span class="string">"timeout"</span>, <span class="number">10000L</span>);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			printUsage();</span><br><span class="line"></span><br><span class="line">			<span class="keyword">throw</span> e;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		StringBuilder configStringBuilder = <span class="keyword">new</span> StringBuilder();</span><br><span class="line"></span><br><span class="line">		<span class="keyword">final</span> String lineSeparator = System.getProperty(<span class="string">"line.separator"</span>);</span><br><span class="line"></span><br><span class="line">		configStringBuilder</span><br><span class="line">			.append(<span class="string">"Job configuration"</span>).append(lineSeparator)</span><br><span class="line">			.append(<span class="string">"FS state path="</span>).append(statePath).append(lineSeparator)</span><br><span class="line">			.append(<span class="string">"Checkpoint mode="</span>).append(cpMode).append(lineSeparator)</span><br><span class="line">			.append(<span class="string">"Max count of input from source="</span>).append(maxCount).append(lineSeparator)</span><br><span class="line">			.append(<span class="string">"Sleep factor="</span>).append(sleepFactor).append(lineSeparator)</span><br><span class="line">			.append(<span class="string">"Fail ratio="</span>).append(failRatio).append(lineSeparator)</span><br><span class="line">			.append(<span class="string">"Waiting mode="</span>).append(mode).append(lineSeparator)</span><br><span class="line">			.append(<span class="string">"Parallelism for async wait operator="</span>).append(taskNum).append(lineSeparator)</span><br><span class="line">			.append(<span class="string">"Event type="</span>).append(timeType).append(lineSeparator)</span><br><span class="line">			.append(<span class="string">"Shutdown wait timestamp="</span>).append(shutdownWaitTS);</span><br><span class="line"></span><br><span class="line">		LOG.info(configStringBuilder.toString());</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> (statePath != <span class="keyword">null</span>) &#123;</span><br><span class="line">			<span class="comment">// setup state and checkpoint mode</span></span><br><span class="line">			env.setStateBackend(<span class="keyword">new</span> FsStateBackend(statePath));</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> (EXACTLY_ONCE_MODE.equals(cpMode)) &#123;</span><br><span class="line">			<span class="comment">// 生成checkpoint的默认间隔是1s</span></span><br><span class="line">			env.enableCheckpointing(<span class="number">1000L</span>, CheckpointingMode.EXACTLY_ONCE);</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			env.enableCheckpointing(<span class="number">1000L</span>, CheckpointingMode.AT_LEAST_ONCE);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// enable watermark or not</span></span><br><span class="line">		<span class="keyword">if</span> (EVENT_TIME.equals(timeType)) &#123;</span><br><span class="line">			env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime);</span><br><span class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span> (INGESTION_TIME.equals(timeType)) &#123;</span><br><span class="line">			env.setStreamTimeCharacteristic(TimeCharacteristic.IngestionTime);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 创建一个数据源</span></span><br><span class="line">		<span class="comment">// create input stream of an single integer</span></span><br><span class="line">		DataStream&lt;Integer&gt; inputStream = env.addSource(<span class="keyword">new</span> SimpleSource(maxCount));</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 创建async函数，通过等待来模拟异步i/o的过程</span></span><br><span class="line">		<span class="comment">// create async function, which will *wait* for a while to simulate the process of async i/o</span></span><br><span class="line">		AsyncFunction&lt;Integer, String&gt; function =</span><br><span class="line">			<span class="keyword">new</span> SampleAsyncFunction(sleepFactor, failRatio, shutdownWaitTS);</span><br><span class="line"></span><br><span class="line">		<span class="comment">// add async operator to streaming job</span></span><br><span class="line">		DataStream&lt;String&gt; result;</span><br><span class="line">		<span class="keyword">if</span> (ORDERED.equals(mode)) &#123;</span><br><span class="line">			result = AsyncDataStream.orderedWait(</span><br><span class="line">				inputStream,</span><br><span class="line">				function,</span><br><span class="line">				timeout,</span><br><span class="line">				TimeUnit.MILLISECONDS,</span><br><span class="line">				<span class="number">20</span>).setParallelism(taskNum);</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			result = AsyncDataStream.unorderedWait(</span><br><span class="line">				inputStream,</span><br><span class="line">				function,</span><br><span class="line">				timeout,</span><br><span class="line">				TimeUnit.MILLISECONDS,</span><br><span class="line">				<span class="number">20</span>).setParallelism(taskNum);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// add a reduce to get the sum of each keys.</span></span><br><span class="line">		<span class="comment">// 统计 key-&gt; 源头数据除以10的余数，分别对应的个数</span></span><br><span class="line">		result.flatMap(<span class="keyword">new</span> FlatMapFunction&lt;String, Tuple2&lt;String, Integer&gt;&gt;() &#123;</span><br><span class="line">			<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = -<span class="number">938116068682344455L</span>;</span><br><span class="line"></span><br><span class="line">			<span class="meta">@Override</span></span><br><span class="line">			<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">flatMap</span><span class="params">(String value, Collector&lt;Tuple2&lt;String, Integer&gt;&gt; out)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">				out.collect(<span class="keyword">new</span> Tuple2&lt;&gt;(value, <span class="number">1</span>));</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;).keyBy(<span class="number">0</span>).sum(<span class="number">1</span>).print();</span><br><span class="line"></span><br><span class="line">		<span class="comment">// execute the program</span></span><br><span class="line">		env.execute(<span class="string">"Async IO Example"</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * A checkpointed source.</span></span><br><span class="line"><span class="comment">	 * 具体功能：一个数据流 -&gt; 不断发送一个从0递增的整数</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">SimpleSource</span> <span class="keyword">implements</span> <span class="title">SourceFunction</span>&lt;<span class="title">Integer</span>&gt;, <span class="title">ListCheckpointed</span>&lt;<span class="title">Integer</span>&gt; </span>&#123;</span><br><span class="line">		<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">1L</span>;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">boolean</span> isRunning = <span class="keyword">true</span>;</span><br><span class="line">		<span class="comment">/**</span></span><br><span class="line"><span class="comment">		 * 计数器</span></span><br><span class="line"><span class="comment">		 */</span></span><br><span class="line">		<span class="keyword">private</span> <span class="keyword">int</span> counter = <span class="number">0</span>;</span><br><span class="line">		<span class="comment">/**</span></span><br><span class="line"><span class="comment">		 * 起始值</span></span><br><span class="line"><span class="comment">		 */</span></span><br><span class="line">		<span class="keyword">private</span> <span class="keyword">int</span> start = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">		<span class="comment">/**</span></span><br><span class="line"><span class="comment">		 * 储存快照状态：每次作业执行成功之后，会保存成功的上一条数据的状态，也就是start的值</span></span><br><span class="line"><span class="comment">		 */</span></span><br><span class="line">		<span class="meta">@Override</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">snapshotState</span><span class="params">(<span class="keyword">long</span> checkpointId, <span class="keyword">long</span> timestamp)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">			<span class="keyword">return</span> Collections.singletonList(start);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">/**</span></span><br><span class="line"><span class="comment">		 * 当执行到某个作业流发生异常时，Flink会调用次方法，将状态还原到上一次的成功checkpoint的那个状态点</span></span><br><span class="line"><span class="comment">		 */</span></span><br><span class="line">		<span class="meta">@Override</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">restoreState</span><span class="params">(List&lt;Integer&gt; state)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">			<span class="comment">// 找到最新的一次checkpoint成功时start的值</span></span><br><span class="line">			<span class="keyword">for</span> (Integer i : state) &#123;</span><br><span class="line">				<span class="keyword">this</span>.start = i;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="title">SimpleSource</span><span class="params">(<span class="keyword">int</span> maxNum)</span> </span>&#123;</span><br><span class="line">			<span class="keyword">this</span>.counter = maxNum;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="meta">@Override</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">(SourceContext&lt;Integer&gt; ctx)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">			<span class="keyword">while</span> ((start &lt; counter || counter == -<span class="number">1</span>) &amp;&amp; isRunning) &#123;</span><br><span class="line">				<span class="keyword">synchronized</span> (ctx.getCheckpointLock()) &#123;</span><br><span class="line">					ctx.collect(start);</span><br><span class="line">					++start;</span><br><span class="line"></span><br><span class="line">					<span class="comment">// loop back to 0</span></span><br><span class="line">					<span class="keyword">if</span> (start == Integer.MAX_VALUE) &#123;</span><br><span class="line">						start = <span class="number">0</span>;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">				Thread.sleep(<span class="number">10L</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="meta">@Override</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">cancel</span><span class="params">()</span> </span>&#123;</span><br><span class="line">			isRunning = <span class="keyword">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * An sample of &#123;<span class="doctag">@link</span> AsyncFunction&#125; using a thread pool and executing working threads</span></span><br><span class="line"><span class="comment">	 * to simulate multiple async operations.</span></span><br><span class="line"><span class="comment">	 *</span></span><br><span class="line"><span class="comment">	 * &lt;p&gt;For the real use case in production environment, the thread pool may stay in the</span></span><br><span class="line"><span class="comment">	 * async client.</span></span><br><span class="line"><span class="comment">	 *</span></span><br><span class="line"><span class="comment">	 * 一个异步函数示例：用线程池模拟多个异步操作</span></span><br><span class="line"><span class="comment">	 * 具体功能：处理流任务的异步函数</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">SampleAsyncFunction</span> <span class="keyword">extends</span> <span class="title">RichAsyncFunction</span>&lt;<span class="title">Integer</span>, <span class="title">String</span>&gt; </span>&#123;</span><br><span class="line">		<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">2098635244857937717L</span>;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">private</span> <span class="keyword">transient</span> ExecutorService executorService;</span><br><span class="line"></span><br><span class="line">		<span class="comment">/**</span></span><br><span class="line"><span class="comment">		 * The result of multiplying sleepFactor with a random float is used to pause</span></span><br><span class="line"><span class="comment">		 * the working thread in the thread pool, simulating a time consuming async operation.</span></span><br><span class="line"><span class="comment">		 * 模拟耗时的异步操作用的：就是假装这个异步操作很耗时，耗时时长为sleepFactor</span></span><br><span class="line"><span class="comment">		 */</span></span><br><span class="line">		<span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">long</span> sleepFactor;</span><br><span class="line"></span><br><span class="line">		<span class="comment">/**</span></span><br><span class="line"><span class="comment">		 * The ratio to generate an exception to simulate an async error. For example, the error</span></span><br><span class="line"><span class="comment">		 * may be a TimeoutException while visiting HBase.</span></span><br><span class="line"><span class="comment">		 * 模拟异步操作出现了异常：就是假装我的流任务的异步操作出现异常啦~ 会报错：Exception : wahahaha...</span></span><br><span class="line"><span class="comment">		 */</span></span><br><span class="line">		<span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">float</span> failRatio;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">long</span> shutdownWaitTS;</span><br><span class="line"></span><br><span class="line">		SampleAsyncFunction(<span class="keyword">long</span> sleepFactor, <span class="keyword">float</span> failRatio, <span class="keyword">long</span> shutdownWaitTS) &#123;</span><br><span class="line">			<span class="keyword">this</span>.sleepFactor = sleepFactor;</span><br><span class="line">			<span class="keyword">this</span>.failRatio = failRatio;</span><br><span class="line">			<span class="keyword">this</span>.shutdownWaitTS = shutdownWaitTS;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="meta">@Override</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">open</span><span class="params">(Configuration parameters)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">			<span class="keyword">super</span>.open(parameters);</span><br><span class="line"></span><br><span class="line">			executorService = Executors.newFixedThreadPool(<span class="number">30</span>);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="meta">@Override</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">close</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">			<span class="keyword">super</span>.close();</span><br><span class="line">			ExecutorUtils.gracefulShutdown(shutdownWaitTS, TimeUnit.MILLISECONDS, executorService);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">/**</span></span><br><span class="line"><span class="comment">		 * 真正执行异步IO的方法</span></span><br><span class="line"><span class="comment">		 * 这里用线程池模拟 source支持异步发送数据流</span></span><br><span class="line"><span class="comment">		 */</span></span><br><span class="line">		<span class="meta">@Override</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">asyncInvoke</span><span class="params">(<span class="keyword">final</span> Integer input, <span class="keyword">final</span> ResultFuture&lt;String&gt; resultFuture)</span> </span>&#123;</span><br><span class="line">			executorService.submit(() -&gt; &#123;</span><br><span class="line">				<span class="comment">// wait for while to simulate async operation here</span></span><br><span class="line">				<span class="comment">// 模拟元素的操作时长：就是这个元素与外部系统交互的时长，然后sleep这么长的时间</span></span><br><span class="line">				<span class="keyword">long</span> sleep = (<span class="keyword">long</span>) (ThreadLocalRandom.current().nextFloat() * sleepFactor);</span><br><span class="line">				<span class="keyword">try</span> &#123;</span><br><span class="line">					Thread.sleep(sleep);</span><br><span class="line"></span><br><span class="line">					<span class="keyword">if</span> (ThreadLocalRandom.current().nextFloat() &lt; failRatio) &#123;</span><br><span class="line">						<span class="comment">// 模拟触发异常：就是与外部系统交互时，假装出错发出了一个异常，此处可以查看日志，观察flink如何checkpoint恢复</span></span><br><span class="line">						<span class="comment">// restart-strategy.fixed-delay.attempts 默认为3，重启3次</span></span><br><span class="line">						resultFuture.completeExceptionally(<span class="keyword">new</span> Exception(<span class="string">"wahahahaha..."</span>));</span><br><span class="line">					&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">						<span class="comment">// 根据输入的input/10的余数生成key</span></span><br><span class="line">						resultFuture.complete(</span><br><span class="line">							Collections.singletonList(<span class="string">"key-"</span> + (input % <span class="number">10</span>)));</span><br><span class="line">					&#125;</span><br><span class="line">				&#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">					resultFuture.complete(<span class="keyword">new</span> ArrayList&lt;&gt;(<span class="number">0</span>));</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="iteration"><a href="#iteration" class="headerlink" title="iteration"></a>iteration</h2><p>本示例为输入int值键值对，迭代计算斐波那契数列值大于100时需要计算的步长。</p>
+<p>斐波那契数列：<br>F(n) = F(n-1) + F(n-2)</p>
+<p>假设初始键值对为(34,11)，则产生的斐波那契数列为：34,11,45,56,101<br>经过本代码运行的结果应该是((34,11),3)，需要经历3步长，即累加3次才能使得数列值101 &gt; 100，才能打到output流中</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IterateExample</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> BOUND = <span class="number">100</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// *************************************************************************</span></span><br><span class="line">	<span class="comment">// PROGRAM</span></span><br><span class="line">	<span class="comment">// *************************************************************************</span></span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">final</span> ParameterTool params = ParameterTool.fromArgs(args);</span><br><span class="line">		<span class="comment">// obtain execution environment and set setBufferTimeout to 1 to enable</span></span><br><span class="line">		<span class="comment">// continuous flushing of the output buffers (lowest latency)</span></span><br><span class="line">		StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment()</span><br><span class="line">			.setBufferTimeout(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">		<span class="comment">// make parameters available in the web interface</span></span><br><span class="line">		env.getConfig().setGlobalJobParameters(params);</span><br><span class="line"></span><br><span class="line">		<span class="comment">// create input stream of integer pairs</span></span><br><span class="line">		DataStream&lt;Tuple2&lt;Integer, Integer&gt;&gt; inputStream;</span><br><span class="line">		<span class="keyword">if</span> (params.has(<span class="string">"input"</span>)) &#123;</span><br><span class="line">			inputStream = env.readTextFile(params.get(<span class="string">"input"</span>)).map(<span class="keyword">new</span> FibonacciInputMap());</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			inputStream = env.addSource(<span class="keyword">new</span> RandomFibonacciSource());</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// create an iterative data stream from the input with 5 second timeout</span></span><br><span class="line">		<span class="comment">// 经过InputMap() 将Tuple2 转成 Tuple5</span></span><br><span class="line">		<span class="comment">// 指定等待反馈输入的最大时间间隔，如果超过该时间间隔没有反馈元素到来，那么该迭代将会终止</span></span><br><span class="line">		IterativeStream&lt;Tuple5&lt;Integer, Integer, Integer, Integer, Integer&gt;&gt; it = inputStream.map(<span class="keyword">new</span> InputMap())</span><br><span class="line">			.iterate(<span class="number">5000</span>);</span><br><span class="line"></span><br><span class="line">		<span class="comment">// apply the step function to get the next Fibonacci number</span></span><br><span class="line">		<span class="comment">// increment the counter and split the output with the output selector</span></span><br><span class="line">		<span class="comment">// 再经过Step()步函数 获取下一个斐波那契数</span></span><br><span class="line">		<span class="comment">// 并进行分流</span></span><br><span class="line">		SplitStream&lt;Tuple5&lt;Integer, Integer, Integer, Integer, Integer&gt;&gt; step = it.map(<span class="keyword">new</span> Step())</span><br><span class="line">			.split(<span class="keyword">new</span> MySelector());</span><br><span class="line"></span><br><span class="line">		<span class="comment">// close the iteration by selecting the tuples that were directed to the</span></span><br><span class="line">		<span class="comment">// 'iterate' channel in the output selector</span></span><br><span class="line">		it.closeWith(step.select(<span class="string">"iterate"</span>));</span><br><span class="line"></span><br><span class="line">		<span class="comment">// to produce the final output select the tuples directed to the</span></span><br><span class="line">		<span class="comment">// 'output' channel then get the input pairs that have the greatest iteration counter</span></span><br><span class="line">		<span class="comment">// on a 1 second sliding window</span></span><br><span class="line">		DataStream&lt;Tuple2&lt;Tuple2&lt;Integer, Integer&gt;, Integer&gt;&gt; numbers = step.select(<span class="string">"output"</span>)</span><br><span class="line">			.map(<span class="keyword">new</span> OutputMap());</span><br><span class="line"></span><br><span class="line">		<span class="comment">// emit results</span></span><br><span class="line">		<span class="keyword">if</span> (params.has(<span class="string">"output"</span>)) &#123;</span><br><span class="line">			numbers.writeAsText(params.get(<span class="string">"output"</span>));</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			System.out.println(<span class="string">"Printing result to stdout. Use --output to specify output path."</span>);</span><br><span class="line">			numbers.print();</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">long</span> startTime = System.currentTimeMillis();</span><br><span class="line">		System.out.println(<span class="string">"Start time: "</span> + startTime);</span><br><span class="line">		<span class="comment">// execute the program</span></span><br><span class="line">		env.execute(<span class="string">"Streaming Iteration Example"</span>);</span><br><span class="line">		System.out.println(<span class="string">"Spent time: "</span> + (System.currentTimeMillis() - startTime));</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// *************************************************************************</span></span><br><span class="line">	<span class="comment">// USER FUNCTIONS</span></span><br><span class="line">	<span class="comment">// *************************************************************************</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * Generate BOUND number of random integer pairs from the range from 1 to BOUND/2.</span></span><br><span class="line"><span class="comment">	 * 随机生成Integer键值对的source</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">RandomFibonacciSource</span> <span class="keyword">implements</span> <span class="title">SourceFunction</span>&lt;<span class="title">Tuple2</span>&lt;<span class="title">Integer</span>, <span class="title">Integer</span>&gt;&gt; </span>&#123;</span><br><span class="line">		<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">1L</span>;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">private</span> Random rnd = <span class="keyword">new</span> Random();</span><br><span class="line"></span><br><span class="line">		<span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">boolean</span> isRunning = <span class="keyword">true</span>;</span><br><span class="line">		<span class="keyword">private</span> <span class="keyword">int</span> counter = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">		<span class="meta">@Override</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">(SourceContext&lt;Tuple2&lt;Integer, Integer&gt;&gt; ctx)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line"></span><br><span class="line">			<span class="keyword">while</span> (isRunning &amp;&amp; counter &lt; BOUND) &#123;</span><br><span class="line">				<span class="keyword">int</span> first = rnd.nextInt(BOUND / <span class="number">2</span> - <span class="number">1</span>) + <span class="number">1</span>;</span><br><span class="line">				<span class="keyword">int</span> second = rnd.nextInt(BOUND / <span class="number">2</span> - <span class="number">1</span>) + <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">				ctx.collect(<span class="keyword">new</span> Tuple2&lt;&gt;(first, second));</span><br><span class="line">				counter++;</span><br><span class="line">				Thread.sleep(<span class="number">50L</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="meta">@Override</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">cancel</span><span class="params">()</span> </span>&#123;</span><br><span class="line">			isRunning = <span class="keyword">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * Generate random integer pairs from the range from 0 to BOUND/2.</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">FibonacciInputMap</span> <span class="keyword">implements</span> <span class="title">MapFunction</span>&lt;<span class="title">String</span>, <span class="title">Tuple2</span>&lt;<span class="title">Integer</span>, <span class="title">Integer</span>&gt;&gt; </span>&#123;</span><br><span class="line">		<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">1L</span>;</span><br><span class="line"></span><br><span class="line">		<span class="meta">@Override</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> Tuple2&lt;Integer, Integer&gt; <span class="title">map</span><span class="params">(String value)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">			String record = value.substring(<span class="number">1</span>, value.length() - <span class="number">1</span>);</span><br><span class="line">			String[] splitted = record.split(<span class="string">","</span>);</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">new</span> Tuple2&lt;&gt;(Integer.parseInt(splitted[<span class="number">0</span>]), Integer.parseInt(splitted[<span class="number">1</span>]));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * Map the inputs so that the next Fibonacci numbers can be calculated while preserving the original input tuple.</span></span><br><span class="line"><span class="comment">	 * A counter is attached to the tuple and incremented in every iteration step.</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">InputMap</span> <span class="keyword">implements</span> <span class="title">MapFunction</span>&lt;<span class="title">Tuple2</span>&lt;<span class="title">Integer</span>, <span class="title">Integer</span>&gt;, <span class="title">Tuple5</span>&lt;<span class="title">Integer</span>, <span class="title">Integer</span>, <span class="title">Integer</span>,</span></span><br><span class="line"><span class="class">		<span class="title">Integer</span>, <span class="title">Integer</span>&gt;&gt; </span>&#123;</span><br><span class="line">		<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">1L</span>;</span><br><span class="line"></span><br><span class="line">		<span class="meta">@Override</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> Tuple5&lt;Integer, Integer, Integer, Integer, Integer&gt; <span class="title">map</span><span class="params">(Tuple2&lt;Integer, Integer&gt; value)</span> <span class="keyword">throws</span></span></span><br><span class="line"><span class="function">			Exception </span>&#123;</span><br><span class="line">			<span class="comment">// 结果map转换将Tuple2转成Tuple5</span></span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">new</span> Tuple5&lt;&gt;(value.f0, value.f1, value.f0, value.f1, <span class="number">0</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * Iteration step function that calculates the next Fibonacci number.</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Step</span> <span class="keyword">implements</span></span></span><br><span class="line"><span class="class">		<span class="title">MapFunction</span>&lt;<span class="title">Tuple5</span>&lt;<span class="title">Integer</span>, <span class="title">Integer</span>, <span class="title">Integer</span>, <span class="title">Integer</span>, <span class="title">Integer</span>&gt;, <span class="title">Tuple5</span>&lt;<span class="title">Integer</span>, <span class="title">Integer</span>, <span class="title">Integer</span>,</span></span><br><span class="line"><span class="class">			<span class="title">Integer</span>, <span class="title">Integer</span>&gt;&gt; </span>&#123;</span><br><span class="line">		<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">1L</span>;</span><br><span class="line"></span><br><span class="line">		<span class="meta">@Override</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> Tuple5&lt;Integer, Integer, Integer, Integer, Integer&gt; <span class="title">map</span><span class="params">(Tuple5&lt;Integer, Integer, Integer, Integer,</span></span></span><br><span class="line"><span class="function"><span class="params">			Integer&gt; value)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">new</span> Tuple5&lt;&gt;(value.f0, value.f1, value.f3, value.f2 + value.f3, ++value.f4);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * OutputSelector testing which tuple needs to be iterated again.</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">MySelector</span> <span class="keyword">implements</span> <span class="title">OutputSelector</span>&lt;<span class="title">Tuple5</span>&lt;<span class="title">Integer</span>, <span class="title">Integer</span>, <span class="title">Integer</span>, <span class="title">Integer</span>, <span class="title">Integer</span>&gt;&gt; </span>&#123;</span><br><span class="line">		<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">1L</span>;</span><br><span class="line"></span><br><span class="line">		<span class="meta">@Override</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> Iterable&lt;String&gt; <span class="title">select</span><span class="params">(Tuple5&lt;Integer, Integer, Integer, Integer, Integer&gt; value)</span> </span>&#123;</span><br><span class="line">			List&lt;String&gt; output = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">			<span class="keyword">if</span> (value.f2 &lt; BOUND &amp;&amp; value.f3 &lt; BOUND) &#123;</span><br><span class="line">				<span class="comment">// 指定流的一部分用于反馈给迭代头</span></span><br><span class="line">				<span class="comment">// 反馈流反馈给迭代头就意味着一个迭代的完整逻辑的完成</span></span><br><span class="line">				output.add(<span class="string">"iterate"</span>);</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				<span class="comment">// 指定流的另一部分发给下游</span></span><br><span class="line">				output.add(<span class="string">"output"</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">return</span> output;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * Giving back the input pair and the counter.</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">OutputMap</span> <span class="keyword">implements</span> <span class="title">MapFunction</span>&lt;<span class="title">Tuple5</span>&lt;<span class="title">Integer</span>, <span class="title">Integer</span>, <span class="title">Integer</span>, <span class="title">Integer</span>, <span class="title">Integer</span>&gt;,</span></span><br><span class="line"><span class="class">		<span class="title">Tuple2</span>&lt;<span class="title">Tuple2</span>&lt;<span class="title">Integer</span>, <span class="title">Integer</span>&gt;, <span class="title">Integer</span>&gt;&gt; </span>&#123;</span><br><span class="line">		<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">1L</span>;</span><br><span class="line"></span><br><span class="line">		<span class="meta">@Override</span></span><br><span class="line">		<span class="keyword">public</span> Tuple2&lt;Tuple2&lt;Integer, Integer&gt;, Integer&gt; map(Tuple5&lt;Integer, Integer, Integer, Integer, Integer&gt;</span><br><span class="line">																 value) <span class="keyword">throws</span></span><br><span class="line">			Exception &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">new</span> Tuple2&lt;&gt;(<span class="keyword">new</span> Tuple2&lt;&gt;(value.f0, value.f1), value.f4);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出的部分结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">6&gt; ((43,24),3)</span><br><span class="line">7&gt; ((23,25),3)</span><br><span class="line">8&gt; ((4,46),3)</span><br><span class="line">1&gt; ((42,49),2)</span><br><span class="line">2&gt; ((29,22),3)</span><br><span class="line">3&gt; ((36,3),4)</span><br><span class="line">4&gt; ((30,36),2)</span><br><span class="line">5&gt; ((18,24),3)</span><br><span class="line">6&gt; ((38,9),3)</span><br><span class="line">7&gt; ((19,44),2)</span><br><span class="line">8&gt; ((42,40),2)</span><br><span class="line">1&gt; ((16,9),5)</span><br><span class="line">2&gt; ((2,7),6)</span><br></pre></td></tr></table></figure>
+
+<h2 id="join"><a href="#join" class="headerlink" title="join"></a>join</h2><p>本示例演示了如何使用DataStream API进行双流join。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WindowJoin</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// *************************************************************************</span></span><br><span class="line">	<span class="comment">// PROGRAM</span></span><br><span class="line">	<span class="comment">// *************************************************************************</span></span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">		<span class="comment">// parse the parameters</span></span><br><span class="line">		<span class="keyword">final</span> ParameterTool params = ParameterTool.fromArgs(args);</span><br><span class="line">		<span class="keyword">final</span> <span class="keyword">long</span> windowSize = params.getLong(<span class="string">"windowSize"</span>, <span class="number">2000</span>);</span><br><span class="line">		<span class="keyword">final</span> <span class="keyword">long</span> rate = params.getLong(<span class="string">"rate"</span>, <span class="number">3L</span>);</span><br><span class="line"></span><br><span class="line">		System.out.println(<span class="string">"Using windowSize="</span> + windowSize + <span class="string">", data rate="</span> + rate);</span><br><span class="line">		System.out.println(<span class="string">"To customize example, use: WindowJoin [--windowSize &lt;window-size-in-millis&gt;] [--rate &lt;elements-per-second&gt;]"</span>);</span><br><span class="line"></span><br><span class="line">		<span class="comment">// obtain execution environment, run this example in "ingestion time"</span></span><br><span class="line">		StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();</span><br><span class="line">		env.setStreamTimeCharacteristic(TimeCharacteristic.IngestionTime);</span><br><span class="line"></span><br><span class="line">		<span class="comment">// make parameters available in the web interface</span></span><br><span class="line">		env.getConfig().setGlobalJobParameters(params);</span><br><span class="line"></span><br><span class="line">		<span class="comment">// create the data sources for both grades and salaries</span></span><br><span class="line">		<span class="comment">// john,4</span></span><br><span class="line">		DataStream&lt;Tuple2&lt;String, Integer&gt;&gt; grades = GradeSource.getSource(env, rate);</span><br><span class="line">		<span class="comment">// john,18000</span></span><br><span class="line">		DataStream&lt;Tuple2&lt;String, Integer&gt;&gt; salaries = SalarySource.getSource(env, rate);</span><br><span class="line"></span><br><span class="line">		<span class="comment">// run the actual window join program</span></span><br><span class="line">		<span class="comment">// for testability, this functionality is in a separate method.</span></span><br><span class="line">		DataStream&lt;Tuple3&lt;String, Integer, Integer&gt;&gt; joinedStream = runWindowJoin(grades, salaries, windowSize);</span><br><span class="line"></span><br><span class="line">		<span class="comment">// print the results with a single thread, rather than in parallel</span></span><br><span class="line">		<span class="comment">// 输出 john,4,18000</span></span><br><span class="line">		joinedStream.print().setParallelism(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">		<span class="comment">// execute program</span></span><br><span class="line">		env.execute(<span class="string">"Windowed Join Example"</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> DataStream&lt;Tuple3&lt;String, Integer, Integer&gt;&gt; runWindowJoin(</span><br><span class="line">			DataStream&lt;Tuple2&lt;String, Integer&gt;&gt; grades,</span><br><span class="line">			DataStream&lt;Tuple2&lt;String, Integer&gt;&gt; salaries,</span><br><span class="line">			<span class="keyword">long</span> windowSize) &#123;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">return</span> grades.join(salaries)</span><br><span class="line">				.where(<span class="keyword">new</span> NameKeySelector())</span><br><span class="line">				.equalTo(<span class="keyword">new</span> NameKeySelector())</span><br><span class="line"></span><br><span class="line">				.window(TumblingEventTimeWindows.of(Time.milliseconds(windowSize)))</span><br><span class="line"></span><br><span class="line">				.apply(<span class="keyword">new</span> JoinFunction&lt;Tuple2&lt;String, Integer&gt;, Tuple2&lt;String, Integer&gt;, Tuple3&lt;String, Integer, Integer&gt;&gt;() &#123;</span><br><span class="line"></span><br><span class="line">					<span class="meta">@Override</span></span><br><span class="line">					<span class="function"><span class="keyword">public</span> Tuple3&lt;String, Integer, Integer&gt; <span class="title">join</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">									Tuple2&lt;String, Integer&gt; first,</span></span></span><br><span class="line"><span class="function"><span class="params">									Tuple2&lt;String, Integer&gt; second)</span> </span>&#123;</span><br><span class="line">						<span class="keyword">return</span> <span class="keyword">new</span> Tuple3&lt;String, Integer, Integer&gt;(first.f0, first.f1, second.f1);</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">NameKeySelector</span> <span class="keyword">implements</span> <span class="title">KeySelector</span>&lt;<span class="title">Tuple2</span>&lt;<span class="title">String</span>, <span class="title">Integer</span>&gt;, <span class="title">String</span>&gt; </span>&#123;</span><br><span class="line">		<span class="meta">@Override</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> String <span class="title">getKey</span><span class="params">(Tuple2&lt;String, Integer&gt; value)</span> </span>&#123;</span><br><span class="line">			<span class="keyword">return</span> value.f0;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="sideoutput"><a href="#sideoutput" class="headerlink" title="sideoutput"></a>sideoutput</h2><p>当想要拆分数据流时，通常需要复制流，使用旁路输出可以直接过滤出不要的数据。示例中过滤出了长度 &gt; 5的单词</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SideOutputExample</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * We need to create an &#123;<span class="doctag">@link</span> OutputTag&#125; so that we can reference it when emitting</span></span><br><span class="line"><span class="comment">	 * data to a side output and also to retrieve the side output stream from an operation.</span></span><br><span class="line"><span class="comment">	 * OutputTag用来标识一个旁路输出流</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> OutputTag&lt;String&gt; rejectedWordsTag = <span class="keyword">new</span> OutputTag&lt;String&gt;(<span class="string">"rejected"</span>) &#123;&#125;;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">final</span> ParameterTool params = ParameterTool.fromArgs(args);</span><br><span class="line">		<span class="keyword">final</span> StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();</span><br><span class="line">		env.setStreamTimeCharacteristic(TimeCharacteristic.IngestionTime);</span><br><span class="line"></span><br><span class="line">		<span class="comment">// make parameters available in the web interface</span></span><br><span class="line">		env.getConfig().setGlobalJobParameters(params);</span><br><span class="line"></span><br><span class="line">		<span class="comment">// get input data</span></span><br><span class="line">		DataStream&lt;String&gt; text;</span><br><span class="line">		<span class="keyword">if</span> (params.has(<span class="string">"input"</span>)) &#123;</span><br><span class="line">			<span class="comment">// read the text file from given input path</span></span><br><span class="line">			text = env.readTextFile(params.get(<span class="string">"input"</span>));</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="comment">// get default test text data</span></span><br><span class="line">			text = env.fromElements(WordCountData.WORDS);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		SingleOutputStreamOperator&lt;Tuple2&lt;String, Integer&gt;&gt; tokenized = text</span><br><span class="line">				.keyBy(<span class="keyword">new</span> KeySelector&lt;String, Integer&gt;() &#123;</span><br><span class="line">					<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">1L</span>;</span><br><span class="line"></span><br><span class="line">					<span class="meta">@Override</span></span><br><span class="line">					<span class="function"><span class="keyword">public</span> Integer <span class="title">getKey</span><span class="params">(String value)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">						<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;)</span><br><span class="line">				.process(<span class="keyword">new</span> Tokenizer());</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 旁路输出流</span></span><br><span class="line">		DataStream&lt;String&gt; rejectedWords = tokenized</span><br><span class="line">			    <span class="comment">// 通过OutputTag从源source中获取旁路输出</span></span><br><span class="line">				.getSideOutput(rejectedWordsTag)</span><br><span class="line">				.map(<span class="keyword">new</span> MapFunction&lt;String, String&gt;() &#123;</span><br><span class="line">					<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">1L</span>;</span><br><span class="line"></span><br><span class="line">					<span class="meta">@Override</span></span><br><span class="line">					<span class="function"><span class="keyword">public</span> String <span class="title">map</span><span class="params">(String value)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">						<span class="keyword">return</span> <span class="string">"rejected: "</span> + value;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;);</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 正常输出流，对正常数据做5s翻滚窗口的单词统计</span></span><br><span class="line">		DataStream&lt;Tuple2&lt;String, Integer&gt;&gt; counts = tokenized</span><br><span class="line">				.keyBy(<span class="number">0</span>)</span><br><span class="line">				.window(TumblingEventTimeWindows.of(Time.seconds(<span class="number">5</span>)))</span><br><span class="line">				<span class="comment">// group by the tuple field "0" and sum up tuple field "1"</span></span><br><span class="line">				.sum(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">		<span class="comment">// emit result</span></span><br><span class="line">		<span class="keyword">if</span> (params.has(<span class="string">"output"</span>)) &#123;</span><br><span class="line">			counts.writeAsText(params.get(<span class="string">"output"</span>));</span><br><span class="line">			rejectedWords.writeAsText(params.get(<span class="string">"rejected-words-output"</span>));</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			System.out.println(<span class="string">"Printing result to stdout. Use --output to specify output path."</span>);</span><br><span class="line">			counts.print();</span><br><span class="line">			rejectedWords.print();</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// execute program</span></span><br><span class="line">		env.execute(<span class="string">"Streaming WordCount SideOutput"</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// *************************************************************************</span></span><br><span class="line">	<span class="comment">// USER FUNCTIONS</span></span><br><span class="line">	<span class="comment">// *************************************************************************</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">Tokenizer</span> <span class="keyword">extends</span> <span class="title">ProcessFunction</span>&lt;<span class="title">String</span>, <span class="title">Tuple2</span>&lt;<span class="title">String</span>, <span class="title">Integer</span>&gt;&gt; </span>&#123;</span><br><span class="line">		<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">1L</span>;</span><br><span class="line"></span><br><span class="line">		<span class="meta">@Override</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">processElement</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">				String value,</span></span></span><br><span class="line"><span class="function"><span class="params">				Context ctx,</span></span></span><br><span class="line"><span class="function"><span class="params">				Collector&lt;Tuple2&lt;String, Integer&gt;&gt; out)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">			<span class="comment">// normalize and split the line</span></span><br><span class="line">			String[] tokens = value.toLowerCase().split(<span class="string">"\\W+"</span>);</span><br><span class="line"></span><br><span class="line">			<span class="comment">// emit the pairs</span></span><br><span class="line">			<span class="keyword">for</span> (String token : tokens) &#123;</span><br><span class="line">				<span class="keyword">if</span> (token.length() &gt; <span class="number">5</span>) &#123;</span><br><span class="line">					<span class="comment">// 长度大于5的单词会作为旁路输出，ctx.output是将数据发送到旁路输出中</span></span><br><span class="line">					ctx.output(rejectedWordsTag, token);</span><br><span class="line">				&#125; <span class="keyword">else</span> <span class="keyword">if</span> (token.length() &gt; <span class="number">0</span>) &#123;</span><br><span class="line">					<span class="comment">// 将数据发送到常规输出中</span></span><br><span class="line">					out.collect(<span class="keyword">new</span> Tuple2&lt;&gt;(token, <span class="number">1</span>));</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出的结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">6&gt; rejected: question</span><br><span class="line">6&gt; rejected: whether</span><br><span class="line">6&gt; rejected: nobler</span><br><span class="line">6&gt; rejected: suffer</span><br><span class="line">......</span><br><span class="line">1&gt; (them,1)</span><br><span class="line">4&gt; (not,2)</span><br><span class="line">2&gt; (would,2)</span><br><span class="line">1&gt; (weary,1)</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+
+<h2 id="windowing"><a href="#windowing" class="headerlink" title="windowing"></a>windowing</h2><h3 id="session-window"><a href="#session-window" class="headerlink" title="session window"></a>session window</h3><p>示例演示了基于EventTime的会话窗口，分析了watermark生成以及触发窗口计算的时机。对于将被窗口丢弃的数据，如(“a”,1L,2)，可以sideoutput。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SessionWindowing</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@SuppressWarnings</span>(<span class="string">"serial"</span>)</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">final</span> ParameterTool params = ParameterTool.fromArgs(args);</span><br><span class="line">		<span class="keyword">final</span> StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();</span><br><span class="line"></span><br><span class="line">		env.getConfig().setGlobalJobParameters(params);</span><br><span class="line">		env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime);</span><br><span class="line">		env.setParallelism(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">		<span class="keyword">final</span> <span class="keyword">boolean</span> fileOutput = params.has(<span class="string">"output"</span>);</span><br><span class="line"></span><br><span class="line">		<span class="keyword">final</span> List&lt;Tuple3&lt;String, Long, Integer&gt;&gt; input = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">		<span class="comment">// key、event time时间戳、key出现的次数</span></span><br><span class="line">		input.add(<span class="keyword">new</span> Tuple3&lt;&gt;(<span class="string">"a"</span>, <span class="number">1L</span>, <span class="number">1</span>));</span><br><span class="line"></span><br><span class="line">		input.add(<span class="keyword">new</span> Tuple3&lt;&gt;(<span class="string">"b"</span>, <span class="number">1L</span>, <span class="number">1</span>));</span><br><span class="line">		input.add(<span class="keyword">new</span> Tuple3&lt;&gt;(<span class="string">"b"</span>, <span class="number">3L</span>, <span class="number">1</span>));</span><br><span class="line">		input.add(<span class="keyword">new</span> Tuple3&lt;&gt;(<span class="string">"b"</span>, <span class="number">5L</span>, <span class="number">1</span>));</span><br><span class="line"></span><br><span class="line">		input.add(<span class="keyword">new</span> Tuple3&lt;&gt;(<span class="string">"c"</span>, <span class="number">6L</span>, <span class="number">1</span>));</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 即将被窗口丢弃的数据</span></span><br><span class="line">		input.add(<span class="keyword">new</span> Tuple3&lt;&gt;(<span class="string">"a"</span>, <span class="number">1L</span>, <span class="number">2</span>));</span><br><span class="line">		<span class="comment">// We expect to detect the session "a" earlier than this point (the old</span></span><br><span class="line">		<span class="comment">// functionality can only detect here when the next starts)</span></span><br><span class="line">		input.add(<span class="keyword">new</span> Tuple3&lt;&gt;(<span class="string">"a"</span>, <span class="number">10L</span>, <span class="number">1</span>));</span><br><span class="line">		<span class="comment">// We expect to detect session "b" and "c" at this point as well</span></span><br><span class="line">		input.add(<span class="keyword">new</span> Tuple3&lt;&gt;(<span class="string">"c"</span>, <span class="number">11L</span>, <span class="number">1</span>));</span><br><span class="line"></span><br><span class="line">		DataStream&lt;Tuple3&lt;String, Long, Integer&gt;&gt; source = env</span><br><span class="line">				.addSource(<span class="keyword">new</span> SourceFunction&lt;Tuple3&lt;String, Long, Integer&gt;&gt;() &#123;</span><br><span class="line">					<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">1L</span>;</span><br><span class="line"></span><br><span class="line">					<span class="meta">@Override</span></span><br><span class="line">					<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">(SourceContext&lt;Tuple3&lt;String, Long, Integer&gt;&gt; ctx)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">						<span class="keyword">for</span> (Tuple3&lt;String, Long, Integer&gt; value : input) &#123;</span><br><span class="line">							ctx.collectWithTimestamp(value, value.f1);</span><br><span class="line">							<span class="comment">// 发射watermark</span></span><br><span class="line">							ctx.emitWatermark(<span class="keyword">new</span> Watermark(value.f1 - <span class="number">1</span>));</span><br><span class="line">						&#125;</span><br><span class="line">						<span class="comment">// input输入流中的数据读取完毕之后，发射一个大的watermark，确保触发最后的窗口计算</span></span><br><span class="line">						<span class="comment">// 无限流，表示终止的watermark，需要一个超过window的end time的watermark来触发window计算</span></span><br><span class="line">						ctx.emitWatermark(<span class="keyword">new</span> Watermark(Long.MAX_VALUE));</span><br><span class="line">					&#125;</span><br><span class="line"></span><br><span class="line">					<span class="meta">@Override</span></span><br><span class="line">					<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">cancel</span><span class="params">()</span> </span>&#123;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;);</span><br><span class="line"></span><br><span class="line">		<span class="comment">// We create sessions for each id with max timeout of 3 time units</span></span><br><span class="line">		DataStream&lt;Tuple3&lt;String, Long, Integer&gt;&gt; aggregated = source</span><br><span class="line">				.keyBy(<span class="number">0</span>)</span><br><span class="line">				.window(EventTimeSessionWindows.withGap(Time.milliseconds(<span class="number">3L</span>)))</span><br><span class="line">				.sum(<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> (fileOutput) &#123;</span><br><span class="line">			aggregated.writeAsText(params.get(<span class="string">"output"</span>));</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			System.out.println(<span class="string">"Printing result to stdout. Use --output to specify output path."</span>);</span><br><span class="line">			aggregated.print();</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		env.execute();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出的结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">(a,1,1)</span><br><span class="line"></span><br><span class="line">(b,1,3)</span><br><span class="line">(c,6,1)</span><br><span class="line"></span><br><span class="line">(a,10,1)</span><br><span class="line">(c,11,1)</span><br></pre></td></tr></table></figure>
+
+<p>在代码中添加一些日志打印，watermark生成与触发计算详情如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">Advanced watermark 0</span><br><span class="line">Advanced watermark 2</span><br><span class="line">Advanced watermark 4</span><br><span class="line"># watermark 4 = a 窗口的结束时间4，所以触发a计算输出</span><br><span class="line">Timer&#123;timestamp=3, key=(a), namespace=TimeWindow&#123;start=1, end=4&#125;&#125;</span><br><span class="line">(a,1,1)</span><br><span class="line">Advanced watermark 5</span><br><span class="line">Advanced watermark 9</span><br><span class="line"># (b,1,1)、(b,3,1)、b(b,5,1)，这3条数据会进行窗口合并，所以这里的结束时间是8</span><br><span class="line"># watermark 9 &gt; b 窗口的结束时间8，所以触发b计算输出</span><br><span class="line">Timer&#123;timestamp=7, key=(b), namespace=TimeWindow&#123;start=1, end=8&#125;&#125;</span><br><span class="line">(b,1,3)</span><br><span class="line"># watermark 9 = c 窗口的结束时间9，所以触发c计算输出</span><br><span class="line">Timer&#123;timestamp=8, key=(c), namespace=TimeWindow&#123;start=6, end=9&#125;&#125;</span><br><span class="line">(c,6,1)</span><br><span class="line">Advanced watermark 10</span><br><span class="line">Advanced watermark 9223372036854775807</span><br><span class="line"># watermark 9223372036854775807 &gt; a 窗口的结束时间13，所以触发a计算输出</span><br><span class="line">Timer&#123;timestamp=12, key=(a), namespace=TimeWindow&#123;start=10, end=13&#125;&#125;</span><br><span class="line">(a,10,1)</span><br><span class="line"># watermark 9223372036854775807 &gt; c 窗口的结束时间14，所以触发c计算输出</span><br><span class="line">Timer&#123;timestamp=13, key=(c), namespace=TimeWindow&#123;start=11, end=14&#125;&#125;</span><br><span class="line">(c,11,1)</span><br></pre></td></tr></table></figure>
+
+<p>Flink何时触发window ？ </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1. watermark &gt; window_end_time (对于out-of-order以及正常的数据而言)</span><br><span class="line">2. 在[window_start_time,window_end_time)区间有数据存在</span><br></pre></td></tr></table></figure>
+
+<p>窗口合并过程示例：<br><img src="%E7%AA%97%E5%8F%A3%E5%90%88%E5%B9%B6%E8%BF%87%E7%A8%8B%E7%A4%BA%E4%BE%8B.png" alt="avatar"></p>
+<h3 id="count-window"><a href="#count-window" class="headerlink" title="count window"></a>count window</h3><ul>
+<li>slide count window</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SlideCountWindowExample</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">		<span class="keyword">final</span> ParameterTool params = ParameterTool.fromArgs(args);</span><br><span class="line">		<span class="keyword">final</span> StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();</span><br><span class="line">		env.getConfig().setGlobalJobParameters(params);</span><br><span class="line">		env.setParallelism(<span class="number">1</span>);</span><br><span class="line">		<span class="keyword">final</span> <span class="keyword">int</span> windowSize = params.getInt(<span class="string">"window"</span>, <span class="number">3</span>);</span><br><span class="line">		<span class="keyword">final</span> <span class="keyword">int</span> slideSize = params.getInt(<span class="string">"slide"</span>, <span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">		Tuple2[] elements = <span class="keyword">new</span> Tuple2[]&#123;</span><br><span class="line">			Tuple2.of(<span class="string">"a"</span>, <span class="string">"1"</span>),</span><br><span class="line">			Tuple2.of(<span class="string">"a"</span>, <span class="string">"2"</span>),</span><br><span class="line">			Tuple2.of(<span class="string">"a"</span>, <span class="string">"3"</span>),</span><br><span class="line">			Tuple2.of(<span class="string">"a"</span>, <span class="string">"4"</span>),</span><br><span class="line">			Tuple2.of(<span class="string">"a"</span>, <span class="string">"5"</span>),</span><br><span class="line">			Tuple2.of(<span class="string">"a"</span>, <span class="string">"6"</span>),</span><br><span class="line">			Tuple2.of(<span class="string">"b"</span>, <span class="string">"7"</span>),</span><br><span class="line">			Tuple2.of(<span class="string">"b"</span>, <span class="string">"8"</span>),</span><br><span class="line">			Tuple2.of(<span class="string">"b"</span>, <span class="string">"9"</span>),</span><br><span class="line">			Tuple2.of(<span class="string">"b"</span>, <span class="string">"0"</span>)</span><br><span class="line">		&#125;;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// read source data</span></span><br><span class="line">		DataStreamSource&lt;Tuple2&lt;String, String&gt;&gt; inStream = env.fromElements(elements);</span><br><span class="line"></span><br><span class="line">		<span class="comment">// calculate</span></span><br><span class="line">		DataStream&lt;Tuple2&lt;String, String&gt;&gt; outStream = inStream</span><br><span class="line">			.keyBy(<span class="number">0</span>)</span><br><span class="line">			<span class="comment">// sliding count window of 3 elements size and 2 elements trigger interval</span></span><br><span class="line">			.countWindow(windowSize, slideSize)</span><br><span class="line">			.reduce(</span><br><span class="line">				<span class="keyword">new</span> ReduceFunction&lt;Tuple2&lt;String, String&gt;&gt;() &#123;</span><br><span class="line">					<span class="meta">@Override</span></span><br><span class="line">					<span class="function"><span class="keyword">public</span> Tuple2&lt;String, String&gt; <span class="title">reduce</span><span class="params">(Tuple2&lt;String, String&gt; value1, Tuple2&lt;String, String&gt; value2)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">						<span class="keyword">return</span> Tuple2.of(value1.f0, value1.f1 + <span class="string">""</span> + value2.f1);</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			);</span><br><span class="line">		outStream.print();</span><br><span class="line">		env.execute(<span class="string">"WindowWordCount"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出的结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(a,12)</span><br><span class="line">(a,234)</span><br><span class="line">(a,456)</span><br><span class="line">(b,78)</span><br><span class="line">(b,890)</span><br></pre></td></tr></table></figure>
+
+<p>每进来2个元素，就对最近的3个元素计算一遍</p>
+<p>查看内部源码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public WindowedStream&lt;T, KEY, GlobalWindow&gt; countWindow(long size, long slide) &#123;</span><br><span class="line">		return window(GlobalWindows.create())</span><br><span class="line">			    // 在触发计算之前之后的剔除操作</span><br><span class="line">				.evictor(CountEvictor.of(size))</span><br><span class="line">			    // 触发条件是slide步长的个数</span><br><span class="line">				.trigger(CountTrigger.of(slide));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>tumble count window</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TumbleCountWindowExample</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">		<span class="keyword">final</span> ParameterTool params = ParameterTool.fromArgs(args);</span><br><span class="line">		<span class="keyword">final</span> StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();</span><br><span class="line">		env.getConfig().setGlobalJobParameters(params);</span><br><span class="line">		env.setParallelism(<span class="number">1</span>);</span><br><span class="line">		<span class="keyword">final</span> <span class="keyword">int</span> windowSize = params.getInt(<span class="string">"window"</span>, <span class="number">3</span>);</span><br><span class="line"></span><br><span class="line">		Tuple2[] elements = <span class="keyword">new</span> Tuple2[]&#123;</span><br><span class="line">			Tuple2.of(<span class="string">"a"</span>, <span class="string">"1"</span>),</span><br><span class="line">			Tuple2.of(<span class="string">"a"</span>, <span class="string">"2"</span>),</span><br><span class="line">			Tuple2.of(<span class="string">"a"</span>, <span class="string">"3"</span>),</span><br><span class="line">			Tuple2.of(<span class="string">"a"</span>, <span class="string">"4"</span>),</span><br><span class="line">			Tuple2.of(<span class="string">"a"</span>, <span class="string">"5"</span>),</span><br><span class="line">			Tuple2.of(<span class="string">"a"</span>, <span class="string">"6"</span>),</span><br><span class="line">			Tuple2.of(<span class="string">"b"</span>, <span class="string">"7"</span>),</span><br><span class="line">			Tuple2.of(<span class="string">"b"</span>, <span class="string">"8"</span>),</span><br><span class="line">			Tuple2.of(<span class="string">"b"</span>, <span class="string">"9"</span>),</span><br><span class="line">			Tuple2.of(<span class="string">"b"</span>, <span class="string">"0"</span>)</span><br><span class="line">		&#125;;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// read source data</span></span><br><span class="line">		DataStreamSource&lt;Tuple2&lt;String, String&gt;&gt; inStream = env.fromElements(elements);</span><br><span class="line"></span><br><span class="line">		<span class="comment">// calculate</span></span><br><span class="line">		DataStream&lt;Tuple2&lt;String, String&gt;&gt; outStream = inStream</span><br><span class="line">			.keyBy(<span class="number">0</span>)</span><br><span class="line">			<span class="comment">// tumbling count window of 3 elements size</span></span><br><span class="line">			.countWindow(windowSize)</span><br><span class="line">			.reduce(</span><br><span class="line">				<span class="keyword">new</span> ReduceFunction&lt;Tuple2&lt;String, String&gt;&gt;() &#123;</span><br><span class="line">					<span class="meta">@Override</span></span><br><span class="line">					<span class="function"><span class="keyword">public</span> Tuple2&lt;String, String&gt; <span class="title">reduce</span><span class="params">(Tuple2&lt;String, String&gt; value1, Tuple2&lt;String, String&gt; value2)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">						<span class="keyword">return</span> Tuple2.of(value1.f0, value1.f1 + <span class="string">""</span> + value2.f1);</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			);</span><br><span class="line">		outStream.print();</span><br><span class="line">		env.execute(<span class="string">"WindowWordCount"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出的结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(a,123)</span><br><span class="line">(a,456)</span><br><span class="line">(b,789)</span><br></pre></td></tr></table></figure>
+
+<p>最后一条 Tuple2.of(“b”, “0”) 被丢弃，因为最后一条数据已经无法触发计算了</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/09/17/Flink-1-9-0-with-Hive/" rel="prev" title="Flink 1.9.0 with Hive">
+                Flink 1.9.0 with Hive <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/2.JPG" alt="miaowenting">
+            
+              <p class="site-author-name" itemprop="name">miaowenting</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/miaowenting" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://ci.apache.org/projects/flink/flink-docs-stable/" title="flink文档" target="_blank">flink文档</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href title="flink社区" target="_blank">flink社区</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#wordcount"><span class="nav-number">1.</span> <span class="nav-text">wordcount</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#socket"><span class="nav-number">2.</span> <span class="nav-text">socket</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#async"><span class="nav-number">3.</span> <span class="nav-text">async</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#iteration"><span class="nav-number">4.</span> <span class="nav-text">iteration</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#join"><span class="nav-number">5.</span> <span class="nav-text">join</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sideoutput"><span class="nav-number">6.</span> <span class="nav-text">sideoutput</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#windowing"><span class="nav-number">7.</span> <span class="nav-text">windowing</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#session-window"><span class="nav-number">7.1.</span> <span class="nav-text">session window</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#count-window"><span class="nav-number">7.2.</span> <span class="nav-text">count window</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">miaowenting</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
