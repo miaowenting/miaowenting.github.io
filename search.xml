@@ -19,7 +19,7 @@
   <entry>
     <title><![CDATA[Hexo常用命令]]></title>
     <url>%2F2020%2F05%2F24%2FHexo%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%2F</url>
-    <content type="text"><![CDATA[init新建一个网站 1hexo init "文件夹名称" version显示 Hexo 版本。 1hexo version new1hexo new "新文章名" generate生成静态网页 1hexo g server启动服务器。默认情况下，访问网址为：http://localhost:4000/ 1hexo s deploy部署网站。 1hexo d list列出网站资料 1hexo list &lt;type&gt; 参考资料Hexo 指令]]></content>
+    <content type="text"><![CDATA[使用 Hexo + Github 搭建个人博客的常用命令，在此记录下。 init新建一个网站 1hexo init "文件夹名称" version显示 Hexo 版本。 1hexo version new1hexo new "新文章名" generate生成静态网页 1hexo g server启动服务器。默认情况下，访问网址为：http://localhost:4000/ 1hexo s deploy部署网站。 1hexo d list列出网站资料 1hexo list &lt;type&gt; 参考资料Hexo 指令]]></content>
       <categories>
         <category>Tools</category>
       </categories>
