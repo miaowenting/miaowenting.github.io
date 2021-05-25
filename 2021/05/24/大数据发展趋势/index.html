@@ -88,7 +88,7 @@
 <meta property="og:site_name" content="Matty&#39;s Blog">
 <meta property="og:description" content="现代企业的大数据平台大多是基于 Hadoop 构建的”一存多算”的多元化架构，以 HDFS 为统一存储，通过 Spark、HBase、Flink、Presto 等多种计算引擎满足不同场景的处理需求。如今，高弹性和可扩展的计算与存储俨然已经非常成熟了，未来云原生、一体化将是大数据的技术发展趋势，并且依附于小程序IoT等业务载体，以 Saas 带动 IaaS 必将成为大势所趋。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2021-05-25T03:56:34.481Z">
+<meta property="og:updated_time" content="2021-05-25T04:56:01.200Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="大数据发展趋势">
 <meta name="twitter:description" content="现代企业的大数据平台大多是基于 Hadoop 构建的”一存多算”的多元化架构，以 HDFS 为统一存储，通过 Spark、HBase、Flink、Presto 等多种计算引擎满足不同场景的处理需求。如今，高弹性和可扩展的计算与存储俨然已经非常成熟了，未来云原生、一体化将是大数据的技术发展趋势，并且依附于小程序IoT等业务载体，以 Saas 带动 IaaS 必将成为大势所趋。">
@@ -393,14 +393,11 @@
 <ul>
 <li><p>结果的批流一体<br>用户不需要关心批或者流，在用户提交查询的时候得到的结果就是截止那一刻的统计结果。</p>
 </li>
-<li><p>存储的批流一体：统计场景</p>
+<li><p>存储的批流一体：统计场景<br>如 Hologres<br>高性能的实时/批量append和update的能力，读写互不影响<br>增量订阅读取、批量读取的能力，类似 Apache Pulsar<br>和 OLAP 引擎（impala、presto）对接的能力，列式存储具备较强 SCAN 和 filter 的能力</p>
+</li>
+<li><p>计算引擎的批流一体<br>一套代码搞定批流统计场景，降低开发运维成本</p>
 </li>
 </ul>
-<p>高性能的实时/批量append和update的能力，读写互不影响<br>增量订阅读取、批量读取的能力，类似 Apache Pulsar<br>和 OLAP 引擎（impala、presto）对接的能力，列式存储具备较强 SCAN 和 filter 的能力</p>
-<ul>
-<li>计算引擎的批流一体</li>
-</ul>
-<p>一套代码搞定批流统计场景，降低开发运维成本</p>
 <h2 id="SaaS-带动-IaaS"><a href="#SaaS-带动-IaaS" class="headerlink" title="SaaS 带动 IaaS"></a>SaaS 带动 IaaS</h2><p>与美国相比，中国的云计算市场是”本末倒置”的。美国是以 SaaS 为主，中国现在还是以 IaaS 为主，处于大建数据中心阶段。</p>
 <p>但数据中心里躺着的那些服务器是需要用户买单的，而 SaaS 应用是消耗这些服务器的不二法门。用 SaaS 带动 IaaS，是主流云厂商非常重要的竞争策略。阿里云力推的”云钉一体”就是一个典型案例，可以预见，腾讯云、华为云都将走这一条路。</p>
 <p>要有足够繁荣的生态，才能消耗那些躺在数据中心里的上百万台云服务器。不然，服务器利用率上不去，盲目上规模无异于自杀。</p>
@@ -449,6 +446,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/05/25/Hologres/" rel="prev" title="Hologres">
+                Hologres <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -527,7 +528,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">44</span>
+                  <span class="site-state-item-count">45</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -538,7 +539,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
