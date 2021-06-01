@@ -81,17 +81,17 @@
 
 
 
-<meta name="description" content="就一直晚熟下去… 没有什么不好">
+<meta name="description" content="本文记录一下 Mac 本机安装 Hive 的过程，免得每次都要去搜索一堆博客才能安装成功。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="晚熟的人">
-<meta property="og:url" content="http://yoursite.com/2021/01/10/晚熟的人/index.html">
+<meta property="og:title" content="Mac单机安装Apache Hive">
+<meta property="og:url" content="http://yoursite.com/2020/01/09/Mac单机安装Apache-Hive/index.html">
 <meta property="og:site_name" content="Matty&#39;s Blog">
-<meta property="og:description" content="就一直晚熟下去… 没有什么不好">
+<meta property="og:description" content="本文记录一下 Mac 本机安装 Hive 的过程，免得每次都要去搜索一堆博客才能安装成功。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2021-05-25T03:58:10.703Z">
+<meta property="og:updated_time" content="2021-06-01T05:57:44.152Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="晚熟的人">
-<meta name="twitter:description" content="就一直晚熟下去… 没有什么不好">
+<meta name="twitter:title" content="Mac单机安装Apache Hive">
+<meta name="twitter:description" content="本文记录一下 Mac 本机安装 Hive 的过程，免得每次都要去搜索一堆博客才能安装成功。">
 
 
 
@@ -121,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2021/01/10/晚熟的人/">
+  <link rel="canonical" href="http://yoursite.com/2020/01/09/Mac单机安装Apache-Hive/">
 
 
 
 
 
-  <title>晚熟的人 | Matty's Blog</title>
+  <title>Mac单机安装Apache Hive | Matty's Blog</title>
   
 
 
@@ -296,7 +296,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/01/10/晚熟的人/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/09/Mac单机安装Apache-Hive/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="miaowenting">
@@ -313,7 +313,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">晚熟的人</h1>
+          <h1 class="post-title" itemprop="name headline">Mac单机安装Apache Hive</h1>
         
 
         <div class="post-meta">
@@ -325,8 +325,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-10T13:58:40+08:00">
-                2021-01-10
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-09T18:45:23+08:00">
+                2020-01-09
               </time>
             
 
@@ -348,8 +348,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/随笔/" itemprop="url" rel="index">
-                    <span itemprop="name">随笔</span>
+                  <a href="/categories/Hive/" itemprop="url" rel="index">
+                    <span itemprop="name">Hive</span>
                   </a>
                 </span>
 
@@ -385,11 +385,50 @@
       
 
       
-        <p>就一直晚熟下去… 没有什么不好</p>
+        <p>本文记录一下 Mac 本机安装 Hive 的过程，免得每次都要去搜索一堆博客才能安装成功。</p>
 <a id="more"></a>
 
-<p>于创作来说，不能过早地固步自封，不能过早的使自己的风格固化，<br>就是要不断地求新求变，努力试图突破自己，要不断的成长。<br>工作中，不必急功急利，保持学习热情，所有好运都会如期而至。<br>你成熟的越晚，说明创作创新的过程延续的越长。</p>
-<p>于人性来说，本性善良的人都晚熟，并且是被”劣人”催熟的，后来虽然开窍了，<br>但也仍然善良与赤诚，不断地寻找同类，最后却成了最孤独的一个。<br>开窍了，就不能啥事都往外喷了，积蓄能量，厚积薄发。<br>你成熟的越晚，善良延续的越长，孤独而自省。</p>
+<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>Mac：10.15.7<br>Hadoop：2.7.4<br>JDK：1.8.0_151<br>Hive：2.2.0</p>
+<h2 id="下载并解压"><a href="#下载并解压" class="headerlink" title="下载并解压"></a>下载并解压</h2><p>从官网下载解压到某个目录下，并在 /etc/profile 设置环境变量：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export HIVE_HOME=/usr/local/hive</span><br><span class="line">export PATH=$PATH:$HIVE_HOME/bin:$HIVE_HOME/conf</span><br></pre></td></tr></table></figure>
+
+<p>使环境变量生效：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure>
+
+<p>查看是否安装成功：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hive</span><br></pre></td></tr></table></figure>
+
+<h2 id="修改-Hive-配置"><a href="#修改-Hive-配置" class="headerlink" title="修改 Hive 配置"></a>修改 Hive 配置</h2><h3 id="修改-hive-site-xml-文件"><a href="#修改-hive-site-xml-文件" class="headerlink" title="修改 hive-site.xml 文件"></a>修改 hive-site.xml 文件</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 数据库的用户名 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>javax.jdo.option.ConnectionUserName<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">value</span>&gt;</span>root<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 数据库密码 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>javax.jdo.option.ConnectionPassword<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">value</span>&gt;</span>123456<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 数据库连接 url --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>javax.jdo.option.ConnectionURL<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">value</span>&gt;</span>jdbc:mysql://localhost:3306/hive_metadata?createDatabaseIfNotExsit=true&amp;amp;characterEncoding=UTF-8&amp;amp;verifyServerCertificate=false&amp;amp;useSSL=false<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 数据库连接驱动 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>javax.jdo.option.ConnectionDriverName<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">value</span>&gt;</span>com.mysql.jdbc.Driver<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>hive.metastore.warehouse.dir<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">value</span>&gt;</span>/user/hive/warehouse<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>hive.exec.scratchdir<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">value</span>&gt;</span>/tmp/hive<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>hive.metastore.schema.verification<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">value</span>&gt;</span>false<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="修改-hive-env-sh-文件"><a href="#修改-hive-env-sh-文件" class="headerlink" title="修改 hive-env.sh 文件"></a>修改 hive-env.sh 文件</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> HADOOP_HOME=/usr/<span class="built_in">local</span>/hadoop</span><br><span class="line"><span class="built_in">export</span> HIVE_CONF_DIR=/usr/<span class="built_in">local</span>/hive/conf</span><br><span class="line"><span class="built_in">export</span> HIVE_AUX_JARS_PATH=/usr/<span class="built_in">local</span>/hive/lib</span><br></pre></td></tr></table></figure>
+
+<h3 id="初始化-Hive-metastore-数据库表"><a href="#初始化-Hive-metastore-数据库表" class="headerlink" title="初始化 Hive metastore 数据库表"></a>初始化 Hive metastore 数据库表</h3><ol>
+<li><p>复制 mysql 驱动包到 hive lib 目录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp mysql-connector-java-5.1.43.jar  $HIVE_HOME/lib</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建 hive_metadata 数据库</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -uroot -p123456</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">database</span> hive_metadata;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>初始化创建 Hive metastore 数据库表<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">HIVE_HOME/bin/schematool -dbType mysql -initSchema</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; </span><br><span class="line">mysql&gt; use hive_metadata;</span><br><span class="line">Database changed</span><br><span class="line">mysql&gt; </span><br><span class="line">mysql&gt; show tables;</span><br><span class="line">+<span class="comment">---------------------------+</span></span><br><span class="line">| Tables_in_hive_metadata   |</span><br><span class="line">+<span class="comment">---------------------------+</span></span><br><span class="line">| AUX_TABLE                 |</span><br><span class="line">| BUCKETING_COLS            |</span><br><span class="line">| CDS                       |</span><br><span class="line">| COLUMNS_V2                |</span><br><span class="line">| COMPACTION_QUEUE          |</span><br><span class="line">| COMPLETED_COMPACTIONS     |</span><br><span class="line">| COMPLETED_TXN_COMPONENTS  |</span><br><span class="line">| DATABASE_PARAMS           |</span><br><span class="line">| DBS                       |</span><br><span class="line">| DB_PRIVS                  |</span><br><span class="line">| DELEGATION_TOKENS         |</span><br><span class="line">| FUNCS                     |</span><br><span class="line">| FUNC_RU                   |</span><br><span class="line">| GLOBAL_PRIVS              |</span><br><span class="line">| HIVE_LOCKS                |</span><br><span class="line">| IDXS                      |</span><br><span class="line">| INDEX_PARAMS              |</span><br><span class="line">| KEY_CONSTRAINTS           |</span><br><span class="line">| MASTER_KEYS               |</span><br><span class="line">| NEXT_COMPACTION_QUEUE_ID  |</span><br><span class="line">| NEXT_LOCK_ID              |</span><br><span class="line">| NEXT_TXN_ID               |</span><br><span class="line">| NOTIFICATION_LOG          |</span><br><span class="line">| NOTIFICATION_SEQUENCE     |</span><br><span class="line">| NUCLEUS_TABLES            |</span><br><span class="line">| PARTITIONS                |</span><br><span class="line">| PARTITION_EVENTS          |</span><br><span class="line">| PARTITION_KEYS            |</span><br><span class="line">| PARTITION_KEY_VALS        |</span><br><span class="line">| PARTITION_PARAMS          |</span><br><span class="line">| PART_COL_PRIVS            |</span><br><span class="line">| PART_COL_STATS            |</span><br><span class="line">| PART_PRIVS                |</span><br><span class="line">| ROLES                     |</span><br><span class="line">| ROLE_MAP                  |</span><br><span class="line">| SDS                       |</span><br><span class="line">| SD_PARAMS                 |</span><br><span class="line">| SEQUENCE_TABLE            |</span><br><span class="line">| SERDES                    |</span><br><span class="line">| SERDE_PARAMS              |</span><br><span class="line">| SKEWED_COL_NAMES          |</span><br><span class="line">| SKEWED_COL_VALUE_LOC_MAP  |</span><br><span class="line">| SKEWED_STRING_LIST        |</span><br><span class="line">| SKEWED_STRING_LIST_VALUES |</span><br><span class="line">| SKEWED_VALUES             |</span><br><span class="line">| SORT_COLS                 |</span><br><span class="line">| TABLE_PARAMS              |</span><br><span class="line">| TAB_COL_STATS             |</span><br><span class="line">| TBLS                      |</span><br><span class="line">| TBL_COL_PRIVS             |</span><br><span class="line">| TBL_PRIVS                 |</span><br><span class="line">| TXNS                      |</span><br><span class="line">| TXN_COMPONENTS            |</span><br><span class="line">| TYPES                     |</span><br><span class="line">| TYPE_FIELDS               |</span><br><span class="line">| VERSION                   |</span><br><span class="line">| WRITE_SET                 |</span><br><span class="line">+<span class="comment">---------------------------+</span></span><br><span class="line">57 rows in <span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br><span class="line"></span><br><span class="line">mysql&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="运行-Hive"><a href="#运行-Hive" class="headerlink" title="运行 Hive"></a>运行 Hive</h2><h3 id="启动命令"><a href="#启动命令" class="headerlink" title="启动命令"></a>启动命令</h3><p>启动 metastore 服务：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">HIVE_HOME/bin/hive --service metastore &amp;</span></span><br></pre></td></tr></table></figure>
+
+<p>启动 HiveServer2 ：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">HIVE_HOME/bin/hive --service metastore &amp;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="查看相关进程"><a href="#查看相关进程" class="headerlink" title="查看相关进程"></a>查看相关进程</h3><p>显示为两个 RunJar 进程：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">jps</span><br><span class="line"></span><br><span class="line">4929 org.apache.hadoop.util.RunJar /usr/local/hive/lib/hive-service-2.2.0.jar org.apache.hive.service.server.HiveServer2 --hiveconf hive.aux.jars.path=file:///usr/local/hive/lib/HikariCP-2.5.1.jar,file:///usr/local/hive/lib/RoaringBitmap-0.5.18.jar,file:///usr/local/hive/lib/ST4-4.0.4.jar,file:///usr/local/hive/lib/accumulo-core-1.6.0.jar,file:///usr/local/hive/lib/accumulo-fate-1.6.0.jar,file:///usr/local/hive/lib/accumulo-start-1.6.0.jar,file:///usr/local/hive/lib/accumulo-trace-1.6.0.jar,file:///usr/local/hive/lib/activation-1.1.jar,file:///usr/local/hive/lib/aether-api-0.9.0.M2.jar,file:///usr/local/hive/lib/aether-connector-file-0.9.0.M2.jar,file:///usr/local/hive/lib/aether-connector-okhttp-0.0.9.jar,file:///usr/local/hive/lib/aether-impl-0.9.0.M2.jar,file:///usr/local/hive/lib/aether-spi-0.9.0.M2.jar,file:///usr/local/hive/lib/aether-util-0.9.0.M2.jar,file:///usr/local/hive/lib/airline-0.7.jar,file:///usr/local/hive/lib/ant-1.6.5.jar,file:///usr/local/hive/lib/ant-1.9.1.jar,file:///usr/local/hive/lib/ant-la</span><br><span class="line"></span><br><span class="line">4870 org.apache.hadoop.util.RunJar /usr/local/hive/lib/hive-metastore-2.2.0.jar org.apache.hadoop.hive.metastore.HiveMetaStore</span><br></pre></td></tr></table></figure>
+
 
       
     </div>
@@ -414,8 +453,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/09/30/Flink源码剖析-flink-table-runtime-blink-TopN/" rel="next" title="Flink源码剖析-flink-table-runtime-blink_TopN">
-                <i class="fa fa-chevron-left"></i> Flink源码剖析-flink-table-runtime-blink_TopN
+              <a href="/2019/12/16/End-to-End-Exactly-Once-Processing-in-Apache-Flink/" rel="next" title="End-to-End Exactly-Once Processing in Apache Flink">
+                <i class="fa fa-chevron-left"></i> End-to-End Exactly-Once Processing in Apache Flink
               </a>
             
           </div>
@@ -424,8 +463,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2021/02/01/2020年终个人总结/" rel="prev" title="2020年终个人总结">
-                2020年终个人总结 <i class="fa fa-chevron-right"></i>
+              <a href="/2020/01/09/Mac单机安装Apache-Hadoop/" rel="prev" title="Mac单机安装Apache Hadoop">
+                Mac单机安装Apache Hadoop <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -478,8 +517,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -567,6 +615,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#环境"><span class="nav-number">1.</span> <span class="nav-text">环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#下载并解压"><span class="nav-number">2.</span> <span class="nav-text">下载并解压</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改-Hive-配置"><span class="nav-number">3.</span> <span class="nav-text">修改 Hive 配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#修改-hive-site-xml-文件"><span class="nav-number">3.1.</span> <span class="nav-text">修改 hive-site.xml 文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改-hive-env-sh-文件"><span class="nav-number">3.2.</span> <span class="nav-text">修改 hive-env.sh 文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#初始化-Hive-metastore-数据库表"><span class="nav-number">3.3.</span> <span class="nav-text">初始化 Hive metastore 数据库表</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行-Hive"><span class="nav-number">4.</span> <span class="nav-text">运行 Hive</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#启动命令"><span class="nav-number">4.1.</span> <span class="nav-text">启动命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看相关进程"><span class="nav-number">4.2.</span> <span class="nav-text">查看相关进程</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
