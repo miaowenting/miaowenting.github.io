@@ -27,6 +27,15 @@
       </categories>
   </entry>
   <entry>
+    <title><![CDATA[Presto]]></title>
+    <url>%2F2021%2F03%2F04%2FPresto%2F</url>
+    <content type="text"><![CDATA[Hey, password is required here. a40f44a7f016a8db6da7a8792682372f789c4e7e7ed48c37940472c18d115d93e872f8ebd05daafb4163ef03a2ca3753c0364812a5219225eb03c928163a5da0b0db19d7cce1d59ec6a925bec026e964e4187b144833c399f5bef2782dfa41f8b92c5aedc94cd2f10935c2599aa4c730e6bb83b50c97234421d1012a71e30287970df560cd0a47eb080d2d43892da2b056cc78e55f664240b15adc17c861a984e700dd198a6531993f2e56e6648965b8191c38e51e6b2f8860260cf1b2488115]]></content>
+      <categories>
+        <category>OLAP</category>
+        <category>Presto</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[2020年终个人总结]]></title>
     <url>%2F2021%2F02%2F01%2F2020%E5%B9%B4%E7%BB%88%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93%2F</url>
     <content type="text"><![CDATA[Hey, password is required here. 49f7eb9bea6cd6a47e660ee8aad95e5f339e339538ece7d1e61ba075caa7780d]]></content>
@@ -57,6 +66,15 @@
     <content type="text"><![CDATA[就一直晚熟下去… 没有什么不好 于创作来说，不能过早地固步自封，不能过早的使自己的风格固化，就是要不断地求新求变，努力试图突破自己，要不断的成长。工作中，不必急功急利，保持学习热情，所有好运都会如期而至。你成熟的越晚，说明创作创新的过程延续的越长。 于人性来说，本性善良的人都晚熟，并且是被”劣人”催熟的，后来虽然开窍了，但也仍然善良与赤诚，不断地寻找同类，最后却成了最孤独的一个。开窍了，就不能啥事都往外喷了，积蓄能量，厚积薄发。你成熟的越晚，善良延续的越长，孤独而自省。]]></content>
       <categories>
         <category>随笔</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[Apache Hudi]]></title>
+    <url>%2F2021%2F01%2F04%2FApache-Hudi%2F</url>
+    <content type="text"><![CDATA[Hey, password is required here. e3562aa68b223e1c03dd60eecfbb4ec09217adc47939c9407bb5553f1a72086f64fcd5c1b773522b005f8a6763d76e309f4c1ee334b15d045936244f7d81e4378a898228740a8f021aca889558b5fcf250e987f1d87bc7598458b2c26c14e64519492805f4dcb9d5de0b8407389e58af8749934a2d92e9049c61fa40228742e2f30b5136ed25d014a22b58798c9bdbb7fda6505bbf327818b5335b53972af3435eb718167710ebe128e7d22c09f0e40d]]></content>
+      <categories>
+        <category>DataLake</category>
+        <category>Hudi</category>
       </categories>
   </entry>
   <entry>
@@ -228,7 +246,6 @@
     <content type="text"><![CDATA[本文将全局介绍 Redis 的整体架构。 问题缓存穿透缓存雪崩缓存击穿缓存与数据库双写一致性问题先更新数据库，再删除缓存（推荐） 通过读取binlog的方式，采用mq异步淘汰缓存，提供一个保障的重试机制!!!]]></content>
       <categories>
         <category>Java</category>
-        <category>NoSql</category>
       </categories>
   </entry>
   <entry>
