@@ -1,0 +1,1310 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Matty's Blog" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="本文为 Presto 的入门学习笔记。 Presto 是一个开源的分布式 SQL 查询引擎，它是为了高效查询不同系统和各种规模的数据源而从头开始设计和编写的一套系统。  由于开源纷争，Presto 现已更名为 Trino。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初识Presto(Trino)">
+<meta property="og:url" content="http://yoursite.com/2021/03/04/初识Presto(Trino)/index.html">
+<meta property="og:site_name" content="Matty&#39;s Blog">
+<meta property="og:description" content="本文为 Presto 的入门学习笔记。 Presto 是一个开源的分布式 SQL 查询引擎，它是为了高效查询不同系统和各种规模的数据源而从头开始设计和编写的一套系统。  由于开源纷争，Presto 现已更名为 Trino。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2021/03/04/初识Presto(Trino)/Presto%E6%9C%AC%E5%9C%B0%E5%90%AF%E5%8A%A8%E7%9A%84Web_UI.png">
+<meta property="og:updated_time" content="2021-06-07T16:25:34.039Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="初识Presto(Trino)">
+<meta name="twitter:description" content="本文为 Presto 的入门学习笔记。 Presto 是一个开源的分布式 SQL 查询引擎，它是为了高效查询不同系统和各种规模的数据源而从头开始设计和编写的一套系统。  由于开源纷争，Presto 现已更名为 Trino。">
+<meta name="twitter:image" content="http://yoursite.com/2021/03/04/初识Presto(Trino)/Presto%E6%9C%AC%E5%9C%B0%E5%90%AF%E5%8A%A8%E7%9A%84Web_UI.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2021/03/04/初识Presto(Trino)/">
+
+
+
+
+
+  <title>初识Presto(Trino) | Matty's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Matty's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/03/04/初识Presto(Trino)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="miaowenting">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/2.JPG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Matty's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">初识Presto(Trino)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-03-04T01:17:43+08:00">
+                2021-03-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/OLAP/" itemprop="url" rel="index">
+                    <span itemprop="name">OLAP</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/OLAP/Presto/" itemprop="url" rel="index">
+                    <span itemprop="name">Presto</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>  本文为 Presto 的入门学习笔记。 Presto 是一个开源的分布式 SQL 查询引擎，它是为了高效查询不同系统和各种规模的数据源而从头开始设计和编写的一套系统。<br>  由于开源纷争，Presto 现已更名为 Trino。</p>
+<a id="more"></a>
+
+<h2 id="Presto-简介"><a href="#Presto-简介" class="headerlink" title="Presto 简介"></a>Presto 简介</h2><h3 id="背景及发展"><a href="#背景及发展" class="headerlink" title="背景及发展"></a>背景及发展</h3><p>Hadoop 提供的大数据解决方案使用的是 MR 计算框架，这种计算框架适用于大数据的离线和批量计算，因为该计算框架强调的是吞吐率而不是计算效率，所以其不能满足大数据快速实时 Ad-Hoc 查询计算的性能要求。</p>
+<p>因此，开源社区和各大互联网公司纷纷进行大数据实时 Ad-Hoc 查询计算产品的研发 ， Facebook 于2012年秋季开始开发 Presto，目前该产品已经在超过 1000 名 Facebook 雇员中使用，每天运行超过 30000 个查询，每日查询数据量在 1PB 级别。Facebook 称 Presto 的性能比 Hive 要好上 10 倍还多，2013年 Facebook 正式宣布开源 Presto。</p>
+<h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><ul>
+<li><p>多数据源<br>目前 Presto 可以支持 Mysql、PostgreSql、Cassandra、Hive、Kafka、JMX、Iceberg 等多种 Connector，并且可以支持分库分表以及快速读取的功能。</p>
+</li>
+<li><p>支持 SQL<br>Presto 已经可以完全支持 ANSI SQL，并提供了一个 SQL Shell 给用户，用户可以直接使用 ANSI SQL 进行数据查询和计算。</p>
+</li>
+<li><p>扩展性<br>开发人员可以很容易的开发出适用于自己特定数据源的 Connector，并且可以使用 SQL 语句查询和分析自定义 Connector 中的数据。</p>
+</li>
+<li><p>混合计算<br>每种类型的数据源都对应于一种特定类型的 Connector，用户可以根据业务需要在 Presto 中针对于一种类型的 Connector 配置一个或多个 Catalog 并查询其中的数据，用户可以混合多个 Catalog 进行 join 查询和计算。</p>
+</li>
+<li><p>高性能<br>经过 Facebook 和 京东商城的测试，Presto 的查询平均性能是 Hive 的10倍以上。</p>
+</li>
+<li><p>流水线<br>由于 Presto 是基于 pipeline 进行设计的，因此在进行海量数据处理的过程中，终端用户不用等到所有的数据都处理完毕才能看到结果，而是可以像自来水管道一样，一旦开始计算，就可以立即产生一部分结果数据，并且结果数据会一部分接一部分地呈现在终端客户面前。</p>
+</li>
+</ul>
+<h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><h4 id="Presto-服务进程"><a href="#Presto-服务进程" class="headerlink" title="Presto 服务进程"></a>Presto 服务进程</h4><ul>
+<li><p>Coordinator<br>Coordinator 服务进程部署于集群中一个单独的节点上，是整个 Presto 集群的管理节点。主要用于接收客户端提交的查询，查询语句解析，生成查询执行计划、Stage、Task，对生成的 Task 进行调度。<br>此外，Coordinator 还对集群中的所有 Worker 进行管理，是整个 Presto 集群的 Master 进程，该进程既与 Worker 进行通信从而获得最新的 Worker 信息，又与 Client 进行通信，从而接收查询请求。</p>
+</li>
+<li><p>Worker<br>在每个 Worker 节点上都存在一个 Worker 服务进程，主要进行数据的处理以及 Task 的执行。Worker 进程每隔一定的时间会向 Coordinator 上的 restful<br>服务发送心跳。当客户端提交一个查询时，Coordinator 则会从当前存活的 Worker 列表中选择出合适的 Worker 节点去运行 Task。Worker 在执行每个 Task 时会进一步对当前 Task 读入的每个 Split 进行一系列的操作和处理。</p>
+</li>
+</ul>
+<h4 id="Presto-模型"><a href="#Presto-模型" class="headerlink" title="Presto 模型"></a>Presto 模型</h4><ul>
+<li>Connector</li>
+</ul>
+<p>使 Presto 适配一个数据源，每一个 Catalog 对应于一个特定的连接器。</p>
+<ul>
+<li>Catalog</li>
+</ul>
+<p>定义连接到一个数据源的细节，它包含了 Schema 并配置了一个连接器来使用。</p>
+<ul>
+<li>Schema</li>
+</ul>
+<p>组织表的一种方式。Catalog 和 Schema 一起定义了一个集合的表，这些表可以查询。</p>
+<ul>
+<li>Table</li>
+</ul>
+<p>表是无序的行的集合。这些行内容被组织成带有数据类型的有名称的列。</p>
+<h4 id="Presto-查询执行模型"><a href="#Presto-查询执行模型" class="headerlink" title="Presto 查询执行模型"></a>Presto 查询执行模型</h4><p>在 Presto 中一次查询执行会被分解为多个 Stage ，Stage 与 Stage 之间是有前后依赖关系的。每个 Stage 内部又会被分解为多个 Task，属于每个 Stage 的 Task 被均分在每个 Worker 上并行执行。在每个 Task 内部又会被分解为多个 Driver ，每个 Driver 负责处理一个 Split ，而且每个 Driver 由一系列前后相连的 Operator 组成，这里的每个 Operator 都代表针对于一个 Split 的操作。</p>
+<ul>
+<li><p>Statement<br>Statement 语句，指的是终端用户输入的用文字表示的 SQL 语句，由子句（Clause）、表达式（Expression）和断言（Predicate）组成。</p>
+</li>
+<li><p>Query<br>Query 即查询执行。当 Presto 接收一个 SQL 语句并执行时，会解析该 SQL 语句，将其转变成一个查询执行和相关的查询执行计划。一个查询执行代表可以在 Presto 集群中运行的查询，是由运行在各个 Worker 上且各自之间相互关联的阶段（Stage）组成的。<br>查询执行是为了完成 SQL 语句所表述的查询而实例化的配置信息、组件、查询执行计划和优化信息等。一个查询执行由 Stage、Task、Driver、Split、Operator 和 DataSource 组成，</p>
+</li>
+<li><p>Stage<br>Stage 即查询执行阶段。当 Presto 运行 Query 时，Presto 会将一个 Query 拆分成具有层级关系的多个 Stage，一个 Stage 就代表查询计划的一部分。</p>
+</li>
+<li><p>Exchange<br>Presto 的 Stage 是通过 Exchange 来连接另一个 Stage 的，Exchange 用于完成有上下游关系的 Stage 之间的数据交换。</p>
+</li>
+<li><p>Task<br>Stage 并不会在 Presto 集群中实际运行，仅代表针对于一个 SQL 语句查询执行计划中的一部分查询的执行过程，只是用来对查询执行计划进行管理和建模。Stage 在逻辑上又被分为一系列的 Task，这些 Task 则需要实际运行在 Presto 的各个 Worker 节点上。</p>
+</li>
+<li><p>Driver<br>一个 Task 包含一个或多个 Driver。一个 Driver 其实就是作用于一个 Split 的一系列 Operator 的集合。因此一个 Driver 用于处理一个 Split，并且生成相应的输出，这些输出由 Task 收集并传送给下游 Stage 中的一个 Task。一个 Driver 拥有一个输入和一个输出。</p>
+</li>
+<li><p>Operator<br>一个 Operator 代表一个 Split 的一种操作，例如过滤、加权、转换等。一个 Operator 依次读取一个 Split 中的数据，将 Operator 所代表的计算和操作作用于 Split 的数据上，并产生输出。每个 Operator 均会以 Page 为最小处理单位分别读取输入数据和产生输出数据。Operator 每次只会读取一个 Page 对象，相应地，每次也只会产生一个 Page 对象。</p>
+</li>
+<li><p>Split<br>Split 即分片。一个分片是一个大的数据集中的一个小的子集。而 Driver 则是作用于一个分片上的一系列操作的集合，而每个节点上运行的 Task，又包含多个 Driver，从而一个 Task 可以处理多个 Split。</p>
+</li>
+<li><p>Page<br>Page 是 Presto 中处理的最小数据单元。一个 Page 对象包含多个 Block 对象，每个 Block 对象是一个字节数组，存储一个字段的若干行。多个 Block 横切的一行是真实的一行数据。一个 Page 最大为 1MB ，最多 16 * 1024 行数据。</p>
+</li>
+</ul>
+<h3 id="Presto-使用场景"><a href="#Presto-使用场景" class="headerlink" title="Presto 使用场景"></a>Presto 使用场景</h3><h4 id="单一的-SQL-分析访问点"><a href="#单一的-SQL-分析访问点" class="headerlink" title="单一的 SQL 分析访问点"></a>单一的 SQL 分析访问点</h4><p>作为一个消费者和分析师，你可能会遇到数不清的问题：</p>
+<ul>
+<li>有时你甚至不知道数据在哪儿，只有凭借公司某个部门的内部知识或者组织内多年的工作经验，你才能找到正确的数据。</li>
+<li>为了查询多个数据库，你需要使用不同的连接和运行多种 SQL 方言的不同查询。这些查询看起来相似，行为上却不同。</li>
+<li>若不使用数据仓库，就无法使用查询合并来自不同系统的数据。</li>
+</ul>
+<p>可以使用 Presto 对接这些数据库，使用一个 SQL 标准来查询所有的系统。所有的仪表盘和分析工具以及其他商业智能系统都可以指向一个系统 – Presto，并访问组织当中的所有数据。</p>
+<h4 id="数据仓库和数据源系统的访问点"><a href="#数据仓库和数据源系统的访问点" class="headerlink" title="数据仓库和数据源系统的访问点"></a>数据仓库和数据源系统的访问点</h4><p>当一个组织需要更好的理解和分析存放在无数 RDBMS 中的数据时，就可以创建和维护数据仓库系统。从多个系统中抽取的数据通过一个复杂的 ETL 过程，最终进入一个严格受控的、巨大的数据仓库。</p>
+<p>尽管数据仓库在很多情况下非常有用，但作为一个数据分析师，你会面临很多新问题：</p>
+<ul>
+<li>除了原来的那些数据库，你的工具和查询现在又多了一个数据接入点。</li>
+<li>你今天就要用的数据还没放入数据仓库。加载数据的过程痛苦、昂贵又困难重重重。</li>
+</ul>
+<p>Presto 允许你添加任何数据仓库作为数据源，就像其他关系数据库一样。如果想深入研究数据仓库的查询，可以在 Presto 里直接完成，也可以在这里访问数据仓库及其源数据库系统，甚至可以编写将它们组合在一起查询。</p>
+<h4 id="提供对任何内容的-SQL-访问"><a href="#提供对任何内容的-SQL-访问" class="headerlink" title="提供对任何内容的 SQL 访问"></a>提供对任何内容的 SQL 访问</h4><p>Presto 允许将所有支持的系统作为数据源进行连接。它使用标准的 ANSI SQL 和使用 SQL 的所有工具对外暴露要查询的数据。</p>
+<h4 id="联邦查询"><a href="#联邦查询" class="headerlink" title="联邦查询"></a>联邦查询</h4><p>将所有的数据孤岛都暴露给 Presto 是向理解数据迈出的一大步。可以使用 SQL 和标准工具来联邦查询所有内容。 在一个语句中引用并使用不同数据库和模式的 SQL 查询，这些数据库和 Schema 来自于完全不同的系统。在同一条 SQL 查询中，可以查询 Presto 中可用的所有数据源。</p>
+<h4 id="虚拟数据仓库的语义层"><a href="#虚拟数据仓库的语义层" class="headerlink" title="虚拟数据仓库的语义层"></a>虚拟数据仓库的语义层</h4><p>数据仓库系统为用户创造了巨大的价值，对组织来说确实一个负担。</p>
+<ul>
+<li>运行和维护数据仓库是一个巨大且昂贵的项目。</li>
+<li>需要专门的团队运行与管理数据仓库和相关的 ETL 过程。</li>
+<li>将数据导入数据仓库需要用户执行繁琐的操作，并且通常非常耗时。</li>
+</ul>
+<p>Presto 可用作虚拟仓库。使用这一工具和标准的 ANSI SQL ，就可以定义语义层。一旦所有的数据库都设置成 Presto 的数据源，就可以直接查询它们。Presto 提供了查询这些数据库所需的计算能力。使用 SQL 和 Presto 支持的函数和运算符，可以直接从数据源获得想要的数据。在使用数据进行分析之前，无需复制、移动或转换它们。</p>
+<h4 id="数据湖查询引擎"><a href="#数据湖查询引擎" class="headerlink" title="数据湖查询引擎"></a>数据湖查询引擎</h4><p>在数据被存储到数据湖的存储系统时，并没有特别考虑接下来应该如何访问它们，Presto 可以使它们成为有用的数据仓库。现代数据湖通常使用 HDFS 以外的其他对象存储系统，这些系统来自云供应商或其他开源项目。 Presto 能使用 Hive 连接器连接它们，无论数据在哪里、如何存储，都可以在数据湖上使用基于 SQL 的数据分析。</p>
+<h4 id="SQL-转换和-ETL"><a href="#SQL-转换和-ETL" class="headerlink" title="SQL 转换和 ETL"></a>SQL 转换和 ETL</h4><p>Presto 也可用于迁移数据，它所提供的丰富的 SQL 函数，可以查询数据，转换数据，并将数据写入同一个数据源或任何其他数据源。</p>
+<h4 id="更快的响应带来更好的数据见解"><a href="#更快的响应带来更好的数据见解" class="headerlink" title="更快的响应带来更好的数据见解"></a>更快的响应带来更好的数据见解</h4><p>复杂的问题和海量数据集带来了诸多限制。将数据复制并加载到数据仓库并在其中分析它们的整个过程会过于昂贵。计算可能消耗太多的计算资源而无法处理全部数据，或者要消耗数天才能得到答案。</p>
+<p>Presto 一开始就避免了数据复制。Presto 的并行计算和重度优化通常能为数据分析带来性能提升。</p>
+<p>如果原来需要 3 天的查询现在只需要 15 分钟就可以完成，那么执行这个查询便是有价值的。从这些结果中获得的知识可以执行更多的查询。</p>
+<h2 id="安装和配置-Presto"><a href="#安装和配置-Presto" class="headerlink" title="安装和配置 Presto"></a>安装和配置 Presto</h2><h3 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn -T2C install -DskipTests</span><br></pre></td></tr></table></figure>
+
+<h3 id="服务端部署"><a href="#服务端部署" class="headerlink" title="服务端部署"></a>服务端部署</h3><ul>
+<li>从编译后的源码中拷贝jar和配置文件</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mkdir /usr/<span class="built_in">local</span>/presto</span><br><span class="line"></span><br><span class="line">cp -r ～workspace/presto/presto-server/target/presto-server-0.255-SNAPSHOT /usr/<span class="built_in">local</span>/presto</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/presto/presto-server-0.255-SNAPSHOT</span><br><span class="line"></span><br><span class="line">cp ～workspace/presto/presto-server/target/presto-main/etc ./presto-server-0.255-SNAPSHOT/</span><br><span class="line"></span><br><span class="line">ln -s presto-server-0.255-SNAPSHOT server</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>设置环境变量</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/profile</span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> PRESTO_SERVER_HOME=/usr/<span class="built_in">local</span>/presto/server</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$PRESTO_SERVER_HOME</span>/bin</span><br><span class="line"></span><br><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>修改 config.properties</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">coordinator=true</span><br><span class="line">node-scheduler.include-coordinator=true</span><br><span class="line">http-server.http.port=8086</span><br><span class="line">discovery-server.enabled=true</span><br><span class="line">discovery.uri=http://localhost:8086</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>修改 node.properties</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">node.id=562e42e2-e874-431f-8da5-cb779744cf7c</span><br><span class="line">node.data-dir=/usr/local/presto/data</span><br><span class="line">catalog.config-dir=/usr/local/presto/server/etc/catalog</span><br><span class="line">plugin.dir=/usr/local/presto/server/plugin</span><br><span class="line">node.server-log-file=/usr/local/presto/server/var/log/server.log</span><br><span class="line">node.launcher-log-file=/usr/local/presto/server/var/log/launcher.log</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>修改 jvm.config</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">-server</span><br><span class="line">-Xmx4G</span><br><span class="line">-XX:-UseBiasedLocking</span><br><span class="line">-XX:+UseG1GC</span><br><span class="line">-XX:+ExplicitGCInvokesConcurrent</span><br><span class="line">-XX:+HeapDumpOnOutOfMemoryError</span><br><span class="line">-XX:+UseGCOverheadLimit</span><br><span class="line">-XX:+ExitOnOutOfMemoryError</span><br><span class="line">-XX:ReservedCodeCacheSize=512M</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>修改 log.properties</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">com.facebook.presto=INFO</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>后台启动</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$PRESTO_SERVER_HOME</span>/bin/launcher start</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>前台启动</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$PRESTO_SERVER_HOME</span>/bin/launcher run</span><br></pre></td></tr></table></figure>
+
+<p>[Presto Web UI] <code>http://localhost:8086/ui/)</code></p>
+<p><img src="Presto%E6%9C%AC%E5%9C%B0%E5%90%AF%E5%8A%A8%E7%9A%84Web_UI.png" alt></p>
+<h3 id="Presto-CLI"><a href="#Presto-CLI" class="headerlink" title="Presto CLI"></a>Presto CLI</h3><ul>
+<li>从编译后的源码中拷贝jar</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/presto</span><br><span class="line"></span><br><span class="line">mkdir -p cli/lib</span><br><span class="line"></span><br><span class="line">cp ～workspace/presto/presto-cli/target/presto-cli-0.255-SNAPSHOT-executable.jar /usr/<span class="built_in">local</span>/presto/cli/lib</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/presto/cli/lib</span><br><span class="line"></span><br><span class="line">mv presto-cli-0.255-SNAPSHOT-executable.jar presto</span><br><span class="line"></span><br><span class="line">chmod +x presto</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>设置环境变量</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/profile</span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> PRESTO_CLI_HOME=/usr/<span class="built_in">local</span>/presto/cli</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$PRESTO_CLI_HOME</span>/lib</span><br><span class="line"></span><br><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>运行 cli 并查看其版本</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">presto --version</span><br><span class="line">Presto CLI 0.255-SNAPSHOT-9095346</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>启动 cli</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">presto --server localhost:8086</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>额外诊断，打印调试信息</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">presto --debug</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>执行查询</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">presto --server localhost:8086 --catalog tpch --schema sf1 --execute <span class="string">'select nationkey,name,regionkey from nation limit 5'</span></span><br><span class="line"><span class="string">"0"</span>,<span class="string">"ALGERIA"</span>,<span class="string">"0"</span></span><br><span class="line"><span class="string">"1"</span>,<span class="string">"ARGENTINA"</span>,<span class="string">"1"</span></span><br><span class="line"><span class="string">"2"</span>,<span class="string">"BRAZIL"</span>,<span class="string">"1"</span></span><br><span class="line"><span class="string">"3"</span>,<span class="string">"CANADA"</span>,<span class="string">"1"</span></span><br><span class="line"><span class="string">"4"</span>,<span class="string">"EGYPT"</span>,<span class="string">"4"</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="简单-SQL-语法"><a href="#简单-SQL-语法" class="headerlink" title="简单 SQL 语法"></a>简单 SQL 语法</h3><ul>
+<li>查看 catalogs</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">presto&gt; show catalogs;</span><br><span class="line">  Catalog   </span><br><span class="line">------------</span><br><span class="line"> blackhole  </span><br><span class="line"> druid      </span><br><span class="line"> example    </span><br><span class="line"> hive       </span><br><span class="line"> jmx        </span><br><span class="line"> localfile  </span><br><span class="line"> memory     </span><br><span class="line"> mysql      </span><br><span class="line"> pinot      </span><br><span class="line"> postgresql </span><br><span class="line"> raptor     </span><br><span class="line"> sqlserver  </span><br><span class="line"> system     </span><br><span class="line"> tpcds      </span><br><span class="line"> tpch       </span><br><span class="line">(15 rows)</span><br><span class="line"></span><br><span class="line">Query 20210606_141818_00009_4qtix, FINISHED, 1 node</span><br><span class="line">Splits: 19 total, 19 <span class="keyword">done</span> (100.00%)</span><br><span class="line">0:00 [0 rows, 0B] [0 rows/s, 0B/s]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>查看 tpch Connector 的 schemas</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">presto&gt; show schemas from tpch;</span><br><span class="line">       Schema       </span><br><span class="line">--------------------</span><br><span class="line"> information_schema </span><br><span class="line"> sf1                </span><br><span class="line"> sf100              </span><br><span class="line"> sf1000             </span><br><span class="line"> sf10000            </span><br><span class="line"> sf100000           </span><br><span class="line"> sf300              </span><br><span class="line"> sf3000             </span><br><span class="line"> sf30000            </span><br><span class="line"> tiny               </span><br><span class="line">(10 rows)</span><br><span class="line"></span><br><span class="line">Query 20210606_142008_00010_4qtix, FINISHED, 1 node</span><br><span class="line">Splits: 19 total, 19 <span class="keyword">done</span> (100.00%)</span><br><span class="line">0:00 [10 rows, 119B] [141 rows/s, 1.65KB/s]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>查看 tpch.sf1 的 tables</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">presto&gt; show tables from tpch.sf1;</span><br><span class="line">  Table   </span><br><span class="line">----------</span><br><span class="line"> customer </span><br><span class="line"> lineitem </span><br><span class="line"> nation   </span><br><span class="line"> orders   </span><br><span class="line"> part     </span><br><span class="line"> partsupp </span><br><span class="line"> region   </span><br><span class="line"> supplier </span><br><span class="line">(8 rows)</span><br><span class="line"></span><br><span class="line">Query 20210606_142111_00011_4qtix, FINISHED, 1 node</span><br><span class="line">Splits: 19 total, 19 <span class="keyword">done</span> (100.00%)</span><br><span class="line">0:00 [8 rows, 158B] [85 rows/s, 1.66KB/s]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>查看 tpch.sf1.nation 表中的实际数据</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">presto&gt; select count(name) from tpch.sf1.nation;</span><br><span class="line"> _col0 </span><br><span class="line">-------</span><br><span class="line">    25 </span><br><span class="line">(1 row)</span><br><span class="line"></span><br><span class="line">Query 20210606_142214_00012_4qtix, FINISHED, 1 node</span><br><span class="line">Splits: 21 total, 21 <span class="keyword">done</span> (100.00%)</span><br><span class="line">0:00 [25 rows, 0B] [358 rows/s, 0B/s]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>选择使用特定 schema</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">presto&gt; use tpch.sf1;</span><br><span class="line">USE</span><br></pre></td></tr></table></figure>
+
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p>《Presto实战》<br>《Presto技术内幕》</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/02/01/2020年终个人总结/" rel="next" title="2020年终个人总结">
+                <i class="fa fa-chevron-left"></i> 2020年终个人总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/03/04/Presto技术内幕/" rel="prev" title="Presto技术内幕">
+                Presto技术内幕 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/2.JPG" alt="miaowenting">
+            
+              <p class="site-author-name" itemprop="name">miaowenting</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">52</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/miaowenting" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://ci.apache.org/projects/flink/flink-docs-stable/" title="flink文档" target="_blank">flink文档</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href title="flink社区" target="_blank">flink社区</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Presto-简介"><span class="nav-number">1.</span> <span class="nav-text">Presto 简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#背景及发展"><span class="nav-number">1.1.</span> <span class="nav-text">背景及发展</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特点"><span class="nav-number">1.2.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#概念"><span class="nav-number">1.3.</span> <span class="nav-text">概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Presto-服务进程"><span class="nav-number">1.3.1.</span> <span class="nav-text">Presto 服务进程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Presto-模型"><span class="nav-number">1.3.2.</span> <span class="nav-text">Presto 模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Presto-查询执行模型"><span class="nav-number">1.3.3.</span> <span class="nav-text">Presto 查询执行模型</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Presto-使用场景"><span class="nav-number">1.4.</span> <span class="nav-text">Presto 使用场景</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#单一的-SQL-分析访问点"><span class="nav-number">1.4.1.</span> <span class="nav-text">单一的 SQL 分析访问点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据仓库和数据源系统的访问点"><span class="nav-number">1.4.2.</span> <span class="nav-text">数据仓库和数据源系统的访问点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#提供对任何内容的-SQL-访问"><span class="nav-number">1.4.3.</span> <span class="nav-text">提供对任何内容的 SQL 访问</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#联邦查询"><span class="nav-number">1.4.4.</span> <span class="nav-text">联邦查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#虚拟数据仓库的语义层"><span class="nav-number">1.4.5.</span> <span class="nav-text">虚拟数据仓库的语义层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据湖查询引擎"><span class="nav-number">1.4.6.</span> <span class="nav-text">数据湖查询引擎</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SQL-转换和-ETL"><span class="nav-number">1.4.7.</span> <span class="nav-text">SQL 转换和 ETL</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#更快的响应带来更好的数据见解"><span class="nav-number">1.4.8.</span> <span class="nav-text">更快的响应带来更好的数据见解</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装和配置-Presto"><span class="nav-number">2.</span> <span class="nav-text">安装和配置 Presto</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#编译"><span class="nav-number">2.1.</span> <span class="nav-text">编译</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务端部署"><span class="nav-number">2.2.</span> <span class="nav-text">服务端部署</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Presto-CLI"><span class="nav-number">2.3.</span> <span class="nav-text">Presto CLI</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#简单-SQL-语法"><span class="nav-number">2.4.</span> <span class="nav-text">简单 SQL 语法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">3.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">miaowenting</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
