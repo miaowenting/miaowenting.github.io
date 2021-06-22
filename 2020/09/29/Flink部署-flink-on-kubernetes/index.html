@@ -90,7 +90,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2020/09/29/Flink部署-flink-on-kubernetes/JobManager%E9%80%8F%E5%87%BA%E7%9A%84Dashboard.png">
 <meta property="og:image" content="http://yoursite.com/2020/09/29/Flink部署-flink-on-kubernetes/taskmanager%E7%BB%9F%E8%AE%A1%E5%8D%95%E8%AF%8D%E7%9A%84%E6%A0%87%E5%87%86%E8%BE%93%E5%87%BA%E6%97%A5%E5%BF%97.png">
-<meta property="og:updated_time" content="2020-09-29T09:13:38.017Z">
+<meta property="og:updated_time" content="2021-06-22T07:45:56.236Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Flink部署-flink-on-kubernetes">
 <meta name="twitter:description" content="kubernetes 是目前非常流行的容器编排系统，在其之上可以运行 web 服务、大数据处理等各类应用。这些应用被打包在非常轻量的容器中，我们通过声明的方式来告知 kubernetes 要如何部署和扩容这些程序，并对外提供服务。flink on kubernetes 可以得到一个健壮和高可扩的数据处理应用，并且能够更安全的和其他服务共享一个 kubernetes 集群。 本文将记录使用 kube">
@@ -486,6 +486,7 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> kubectl logs -f -l instance=<span class="variable">$JOB</span>-taskmanager</span></span><br><span class="line">(hello,2)</span><br><span class="line">(flink,1)</span><br><span class="line">(world,1)</span><br></pre></td></tr></table></figure>
 
 <p><img src="taskmanager%E7%BB%9F%E8%AE%A1%E5%8D%95%E8%AF%8D%E7%9A%84%E6%A0%87%E5%87%86%E8%BE%93%E5%87%BA%E6%97%A5%E5%BF%97.png" alt></p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://developer.aliyun.com/article/784822?spm=a2c6h.13148508.0.0.5be54f0eC7Xfxo" target="_blank" rel="noopener">唯品会：在 Flink 容器化与平台化上的建设实践</a></p>
 
       
     </div>
@@ -682,7 +683,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Mac-安装-Docker"><span class="nav-number">1.</span> <span class="nav-text">Mac 安装 Docker</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Minikube-搭建-Kubernetes-实验环境"><span class="nav-number">2.</span> <span class="nav-text">Minikube 搭建 Kubernetes 实验环境</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装-Minikube"><span class="nav-number">2.1.</span> <span class="nav-text">安装 Minikube</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Flink-实时处理-demo"><span class="nav-number">3.</span> <span class="nav-text">Flink 实时处理 demo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构建-Docker-容器镜像"><span class="nav-number">4.</span> <span class="nav-text">构建 Docker 容器镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#部署-JobManager"><span class="nav-number">5.</span> <span class="nav-text">部署 JobManager</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#部署-TaskManager"><span class="nav-number">6.</span> <span class="nav-text">部署 TaskManager</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Mac-安装-Docker"><span class="nav-number">1.</span> <span class="nav-text">Mac 安装 Docker</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Minikube-搭建-Kubernetes-实验环境"><span class="nav-number">2.</span> <span class="nav-text">Minikube 搭建 Kubernetes 实验环境</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装-Minikube"><span class="nav-number">2.1.</span> <span class="nav-text">安装 Minikube</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Flink-实时处理-demo"><span class="nav-number">3.</span> <span class="nav-text">Flink 实时处理 demo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构建-Docker-容器镜像"><span class="nav-number">4.</span> <span class="nav-text">构建 Docker 容器镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#部署-JobManager"><span class="nav-number">5.</span> <span class="nav-text">部署 JobManager</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#部署-TaskManager"><span class="nav-number">6.</span> <span class="nav-text">部署 TaskManager</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">7.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
             
 
           </div>
