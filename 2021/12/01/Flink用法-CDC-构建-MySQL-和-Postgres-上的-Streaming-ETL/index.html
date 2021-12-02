@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Matty's Blog" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="MacOS 上，使用 Docker 构建  MySQL 和 Postgres 上的 Streaming ETL，试用 Flink CDC 最新功能。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flink用法-CDC-构建 MySQL 和 Postgres 上的 Streaming ETL">
+<meta property="og:url" content="http://yoursite.com/2021/12/01/Flink用法-CDC-构建-MySQL-和-Postgres-上的-Streaming-ETL/index.html">
+<meta property="og:site_name" content="Matty&#39;s Blog">
+<meta property="og:description" content="MacOS 上，使用 Docker 构建  MySQL 和 Postgres 上的 Streaming ETL，试用 Flink CDC 最新功能。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2021/12/01/Flink用法-CDC-构建-MySQL-和-Postgres-上的-Streaming-ETL/Kibana%E4%B8%AD%E5%88%9B%E5%BB%BA%E7%B4%A2%E5%BC%95enriched_orders.png">
+<meta property="og:image" content="http://yoursite.com/2021/12/01/Flink用法-CDC-构建-MySQL-和-Postgres-上的-Streaming-ETL/Flink_ETL%E4%BB%BB%E5%8A%A1%E5%90%AF%E5%8A%A8%E4%B9%8B%E5%90%8E_%E5%88%9D%E5%A7%8B%E5%8C%96%E5%86%99%E5%85%A5Kibana%E4%B8%AD%E7%9A%843%E6%9D%A1%E6%95%B0%E6%8D%AE.png">
+<meta property="og:image" content="http://yoursite.com/2021/12/01/Flink用法-CDC-构建-MySQL-和-Postgres-上的-Streaming-ETL/%E5%AE%9E%E6%97%B6%E6%8F%92%E5%85%A5%E4%B8%80%E6%9D%A1%E8%AE%A2%E5%8D%95%E6%95%B0%E6%8D%AE%E4%B9%8B%E5%90%8E%E7%9A%84%E5%8F%98%E5%8C%96.png">
+<meta property="og:image" content="http://yoursite.com/2021/12/01/Flink用法-CDC-构建-MySQL-和-Postgres-上的-Streaming-ETL/%E5%AE%9E%E6%97%B6%E6%8F%92%E5%85%A5%E4%B8%80%E6%9D%A1%E7%89%A9%E6%B5%81%E6%95%B0%E6%8D%AE%E5%90%8E%E7%9A%84%E5%8F%98%E5%8C%96.png">
+<meta property="og:image" content="http://yoursite.com/2021/12/01/Flink用法-CDC-构建-MySQL-和-Postgres-上的-Streaming-ETL/%E5%AE%9E%E6%97%B6%E6%9B%B4%E6%96%B0%E8%AE%A2%E5%8D%95%E7%8A%B6%E6%80%81%E5%90%8E%E7%9A%84%E5%8F%98%E5%8C%96.png">
+<meta property="og:image" content="http://yoursite.com/2021/12/01/Flink用法-CDC-构建-MySQL-和-Postgres-上的-Streaming-ETL/%E5%AE%9E%E6%97%B6%E6%9B%B4%E6%96%B0%E7%89%A9%E6%B5%81%E7%8A%B6%E6%80%81%E5%90%8E%E7%9A%84%E5%8F%98%E5%8C%96.png">
+<meta property="og:image" content="http://yoursite.com/2021/12/01/Flink用法-CDC-构建-MySQL-和-Postgres-上的-Streaming-ETL/%E5%AE%9E%E6%97%B6%E6%9B%B4%E6%96%B0%E7%89%A9%E6%B5%81%E7%8A%B6%E6%80%81%E5%90%8E%E7%9A%84%E5%8F%98%E5%8C%96.png">
+<meta property="og:updated_time" content="2021-12-02T09:13:01.320Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Flink用法-CDC-构建 MySQL 和 Postgres 上的 Streaming ETL">
+<meta name="twitter:description" content="MacOS 上，使用 Docker 构建  MySQL 和 Postgres 上的 Streaming ETL，试用 Flink CDC 最新功能。">
+<meta name="twitter:image" content="http://yoursite.com/2021/12/01/Flink用法-CDC-构建-MySQL-和-Postgres-上的-Streaming-ETL/Kibana%E4%B8%AD%E5%88%9B%E5%BB%BA%E7%B4%A2%E5%BC%95enriched_orders.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2021/12/01/Flink用法-CDC-构建-MySQL-和-Postgres-上的-Streaming-ETL/">
+
+
+
+
+
+  <title>Flink用法-CDC-构建 MySQL 和 Postgres 上的 Streaming ETL | Matty's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Matty's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/12/01/Flink用法-CDC-构建-MySQL-和-Postgres-上的-Streaming-ETL/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="miaowenting">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/2.JPG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Matty's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Flink用法-CDC-构建 MySQL 和 Postgres 上的 Streaming ETL</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-12-01T15:37:16+08:00">
+                2021-12-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Flink/" itemprop="url" rel="index">
+                    <span itemprop="name">Flink</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>MacOS 上，使用 Docker 构建  MySQL 和 Postgres 上的 Streaming ETL，试用 Flink CDC 最新功能。</p>
+<a id="more"></a>
+
+<h2 id="准备阶段"><a href="#准备阶段" class="headerlink" title="准备阶段"></a>准备阶段</h2><h3 id="准备-docker-compose-yml-文件"><a href="#准备-docker-compose-yml-文件" class="headerlink" title="准备 docker-compose.yml 文件"></a>准备 docker-compose.yml 文件</h3><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">'2.1'</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line"><span class="attr">  postgres:</span></span><br><span class="line"><span class="attr">    image:</span> <span class="string">debezium/example-postgres:1.1</span></span><br><span class="line"><span class="attr">    ports:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">"5432:5432"</span></span><br><span class="line"><span class="attr">    environment:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">POSTGRES_PASSWORD=1234</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">POSTGRES_DB=postgres</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">POSTGRES_USER=postgres</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">POSTGRES_PASSWORD=postgres</span></span><br><span class="line"><span class="attr">  mysql:</span></span><br><span class="line"><span class="attr">    image:</span> <span class="string">debezium/example-mysql:1.1</span></span><br><span class="line"><span class="attr">    ports:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">"3306:3306"</span></span><br><span class="line"><span class="attr">    environment:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">MYSQL_ROOT_PASSWORD=123456</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">MYSQL_USER=mysqluser</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">MYSQL_PASSWORD=mysqlpw</span></span><br><span class="line"><span class="attr">  elasticsearch:</span></span><br><span class="line"><span class="attr">    image:</span> <span class="string">docker.elastic.co/elasticsearch/elasticsearch:7.10.2</span></span><br><span class="line"><span class="attr">    environment:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">cluster.name=docker-cluster</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">bootstrap.memory_lock=true</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">"ES_JAVA_OPTS=-Xms512m -Xmx512m"</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">discovery.type=single-node</span></span><br><span class="line"><span class="attr">    ports:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">"9200:9200"</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">"9300:9300"</span></span><br><span class="line"><span class="attr">    ulimits:</span></span><br><span class="line"><span class="attr">      memlock:</span></span><br><span class="line"><span class="attr">        soft:</span> <span class="bullet">-1</span></span><br><span class="line"><span class="attr">        hard:</span> <span class="bullet">-1</span></span><br><span class="line"><span class="attr">      nofile:</span></span><br><span class="line"><span class="attr">        soft:</span> <span class="number">65536</span></span><br><span class="line"><span class="attr">        hard:</span> <span class="number">65536</span></span><br><span class="line"><span class="attr">  kibana:</span></span><br><span class="line"><span class="attr">    image:</span> <span class="string">elastic/kibana:7.10.2</span></span><br><span class="line"><span class="attr">    ports:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">"5601:5601"</span></span><br></pre></td></tr></table></figure>
+
+<p>Docker Compose 中包含的容器有：</p>
+<ul>
+<li>MySQL：商品表 products 和 订单表 orders 将存储在该数据库中， 这两张表将和 Postgres 数据库中的物流表 shipments 进行关联，得到一张包含更多信息的订单表 enriched_orders；</li>
+<li>Postgres：物流表 shipments 将存储在该数据库中；</li>
+<li>Elasticsearch：最终的订单表 enriched_orders 将写到 Elasticsearch；</li>
+<li>Kibana：用来可视化 ElasticSearch 的数据。</li>
+</ul>
+<p>Docker Compose 启动命令，后台启动：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker-compose up -d</span></span><br></pre></td></tr></table></figure>
+
+<p>查看 Docker 进程，也可以通过访问 <a href="http://localhost:5601/" target="_blank" rel="noopener">http://localhost:5601/</a> 来查看 Kibana 是否运行正常：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker ps</span></span><br><span class="line">CONTAINER ID   IMAGE                                                  COMMAND                  CREATED          STATUS          PORTS                                            NAMES</span><br><span class="line">79e04d74474b   elastic/kibana:7.10.2                                  "/usr/local/bin/dumb…"   32 minutes ago   Up 32 minutes   0.0.0.0:5601-&gt;5601/tcp                           docker_kibana_1</span><br><span class="line">f7020940f3bc   debezium/example-mysql:1.1                             "docker-entrypoint.s…"   32 minutes ago   Up 32 minutes   0.0.0.0:3306-&gt;3306/tcp, 33060/tcp                docker_mysql_1</span><br><span class="line">823b10a437a2   docker.elastic.co/elasticsearch/elasticsearch:7.10.2   "/tini -- /usr/local…"   32 minutes ago   Up 32 minutes   0.0.0.0:9200-&gt;9200/tcp, 0.0.0.0:9300-&gt;9300/tcp   docker_elasticsearch_1</span><br><span class="line">330a1dfd6571   debezium/example-postgres:1.1                          "docker-entrypoint.s…"   32 minutes ago   Up 32 minutes   0.0.0.0:5432-&gt;5432/tcp                           docker_postgres_1</span><br></pre></td></tr></table></figure>
+
+<p>查看某一个 Docker 进程的日志：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker logs docker_elasticsearch_1</span></span><br></pre></td></tr></table></figure>
+
+<p>Docker Compose 停止命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker-compose down</span></span><br></pre></td></tr></table></figure>
+
+<p>注：Mac M1 请使用elasticsearch原生镜像，docker.elastic.co/elasticsearch/elasticsearch:7.10.2 ，否则启动不起来。<br><a href="https://stackoverflow.com/questions/65962810/m1-mac-issue-bringing-up-elasticsearch-cannot-run-jdk-bin-java" target="_blank" rel="noopener">解决问题的链接</a></p>
+<h3 id="下载-Flink-1-13-2-和依赖的-jars"><a href="#下载-Flink-1-13-2-和依赖的-jars" class="headerlink" title="下载 Flink-1.13.2 和依赖的 jars"></a>下载 Flink-1.13.2 和依赖的 jars</h3><ol>
+<li><p>下载 Flink-1.13.2 安装包，也可以自行下载源码进行编译：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> mvn clean install -DskipTests -Dfast -T 4 -Dmaven.compile.fork=<span class="literal">true</span> -Dscala-2.11</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>下载下面列出的依赖包，并将它们放到目录 flink-1.13.2/lib/ 下</p>
+<ul>
+<li><p><a href="https://repo.maven.apache.org/maven2/org/apache/flink/flink-sql-connector-elasticsearch7_2.11/1.13.2/flink-sql-connector-elasticsearch7_2.11-1.13.2.jar?spm=a2c6h.12873639.0.0.648a1a36FkhAvX&amp;file=flink-sql-connector-elasticsearch7_2.11-1.13.2.jar" target="_blank" rel="noopener">flink-sql-connector-elasticsearch7_2.11-1.13.2.jar</a></p>
+</li>
+<li><p><a href="https://repo1.maven.org/maven2/com/ververica/flink-sql-connector-mysql-cdc/2.1.0/flink-sql-connector-mysql-cdc-2.1.0.jar" target="_blank" rel="noopener">flink-sql-connector-mysql-cdc-2.1.0.jar</a></p>
+</li>
+<li><p><a href="https://repo1.maven.org/maven2/com/ververica/flink-sql-connector-postgres-cdc/2.1.0/flink-sql-connector-postgres-cdc-2.1.0.jar" target="_blank" rel="noopener">flink-sql-connector-postgres-cdc-2.1.0.jar</a></p>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="准备数据"><a href="#准备数据" class="headerlink" title="准备数据"></a>准备数据</h3><h4 id="在-MySQL-数据库中准备数据"><a href="#在-MySQL-数据库中准备数据" class="headerlink" title="在 MySQL 数据库中准备数据"></a>在 MySQL 数据库中准备数据</h4><ol>
+<li><p>进入到 docker-compose.yml 所在目录，执行如下命令进入 MySQL 容器：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker-compose <span class="built_in">exec</span> mysql mysql -uroot -p123456</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建数据库和表 products，orders，并插入数据：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- MySQL</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">DATABASE</span> mydb;</span><br><span class="line"><span class="keyword">USE</span> mydb;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> products (</span><br><span class="line">  <span class="keyword">id</span> <span class="built_in">INTEGER</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> AUTO_INCREMENT PRIMARY <span class="keyword">KEY</span>,</span><br><span class="line">  <span class="keyword">name</span> <span class="built_in">VARCHAR</span>(<span class="number">255</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">  description <span class="built_in">VARCHAR</span>(<span class="number">512</span>)</span><br><span class="line">);</span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> products AUTO_INCREMENT = <span class="number">101</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> products</span><br><span class="line"><span class="keyword">VALUES</span> (<span class="keyword">default</span>,<span class="string">"scooter"</span>,<span class="string">"Small 2-wheel scooter"</span>),</span><br><span class="line">       (<span class="keyword">default</span>,<span class="string">"car battery"</span>,<span class="string">"12V car battery"</span>),</span><br><span class="line">       (<span class="keyword">default</span>,<span class="string">"12-pack drill bits"</span>,<span class="string">"12-pack of drill bits with sizes ranging from #40 to #3"</span>),</span><br><span class="line">       (<span class="keyword">default</span>,<span class="string">"hammer"</span>,<span class="string">"12oz carpenter's hammer"</span>),</span><br><span class="line">       (<span class="keyword">default</span>,<span class="string">"hammer"</span>,<span class="string">"14oz carpenter's hammer"</span>),</span><br><span class="line">       (<span class="keyword">default</span>,<span class="string">"hammer"</span>,<span class="string">"16oz carpenter's hammer"</span>),</span><br><span class="line">       (<span class="keyword">default</span>,<span class="string">"rocks"</span>,<span class="string">"box of assorted rocks"</span>),</span><br><span class="line">       (<span class="keyword">default</span>,<span class="string">"jacket"</span>,<span class="string">"water resistent black wind breaker"</span>),</span><br><span class="line">       (<span class="keyword">default</span>,<span class="string">"spare tire"</span>,<span class="string">"24 inch spare tire"</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> orders (</span><br><span class="line">  order_id <span class="built_in">INTEGER</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> AUTO_INCREMENT PRIMARY <span class="keyword">KEY</span>,</span><br><span class="line">  order_date DATETIME <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">  customer_name <span class="built_in">VARCHAR</span>(<span class="number">255</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">  price <span class="built_in">DECIMAL</span>(<span class="number">10</span>, <span class="number">5</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">  product_id <span class="built_in">INTEGER</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">  order_status <span class="built_in">BOOLEAN</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="comment">-- Whether order has been placed</span></span><br><span class="line">) AUTO_INCREMENT = <span class="number">10001</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> orders</span><br><span class="line"><span class="keyword">VALUES</span> (<span class="keyword">default</span>, <span class="string">'2020-07-30 10:08:22'</span>, <span class="string">'Jark'</span>, <span class="number">50.50</span>, <span class="number">102</span>, <span class="literal">false</span>),</span><br><span class="line">       (<span class="keyword">default</span>, <span class="string">'2020-07-30 10:11:09'</span>, <span class="string">'Sally'</span>, <span class="number">15.00</span>, <span class="number">105</span>, <span class="literal">false</span>),</span><br><span class="line">       (<span class="keyword">default</span>, <span class="string">'2020-07-30 12:00:30'</span>, <span class="string">'Edward'</span>, <span class="number">25.25</span>, <span class="number">106</span>, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h4 id="在-Postgres-数据库中准备数据"><a href="#在-Postgres-数据库中准备数据" class="headerlink" title="在 Postgres 数据库中准备数据"></a>在 Postgres 数据库中准备数据</h4><ol>
+<li><p>进入到 docker-compose.yml 所在目录，执行如下命令进入 Postgre 容器：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker-compose <span class="built_in">exec</span> postgres psql -h localhost -U postgres</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建表 shipments，并插入3条物流数据：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- PG</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> shipments (</span><br><span class="line">   shipment_id <span class="built_in">SERIAL</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> PRIMARY <span class="keyword">KEY</span>,</span><br><span class="line">   order_id <span class="built_in">SERIAL</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">   origin <span class="built_in">VARCHAR</span>(<span class="number">255</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">   destination <span class="built_in">VARCHAR</span>(<span class="number">255</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">   is_arrived <span class="built_in">BOOLEAN</span> <span class="keyword">NOT</span> <span class="literal">NULL</span></span><br><span class="line"> );</span><br><span class="line"> <span class="keyword">ALTER</span> <span class="keyword">SEQUENCE</span> public.shipments_shipment_id_seq RESTART <span class="keyword">WITH</span> <span class="number">1001</span>;</span><br><span class="line"> <span class="keyword">ALTER</span> <span class="keyword">TABLE</span> public.shipments REPLICA <span class="keyword">IDENTITY</span> <span class="keyword">FULL</span>;</span><br><span class="line"> <span class="keyword">INSERT</span> <span class="keyword">INTO</span> shipments</span><br><span class="line"> <span class="keyword">VALUES</span> (<span class="keyword">default</span>,<span class="number">10001</span>,<span class="string">'Beijing'</span>,<span class="string">'Shanghai'</span>,<span class="literal">false</span>),</span><br><span class="line">        (<span class="keyword">default</span>,<span class="number">10002</span>,<span class="string">'Hangzhou'</span>,<span class="string">'Shanghai'</span>,<span class="literal">false</span>),</span><br><span class="line">        (<span class="keyword">default</span>,<span class="number">10003</span>,<span class="string">'Shanghai'</span>,<span class="string">'Hangzhou'</span>,<span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="启动-Flink-集群和-Flink-SQL-CLI"><a href="#启动-Flink-集群和-Flink-SQL-CLI" class="headerlink" title="启动 Flink 集群和 Flink SQL CLI"></a>启动 Flink 集群和 Flink SQL CLI</h2><ol>
+<li><p>进入 Flink 安装目录：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> <span class="variable">$FLINK_HOME</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动 Flink 集群：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> ./bin/start-cluster.sh</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>启动成功的话，可以在 <a href="http://localhost:8081/" target="_blank" rel="noopener">http://localhost:8081/</a> 访问到 Flink Web UI。</p>
+<ol start="3">
+<li>启动 Flink SQL CLI<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> ./bin/sql-client.sh</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="在-Flink-SQL-CLI-使用-Flink-DDL-创建表"><a href="#在-Flink-SQL-CLI-使用-Flink-DDL-创建表" class="headerlink" title="在 Flink SQL CLI 使用 Flink DDL 创建表"></a>在 Flink SQL CLI 使用 Flink DDL 创建表</h2><ol>
+<li><p>开启 checkpoint ，每隔3秒做一次 checkpoint</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SET</span> execution.checkpointing.interval = <span class="number">3</span>s;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>对于数据库中的表 products, orders, shipments，使用 Flink SQL CLI 创建对应的表，用于同步这些底层数据库表的数据：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> products (    </span><br><span class="line">	<span class="keyword">id</span> <span class="built_in">INT</span>,    </span><br><span class="line">	<span class="keyword">name</span> <span class="keyword">STRING</span>,    </span><br><span class="line">	description <span class="keyword">STRING</span>,    </span><br><span class="line">	PRIMARY <span class="keyword">KEY</span> (<span class="keyword">id</span>) <span class="keyword">NOT</span> <span class="keyword">ENFORCED</span>  </span><br><span class="line">) <span class="keyword">WITH</span> (    </span><br><span class="line">	<span class="string">'connector'</span> = <span class="string">'mysql-cdc'</span>,    </span><br><span class="line">	<span class="string">'hostname'</span> = <span class="string">'localhost'</span>,    </span><br><span class="line">	<span class="string">'port'</span> = <span class="string">'3306'</span>,    </span><br><span class="line">	<span class="string">'username'</span> = <span class="string">'root'</span>,    </span><br><span class="line">	<span class="string">'password'</span> = <span class="string">'123456'</span>,    </span><br><span class="line">	<span class="string">'database-name'</span> = <span class="string">'mydb'</span>,    </span><br><span class="line">	<span class="string">'table-name'</span> = <span class="string">'products'</span>  </span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> orders (   </span><br><span class="line">	order_id <span class="built_in">INT</span>,   </span><br><span class="line">	order_date <span class="built_in">TIMESTAMP</span>(<span class="number">0</span>),   </span><br><span class="line">	customer_name <span class="keyword">STRING</span>,   </span><br><span class="line">	price <span class="built_in">DECIMAL</span>(<span class="number">10</span>, <span class="number">5</span>),   </span><br><span class="line">	product_id <span class="built_in">INT</span>,   </span><br><span class="line">	order_status <span class="built_in">BOOLEAN</span>,   </span><br><span class="line">	PRIMARY <span class="keyword">KEY</span> (order_id) <span class="keyword">NOT</span> <span class="keyword">ENFORCED</span> </span><br><span class="line">) <span class="keyword">WITH</span> (   </span><br><span class="line">	<span class="string">'connector'</span> = <span class="string">'mysql-cdc'</span>,   </span><br><span class="line">	<span class="string">'hostname'</span> = <span class="string">'localhost'</span>,   </span><br><span class="line">	<span class="string">'port'</span> = <span class="string">'3306'</span>,   </span><br><span class="line">	<span class="string">'username'</span> = <span class="string">'root'</span>,   </span><br><span class="line">	<span class="string">'password'</span> = <span class="string">'123456'</span>,   </span><br><span class="line">	<span class="string">'database-name'</span> = <span class="string">'mydb'</span>,   </span><br><span class="line">	<span class="string">'table-name'</span> = <span class="string">'orders'</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> shipments (   </span><br><span class="line">	shipment_id <span class="built_in">INT</span>,   </span><br><span class="line">	order_id <span class="built_in">INT</span>,   </span><br><span class="line">	origin <span class="keyword">STRING</span>,   </span><br><span class="line">	destination <span class="keyword">STRING</span>,   </span><br><span class="line">	is_arrived <span class="built_in">BOOLEAN</span>,   </span><br><span class="line">	PRIMARY <span class="keyword">KEY</span> (shipment_id) <span class="keyword">NOT</span> <span class="keyword">ENFORCED</span> </span><br><span class="line">) <span class="keyword">WITH</span> (   </span><br><span class="line">	<span class="string">'connector'</span> = <span class="string">'postgres-cdc'</span>,   </span><br><span class="line">	<span class="string">'hostname'</span> = <span class="string">'localhost'</span>,   </span><br><span class="line">	<span class="string">'port'</span> = <span class="string">'5432'</span>,   </span><br><span class="line">	<span class="string">'username'</span> = <span class="string">'postgres'</span>,   </span><br><span class="line">	<span class="string">'password'</span> = <span class="string">'postgres'</span>,   </span><br><span class="line">	<span class="string">'database-name'</span> = <span class="string">'postgres'</span>,   </span><br><span class="line">	<span class="string">'schema-name'</span> = <span class="string">'public'</span>,   </span><br><span class="line">	<span class="string">'table-name'</span> = <span class="string">'shipments'</span> </span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>创建 Elasticsearch 表 enriched_orders ，用来将关联后的订单数据写入 Elasticsearch 中：<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> enriched_orders (   </span><br><span class="line">	order_id <span class="built_in">INT</span>,   </span><br><span class="line">	order_date <span class="built_in">TIMESTAMP</span>(<span class="number">0</span>),   </span><br><span class="line">	customer_name <span class="keyword">STRING</span>,   </span><br><span class="line">	price <span class="built_in">DECIMAL</span>(<span class="number">10</span>, <span class="number">5</span>),   </span><br><span class="line">	product_id <span class="built_in">INT</span>,   </span><br><span class="line">	order_status <span class="built_in">BOOLEAN</span>,   </span><br><span class="line">	product_name <span class="keyword">STRING</span>,   </span><br><span class="line">	product_description <span class="keyword">STRING</span>,   </span><br><span class="line">	shipment_id <span class="built_in">INT</span>,   </span><br><span class="line">	origin <span class="keyword">STRING</span>,   </span><br><span class="line">	destination <span class="keyword">STRING</span>,   </span><br><span class="line">	is_arrived <span class="built_in">BOOLEAN</span>,   </span><br><span class="line">	PRIMARY <span class="keyword">KEY</span> (order_id) <span class="keyword">NOT</span> <span class="keyword">ENFORCED</span> </span><br><span class="line">) <span class="keyword">WITH</span> (     </span><br><span class="line">	<span class="string">'connector'</span> = <span class="string">'elasticsearch-7'</span>,     </span><br><span class="line">	<span class="string">'hosts'</span> = <span class="string">'http://localhost:9200'</span>,     </span><br><span class="line">	<span class="string">'index'</span> = <span class="string">'enriched_orders'</span> </span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="关联订单数据并且将其写入-ES-中"><a href="#关联订单数据并且将其写入-ES-中" class="headerlink" title="关联订单数据并且将其写入 ES 中"></a>关联订单数据并且将其写入 ES 中</h2><p>使用 Flink SQL 将订单表 order 与 商品表 products，物流信息表 shipments 关联，并将关联后的订单信息写入 Elasticsearch 中：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> enriched_orders </span><br><span class="line"><span class="keyword">SELECT</span> </span><br><span class="line">	o.*, </span><br><span class="line">	p.name, </span><br><span class="line">	p.description, </span><br><span class="line">	s.shipment_id, </span><br><span class="line">	s.origin, </span><br><span class="line">	s.destination, </span><br><span class="line">	s.is_arrived </span><br><span class="line"><span class="keyword">FROM</span> orders <span class="keyword">AS</span> o </span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> </span><br><span class="line">products <span class="keyword">AS</span> p </span><br><span class="line"><span class="keyword">ON</span> o.product_id = p.id </span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> shipments <span class="keyword">AS</span> s </span><br><span class="line"><span class="keyword">ON</span> o.order_id = s.order_id;</span><br></pre></td></tr></table></figure>
+
+<p>首先访问 <a href="http://localhost:5601/app/kibana#/management/kibana/index_pattern" target="_blank" rel="noopener"></a> 创建 index pattern enriched_orders：<br><img src="Kibana%E4%B8%AD%E5%88%9B%E5%BB%BA%E7%B4%A2%E5%BC%95enriched_orders.png" alt></p>
+<p>查看初始化写入的3条 enriched order 数据：<br><img src="Flink_ETL%E4%BB%BB%E5%8A%A1%E5%90%AF%E5%8A%A8%E4%B9%8B%E5%90%8E_%E5%88%9D%E5%A7%8B%E5%8C%96%E5%86%99%E5%85%A5Kibana%E4%B8%AD%E7%9A%843%E6%9D%A1%E6%95%B0%E6%8D%AE.png" alt></p>
+<p>接下来，修改 MySQL 和 Postgre 数据库中的表数据，Kibana 中的订单数据也将实时更新：</p>
+<ol>
+<li>在 MySQL 的 orders 表中插入一条数据：<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--MySQL</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> orders <span class="keyword">VALUES</span> (<span class="keyword">default</span>, <span class="string">'2020-07-30 15:22:00'</span>, <span class="string">'Jark'</span>, <span class="number">29.71</span>, <span class="number">104</span>, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p><img src="%E5%AE%9E%E6%97%B6%E6%8F%92%E5%85%A5%E4%B8%80%E6%9D%A1%E8%AE%A2%E5%8D%95%E6%95%B0%E6%8D%AE%E4%B9%8B%E5%90%8E%E7%9A%84%E5%8F%98%E5%8C%96.png" alt></p>
+<ol start="2">
+<li>在 Postgre 的 shipments 表中插入一条数据：<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--PG</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> shipments <span class="keyword">VALUES</span> (<span class="keyword">default</span>,<span class="number">10004</span>,<span class="string">'Shanghai'</span>,<span class="string">'Beijing'</span>,<span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p><img src="%E5%AE%9E%E6%97%B6%E6%8F%92%E5%85%A5%E4%B8%80%E6%9D%A1%E7%89%A9%E6%B5%81%E6%95%B0%E6%8D%AE%E5%90%8E%E7%9A%84%E5%8F%98%E5%8C%96.png" alt></p>
+<ol start="3">
+<li>在 MySQL 的 orders 表中更新订单状态：<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--MySQL</span></span><br><span class="line"><span class="keyword">UPDATE</span> orders <span class="keyword">SET</span> order_status = <span class="literal">true</span> <span class="keyword">WHERE</span> order_id = <span class="number">10004</span>;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p><img src="%E5%AE%9E%E6%97%B6%E6%9B%B4%E6%96%B0%E8%AE%A2%E5%8D%95%E7%8A%B6%E6%80%81%E5%90%8E%E7%9A%84%E5%8F%98%E5%8C%96.png" alt></p>
+<ol start="4">
+<li>在 Postgre 的 shipments 表中更新物流状态：<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--PG</span></span><br><span class="line"><span class="keyword">UPDATE</span> shipments <span class="keyword">SET</span> is_arrived = <span class="literal">true</span> <span class="keyword">WHERE</span> shipment_id = <span class="number">1004</span>;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p><img src="%E5%AE%9E%E6%97%B6%E6%9B%B4%E6%96%B0%E7%89%A9%E6%B5%81%E7%8A%B6%E6%80%81%E5%90%8E%E7%9A%84%E5%8F%98%E5%8C%96.png" alt></p>
+<ol start="5">
+<li>在 MySQL 的 orders 表中删除一条数据：<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--MySQL</span></span><br><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> orders <span class="keyword">WHERE</span> order_id = <span class="number">10004</span>;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p><img src="%E5%AE%9E%E6%97%B6%E6%9B%B4%E6%96%B0%E7%89%A9%E6%B5%81%E7%8A%B6%E6%80%81%E5%90%8E%E7%9A%84%E5%8F%98%E5%8C%96.png" alt></p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://developer.aliyun.com/article/815226?groupCode=sc&accounttraceid=c336dbdddec54b029ca0513e1ce6a81aanxb#slide-1" target="_blank" rel="noopener">Flink CDC 系列 - 构建 MySQL 和 Postgres 上的 Streaming ETL</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/07/05/Flink源码剖析-flink-streaming-java-ProcessFunction/" rel="next" title="Flink源码剖析-flink-streaming-java_ProcessFunction">
+                <i class="fa fa-chevron-left"></i> Flink源码剖析-flink-streaming-java_ProcessFunction
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/2.JPG" alt="miaowenting">
+            
+              <p class="site-author-name" itemprop="name">miaowenting</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">55</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/miaowenting" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://ci.apache.org/projects/flink/flink-docs-stable/" title="flink文档" target="_blank">flink文档</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href title="flink社区" target="_blank">flink社区</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#准备阶段"><span class="nav-number">1.</span> <span class="nav-text">准备阶段</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#准备-docker-compose-yml-文件"><span class="nav-number">1.1.</span> <span class="nav-text">准备 docker-compose.yml 文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#下载-Flink-1-13-2-和依赖的-jars"><span class="nav-number">1.2.</span> <span class="nav-text">下载 Flink-1.13.2 和依赖的 jars</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#准备数据"><span class="nav-number">1.3.</span> <span class="nav-text">准备数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#在-MySQL-数据库中准备数据"><span class="nav-number">1.3.1.</span> <span class="nav-text">在 MySQL 数据库中准备数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在-Postgres-数据库中准备数据"><span class="nav-number">1.3.2.</span> <span class="nav-text">在 Postgres 数据库中准备数据</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动-Flink-集群和-Flink-SQL-CLI"><span class="nav-number">2.</span> <span class="nav-text">启动 Flink 集群和 Flink SQL CLI</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在-Flink-SQL-CLI-使用-Flink-DDL-创建表"><span class="nav-number">3.</span> <span class="nav-text">在 Flink SQL CLI 使用 Flink DDL 创建表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关联订单数据并且将其写入-ES-中"><span class="nav-number">4.</span> <span class="nav-text">关联订单数据并且将其写入 ES 中</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">5.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">miaowenting</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
