@@ -81,20 +81,20 @@
 
 
 
-<meta name="description" content="MacOS M1 上，测试使用 Alink 的 java 代码读写 Kafka 数据源，了解一下 Alink 代码的基本构成。">
+<meta name="description" content="MacOS M1 上，测试使用 Alink 的 java 代码读写 Kafka 数据源，了解一下 Alink API 的基本构成。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Alink 代码连接 Kafka 数据源">
 <meta property="og:url" content="http://yoursite.com/2022/01/31/Alink连接Kafka数据源/index.html">
 <meta property="og:site_name" content="Matty&#39;s Blog">
-<meta property="og:description" content="MacOS M1 上，测试使用 Alink 的 java 代码读写 Kafka 数据源，了解一下 Alink 代码的基本构成。">
+<meta property="og:description" content="MacOS M1 上，测试使用 Alink 的 java 代码读写 Kafka 数据源，了解一下 Alink API 的基本构成。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2022/01/31/Alink连接Kafka数据源/%E7%AE%80%E5%8D%95%E8%AF%BB%E5%8F%96Kafka%E6%95%B0%E6%8D%AE%E6%BA%90.png">
 <meta property="og:image" content="http://yoursite.com/2022/01/31/Alink连接Kafka数据源/%E8%AF%BB%E5%8F%96Kafka%E6%95%B0%E6%8D%AE%E6%BA%90%E5%B9%B6%E9%87%8D%E6%96%B0%E5%AE%9A%E4%B9%89%E8%BE%93%E5%87%BA%E5%AD%97%E6%AE%B5%E5%88%97.png">
 <meta property="og:image" content="http://yoursite.com/2022/01/31/Alink连接Kafka数据源/%E8%AF%BB%E5%8F%96Kafka%E6%95%B0%E6%8D%AE%E6%BA%90%E5%B9%B6%E9%87%8D%E6%96%B0%E5%AE%9A%E4%B9%89%E8%BE%93%E5%87%BA%E5%AD%97%E6%AE%B5%E5%88%97_%E8%BD%AC%E6%8D%A2%E5%AD%97%E6%AE%B5%E7%B1%BB%E5%9E%8B.png">
-<meta property="og:updated_time" content="2022-02-09T06:23:58.942Z">
+<meta property="og:updated_time" content="2022-02-09T06:29:28.592Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Alink 代码连接 Kafka 数据源">
-<meta name="twitter:description" content="MacOS M1 上，测试使用 Alink 的 java 代码读写 Kafka 数据源，了解一下 Alink 代码的基本构成。">
+<meta name="twitter:description" content="MacOS M1 上，测试使用 Alink 的 java 代码读写 Kafka 数据源，了解一下 Alink API 的基本构成。">
 <meta name="twitter:image" content="http://yoursite.com/2022/01/31/Alink连接Kafka数据源/%E7%AE%80%E5%8D%95%E8%AF%BB%E5%8F%96Kafka%E6%95%B0%E6%8D%AE%E6%BA%90.png">
 
 
@@ -389,7 +389,7 @@
       
 
       
-        <p>MacOS M1 上，测试使用 Alink 的 java 代码读写 Kafka 数据源，了解一下 Alink 代码的基本构成。</p>
+        <p>MacOS M1 上，测试使用 Alink 的 java 代码读写 Kafka 数据源，了解一下 Alink API 的基本构成。</p>
 <a id="more"></a>
 
 <h2 id="Kafka-数据源准备"><a href="#Kafka-数据源准备" class="headerlink" title="Kafka 数据源准备"></a>Kafka 数据源准备</h2><h3 id="在-MacOS-上搭建-Kafka"><a href="#在-MacOS-上搭建-Kafka" class="headerlink" title="在 MacOS 上搭建 Kafka"></a>在 MacOS 上搭建 Kafka</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">brew install Kafka</span><br><span class="line"></span><br><span class="line"><span class="comment"># M1 使用以下命令</span></span><br><span class="line">brew install -s Kafka</span><br></pre></td></tr></table></figure>
