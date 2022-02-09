@@ -84,24 +84,24 @@
 <meta name="description" content="MacOS M1 上，使用 Docker 构建快速使用和开发 Alink 的相关镜像，启动 Alink 的 server、web、notebook以及数据库服务等，可以在 web 界面上进行 Alink 相关功能的使用。Alink 提供的 Web UI 工具，可以理解成是 AIStudio 的简易操作版，供学习使用。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Alink 快速使用 WebUI">
-<meta property="og:url" content="http://yoursite.com/2022/01/30/Alink快速使用和开发/index.html">
+<meta property="og:url" content="http://yoursite.com/2022/01/30/Alink 快速使用 WebUI/index.html">
 <meta property="og:site_name" content="Matty&#39;s Blog">
 <meta property="og:description" content="MacOS M1 上，使用 Docker 构建快速使用和开发 Alink 的相关镜像，启动 Alink 的 server、web、notebook以及数据库服务等，可以在 web 界面上进行 Alink 相关功能的使用。Alink 提供的 Web UI 工具，可以理解成是 AIStudio 的简易操作版，供学习使用。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2022/01/30/Alink快速使用和开发/docker%E5%90%AF%E5%8A%A8%E7%8A%B6%E6%80%81%E5%9B%BE.png">
-<meta property="og:image" content="http://yoursite.com/2022/01/30/Alink快速使用和开发/M1_%E4%BF%AE%E6%94%B9Alink_docker%E6%96%87%E4%BB%B6_1.png">
-<meta property="og:image" content="http://yoursite.com/2022/01/30/Alink快速使用和开发/M1_%E4%BF%AE%E6%94%B9Alink_docker%E6%96%87%E4%BB%B6_2.png">
-<meta property="og:image" content="http://yoursite.com/2022/01/30/Alink快速使用和开发/Alink_WebUI%E5%BC%80%E5%8F%91%E7%95%8C%E9%9D%A2.png">
-<meta property="og:image" content="http://yoursite.com/2022/01/30/Alink快速使用和开发/%E9%80%9A%E8%BF%87%E4%BB%A3%E7%A0%81%E5%90%AF%E5%8A%A8web%E6%9C%8D%E5%8A%A1.png">
-<meta property="og:image" content="http://yoursite.com/2022/01/30/Alink快速使用和开发/%E9%80%9A%E8%BF%87%E4%BB%A3%E7%A0%81%E5%90%AF%E5%8A%A8web%E6%9C%8D%E5%8A%A1%E5%90%8E%E7%9A%84%E6%B5%8F%E8%A7%88%E5%99%A8%E7%95%8C%E9%9D%A2.png">
-<meta property="og:image" content="http://yoursite.com/2022/01/30/Alink快速使用和开发/IDEA%E4%B8%AD%E5%90%AF%E5%8A%A8Server.png">
-<meta property="og:image" content="http://yoursite.com/2022/01/30/Alink快速使用和开发/%E8%AF%BB%E5%8F%96csv.png">
-<meta property="og:image" content="http://yoursite.com/2022/01/30/Alink快速使用和开发/%E5%86%99%E5%85%A5Kafka.png">
+<meta property="og:image" content="http://yoursite.com/2022/01/30/Alink%20快速使用%20WebUI/docker%E5%90%AF%E5%8A%A8%E7%8A%B6%E6%80%81%E5%9B%BE.png">
+<meta property="og:image" content="http://yoursite.com/2022/01/30/Alink%20快速使用%20WebUI/M1_%E4%BF%AE%E6%94%B9Alink_docker%E6%96%87%E4%BB%B6_1.png">
+<meta property="og:image" content="http://yoursite.com/2022/01/30/Alink%20快速使用%20WebUI/M1_%E4%BF%AE%E6%94%B9Alink_docker%E6%96%87%E4%BB%B6_2.png">
+<meta property="og:image" content="http://yoursite.com/2022/01/30/Alink%20快速使用%20WebUI/Alink_WebUI%E5%BC%80%E5%8F%91%E7%95%8C%E9%9D%A2.png">
+<meta property="og:image" content="http://yoursite.com/2022/01/30/Alink%20快速使用%20WebUI/%E9%80%9A%E8%BF%87%E4%BB%A3%E7%A0%81%E5%90%AF%E5%8A%A8web%E6%9C%8D%E5%8A%A1.png">
+<meta property="og:image" content="http://yoursite.com/2022/01/30/Alink%20快速使用%20WebUI/%E9%80%9A%E8%BF%87%E4%BB%A3%E7%A0%81%E5%90%AF%E5%8A%A8web%E6%9C%8D%E5%8A%A1%E5%90%8E%E7%9A%84%E6%B5%8F%E8%A7%88%E5%99%A8%E7%95%8C%E9%9D%A2.png">
+<meta property="og:image" content="http://yoursite.com/2022/01/30/Alink%20快速使用%20WebUI/IDEA%E4%B8%AD%E5%90%AF%E5%8A%A8Server.png">
+<meta property="og:image" content="http://yoursite.com/2022/01/30/Alink%20快速使用%20WebUI/%E8%AF%BB%E5%8F%96csv.png">
+<meta property="og:image" content="http://yoursite.com/2022/01/30/Alink%20快速使用%20WebUI/%E5%86%99%E5%85%A5Kafka.png">
 <meta property="og:updated_time" content="2022-02-09T07:12:02.403Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Alink 快速使用 WebUI">
 <meta name="twitter:description" content="MacOS M1 上，使用 Docker 构建快速使用和开发 Alink 的相关镜像，启动 Alink 的 server、web、notebook以及数据库服务等，可以在 web 界面上进行 Alink 相关功能的使用。Alink 提供的 Web UI 工具，可以理解成是 AIStudio 的简易操作版，供学习使用。">
-<meta name="twitter:image" content="http://yoursite.com/2022/01/30/Alink快速使用和开发/docker%E5%90%AF%E5%8A%A8%E7%8A%B6%E6%80%81%E5%9B%BE.png">
+<meta name="twitter:image" content="http://yoursite.com/2022/01/30/Alink%20快速使用%20WebUI/docker%E5%90%AF%E5%8A%A8%E7%8A%B6%E6%80%81%E5%9B%BE.png">
 
 
 
@@ -131,7 +131,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2022/01/30/Alink快速使用和开发/">
+  <link rel="canonical" href="http://yoursite.com/2022/01/30/Alink 快速使用 WebUI/">
 
 
 
@@ -306,7 +306,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2022/01/30/Alink快速使用和开发/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2022/01/30/Alink 快速使用 WebUI/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="miaowenting">
@@ -345,6 +345,28 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Alink/" itemprop="url" rel="index">
+                    <span itemprop="name">Alink</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -474,8 +496,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2022/01/30/Alink 快速使用 WebUI/" rel="next" title="Alink 快速使用 WebUI">
-                <i class="fa fa-chevron-left"></i> Alink 快速使用 WebUI
+              <a href="/2021/12/05/内向者优势/" rel="next" title="内向者优势">
+                <i class="fa fa-chevron-left"></i> 内向者优势
               </a>
             
           </div>
@@ -484,8 +506,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2022/01/31/Alink连接Kafka数据源/" rel="prev" title="Alink 代码连接 Kafka 数据源">
-                Alink 代码连接 Kafka 数据源 <i class="fa fa-chevron-right"></i>
+              <a href="/2022/01/30/Alink快速使用和开发/" rel="prev" title="Alink 快速使用 WebUI">
+                Alink 快速使用 WebUI <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
