@@ -91,7 +91,7 @@
 <meta property="og:image" content="http://yoursite.com/2022/02/16/Flink-CDC-增量快照读取算法/Flink-CDC-Chunk%E5%86%85%E5%BF%AB%E7%85%A7%E8%AF%BB%E5%8F%96%E9%80%BB%E8%BE%91.png">
 <meta property="og:image" content="http://yoursite.com/2022/02/16/Flink-CDC-增量快照读取算法/Flink-CDC-Chunk_upsertBinlog%E9%80%BB%E8%BE%91.png">
 <meta property="og:image" content="http://yoursite.com/2022/02/16/Flink-CDC-增量快照读取算法/Flink-CDC-%E5%B9%B6%E5%8F%91%E8%AF%BB%E5%8F%96Chunk.png">
-<meta property="og:updated_time" content="2022-02-21T13:22:21.464Z">
+<meta property="og:updated_time" content="2022-02-22T02:13:36.619Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Flink-CDC-增量快照读取算法">
 <meta name="twitter:description" content="Flink CDC 2.0 的设计方案，借鉴了 Netflix 的 DBLog paper 实现全程无锁，并基于 Flink FLIP-27 Source 实现水平扩展，并支持全量阶段 checkpoint 。">
@@ -397,12 +397,6 @@
 <li>一致性通过加锁保证<br>Debezium 在保证数据一致性时，需要对读取的库或表加锁，全局锁可能导致数据库 hang 住，表级锁会锁住表读</li>
 <li>不支持水平扩展<br>Debezium 为单机节点，在全量读取阶段，如果表非常大，读取时长可能达到小时级</li>
 <li>全量读取阶段不支持 checkpoint<br>CDC 读取分为两个阶段，全量和增量，全量读取阶段不支持 checkpoint，fail 之后则需要重新读取。</li>
-</ol>
-<p>Flink CDC 2.0 的设计方案，借鉴了 Netflix 的 DBLog paper ，并基于 Flink FLIP-27 Source，解决了以上痛点：</p>
-<ol>
-<li>全程无锁</li>
-<li>水平扩展</li>
-<li>支持全量阶段 checkpoint</li>
 </ol>
 <h2 id="单-Chunk-读一致性"><a href="#单-Chunk-读一致性" class="headerlink" title="单 Chunk 读一致性"></a>单 Chunk 读一致性</h2><p>与 DBLog 不同，Flink CDC 2.0 没有维护额外的表，而是在 select 数据前后使用 <code>SHOW MASTER STATUS</code> 获取 binlog offset ，这种方式避免了侵入源端系统。</p>
 <p>快照读取逻辑：<br><img src="Flink-CDC-Chunk%E5%86%85%E5%BF%AB%E7%85%A7%E8%AF%BB%E5%8F%96%E9%80%BB%E8%BE%91.png" alt></p>
