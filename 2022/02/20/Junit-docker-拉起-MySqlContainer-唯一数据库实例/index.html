@@ -88,10 +88,12 @@
 <meta property="og:site_name" content="Matty&#39;s Blog">
 <meta property="og:description" content="我们在进行大数据组件相关测试时，通常需要先在外部部署测试数据源，显得有些麻烦。在代码中拉起 docker container ，创建一个唯一干净的数据源环境，会方便许多。本文以 MySql 数据源为例，说明下在单测中拉起 MySqlContainer ，创建唯一数据库实例，执行 sql 脚本等过程。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2022-02-28T11:08:53.444Z">
+<meta property="og:image" content="http://yoursite.com/2022/02/20/Junit-docker-拉起-MySqlContainer-唯一数据库实例/MySqlContainer%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E5%AE%B9%E5%99%A8.png">
+<meta property="og:updated_time" content="2022-02-28T11:18:15.952Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Junit-docker 拉起 MySqlContainer 唯一数据库实例">
 <meta name="twitter:description" content="我们在进行大数据组件相关测试时，通常需要先在外部部署测试数据源，显得有些麻烦。在代码中拉起 docker container ，创建一个唯一干净的数据源环境，会方便许多。本文以 MySql 数据源为例，说明下在单测中拉起 MySqlContainer ，创建唯一数据库实例，执行 sql 脚本等过程。">
+<meta name="twitter:image" content="http://yoursite.com/2022/02/20/Junit-docker-拉起-MySqlContainer-唯一数据库实例/MySqlContainer%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E5%AE%B9%E5%99%A8.png">
 
 
 
@@ -388,6 +390,7 @@
         <p>我们在进行大数据组件相关测试时，通常需要先在外部部署测试数据源，显得有些麻烦。在代码中拉起 docker container ，创建一个唯一干净的数据源环境，会方便许多。<br>本文以 MySql 数据源为例，说明下在单测中拉起 MySqlContainer ，创建唯一数据库实例，执行 sql 脚本等过程。</p>
 <a id="more"></a>
 
+<p><img src="MySqlContainer%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E5%AE%B9%E5%99%A8.png" alt></p>
 <h2 id="MySqlContainer"><a href="#MySqlContainer" class="headerlink" title="MySqlContainer"></a>MySqlContainer</h2><p>需引入以下 maven 包：</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.testcontainers<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>testcontainers<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.15.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
