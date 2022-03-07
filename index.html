@@ -396,7 +396,7 @@
 
       
         
-          <p>Hudi 是 Hadoop Updates and Incrementals 的简写，是由 Uber 开发并开源的 Data Lakes 解决方案。<br>它的设计目标是基于 Hadoop 兼容的文件系统（如 HDFS、S3 等），重度依赖 Spark 的数据处理能力来实现增量处理和丰富的查询能力。<br>Hudi 可以作为 Source、Sink ，它把数据存储到分布式文件系统（如 HDFS）中。<br>Hudi 有自己的数据表，从而具备将 Hudi 的 Bundle 整合进 Hive、Spark、Presto 等这类引擎中，<br>使得这些引擎可以查询 Hudi 表数据，从而具备 Hudi 所提供的 Snapshot Query 、Incremental Query 、Read Optimized Query 的能力。</p>
+          <p>Flink 和 Hudi 的集成使用。<br>在查询时确认数据的 Schema ，湖存储成本低、灵活性高，非常适用于各种查询场景的中心化存储；<br>基于云服务兴起及成熟的对象存储，在云上构建存算分离的架构；<br>通过快照隔离，实现基础的 ACID 事务；<br>对接不同的查询引擎，实现各自的查询分析场景，实现湖仓一体的架构；</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2022/02/24/Flink-Hudi-构建流式数据湖平台/#more" rel="contents">

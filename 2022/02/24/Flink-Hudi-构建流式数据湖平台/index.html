@@ -81,28 +81,34 @@
 
 
 
-<meta name="description" content="Hudi 是 Hadoop Updates and Incrementals 的简写，是由 Uber 开发并开源的 Data Lakes 解决方案。它的设计目标是基于 Hadoop 兼容的文件系统（如 HDFS、S3 等），重度依赖 Spark 的数据处理能力来实现增量处理和丰富的查询能力。Hudi 可以作为 Source、Sink ，它把数据存储到分布式文件系统（如 HDFS）中。Hudi 有自">
+<meta name="description" content="Flink 和 Hudi 的集成使用。在查询时确认数据的 Schema ，湖存储成本低、灵活性高，非常适用于各种查询场景的中心化存储；基于云服务兴起及成熟的对象存储，在云上构建存算分离的架构；通过快照隔离，实现基础的 ACID 事务；对接不同的查询引擎，实现各自的查询分析场景，实现湖仓一体的架构；">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Flink-Hudi-构建流式数据湖平台">
 <meta property="og:url" content="http://yoursite.com/2022/02/24/Flink-Hudi-构建流式数据湖平台/index.html">
 <meta property="og:site_name" content="Matty&#39;s Blog">
-<meta property="og:description" content="Hudi 是 Hadoop Updates and Incrementals 的简写，是由 Uber 开发并开源的 Data Lakes 解决方案。它的设计目标是基于 Hadoop 兼容的文件系统（如 HDFS、S3 等），重度依赖 Spark 的数据处理能力来实现增量处理和丰富的查询能力。Hudi 可以作为 Source、Sink ，它把数据存储到分布式文件系统（如 HDFS）中。Hudi 有自">
+<meta property="og:description" content="Flink 和 Hudi 的集成使用。在查询时确认数据的 Schema ，湖存储成本低、灵活性高，非常适用于各种查询场景的中心化存储；基于云服务兴起及成熟的对象存储，在云上构建存算分离的架构；通过快照隔离，实现基础的 ACID 事务；对接不同的查询引擎，实现各自的查询分析场景，实现湖仓一体的架构；">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2022/02/24/Flink-Hudi-构建流式数据湖平台/%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90_Batch_Mode.png">
+<meta property="og:image" content="http://yoursite.com/2022/02/24/Flink-Hudi-构建流式数据湖平台/%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90_Streaming_Mode.png">
+<meta property="og:image" content="http://yoursite.com/2022/02/24/Flink-Hudi-构建流式数据湖平台/%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90_Incremental_Mode.png">
+<meta property="og:image" content="http://yoursite.com/2022/02/24/Flink-Hudi-构建流式数据湖平台/%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90_%E6%89%B9%E6%B5%81%E4%B8%80%E4%BD%93%E6%A8%A1%E5%BC%8F.png">
 <meta property="og:image" content="http://yoursite.com/2022/02/24/Flink-Hudi-构建流式数据湖平台/Timeline%E7%A4%BA%E6%84%8F%E5%9B%BE.png">
 <meta property="og:image" content="http://yoursite.com/2022/02/24/Flink-Hudi-构建流式数据湖平台/Timeline%E5%AE%9E%E4%BE%8B%E7%A4%BA%E6%84%8F%E5%9B%BE.png">
 <meta property="og:image" content="http://yoursite.com/2022/02/24/Flink-Hudi-构建流式数据湖平台/Hudi%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84%E7%A4%BA%E6%84%8F%E5%9B%BE.png">
 <meta property="og:image" content="http://yoursite.com/2022/02/24/Flink-Hudi-构建流式数据湖平台/Copy_On_Write_commit_%E7%A4%BA%E6%84%8F%E5%9B%BE.png">
 <meta property="og:image" content="http://yoursite.com/2022/02/24/Flink-Hudi-构建流式数据湖平台/Merge_On_Read_commit_%E7%A4%BA%E6%84%8F%E5%9B%BE.png">
 <meta property="og:image" content="http://yoursite.com/2022/02/24/Flink-Hudi-构建流式数据湖平台/Flink_Writer_%E5%86%99%E5%85%A5%E6%B5%81%E7%A8%8B.png">
+<meta property="og:image" content="http://yoursite.com/2022/02/24/Flink-Hudi-构建流式数据湖平台/Hudi_On_Flink%E5%86%99%E5%85%A5%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95.png">
 <meta property="og:image" content="http://yoursite.com/2022/02/24/Flink-Hudi-构建流式数据湖平台/Write_State_Machine_%E5%88%9D%E5%A7%8B%E5%8C%96%E5%90%AF%E5%8A%A8.png">
 <meta property="og:image" content="http://yoursite.com/2022/02/24/Flink-Hudi-构建流式数据湖平台/Write_State_Machine_%E8%BE%BE%E5%88%B0%E5%86%85%E5%AD%98%E9%98%88%E5%80%BC%E5%88%B7%E7%9B%98.png">
 <meta property="og:image" content="http://yoursite.com/2022/02/24/Flink-Hudi-构建流式数据湖平台/Write_State_Machine_Checkpoint_barrier%E5%88%B0%E8%BE%BE%E4%B9%8B%E6%97%B6%E5%88%B7%E7%9B%98.png">
 <meta property="og:image" content="http://yoursite.com/2022/02/24/Flink-Hudi-构建流式数据湖平台/Write_State_Machine_%E9%81%87%E5%88%B0%E9%97%AE%E9%A2%98%E6%97%B6%E5%8F%96%E6%B6%88%E5%88%B7%E7%9B%98.png">
-<meta property="og:updated_time" content="2022-03-06T13:24:30.062Z">
+<meta property="og:image" content="http://yoursite.com/2022/02/24/Flink-Hudi-构建流式数据湖平台/%E5%8F%8C%E6%B5%81join%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF.png">
+<meta property="og:updated_time" content="2022-03-07T07:19:00.460Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Flink-Hudi-构建流式数据湖平台">
-<meta name="twitter:description" content="Hudi 是 Hadoop Updates and Incrementals 的简写，是由 Uber 开发并开源的 Data Lakes 解决方案。它的设计目标是基于 Hadoop 兼容的文件系统（如 HDFS、S3 等），重度依赖 Spark 的数据处理能力来实现增量处理和丰富的查询能力。Hudi 可以作为 Source、Sink ，它把数据存储到分布式文件系统（如 HDFS）中。Hudi 有自">
-<meta name="twitter:image" content="http://yoursite.com/2022/02/24/Flink-Hudi-构建流式数据湖平台/Timeline%E7%A4%BA%E6%84%8F%E5%9B%BE.png">
+<meta name="twitter:description" content="Flink 和 Hudi 的集成使用。在查询时确认数据的 Schema ，湖存储成本低、灵活性高，非常适用于各种查询场景的中心化存储；基于云服务兴起及成熟的对象存储，在云上构建存算分离的架构；通过快照隔离，实现基础的 ACID 事务；对接不同的查询引擎，实现各自的查询分析场景，实现湖仓一体的架构；">
+<meta name="twitter:image" content="http://yoursite.com/2022/02/24/Flink-Hudi-构建流式数据湖平台/%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90_Batch_Mode.png">
 
 
 
@@ -407,10 +413,28 @@
       
 
       
-        <p>Hudi 是 Hadoop Updates and Incrementals 的简写，是由 Uber 开发并开源的 Data Lakes 解决方案。<br>它的设计目标是基于 Hadoop 兼容的文件系统（如 HDFS、S3 等），重度依赖 Spark 的数据处理能力来实现增量处理和丰富的查询能力。<br>Hudi 可以作为 Source、Sink ，它把数据存储到分布式文件系统（如 HDFS）中。<br>Hudi 有自己的数据表，从而具备将 Hudi 的 Bundle 整合进 Hive、Spark、Presto 等这类引擎中，<br>使得这些引擎可以查询 Hudi 表数据，从而具备 Hudi 所提供的 Snapshot Query 、Incremental Query 、Read Optimized Query 的能力。</p>
+        <p>Flink 和 Hudi 的集成使用。<br>在查询时确认数据的 Schema ，湖存储成本低、灵活性高，非常适用于各种查询场景的中心化存储；<br>基于云服务兴起及成熟的对象存储，在云上构建存算分离的架构；<br>通过快照隔离，实现基础的 ACID 事务；<br>对接不同的查询引擎，实现各自的查询分析场景，实现湖仓一体的架构；</p>
 <a id="more"></a>
 
-<h2 id="基础概念"><a href="#基础概念" class="headerlink" title="基础概念"></a>基础概念</h2><p>Flink 和 Hudi 的集成使用。<br>在查询时确认数据的 Schema ，湖存储成本低、灵活性高，非常适用于各种查询场景的中心化存储；<br>基于云服务兴起及成熟的对象存储，在云上构建存算分离的架构；<br>通过快照隔离，实现基础的 ACID 事务；<br>对接不同的查询引擎，实现各自的查询分析场景，实现湖仓一体的架构；</p>
+<h2 id="数据集成场景"><a href="#数据集成场景" class="headerlink" title="数据集成场景"></a>数据集成场景</h2><ul>
+<li>Batch Mode</li>
+</ul>
+<p><img src="%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90_Batch_Mode.png" alt></p>
+<ul>
+<li>Streaming Mode</li>
+</ul>
+<p><img src="%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90_Streaming_Mode.png" alt></p>
+<ul>
+<li>Incremental Mode</li>
+</ul>
+<p><img src="%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90_Incremental_Mode.png" alt></p>
+<ul>
+<li>批流一体解决方案</li>
+</ul>
+<p><img src="%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90_%E6%89%B9%E6%B5%81%E4%B8%80%E4%BD%93%E6%A8%A1%E5%BC%8F.png" alt></p>
+<p>可以看出，借助 Flink 引擎的批流统一，将增量模式合并到流式模式中，摆脱对 Spark 的依赖，数据集成平台可以逐步实现计算引擎层的批流统一，同时实现批式、流式、增量三种数据集成场景。</p>
+<p>在增量模式上，提供和流模式相当的数据延迟，赋予用户近实时分析的能力，进一步提高效率和降低计算成本：<br>流处理管道面向行处理提供秒级处理延迟，增量管道中面向列处理应该也提供相同的延迟，支持高效的 upsert 和查询能力。</p>
+<h2 id="基础概念"><a href="#基础概念" class="headerlink" title="基础概念"></a>基础概念</h2><p>Hudi 是 Hadoop Updates and Incrementals 的简写，是由 Uber 开发并开源的 Data Lakes 解决方案。<br>它的设计目标是基于 Hadoop 兼容的文件系统（如 HDFS、S3 等），重度依赖 Spark 的数据处理能力来实现增量处理和丰富的查询能力。<br>Hudi 可以作为 Source、Sink ，它把数据存储到分布式文件系统（如 HDFS）中。<br>Hudi 有自己的数据表，从而具备将 Hudi 的 Bundle 整合进 Hive、Spark、Presto 等这类引擎中，<br>使得这些引擎可以查询 Hudi 表数据，从而具备 Hudi 所提供的 Snapshot Query 、Incremental Query 、Read Optimized Query 的能力。</p>
 <h3 id="Timeline"><a href="#Timeline" class="headerlink" title="Timeline"></a>Timeline</h3><p>Hudi 内部对每个表维护了一个 Timeline ，由一组作用在表上的 Instant 对象组成。Instant 表示在某个时间点对表进行操作达到某一个状态的表示，包含3部分内容：</p>
 <p><img src="Timeline%E7%A4%BA%E6%84%8F%E5%9B%BE.png" alt></p>
 <ol>
@@ -440,7 +464,27 @@
 <p>从数据生成到最终到达 Hudi 系统，可能存在延迟，如图中的 07:00、08:00、09:00 生成的数据，数据到达大约延迟了 3、2、1 小时，最终生成 COMIMIT 的时间才是 upsert 的时间。<br>对于数据到达时间（Arrival Time）和事件时间（Event Time）相关的数据延迟性（Latency）和完整性（Completeness）的权衡，Hudi 可以将数据 upsert 到更早时间的 buckets 或 folders 下。<br>通过使用 Timeline 管理，当增量查询 10:00 之后的最新数据时，可以高效的找到 10:00 之后发生过更新的文件，而不必根据延迟时间再去扫描更早时间的文件，比如这里，就不需要扫描 07:00、08:00、09:00 这些时刻对应的文件。</p>
 <h3 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h3><p><img src="Hudi%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84%E7%A4%BA%E6%84%8F%E5%9B%BE.png" alt></p>
 <p>Hudi 采用 MVCC 设计，当执行 COMPACTION 操作时，会合并日志文件和 Base 文件，生成新的文件分片。<br>CLEAN 操作会清理掉不用的文件分片，释放存储空间。</p>
-<h3 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h3><p>Hudi 会通过记录 key 与分区 path 组成 Hoodie Key ，即 Record Key + Partition Path ， 通过将 Hoodie Key 映射到 file_group/file_id 。<br>一旦记录的第一个版本被写入文件中，对应的 Hoodie Key 就不会再改变了。 </p>
+<h3 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h3><p>Hudi 会通过记录 key 与分区 path 组成 Hoodie Key ，即 Record Key + Partition Path ， 通过将 Hoodie Key 映射到 file_group/file_id 。<br>一旦记录的第一个版本被写入文件中，对应的 Hoodie Key 就不会再改变了。</p>
+<p>Hudi 提供多种索引来适配不同场景，需要根据具体的数据分布进行取舍，从而达到最佳的写入和查询效率。</p>
+<h4 id="场景一：日志去重"><a href="#场景一：日志去重" class="headerlink" title="场景一：日志去重"></a>场景一：日志去重</h4><p>这种日志数据通常会有一个 create_time 时间戳，底表也是按照时间戳进行分区，最近几个小时或几天的数据需要频繁更新，更老的数据则不需要太多变化。</p>
+<p>这种冷热分离的数据，推荐使用：</p>
+<ol>
+<li><p>Bloom index</p>
+</li>
+<li><p>State index with TTL</p>
+</li>
+<li><p>Hash index</p>
+</li>
+</ol>
+<h4 id="场景二：数据库导出（CDC）"><a href="#场景二：数据库导出（CDC）" class="headerlink" title="场景二：数据库导出（CDC）"></a>场景二：数据库导出（CDC）</h4><p>更新的数据随机分布，没有规律可循，底表数据量通常比较大，新增数据量比较小。</p>
+<ol>
+<li><p>Hash index</p>
+</li>
+<li><p>State index</p>
+</li>
+<li><p>HBase index</p>
+</li>
+</ol>
 <h3 id="Hudi-表类型"><a href="#Hudi-表类型" class="headerlink" title="Hudi 表类型"></a>Hudi 表类型</h3><h4 id="Copy-On-Write"><a href="#Copy-On-Write" class="headerlink" title="Copy On Write"></a>Copy On Write</h4><p>使用专门的列式文件格式存储数据，例如 parquet 格式，更新时保存多版本，并且在写的过程中通过异步的 Merge 来实现重写文件。Copy On Write 表只包含列式格式的 Base 文件，每次执行 COMMIT 操作会生成新版本的 Base 文件，最终执行 COMPACTION 操作时还是会生成列式格式的 Base 文件。所以，Copy On Write 表存在写放大的问题。</p>
 <p><img src="Copy_On_Write_commit_%E7%A4%BA%E6%84%8F%E5%9B%BE.png" alt></p>
 <p>上图为官网给出的例子：</p>
@@ -450,13 +494,23 @@
 <p>通常，需要有效的控制增量日志文件的大小，来平衡读放大和写方法的影响。</p>
 <p><img src="Merge_On_Read_commit_%E7%A4%BA%E6%84%8F%E5%9B%BE.png" alt></p>
 <p>上图为官网给出的例子：</p>
-<p>每个文件分组都对应一个增量日志文件（Delta Log File），COMPACTION 操作在后台定时执行，会把对应的增量日志文件合并到文件分组的 Base 文件中，生成新版本的 Base 文件。<br>使用 Read Optimized Query 模式查询 10:10 之后的数据，只能查询到包含版本为 10:05 ，文件 ID 为 1、2、3 的文件；<br>使用 Snapshot Query 模式是可以查询到 10:05 之后的数据的。</p>
-<h2 id="Flink-Writer"><a href="#Flink-Writer" class="headerlink" title="Flink Writer"></a>Flink Writer</h2><p>Flink 写入 Hudi，Flink writer 的大致写入流程：<br><img src="Flink_Writer_%E5%86%99%E5%85%A5%E6%B5%81%E7%A8%8B.png" alt></p>
-<p>在作业刚启动时， Coordinator 会尝试去文件系统上新建表，如果当前表不存在，会在文件目录上写一些 meta 信息，进行表构建。<br>在收到所有 task 的初始化 meta 信息后， Coordinator 会开启一个新的 transaction 。<br><img src="Write_State_Machine_%E5%88%9D%E5%A7%8B%E5%8C%96%E5%90%AF%E5%8A%A8.png" alt></p>
-<p>当 write task 看到了事务的发起之后，就会解锁当前数据的 flush 操作，writer 是会先在内存中积攒一批数据。<br>当达到内存阈值时，刷盘：<br><img src="Write_State_Machine_%E8%BE%BE%E5%88%B0%E5%86%85%E5%AD%98%E9%98%88%E5%80%BC%E5%88%B7%E7%9B%98.png" alt></p>
-<p>当上游的 checkpoint barrier 到达做快照时，刷盘：<br><img src="Write_State_Machine_Checkpoint_barrier%E5%88%B0%E8%BE%BE%E4%B9%8B%E6%97%B6%E5%88%B7%E7%9B%98.png" alt></p>
+<pre><code>每个文件分组都对应一个增量日志文件（Delta Log File），COMPACTION 操作在后台定时执行，会把对应的增量日志文件合并到文件分组的 Base 文件中，生成新版本的 Base 文件。</code></pre><p>使用 Read Optimized Query 模式查询 10:10 之后的数据，只能查询到包含版本为 10:05 ，文件 ID 为 1、2、3 的文件；<br>使用 Snapshot Query 模式是可以查询到 10:05 之后的数据的。</p>
+<h2 id="Hudi-Flink-Writer"><a href="#Hudi-Flink-Writer" class="headerlink" title="Hudi Flink Writer"></a>Hudi Flink Writer</h2><ul>
+<li>大致写入流程</li>
+</ul>
+<p><img src="Flink_Writer_%E5%86%99%E5%85%A5%E6%B5%81%E7%A8%8B.png" alt></p>
+<ul>
+<li>Hudi_On_Flink写入问题及解决办法</li>
+</ul>
+<p><img src="Hudi_On_Flink%E5%86%99%E5%85%A5%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95.png" alt></p>
+<ul>
+<li>写入状态机</li>
+</ul>
+<p>在作业刚启动时， Coordinator 会尝试去文件系统上新建表，如果当前表不存在，会在文件目录上写一些 meta 信息，进行表构建。<br>在收到所有 task 的初始化 meta 信息后， Coordinator 会开启一个新的 transaction 。<br>    <img src="Write_State_Machine_%E5%88%9D%E5%A7%8B%E5%8C%96%E5%90%AF%E5%8A%A8.png" alt></p>
+<p>当 write task 看到了事务的发起之后，就会解锁当前数据的 flush 操作，writer 是会先在内存中积攒一批数据。<br>当达到内存阈值时，刷盘：<br>    <img src="Write_State_Machine_%E8%BE%BE%E5%88%B0%E5%86%85%E5%AD%98%E9%98%88%E5%80%BC%E5%88%B7%E7%9B%98.png" alt></p>
+<p>当上游的 checkpoint barrier 到达做快照时，刷盘：<br>    <img src="Write_State_Machine_Checkpoint_barrier%E5%88%B0%E8%BE%BE%E4%B9%8B%E6%97%B6%E5%88%B7%E7%9B%98.png" alt></p>
 <p>write task 在每次 flush 之后，都会发送 meta 信息给 Coordinator ，当 Coordinator 收到 checkpoint 的 success 事件之后，会提交对应的事务，并发起新一轮事务。<br>write task 看到新事务后，会解锁下一轮事务的写入。</p>
-<p>遇到错误时，取消刷盘：<br><img src="Write_State_Machine_%E9%81%87%E5%88%B0%E9%97%AE%E9%A2%98%E6%97%B6%E5%8F%96%E6%B6%88%E5%88%B7%E7%9B%98.png" alt></p>
+<p>遇到错误时，取消刷盘：<br>    <img src="Write_State_Machine_%E9%81%87%E5%88%B0%E9%97%AE%E9%A2%98%E6%97%B6%E5%8F%96%E6%B6%88%E5%88%B7%E7%9B%98.png" alt></p>
 <h2 id="使用用例"><a href="#使用用例" class="headerlink" title="使用用例"></a>使用用例</h2><p>创建 Hudi 表：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> h_table(</span><br><span class="line">	<span class="keyword">uuid</span> <span class="built_in">varchar</span>(<span class="number">20</span>),</span><br><span class="line">	<span class="keyword">name</span> <span class="built_in">varchar</span>(<span class="number">10</span>),</span><br><span class="line">	age <span class="built_in">int</span>,</span><br><span class="line">	ts <span class="built_in">timestamp</span>(<span class="number">3</span>),</span><br><span class="line">	<span class="string">`partition`</span> <span class="built_in">varchar</span>(<span class="number">20</span>)</span><br><span class="line">) <span class="keyword">WITH</span> (</span><br><span class="line">    <span class="string">'connetor'</span> = <span class="string">'hudi'</span>,</span><br><span class="line">    <span class="string">'path'</span> = <span class="string">'xxx/h_table'</span>,</span><br><span class="line">    <span class="string">'table.type'</span> = <span class="string">'MERGE_ON_READ'</span>,</span><br><span class="line">    <span class="string">'write.operation'</span> = <span class="string">'upsert'</span>,</span><br><span class="line">    <span class="string">'write.precombine.field'</span> = <span class="string">'ts'</span>,</span><br><span class="line">    <span class="string">'write.payload.class'</span> = <span class="string">'OverwriteWithLatestAvroPayload.class'</span>,</span><br><span class="line">    <span class="string">'write.insert.drop.duplicates'</span> = <span class="string">'false'</span>,</span><br><span class="line">    <span class="string">'write.ignore.failed'</span> = <span class="string">'true'</span>,</span><br><span class="line">    <span class="string">'hoodie.datasource.write.recordkey.field'</span> = <span class="string">'uuid'</span>,</span><br><span class="line">    <span class="string">'hoodie.datasource.write.keygenerator.class'</span> = <span class="string">'SimpleAvroKeyGenerator.class'</span>,   </span><br><span class="line">    <span class="string">'write.bucket_assign.tasks'</span> = <span class="string">'4'</span>,</span><br><span class="line">    <span class="string">'read.streaming.enabled'</span> = <span class="string">'true'</span>,</span><br><span class="line">    <span class="string">'read.streaming.check-interval'</span> = <span class="string">'4'</span>,</span><br><span class="line">    <span class="string">'write.tasks'</span> = <span class="string">'4'</span>,</span><br><span class="line">    <span class="string">'write.batch.size.MB'</span> = <span class="string">'128'</span>,</span><br><span class="line">    <span class="string">'compaction.async.enabled'</span> = <span class="string">'true'</span>,</span><br><span class="line">    <span class="string">'compaction.trigger.strategy'</span> = <span class="string">'num_commits'</span>,</span><br><span class="line">    <span class="string">'compaction.delta_commits'</span> = <span class="string">'5'</span>,</span><br><span class="line">    <span class="string">'compaction.delta_seconds'</span> = <span class="string">'3600'</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 
@@ -474,8 +528,10 @@
 <li>CDC 数据库数据入仓库，使用 Flink-CDC connector 一次性导入或者消费 Kafka 中的 changelog</li>
 <li>对接 Presto 等 OLAP 引擎，满足近实时分析场景</li>
 <li>增量 ETL ，Hudi 支持存储流计算过程中的行级别变更，通过流读消费变更，可以实现端到端的近实时 ETL 生产</li>
+<li>双流 join 应用场景<br><img src="%E5%8F%8C%E6%B5%81join%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF.png" alt></li>
 </ol>
-<h2 id="Roadmap"><a href="#Roadmap" class="headerlink" title="Roadmap"></a>Roadmap</h2><ol>
+<p>Roadmap：</p>
+<ol>
 <li>流读语义增强</li>
 <li>Record Level Index</li>
 <li>二级索引</li>
@@ -483,7 +539,7 @@
 <li>Metastore Catalog</li>
 <li>支持 Trino Connector</li>
 </ol>
-<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><p><a href="https://hudi.apache.org/cn/docs/overview" target="_blank" rel="noopener">Hudi 官网</a><br><a href="https://cloud.tencent.com/developer/article/1694530" target="_blank" rel="noopener">Apache Hudi 架构设计和基本概念</a></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://hudi.apache.org/cn/docs/overview" target="_blank" rel="noopener">Hudi 官网</a><br><a href="https://cloud.tencent.com/developer/article/1694530" target="_blank" rel="noopener">Apache Hudi 架构设计和基本概念</a><br>FFA 2021</p>
 
       
     </div>
@@ -685,7 +741,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基础概念"><span class="nav-number">1.</span> <span class="nav-text">基础概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Timeline"><span class="nav-number">1.1.</span> <span class="nav-text">Timeline</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件"><span class="nav-number">1.2.</span> <span class="nav-text">文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#索引"><span class="nav-number">1.3.</span> <span class="nav-text">索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hudi-表类型"><span class="nav-number">1.4.</span> <span class="nav-text">Hudi 表类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Copy-On-Write"><span class="nav-number">1.4.1.</span> <span class="nav-text">Copy On Write</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Merge-On-Read"><span class="nav-number">1.4.2.</span> <span class="nav-text">Merge On Read</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Flink-Writer"><span class="nav-number">2.</span> <span class="nav-text">Flink Writer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用用例"><span class="nav-number">3.</span> <span class="nav-text">使用用例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Roadmap"><span class="nav-number">4.</span> <span class="nav-text">Roadmap</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文档"><span class="nav-number">5.</span> <span class="nav-text">参考文档</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据集成场景"><span class="nav-number">1.</span> <span class="nav-text">数据集成场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基础概念"><span class="nav-number">2.</span> <span class="nav-text">基础概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Timeline"><span class="nav-number">2.1.</span> <span class="nav-text">Timeline</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件"><span class="nav-number">2.2.</span> <span class="nav-text">文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#索引"><span class="nav-number">2.3.</span> <span class="nav-text">索引</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#场景一：日志去重"><span class="nav-number">2.3.1.</span> <span class="nav-text">场景一：日志去重</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#场景二：数据库导出（CDC）"><span class="nav-number">2.3.2.</span> <span class="nav-text">场景二：数据库导出（CDC）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hudi-表类型"><span class="nav-number">2.4.</span> <span class="nav-text">Hudi 表类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Copy-On-Write"><span class="nav-number">2.4.1.</span> <span class="nav-text">Copy On Write</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Merge-On-Read"><span class="nav-number">2.4.2.</span> <span class="nav-text">Merge On Read</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hudi-Flink-Writer"><span class="nav-number">3.</span> <span class="nav-text">Hudi Flink Writer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用用例"><span class="nav-number">4.</span> <span class="nav-text">使用用例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
