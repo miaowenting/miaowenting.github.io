@@ -93,7 +93,7 @@
 <meta property="og:image" content="http://yoursite.com/2022/03/08/Mac单机安装zeppelin/%E6%89%A7%E8%A1%8Cscala_BatchWordCount.png">
 <meta property="og:image" content="http://yoursite.com/2022/03/08/Mac单机安装zeppelin/%E6%89%A7%E8%A1%8Cscala_Streaming_WordCount.png">
 <meta property="og:image" content="http://yoursite.com/2022/03/08/Mac单机安装zeppelin/%E6%89%A7%E8%A1%8C%E7%BB%93%E6%9E%9Cscala_Streaming_WordCount.png">
-<meta property="og:updated_time" content="2022-03-09T06:55:20.631Z">
+<meta property="og:updated_time" content="2022-03-09T06:59:13.746Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mac单机安装zeppelin">
 <meta name="twitter:description" content="Zeppelin 是基于 Web 的交互式数据分析 notebook ，支持 SQL 、 Scala 、 Python 等语言。Zeppelin 通过插件化的 Interpreter 来解析用户提交的代码，并将其转化到对应的后端（计算框架、数据库等）执行，支持 angular 、beam 、 bigquery 、cassandra 、es 、HBase 、 influxdb 、Flink 、Spa">
@@ -397,41 +397,45 @@
 
 <h2 id="本机安装"><a href="#本机安装" class="headerlink" title="本机安装"></a>本机安装</h2><p><a href="https://www.apache.org/dyn/closer.cgi/zeppelin/zeppelin-0.10.1/zeppelin-0.10.1-bin-all.tgz" target="_blank" rel="noopener">zeppelin 安装包下载地址</a></p>
 <ul>
-<li>zeppelin 启动命令：<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/zeppelin-daemon.sh start</span><br></pre></td></tr></table></figure>
-
-</li>
+<li>zeppelin 启动命令：</li>
 </ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/zeppelin-daemon.sh start</span><br></pre></td></tr></table></figure>
+
 <p>本机会启动一个 ZeppelinServer 进程</p>
 <ul>
-<li><p>zeppelin 停止命令：</p>
+<li>zeppelin 停止命令：</li>
+</ul>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/zeppelin-daemon.sh stop</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>访问入口：</p>
+
+<ul>
+<li>访问入口：</li>
+</ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://localhost:8080</span><br></pre></td></tr></table></figure>
 
-</li>
-</ul>
 <p><img src="Zeppelin%E6%9C%AC%E6%9C%BA%E5%90%AF%E5%8A%A8web%E7%95%8C%E9%9D%A2.png" alt></p>
 <ul>
-<li>也可以以服务形式启动 zeppelin ：<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo service zepplin start</span><br><span class="line">sudo service zepplin stop</span><br><span class="line">sudo service zepplin restart</span><br></pre></td></tr></table></figure>
-
-</li>
+<li>也可以以服务形式启动 zeppelin ：</li>
 </ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo service zepplin start</span><br><span class="line">sudo service zepplin stop</span><br><span class="line">sudo service zepplin restart</span><br></pre></td></tr></table></figure>
+
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/zeppelin-daemon.sh upstart</span><br></pre></td></tr></table></figure>
 
 <h2 id="docker-安装"><a href="#docker-安装" class="headerlink" title="docker 安装"></a>docker 安装</h2><ul>
-<li><p>拉取 docker 镜像：</p>
+<li>拉取 docker 镜像：</li>
+</ul>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull apache/zeppelin:0.10.0</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>启动 docker 镜像，–name 指定容器名称，-p 指定暴露的端口：</p>
+
+<ul>
+<li>启动 docker 镜像，–name 指定容器名称，-p 指定暴露的端口：</li>
+</ul>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --name zeppelin0.10.0 -p 8888:8080 apache/zeppelin:0.10.0</span><br></pre></td></tr></table></figure>
 
-</li>
-</ul>
 <h2 id="Flink-with-Zeppelin"><a href="#Flink-with-Zeppelin" class="headerlink" title="Flink with Zeppelin"></a>Flink with Zeppelin</h2><ol>
-<li><p>启动 flink</p>
+<li>启动 flink</li>
+</ol>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> <span class="variable">$FLINK_HOME</span></span><br><span class="line"></span><br><span class="line">bin/start-cluster.sh</span><br></pre></td></tr></table></figure>
-</li>
+
+<ol start="2">
 <li><p>在 Zeppelin 界面上设置 FLINK_HOME<br>需要修改以下几个配置项：<br><img src="Zepplin%E8%AE%BE%E7%BD%AEflink_remote%E6%A8%A1%E5%BC%8F.png" alt></p>
 </li>
 <li><p>使用 Zeppelin 自带的 Flink tourial 脚本测试</p>
