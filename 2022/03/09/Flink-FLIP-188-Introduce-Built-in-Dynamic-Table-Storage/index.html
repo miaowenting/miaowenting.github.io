@@ -93,7 +93,7 @@
 <meta property="og:image" content="http://yoursite.com/2022/03/09/Flink-FLIP-188-Introduce-Built-in-Dynamic-Table-Storage/FileStore%E7%9A%84%E5%AD%98%E5%82%A8%E6%A0%BC%E5%BC%8F.png">
 <meta property="og:image" content="http://yoursite.com/2022/03/09/Flink-FLIP-188-Introduce-Built-in-Dynamic-Table-Storage/Demo1-%E6%B5%81%E5%BC%8F%E6%95%B0%E4%BB%93-pipeline.png">
 <meta property="og:image" content="http://yoursite.com/2022/03/09/Flink-FLIP-188-Introduce-Built-in-Dynamic-Table-Storage/Demo2-%E7%A6%BB%E7%BA%BF%E6%95%B0%E4%BB%93-%E6%95%B0%E6%8D%AE%E8%AE%A2%E6%AD%A3.png">
-<meta property="og:updated_time" content="2022-03-10T15:46:12.037Z">
+<meta property="og:updated_time" content="2022-03-11T05:57:28.820Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Flink-FLIP-188: Introduce Built-in Dynamic Table Storage">
 <meta name="twitter:description" content="动态表：全新的 Flink 内置存储。 Flink Dynamic Table 可以理解为一套流批一体的存储，并无缝对接 Flink SQL 。原来 Flink 只能读写像 Kafka 、 HBase 这样的外部表，现在用一套 Flink SQL 语法就可以像原来创建源表和目标表一样，创建一个 Dynamic Table。流式数仓的分层数据可以全部放到 Flink Dynamic Table 中，">
@@ -423,16 +423,71 @@
 <li>接收任何类型的数据类型</li>
 <li>表可以有主键，也可以没有主键</li>
 </ol>
-<p>从数据结构上看， Dynamic Table 内部有两个核心组件，File Storage 和 Log Storage ：</p>
+<h2 id="存储结构"><a href="#存储结构" class="headerlink" title="存储结构"></a>存储结构</h2><p>从数据结构上看， Dynamic Table 内部有两个核心组件，File Storage 和 Log Storage ：</p>
 <p><img src="Flink_Dynamic_Table%E7%9A%84%E5%A4%A7%E4%BD%93%E6%A0%BC%E5%BC%8F.png" alt></p>
-<ul>
-<li>File Storage ：Table 的文件存储形式，采用 LSM 架构，支持流式的更新、删除、增加等。采用开放的列存结构，支持压缩等优化。对应 Flink SQL 的批模式，支持全量批式读取。</li>
-</ul>
+<h3 id="File-Storage"><a href="#File-Storage" class="headerlink" title="File Storage"></a>File Storage</h3><p>Table 的文件存储形式，采用 LSM 架构，支持流式的更新、删除、增加等。采用开放的列存结构，支持压缩等优化。对应 Flink SQL 的批模式，支持全量批式读取。</p>
 <p><img src="FileStore%E7%9A%84%E5%AD%98%E5%82%A8%E6%A0%BC%E5%BC%8F.png" alt></p>
+<ol>
+<li>Data 目录</li>
+</ol>
 <ul>
-<li>Log Storage ：Table 的操作记录，是一个不可变更序列，对应 Flink SQL 的流模式，可以通过 Flink SQL 订阅 Dynamic Table 的增量变化做实时分析，支持插件化实现。<br>依赖 Kafka 作为底层存储，Log Storage 中的 bucket 就对应 Kafka Partition 。</li>
+<li>Part 目录：partition，在 DDL 中以 “PARTITIONED BY” 定义，同 Hive 一样，如 “dt=2022-03-12”</li>
+<li>Bucket 目录：partition 下的 bucket ，数据通过 hash 落入 bucket ，分桶对应一个由多个 files 组成的 LSM</li>
+<li>LSM datafiles：数据文件，抽象 format，支持 orc、parquet、avro ，record schema 如下：<br>SequenceNumber<br>ValueKind(add or delete)<br>RowData: key<br>RowData: value</li>
 </ul>
+<ol start="2">
+<li>Meta 文件</li>
+</ol>
+<ul>
+<li><p>Manifest file: 代表多少 files 已经 added ，多少 files 已经 deleted，代表 table 的一次变更，Manifest 记录增量文件的版本，schema 如下：<br>data file 名称<br>FileKind: delete 或 add<br>partition<br>bucket<br>min/max key: 用于 skipping<br>min/max sequenceNumber<br>统计数据：data file 大小，行数</p>
+</li>
+<li><p>Snapshot file: manifest files 集合，代表 table 的一个 snapshot 。snapshot 代表一个版本的所有 files ，snapshot file 的 schema 是一个 Manifest：<br>manifest file名称<br>lower/upper partition: 用于分区裁剪<br>统计数据：manifest file 大小，added file 个数，deleted file 个数</p>
+</li>
+</ul>
+<h3 id="Log-Storage"><a href="#Log-Storage" class="headerlink" title="Log Storage"></a>Log Storage</h3><p>Table 的操作记录，是一个不可变更序列，对应 Flink SQL 的流模式，可以通过 Flink SQL 订阅 Dynamic Table 的增量变化做实时分析，支持插件化实现。<br>依赖 Kafka 作为底层存储，Log Storage 中的 bucket 就对应 Kafka Partition 。</p>
 <h2 id="源码阅读准备"><a href="#源码阅读准备" class="headerlink" title="源码阅读准备"></a>源码阅读准备</h2><p><a href="https://github.com/apache/flink" target="_blank" rel="noopener">flink git仓库</a> 切换到 master 分支，当前是 1.15-SNAPSHOT 分支，需要 install 到本地，flink-table-store 需要引用这个版本。<br><a href="https://github.com/apache/flink-table-store" target="_blank" rel="noopener">flink-table-store git仓库</a>，切换到 master 分支。</p>
+<h2 id="写流程"><a href="#写流程" class="headerlink" title="写流程"></a>写流程</h2><ol>
+<li>LSM 处理（类似 Leveldb）</li>
+</ol>
+<ul>
+<li>在内存中维护 memtable ，数据直接写入 memtable ，每条数据都有一个 sequenceNumber 。对于相同的 key ，最大 sequenceNumber 的 key 将会覆盖小 sequenceNumber </li>
+<li>当 memtable 已满或 PrepareCommit ，执行刷盘，按 key + sequenceNumber 排序，合并重复的 key ，使用特殊的 format 将数据写入 remote file</li>
+<li>异步线程执行 LSM compactions</li>
+</ul>
+<ol start="2">
+<li>PrepareCommit</li>
+</ol>
+<ul>
+<li>刷写 memtable</li>
+<li>提交信息：DeleteFiles 、AddFiles</li>
+</ul>
+<ol start="3">
+<li>Global Commit</li>
+</ol>
+<ul>
+<li>读取旧 snapshots ，如果 checkpoint 已提交，则返回</li>
+<li>读取前一个 snapshot-{i} ，将 buckets 的 deleteFiles 和 addFiles 写入新的 manifest ，生成一个新的 snapshot-${i+1}</li>
+</ul>
+<h2 id="读取流程"><a href="#读取流程" class="headerlink" title="读取流程"></a>读取流程</h2><ol>
+<li>Planner</li>
+</ol>
+<ul>
+<li>读取当前的 snapshot ，根据过滤条件裁剪分区，获得需要读取的 manifests</li>
+<li>为每个 partition 中的每个 bucket ，合并 manifests 中的 deleteFiles 和 addFiles ，生成一个 file list</li>
+</ul>
+<ol start="2">
+<li>SplitEnumerator</li>
+</ol>
+<ul>
+<li>遍历需要读取的 partitions ，为每个 bucket 生成相应的 SourceSplit</li>
+<li>根据过滤条件过滤出 bucket 中需要读取的 files ，在 SourceSplit 生成一个 LSM 层</li>
+</ul>
+<ol start="3">
+<li>Runtime Task</li>
+</ol>
+<ul>
+<li>获得要读取的 SourceSplit ，生成 LSM 的 MergeIterator ，并读取数据</li>
+</ul>
 <h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><p><img src="Demo1-%E6%B5%81%E5%BC%8F%E6%95%B0%E4%BB%93-pipeline.png" alt></p>
 <h3 id="Stream"><a href="#Stream" class="headerlink" title="Stream"></a>Stream</h3><ul>
 <li>MySql CDC : 订单表</li>
@@ -684,7 +739,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本思路"><span class="nav-number">1.</span> <span class="nav-text">基本思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#源码阅读准备"><span class="nav-number">2.</span> <span class="nav-text">源码阅读准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Demo"><span class="nav-number">3.</span> <span class="nav-text">Demo</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Stream"><span class="nav-number">3.1.</span> <span class="nav-text">Stream</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OLAP"><span class="nav-number">3.2.</span> <span class="nav-text">OLAP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Batch"><span class="nav-number">3.3.</span> <span class="nav-text">Batch</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#依赖"><span class="nav-number">4.</span> <span class="nav-text">依赖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本思路"><span class="nav-number">1.</span> <span class="nav-text">基本思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#存储结构"><span class="nav-number">2.</span> <span class="nav-text">存储结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#File-Storage"><span class="nav-number">2.1.</span> <span class="nav-text">File Storage</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Log-Storage"><span class="nav-number">2.2.</span> <span class="nav-text">Log Storage</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#源码阅读准备"><span class="nav-number">3.</span> <span class="nav-text">源码阅读准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#写流程"><span class="nav-number">4.</span> <span class="nav-text">写流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#读取流程"><span class="nav-number">5.</span> <span class="nav-text">读取流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Demo"><span class="nav-number">6.</span> <span class="nav-text">Demo</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Stream"><span class="nav-number">6.1.</span> <span class="nav-text">Stream</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OLAP"><span class="nav-number">6.2.</span> <span class="nav-text">OLAP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Batch"><span class="nav-number">6.3.</span> <span class="nav-text">Batch</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#依赖"><span class="nav-number">7.</span> <span class="nav-text">依赖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">8.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
