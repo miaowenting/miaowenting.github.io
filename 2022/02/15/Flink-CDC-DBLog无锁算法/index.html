@@ -95,7 +95,7 @@
 <meta property="og:image" content="http://yoursite.com/2022/02/15/Flink-CDC-DBLog无锁算法/Watermar-based_Chunk_Selection%E7%94%9F%E6%88%90%E4%BD%8E%E9%AB%98%E7%82%B9%E4%BD%8D.png">
 <meta property="og:image" content="http://yoursite.com/2022/02/15/Flink-CDC-DBLog无锁算法/Watermar-based_Chunk_Selection%E5%90%88%E5%B9%B6%E5%A2%9E%E9%87%8F%E5%88%B0%E5%85%A8%E9%87%8F.png">
 <meta property="og:image" content="http://yoursite.com/2022/02/15/Flink-CDC-DBLog无锁算法/%E5%85%A8%E9%87%8F%E5%90%8C%E6%AD%A5%E4%B8%8E%E5%A2%9E%E9%87%8F%E5%90%8C%E6%AD%A5%E4%BA%A4%E5%8F%89%E8%BE%93%E5%87%BA.png">
-<meta property="og:updated_time" content="2022-02-22T02:20:03.900Z">
+<meta property="og:updated_time" content="2022-03-17T07:51:10.846Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Flink-CDC-DBLog无锁算法">
 <meta name="twitter:description" content="DBLog 是一个 java 框架，可以从数据库的事务日志中捕获变更行，也可以通过执行表 select 语句获得数据库的全量数据。">
@@ -478,10 +478,19 @@
 </ol>
 <p>当接收到 low watermark event 时，去除内存中发生变化的数据主键。当接收到 high watermark event 时，拼接 chunk 中的剩余数据主键并输出。<br>定义一个 window 来处理 chunk 数据，写入 lw 时打开 window，写入 hw 时关闭 window。</p>
 <p>举例一张表中包含主键 K1、k2、k3、k4、k5、k6，每一个 change log entry 都代表对主键的一个 create、update 或 delete 事件。</p>
-<p>更新信号表分别生成 lw 和 hw，并通过 change log 接收到：<br><img src="Watermar-based_Chunk_Selection%E7%94%9F%E6%88%90%E4%BD%8E%E9%AB%98%E7%82%B9%E4%BD%8D.png" alt></p>
-<p>窗口中发生变更的数据将被移除出内存，没有变更的数据将被拼接到 output buffer 中：<br><img src="Watermar-based_Chunk_Selection%E5%90%88%E5%B9%B6%E5%A2%9E%E9%87%8F%E5%88%B0%E5%85%A8%E9%87%8F.png" alt></p>
-<p>全量同步与增量同步交叉合并输出结果：<br><img src="%E5%85%A8%E9%87%8F%E5%90%8C%E6%AD%A5%E4%B8%8E%E5%A2%9E%E9%87%8F%E5%90%8C%E6%AD%A5%E4%BA%A4%E5%8F%89%E8%BE%93%E5%87%BA.png" alt></p>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://dev.mysql.com/doc/dev/mysql-server/latest/page_protocol_replication.html" target="_blank" rel="noopener">MySQL Replication Protocol</a></p>
+<ol>
+<li><p>首先通过 <code>SHOW MASTER STATUS</code> 获取当前 binlog 文件的偏移量当作 lw；</p>
+</li>
+<li><p>然后通过 SELECT 读取全量数据的快照 snapshot ，在读取的过程中无锁操作，允许数据的插入和更新；</p>
+</li>
+<li><p>读取完快照 Snapshot ，再通过 <code>SHOW MASTER STATUS</code> 获取当前 binlog 文件的偏移量当作 hw；<br>更新信号表分别生成 lw 和 hw，并通过 change log 接收到：<br><img src="Watermar-based_Chunk_Selection%E7%94%9F%E6%88%90%E4%BD%8E%E9%AB%98%E7%82%B9%E4%BD%8D.png" alt></p>
+</li>
+<li><p>读取 lw ～ hw 中的数据集 delta，设置 Snapshot = Snapshot - delta；<br>窗口中发生变更的数据将被移除出内存，没有变更的数据将被拼接到 output buffer 中：<br><img src="Watermar-based_Chunk_Selection%E5%90%88%E5%B9%B6%E5%A2%9E%E9%87%8F%E5%88%B0%E5%85%A8%E9%87%8F.png" alt></p>
+</li>
+<li><p>基于最新的 snapshot ，从 lw 开始消费 binlog ，执行 binlog 回放；<br>全量同步与增量同步交叉合并输出结果：<br><img src="%E5%85%A8%E9%87%8F%E5%90%8C%E6%AD%A5%E4%B8%8E%E5%A2%9E%E9%87%8F%E5%90%8C%E6%AD%A5%E4%BA%A4%E5%8F%89%E8%BE%93%E5%87%BA.png" alt></p>
+</li>
+</ol>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://dev.mysql.com/doc/dev/mysql-server/latest/page_protocol_replication.html" target="_blank" rel="noopener">MySQL Replication Protocol</a><br><a href="https://netflixtechblog.com/dblog-a-generic-change-data-capture-framework-69351fb9099b" target="_blank" rel="noopener">DBLog: A Generic Change-Data-Capture Framework</a></p>
 
       
     </div>

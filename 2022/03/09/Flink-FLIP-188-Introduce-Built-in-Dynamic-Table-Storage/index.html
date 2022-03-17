@@ -93,7 +93,7 @@
 <meta property="og:image" content="http://yoursite.com/2022/03/09/Flink-FLIP-188-Introduce-Built-in-Dynamic-Table-Storage/FileStore%E7%9A%84%E5%AD%98%E5%82%A8%E6%A0%BC%E5%BC%8F.png">
 <meta property="og:image" content="http://yoursite.com/2022/03/09/Flink-FLIP-188-Introduce-Built-in-Dynamic-Table-Storage/Demo1-%E6%B5%81%E5%BC%8F%E6%95%B0%E4%BB%93-pipeline.png">
 <meta property="og:image" content="http://yoursite.com/2022/03/09/Flink-FLIP-188-Introduce-Built-in-Dynamic-Table-Storage/Demo2-%E7%A6%BB%E7%BA%BF%E6%95%B0%E4%BB%93-%E6%95%B0%E6%8D%AE%E8%AE%A2%E6%AD%A3.png">
-<meta property="og:updated_time" content="2022-03-11T05:57:28.820Z">
+<meta property="og:updated_time" content="2022-03-14T08:34:37.919Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Flink-FLIP-188: Introduce Built-in Dynamic Table Storage">
 <meta name="twitter:description" content="动态表：全新的 Flink 内置存储。 Flink Dynamic Table 可以理解为一套流批一体的存储，并无缝对接 Flink SQL 。原来 Flink 只能读写像 Kafka 、 HBase 这样的外部表，现在用一套 Flink SQL 语法就可以像原来创建源表和目标表一样，创建一个 Dynamic Table。流式数仓的分层数据可以全部放到 Flink Dynamic Table 中，">
@@ -444,8 +444,42 @@
 <li><p>Snapshot file: manifest files 集合，代表 table 的一个 snapshot 。snapshot 代表一个版本的所有 files ，snapshot file 的 schema 是一个 Manifest：<br>manifest file名称<br>lower/upper partition: 用于分区裁剪<br>统计数据：manifest file 大小，added file 个数，deleted file 个数</p>
 </li>
 </ul>
+<ul>
+<li><p>table path 文件夹</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">staff@localhost:/var/folders/px/n0m4_bp13077qbk54k30yy340000gp/T/junit1120128347261300405/junit4490023537149085262$     ll</span><br><span class="line">total 0</span><br><span class="line">drwx------  6 staff  staff  192  3 11 17:55 ./</span><br><span class="line">drwx------  3 staff  staff   96  3 11 17:51 ../</span><br><span class="line">drwxr-xr-x  5 staff  staff  160  3 11 17:55 manifest/</span><br><span class="line">drwxr-xr-x  4 staff  staff  128  3 11 17:55 p=p1/</span><br><span class="line">drwxr-xr-x  4 staff  staff  128  3 11 17:55 p=p2/</span><br><span class="line">drwxr-xr-x  3 staff  staff   96  3 11 17:55 snapshot/</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>分区 p1、分桶 bucket-1</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">staff@localhost:/var/folders/px/n0m4_bp13077qbk54k30yy340000gp/T/junit1120128347261300405/junit4490023537149085262/p=p1$     ll</span><br><span class="line">total 0</span><br><span class="line">drwxr-xr-x  4 staff  staff  128  3 11 17:55 ./</span><br><span class="line">drwx------  6 staff  staff  192  3 11 17:55 ../</span><br><span class="line">drwxr-xr-x  3 staff  staff   96  3 11 17:57 bucket-1/</span><br><span class="line">drwxr-xr-x  3 staff  staff   96  3 11 17:57 bucket-2/</span><br><span class="line"></span><br><span class="line">staff@localhost:/var/folders/px/n0m4_bp13077qbk54k30yy340000gp/T/junit1120128347261300405/junit4490023537149085262/p=p1/bucket-1$     ll</span><br><span class="line">total 8</span><br><span class="line">drwxr-xr-x  3 staff  staff   96  3 11 17:57 ./</span><br><span class="line">drwxr-xr-x  4 staff  staff  128  3 11 17:55 ../</span><br><span class="line">-rw-r--r--  1 staff  staff  426  3 11 17:55 sst-90911871-51d6-4323-aa55-f25c8a29021d-0</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>manifest 目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">staff@localhost:/var/folders/px/n0m4_bp13077qbk54k30yy340000gp/T/junit1120128347261300405/junit4490023537149085262/manifest$     ll</span><br><span class="line">total 24</span><br><span class="line">drwxr-xr-x  5 staff  staff   160  3 11 17:55 ./</span><br><span class="line">drwx------  6 staff  staff   192  3 11 17:55 ../</span><br><span class="line">-rw-r--r--  1 staff  staff  2681  3 11 17:55 manifest-5a53de30-1d30-43f0-a837-078ca61e0b93-0</span><br><span class="line">-rw-r--r--  1 staff  staff   837  3 11 17:55 manifest-list-0267739b-40f7-4c33-b433-d8f73b50af17-0</span><br><span class="line">-rw-r--r--  1 staff  staff   931  3 11 17:55 manifest-list-0267739b-40f7-4c33-b433-d8f73b50af17-1</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>snapshot-1</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">staff@localhost:/var/folders/px/n0m4_bp13077qbk54k30yy340000gp/T/junit1120128347261300405/junit4490023537149085262/snapshot$     ll</span><br><span class="line">total 8</span><br><span class="line">drwxr-xr-x  3 staff  staff   96  3 11 17:55 ./</span><br><span class="line">drwx------  6 staff  staff  192  3 11 17:55 ../</span><br><span class="line">-rw-r--r--  1 staff  staff  283  3 11 17:55 snapshot-1</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"id"</span>:<span class="number">1</span>,</span><br><span class="line">    <span class="attr">"baseManifestList"</span>:<span class="string">"manifest-list-0267739b-40f7-4c33-b433-d8f73b50af17-0"</span>,</span><br><span class="line">    <span class="attr">"deltaManifestList"</span>:<span class="string">"manifest-list-0267739b-40f7-4c33-b433-d8f73b50af17-1"</span>,</span><br><span class="line">    <span class="attr">"commitUser"</span>:<span class="string">"user"</span>,</span><br><span class="line">    <span class="attr">"commitIdentifier"</span>:<span class="string">"9223372036854775807"</span>,</span><br><span class="line">    <span class="attr">"commitKind"</span>:<span class="string">"APPEND"</span>,</span><br><span class="line">    <span class="attr">"timeMillis"</span>:<span class="number">1646992531086</span>,</span><br><span class="line">    <span class="attr">"logOffsets"</span>:&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h3 id="Log-Storage"><a href="#Log-Storage" class="headerlink" title="Log Storage"></a>Log Storage</h3><p>Table 的操作记录，是一个不可变更序列，对应 Flink SQL 的流模式，可以通过 Flink SQL 订阅 Dynamic Table 的增量变化做实时分析，支持插件化实现。<br>依赖 Kafka 作为底层存储，Log Storage 中的 bucket 就对应 Kafka Partition 。</p>
 <h2 id="源码阅读准备"><a href="#源码阅读准备" class="headerlink" title="源码阅读准备"></a>源码阅读准备</h2><p><a href="https://github.com/apache/flink" target="_blank" rel="noopener">flink git仓库</a> 切换到 master 分支，当前是 1.15-SNAPSHOT 分支，需要 install 到本地，flink-table-store 需要引用这个版本。<br><a href="https://github.com/apache/flink-table-store" target="_blank" rel="noopener">flink-table-store git仓库</a>，切换到 master 分支。</p>
+<p><code>FileStoreITCase</code> </p>
+<ol>
+<li>分区表</li>
+</ol>
+<p>测试数据集：</p>
+<p>0,p1,1<br>0,p1,2<br>5,p1,1<br>6,p2,1<br>3,p2,5<br>5,p2,1</p>
+<p>buckets = 3<br>partitions {1}<br>keys {2}</p>
+<p>中间结果：<br>partition -&gt; p1<br>key -&gt; 1<br>row -&gt; 0,p1,1<br>partition -&gt; p1<br>key -&gt; 1<br>row -&gt; 5,p1,1<br>partition -&gt; p2<br>key -&gt; 1<br>row -&gt; 6,p2,1<br>partition -&gt; p2<br>key -&gt; 1<br>row -&gt; 5,p2,1<br>partition -&gt; p1<br>key -&gt; 2<br>row -&gt; 0,p1,2<br>partition -&gt; p2<br>key -&gt; 5<br>row -&gt; 3,p2,5</p>
+<p>输出结果：<br>5,p2,1<br>3,p2,5<br>5,p1,1<br>0,p1,2  </p>
+<ol start="2">
+<li>非分区表</li>
+</ol>
+<p>测试数据集：</p>
+<p>0,p1,1<br>0,p1,2<br>5,p1,1<br>6,p2,1<br>3,p2,5<br>5,p2,1</p>
+<p>buckets = 3<br>keys {2}</p>
+<p>key -&gt; 1<br>row -&gt; 0,p1,1<br>key -&gt; 1<br>row -&gt; 5,p1,1<br>key -&gt; 1<br>row -&gt; 6,p2,1<br>key -&gt; 1<br>row -&gt; 5,p2,1<br>key -&gt; 2<br>row -&gt; 0,p1,2<br>key -&gt; 5<br>row -&gt; 3,p2,5</p>
+<p>输出结果：<br>5,p2,1<br>0,p1,2<br>3,p2,5</p>
 <h2 id="写流程"><a href="#写流程" class="headerlink" title="写流程"></a>写流程</h2><ol>
 <li>LSM 处理（类似 Leveldb）</li>
 </ol>
