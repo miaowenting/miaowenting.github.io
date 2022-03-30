@@ -26,6 +26,9 @@
       <categories>
         <category>Flink</category>
       </categories>
+      <tags>
+        <tag>flink-table-store</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[Flink-FLIP-150: Introduce Hybrid Source]]></title>
