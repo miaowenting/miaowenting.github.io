@@ -81,17 +81,17 @@
 
 
 
-<meta name="description" content="本文将全局介绍 Redis 的整体架构。">
+<meta name="description" content="Here&apos;s something encrypted, password is required to continue reading.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Redis">
 <meta property="og:url" content="http://yoursite.com/2020/02/10/Redis/index.html">
 <meta property="og:site_name" content="Matty&#39;s Blog">
-<meta property="og:description" content="本文将全局介绍 Redis 的整体架构。">
+<meta property="og:description" content="Here&apos;s something encrypted, password is required to continue reading.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2021-06-03T17:16:28.000Z">
+<meta property="og:updated_time" content="2023-02-01T09:50:44.971Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Redis">
-<meta name="twitter:description" content="本文将全局介绍 Redis 的整体架构。">
+<meta name="twitter:description" content="Here&apos;s something encrypted, password is required to continue reading.">
 
 
 
@@ -385,13 +385,15 @@
       
 
       
-        <p>本文将全局介绍 Redis 的整体架构。</p>
-<a id="more"></a>
-
-<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><h3 id="缓存穿透"><a href="#缓存穿透" class="headerlink" title="缓存穿透"></a>缓存穿透</h3><h3 id="缓存雪崩"><a href="#缓存雪崩" class="headerlink" title="缓存雪崩"></a>缓存雪崩</h3><h3 id="缓存击穿"><a href="#缓存击穿" class="headerlink" title="缓存击穿"></a>缓存击穿</h3><h3 id="缓存与数据库双写一致性问题"><a href="#缓存与数据库双写一致性问题" class="headerlink" title="缓存与数据库双写一致性问题"></a>缓存与数据库双写一致性问题</h3><p>先更新数据库，再删除缓存（推荐）</p>
-<p>通过读取binlog的方式，采用mq异步淘汰缓存，提供一个保障的重试机制!!!</p>
-<p><a href="https://blog.csdn.net/hukaijun/article/details/81010475" target="_blank" rel="noopener"></a></p>
-
+        <div id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <div class="hbe-input-container">
+  <input type="password" id="hbePass" placeholder>
+    <label for="hbePass">Hey, password is required here.</label>
+    <div class="bottom-line"></div>
+  </div>
+  <script id="hbeData" type="hbeData" data-hmacdigest="b07b2bf95d5355e84e89fc3b83484fbd5dd62a73979a5d02c35fdd9c24586f72">222ec45fd13e67b363d71355220fbc02f0f75dc1c37e788db1c8b03c0526c84e89dcb6c8a574244f4e50e2831fad7178a14079ce32abff7dbf26bd80688e26e852c508bb2bf98767897501f36d0dc41c7d11f1caca83248d4abff2338dc3a66b1d68d1e9e3e52ee85997535a7529361998e9ca406553e32466a9482e683291b064033da97dd7a9d179d3ccedad5c88f0e4c580eb616778b5800d352c22c940845931d29618532a855de75ac6ca9271515380d56ef3a6abf3262822898d44b4813d4344e586021a206fc6f9264d6a330a5792d4577e723995d9582978305684bddeeb65c409f3450ae5f749d49809da99401be1b0f42fe6b5c93cd7c047aecb7632b4c73be5a6103b893d16b89f1d1fabd3ef4d69c6c39bff947c2c031f574ea95ab45d4ce0a5037f417b15371e09ffb390e4b54b65c010f7d05690f30187d5a996b902e7f23d19d1c170691c727d9d5ad2c98031493c1d6c1882ef7bb10ded56fa6364e57796fb6190ffe1b24647c539fc9937ce3f9726bc9a0c99cabbc9b464a02972324d615ce3cbecc46e8fca154828f7dd60312c130a40d4f1e3af5b706c58fa1d8b844d057b62d5e3622daae0976d49266f636990f56192975dfa2554f9557aaf3b9e511f4ad421d4a54df60e68689181bca5671193fbb30cd12d608f7c0885386e1a66003947f9777324290e33c5883c478e661aef7ff8afa0fa6b0393efa737984359d5f3cee616c861b255eb36c0b7214585746cc495936beac6d79ba6f5297ebae1a401641b185a198015c0967f03e003f0664ffa4b8047ec2492a979edb483f4f03e48f8b6cf58120fda7f4531a6cb6619e3184281d1224c3c1fe2b651be42ef54e4e97884f8786996909a8608b694401b07c895518d5a56b1e228301df2786bc88beef9d60e7c7d0984efbb531fbf16b81a484c9da4a97bfe1504bf583b7b450e96f1b0d331bb7ba2b06b175069b9b49958c6e908c47681e0b03991b84fb7be741cb1cd7d2a29a5b0cf0f30ccde532d6e93f930d3bce3fb8da49ab2d98c152d363e6a0683bd034cf3d08c125f1c563c10cf22f705dd689c532b1a43d9341f2a778d83448600794af8098778998d780b867ff9ff15d4cbcbe9b38019062a206bea95a2447fa7d6c4185945059d0391ea11954b2f74503f7189d013c0d8730a03de447c655662525066b13e38953800adfb1195341c0552587141028a7289bf58e023a6a5c0959ee1f2d6bdf2b8ec6a0cad4129de188a8fbddc7f01120fc07441abe72d2393242d801da66dcf0121b848f3679bf36a9adc1a46559b3a036b59294f09f4ae054f597bd537d3b4666c9fd61385ae191478c75848d407</script>
+</div>
+<script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">
       
     </div>
     
@@ -479,17 +481,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -506,7 +499,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">76</span>
+                  <span class="site-state-item-count">79</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -586,22 +579,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题"><span class="nav-number">1.</span> <span class="nav-text">问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#缓存穿透"><span class="nav-number">1.1.</span> <span class="nav-text">缓存穿透</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缓存雪崩"><span class="nav-number">1.2.</span> <span class="nav-text">缓存雪崩</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缓存击穿"><span class="nav-number">1.3.</span> <span class="nav-text">缓存击穿</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缓存与数据库双写一致性问题"><span class="nav-number">1.4.</span> <span class="nav-text">缓存与数据库双写一致性问题</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
