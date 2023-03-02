@@ -385,7 +385,7 @@
 
       
         
-          <p>2017年发版的Flink 1.4.0，引进了一个里程碑式的新特性：TwoPhaseCommitSinkFunction ，抽象了两阶段提交协议的通用逻辑，<a class="link" href="https://issues.apache.org/jira/browse/FLINK-7210" target="_blank" rel="noopener">相关联的jira单 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>，并在Kafka Producer的connector中实现了它，支持了对外部Kafka sink的exactly-once语义。在此基础上，结合 Flink、sources、sinks 和 Kafka 0.11以上的版本，可以实现端到端一致性语义的应用，需要用户实现少数方法来实现一致性语义。<br>在这篇博客中，介绍以下几个方面：</p>
+          <p>2017年发版的Flink 1.4.0，引进了一个里程碑式的新特性：TwoPhaseCommitSinkFunction ，抽象了两阶段提交协议的通用逻辑，<a href="https://issues.apache.org/jira/browse/FLINK-7210" target="_blank" rel="noopener">相关联的jira单</a>，并在Kafka Producer的connector中实现了它，支持了对外部Kafka sink的exactly-once语义。在此基础上，结合 Flink、sources、sinks 和 Kafka 0.11以上的版本，可以实现端到端一致性语义的应用，需要用户实现少数方法来实现一致性语义。<br>在这篇博客中，介绍以下几个方面：</p>
 <ol>
 <li>描述 Flink checkpoints 在保证一致性语义中的角色作用</li>
 <li>展示Flink如何通过两阶段提交协议与sources和sinks交互，以提供端到端的一致性语义</li>
@@ -705,7 +705,7 @@
       
         
           <p><code>DESCRIBE</code>、<code>EXPLAIN</code>、<code>SHOW</code> 等 Statement 相关 SQL 解析。</p>
-<p>Flink SQL 解析的代码参考：<a class="link" href="https://github.com/miaowenting/calcite-learning/tree/master/flink-sql-parser" target="_blank" rel="noopener">Flink SQL 解析 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p>Flink SQL 解析的代码参考：<a href="https://github.com/miaowenting/calcite-learning/tree/master/flink-sql-parser" target="_blank" rel="noopener">Flink SQL 解析</a></p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/11/10/Flink-DQL-SQL-With-Calcite/#more" rel="contents">
@@ -1020,7 +1020,7 @@
       
         
           <p>Flink SQL 使用 Apache Calcite 并对其扩展以支持 SQL 语句的解析与验证。<br>目前 Calcite 流处理语句已实现对 SELECT, WHERE, GROUP BY, HAVING, UNION ALL, ORDER BY 以及 FLOOR, CEIL 函数的支持。<br>本文将以代码的形式说明 Flink SQL 是如何解析 DDL 语句，javacc 与 java 语言之间的转换关系。</p>
-<p>Flink SQL 解析的代码参考：<a class="link" href="https://github.com/miaowenting/calcite-learning/tree/master/flink-sql-parser" target="_blank" rel="noopener">Flink SQL 解析 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p>Flink SQL 解析的代码参考：<a href="https://github.com/miaowenting/calcite-learning/tree/master/flink-sql-parser" target="_blank" rel="noopener">Flink SQL 解析</a></p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/11/10/Flink-DDL-SQL-with-Calcite/#more" rel="contents">

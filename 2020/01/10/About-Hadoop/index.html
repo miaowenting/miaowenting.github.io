@@ -88,17 +88,17 @@
 <meta property="og:site_name" content="Matty&#39;s Blog">
 <meta property="og:description" content="收集一些 Hadoop 相关问题。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/images/loading.svg">
-<meta property="og:image" content="http://yoursite.com/images/loading.svg">
-<meta property="og:image" content="http://yoursite.com/images/loading.svg">
-<meta property="og:image" content="http://yoursite.com/images/loading.svg">
-<meta property="og:image" content="http://yoursite.com/images/loading.svg">
-<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/2020/01/10/About-Hadoop/Yarn%E7%9A%84%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84.png">
+<meta property="og:image" content="http://yoursite.com/2020/01/10/About-Hadoop/Spark%E7%9A%84%E8%BF%90%E8%A1%8C%E6%9E%B6%E6%9E%84.png">
+<meta property="og:image" content="http://yoursite.com/2020/01/10/About-Hadoop/Spark%E7%A8%8B%E5%BA%8F%E7%9A%84%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B.png">
+<meta property="og:image" content="http://yoursite.com/2020/01/10/About-Hadoop/HBase%E8%A1%A8%E7%9A%84%E9%80%BB%E8%BE%91%E7%BB%93%E6%9E%84.png">
+<meta property="og:image" content="http://yoursite.com/2020/01/10/About-Hadoop/HBase%E7%AE%80%E7%95%A5%E6%9E%B6%E6%9E%84%E5%9B%BE.png">
+<meta property="og:image" content="http://yoursite.com/2020/01/10/About-Hadoop/HFile%E7%BB%93%E6%9E%84.png">
 <meta property="og:updated_time" content="2021-06-03T11:24:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="About Hadoop">
 <meta name="twitter:description" content="收集一些 Hadoop 相关问题。">
-<meta name="twitter:image" content="http://yoursite.com/images/loading.svg">
+<meta name="twitter:image" content="http://yoursite.com/2020/01/10/About-Hadoop/Yarn%E7%9A%84%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84.png">
 
 
 
@@ -406,7 +406,7 @@
         <p>收集一些 Hadoop 相关问题。</p>
 <a id="more"></a>
 
-<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><h3 id="Hadoop"><a href="#Hadoop" class="headerlink" title="Hadoop"></a>Hadoop</h3><h4 id="Yarn架构"><a href="#Yarn架构" class="headerlink" title="Yarn架构"></a>Yarn架构</h4><p><img lazyload src="/images/loading.svg" data-src="Yarn%E7%9A%84%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84.png" alt></p>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><h3 id="Hadoop"><a href="#Hadoop" class="headerlink" title="Hadoop"></a>Hadoop</h3><h4 id="Yarn架构"><a href="#Yarn架构" class="headerlink" title="Yarn架构"></a>Yarn架构</h4><p><img src="Yarn%E7%9A%84%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84.png" alt></p>
 <ol>
 <li>ResourceManager（RM）<br>RM 是一个全局的资源管理器，负责整个系统的资源管理和分配，它主要有两个组件构成：</li>
 </ol>
@@ -540,19 +540,19 @@
 </ol>
 <h4 id="Hive-UDF简单介绍"><a href="#Hive-UDF简单介绍" class="headerlink" title="Hive UDF简单介绍"></a>Hive UDF简单介绍</h4><p>在Hive中，用户可以自定义一些函数，用于扩展HiveQL的功能，而这类函数叫做UDF（用户自定义函数）。UDF分为两大类：UDAF（用户自定义聚合函数）和UDTF（用户自定义表生成函数）。<br>Hive有两个不同的接口编写UDF程序。一个是基础的UDF接口，一个是复杂的GenericUDF接口。<br>org.apache.hadoop.hive.ql. exec.UDF 基础UDF的函数读取和返回基本类型，即Hadoop和Hive的基本类型。如，Text、IntWritable、LongWritable、DoubleWritable等。<br>org.apache.hadoop.hive.ql.udf.generic.GenericUDF 复杂的GenericUDF可以处理Map、List、Set类型。</p>
 <h4 id="按照学生科目取每个科目的TopN"><a href="#按照学生科目取每个科目的TopN" class="headerlink" title="按照学生科目取每个科目的TopN"></a>按照学生科目取每个科目的TopN</h4><p>原始数据：</p>
-<div class="highlight-container" data-rel="Code"><figure class="iseeu highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">id,name,subject,score</span><br><span class="line">1,小明,语文,87</span><br><span class="line">2,张三,语文,27</span><br><span class="line">3,王五,语文,69</span><br><span class="line">4,李四,语文,99</span><br><span class="line">5,小明,数学,86</span><br><span class="line">6,马六,数学,33</span><br><span class="line">7,李四,数学,44</span><br><span class="line">8,小红,数学,50</span><br></pre></td></tr></table></figure></div>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">id,name,subject,score</span><br><span class="line">1,小明,语文,87</span><br><span class="line">2,张三,语文,27</span><br><span class="line">3,王五,语文,69</span><br><span class="line">4,李四,语文,99</span><br><span class="line">5,小明,数学,86</span><br><span class="line">6,马六,数学,33</span><br><span class="line">7,李四,数学,44</span><br><span class="line">8,小红,数学,50</span><br></pre></td></tr></table></figure>
 
 <p>sql：</p>
-<div class="highlight-container" data-rel="Sql"><figure class="iseeu highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> a.* <span class="keyword">from</span></span><br><span class="line">(<span class="keyword">select</span> <span class="keyword">id</span>,<span class="keyword">name</span>,subject,score,row_number() <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> subject <span class="keyword">order</span> <span class="keyword">by</span> score <span class="keyword">desc</span>) <span class="keyword">rank</span> <span class="keyword">from</span> student) a</span><br><span class="line"><span class="keyword">where</span> a.rank &lt;= <span class="number">3</span></span><br></pre></td></tr></table></figure></div>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> a.* <span class="keyword">from</span></span><br><span class="line">(<span class="keyword">select</span> <span class="keyword">id</span>,<span class="keyword">name</span>,subject,score,row_number() <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> subject <span class="keyword">order</span> <span class="keyword">by</span> score <span class="keyword">desc</span>) <span class="keyword">rank</span> <span class="keyword">from</span> student) a</span><br><span class="line"><span class="keyword">where</span> a.rank &lt;= <span class="number">3</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="Spark"><a href="#Spark" class="headerlink" title="Spark"></a>Spark</h3><h4 id="讲一下Spark的运行架构"><a href="#讲一下Spark的运行架构" class="headerlink" title="讲一下Spark的运行架构"></a>讲一下Spark的运行架构</h4><p><img lazyload src="/images/loading.svg" data-src="Spark%E7%9A%84%E8%BF%90%E8%A1%8C%E6%9E%B6%E6%9E%84.png" alt><br>Cluster Manager(Master)：在standalone模式中即为Master主节点，控制整个集群，监控worker。在YARN模式中为资源管理器<br>Worker节点：从节点，负责控制计算节点，启动Executor或者Driver。<br>Driver： 运行Application 的main()函数<br>Executor：执行器，是为某个Application运行在worker node上的一个进程</p>
-<h4 id="一个Spark程序的执行流程"><a href="#一个Spark程序的执行流程" class="headerlink" title="一个Spark程序的执行流程"></a>一个Spark程序的执行流程</h4><p><img lazyload src="/images/loading.svg" data-src="Spark%E7%A8%8B%E5%BA%8F%E7%9A%84%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B.png" alt></p>
+<h3 id="Spark"><a href="#Spark" class="headerlink" title="Spark"></a>Spark</h3><h4 id="讲一下Spark的运行架构"><a href="#讲一下Spark的运行架构" class="headerlink" title="讲一下Spark的运行架构"></a>讲一下Spark的运行架构</h4><p><img src="Spark%E7%9A%84%E8%BF%90%E8%A1%8C%E6%9E%B6%E6%9E%84.png" alt><br>Cluster Manager(Master)：在standalone模式中即为Master主节点，控制整个集群，监控worker。在YARN模式中为资源管理器<br>Worker节点：从节点，负责控制计算节点，启动Executor或者Driver。<br>Driver： 运行Application 的main()函数<br>Executor：执行器，是为某个Application运行在worker node上的一个进程</p>
+<h4 id="一个Spark程序的执行流程"><a href="#一个Spark程序的执行流程" class="headerlink" title="一个Spark程序的执行流程"></a>一个Spark程序的执行流程</h4><p><img src="Spark%E7%A8%8B%E5%BA%8F%E7%9A%84%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B.png" alt></p>
 <p>A -&gt; 当 Driver 进程被启动之后,首先它将发送请求到Master节点上,进行Spark应用程序的注册<br>B -&gt; Master在接受到Spark应用程序的注册申请之后,会发送给Worker,让其进行资源的调度和分配.<br>C -&gt; Worker 在接受Master的请求之后,会为Spark应用程序启动Executor, 来分配资源<br>D -&gt; Executor启动分配资源好后,就会想Driver进行反注册,这是Driver已经知道哪些Executor为他服务了<br>E -&gt; 当Driver得到注册了Executor之后,就可以开始正式执行spark应用程序了. 首先第一步,就是创建初始RDD,读取数据源,再执行之后的一系列算子. HDFS文件内容被读取到多个worker节点上,形成内存中的分布式数据集,也就是初始RDD<br>F -&gt; Driver就会根据 Job 任务任务中的算子形成对应的task,最后提交给 Executor, 来分配给task进行计算的线程<br>G -&gt; task就会去调用对应的任务数据来计算,并task会对调用过来的RDD的partition数据执行指定的算子操作,形成新的RDD的partition,这时一个大的循环就结束了<br>后续的RDD的partition数据又通过Driver形成新的一批task提交给Executor执行,循环这个操作,直到所有的算子结束</p>
 <h3 id="HBase"><a href="#HBase" class="headerlink" title="HBase"></a>HBase</h3><h4 id="HBase的架构和基本原理"><a href="#HBase的架构和基本原理" class="headerlink" title="HBase的架构和基本原理"></a>HBase的架构和基本原理</h4><p>Hbase以表的方式组织数据，<br>表由行（Row）以及列（Column）组成，行由row key和一个或多个列及其值组成（存储是按照row key的字典顺序排序，row key的设计非常重要！！），<br>列必须属于某一列族（Column family），一个列族可以有一各或多个列（一列由列簇和列修饰符组成，他们通常由冒号（：） 分隔），其在存储架构中就是一个Hfile。<br>Hbase中的列可以达到百万级，列中的数据可以是稀疏的，空值并不占用存储空间。<br>数据按主键排序，同时表按主键划分为多个Region。底层是LSM树（Long-Structed Merge Tree）。</p>
 <p>对于以上叙述，表的简略结构（逻辑模型）：</p>
-<p><img lazyload src="/images/loading.svg" data-src="HBase%E8%A1%A8%E7%9A%84%E9%80%BB%E8%BE%91%E7%BB%93%E6%9E%84.png" alt></p>
+<p><img src="HBase%E8%A1%A8%E7%9A%84%E9%80%BB%E8%BE%91%E7%BB%93%E6%9E%84.png" alt></p>
 <p>HBase简略架构图：</p>
-<p><img lazyload src="/images/loading.svg" data-src="HBase%E7%AE%80%E7%95%A5%E6%9E%B6%E6%9E%84%E5%9B%BE.png" alt></p>
+<p><img src="HBase%E7%AE%80%E7%95%A5%E6%9E%B6%E6%9E%84%E5%9B%BE.png" alt></p>
 <p>接下来对Zookeeper、HMaster、HRegionServer、HRegion、Store、MemStore、StoreFile、HFile、HLog做简单叙述。</p>
 <h5 id="Zookeeper"><a href="#Zookeeper" class="headerlink" title="Zookeeper"></a>Zookeeper</h5><ul>
 <li>保证任何时候，集群中只有一个master（负责多HMaster的选举）</li>
@@ -600,7 +600,7 @@
 <li>每个Data块除了开头的Magic以外就是一个个KeyValue对拼接而成</li>
 <li>Magic内容就是一些随机数字，目的是防止数据损坏</li>
 </ul>
-<p><img lazyload src="/images/loading.svg" data-src="HFile%E7%BB%93%E6%9E%84.png" alt></p>
+<p><img src="HFile%E7%BB%93%E6%9E%84.png" alt></p>
 <h5 id="HLog"><a href="#HLog" class="headerlink" title="HLog"></a>HLog</h5><p>HLog是WAL的核心实现类。</p>
 <ul>
 <li>WAL意为write ahead log，HBase中的预写日志，用来做灾难恢复使用，底层实现是HLog，HLog记录数据的所有变更。使用WAL的原因：因为MemStore存储的数据是驻留在内存中的，是不稳定的（比如宕机时），所以采用了WAL预写日志来解决这个问题。（运行MApReduce作业时，可以通过关闭WAL功能来获得性能的提升——setWriteToWAL(boolean)）</li>

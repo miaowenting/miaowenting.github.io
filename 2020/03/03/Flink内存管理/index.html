@@ -88,14 +88,14 @@
 <meta property="og:site_name" content="Matty&#39;s Blog">
 <meta property="og:description" content="本文将介绍一下Flink的内存管理。参考">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/images/loading.svg">
-<meta property="og:image" content="http://yoursite.com/images/loading.svg">
-<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/2020/03/03/Flink内存管理/%E9%87%8F%E8%BA%AB%E5%AE%9A%E5%88%B6%E7%9A%84%E5%BA%8F%E5%88%97%E5%8C%96%E6%A1%86%E6%9E%B6.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/03/Flink内存管理/%E5%B0%86sort_buffer%E5%88%86%E6%88%90%E4%B8%A4%E5%9D%97%E5%8C%BA%E5%9F%9F.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/03/Flink内存管理/sort%E4%BD%BF%E7%94%A8key%E7%9B%B4%E6%8E%A5%E6%AF%94%E8%BE%83%E5%A4%A7%E5%B0%8F.png">
 <meta property="og:updated_time" content="2020-04-05T09:14:13.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Flink内存管理">
 <meta name="twitter:description" content="本文将介绍一下Flink的内存管理。参考">
-<meta name="twitter:image" content="http://yoursite.com/images/loading.svg">
+<meta name="twitter:image" content="http://yoursite.com/2020/03/03/Flink内存管理/%E9%87%8F%E8%BA%AB%E5%AE%9A%E5%88%B6%E7%9A%84%E5%BA%8F%E5%88%97%E5%8C%96%E6%A1%86%E6%9E%B6.png">
 
 
 
@@ -389,12 +389,12 @@
       
 
       
-        <p>本文将介绍一下Flink的内存管理。参考<a class="link" href="https://ververica.cn/developers/flink-principle-memory-management/" target="_blank" rel="noopener"> <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+        <p>本文将介绍一下Flink的内存管理。参考<a href="https://ververica.cn/developers/flink-principle-memory-management/" target="_blank" rel="noopener"></a></p>
 <a id="more"></a>
 
-<h2 id="量身定制的序列化框架"><a href="#量身定制的序列化框架" class="headerlink" title="量身定制的序列化框架"></a>量身定制的序列化框架</h2><p><img lazyload src="/images/loading.svg" data-src="%E9%87%8F%E8%BA%AB%E5%AE%9A%E5%88%B6%E7%9A%84%E5%BA%8F%E5%88%97%E5%8C%96%E6%A1%86%E6%9E%B6.png" alt></p>
-<h2 id="直接操作二进制数据"><a href="#直接操作二进制数据" class="headerlink" title="直接操作二进制数据"></a>直接操作二进制数据</h2><p><img lazyload src="/images/loading.svg" data-src="%E5%B0%86sort_buffer%E5%88%86%E6%88%90%E4%B8%A4%E5%9D%97%E5%8C%BA%E5%9F%9F.png" alt></p>
-<p><img lazyload src="/images/loading.svg" data-src="sort%E4%BD%BF%E7%94%A8key%E7%9B%B4%E6%8E%A5%E6%AF%94%E8%BE%83%E5%A4%A7%E5%B0%8F.png" alt></p>
+<h2 id="量身定制的序列化框架"><a href="#量身定制的序列化框架" class="headerlink" title="量身定制的序列化框架"></a>量身定制的序列化框架</h2><p><img src="%E9%87%8F%E8%BA%AB%E5%AE%9A%E5%88%B6%E7%9A%84%E5%BA%8F%E5%88%97%E5%8C%96%E6%A1%86%E6%9E%B6.png" alt></p>
+<h2 id="直接操作二进制数据"><a href="#直接操作二进制数据" class="headerlink" title="直接操作二进制数据"></a>直接操作二进制数据</h2><p><img src="%E5%B0%86sort_buffer%E5%88%86%E6%88%90%E4%B8%A4%E5%9D%97%E5%8C%BA%E5%9F%9F.png" alt></p>
+<p><img src="sort%E4%BD%BF%E7%94%A8key%E7%9B%B4%E6%8E%A5%E6%AF%94%E8%BE%83%E5%A4%A7%E5%B0%8F.png" alt></p>
 <p>Flink通过定制的序列化框架将算法中需要操作的数据（如sort中的key）连续存储，而完整的数据存储在其他地方。因为对于完整的数据来说，key+pointer 更容易装进缓存，这大大提高了缓存命中率，从而提高了基础算法的效率。这对于上层应用是完全透明的，可以充分享受缓存友好带来的性能提升。</p>
 <h2 id="堆外内存"><a href="#堆外内存" class="headerlink" title="堆外内存"></a>堆外内存</h2><p>Flink 基于堆内存的内存管理机制已经可以解决很多 JVM 现存问题了，为什么还要引入堆外内存？</p>
 <ol>

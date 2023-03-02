@@ -88,19 +88,19 @@
 <meta property="og:site_name" content="Matty&#39;s Blog">
 <meta property="og:description" content="本文介绍Netty内存池化管理。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/images/loading.svg">
-<meta property="og:image" content="http://yoursite.com/images/loading.svg">
-<meta property="og:image" content="http://yoursite.com/images/loading.svg">
-<meta property="og:image" content="http://yoursite.com/images/loading.svg">
-<meta property="og:image" content="http://yoursite.com/images/loading.svg">
-<meta property="og:image" content="http://yoursite.com/images/loading.svg">
-<meta property="og:image" content="http://yoursite.com/images/loading.svg">
-<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/2020/02/09/Netty内存池化管理/PoolArena%E9%87%8D%E8%A6%81%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F.png">
+<meta property="og:image" content="http://yoursite.com/2020/02/09/Netty内存池化管理/%E7%BA%BF%E7%A8%8B%E5%88%86%E9%85%8D%E5%86%85%E5%AD%98%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%96%B9%E5%BC%8F.png">
+<meta property="og:image" content="http://yoursite.com/2020/02/09/Netty内存池化管理/PoolArena%E4%B8%AD%E7%94%B3%E8%AF%B7%E5%86%85%E5%AD%98%E7%9A%84%E6%B5%81%E7%A8%8B%E5%9B%BE.png">
+<meta property="og:image" content="http://yoursite.com/2020/02/09/Netty内存池化管理/%E5%9C%A8PoolChunkList%E4%B8%AD%E7%94%B3%E8%AF%B7%E5%86%85%E5%AD%98.png">
+<meta property="og:image" content="http://yoursite.com/2020/02/09/Netty内存池化管理/%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8%E7%9A%84%E6%8F%92%E5%85%A5%E5%9B%BE%E8%A7%A3.png">
+<meta property="og:image" content="http://yoursite.com/2020/02/09/Netty内存池化管理/%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8%E7%9A%84%E5%88%A0%E9%99%A4%E5%9B%BE%E8%A7%A3.png">
+<meta property="og:image" content="http://yoursite.com/2020/02/09/Netty内存池化管理/PoolSubpage%E6%9D%A5%E7%AE%A1%E7%90%868k%E7%9A%84%E5%86%85%E5%AD%98.png">
+<meta property="og:image" content="http://yoursite.com/2020/02/09/Netty内存池化管理/PoolSubpage%E7%9A%84init%E5%8F%8Aallocate%E6%B5%81%E7%A8%8B%E5%9B%BE.png">
 <meta property="og:updated_time" content="2021-06-03T11:36:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Netty内存池化管理">
 <meta name="twitter:description" content="本文介绍Netty内存池化管理。">
-<meta name="twitter:image" content="http://yoursite.com/images/loading.svg">
+<meta name="twitter:image" content="http://yoursite.com/2020/02/09/Netty内存池化管理/PoolArena%E9%87%8D%E8%A6%81%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F.png">
 
 
 
@@ -408,10 +408,10 @@
         <p>本文介绍Netty内存池化管理。</p>
 <a id="more"></a>
 
-<h2 id="Netty内存池化管理"><a href="#Netty内存池化管理" class="headerlink" title="Netty内存池化管理"></a>Netty内存池化管理</h2><p>参考：<a class="link" href="https://mp.weixin.qq.com/s/89P9ujogvvKGot9sB9XO4g" target="_blank" rel="noopener">一文读懂Netty的内存管理 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<h2 id="Netty内存池化管理"><a href="#Netty内存池化管理" class="headerlink" title="Netty内存池化管理"></a>Netty内存池化管理</h2><p>参考：<a href="https://mp.weixin.qq.com/s/89P9ujogvvKGot9sB9XO4g" target="_blank" rel="noopener">一文读懂Netty的内存管理</a></p>
 <h2 id="PooledBufferAllocator"><a href="#PooledBufferAllocator" class="headerlink" title="PooledBufferAllocator"></a>PooledBufferAllocator</h2><h3 id="PoolThreadCache"><a href="#PoolThreadCache" class="headerlink" title="PoolThreadCache"></a>PoolThreadCache</h3><p>Netty自己实现了类似LocalThread的类来充当线程缓存</p>
 <p>PoolThreadLocalCache 继承自 FastThreadLocal</p>
-<h3 id="JEMalloc分配算法"><a href="#JEMalloc分配算法" class="headerlink" title="JEMalloc分配算法"></a>JEMalloc分配算法</h3><p><a class="link" href="https://www.jianshu.com/p/15304cd63175" target="_blank" rel="noopener">JEMalloc分配算法 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<h3 id="JEMalloc分配算法"><a href="#JEMalloc分配算法" class="headerlink" title="JEMalloc分配算法"></a>JEMalloc分配算法</h3><p><a href="https://www.jianshu.com/p/15304cd63175" target="_blank" rel="noopener">JEMalloc分配算法</a></p>
 <h3 id="PoolArena"><a href="#PoolArena" class="headerlink" title="PoolArena"></a>PoolArena</h3><p>Netty内存主要分为两种：DirectByteBuf 和 HeapByteBuf。Netty作为服务器架构技术，拥有大量的网络数据传输，当我们进行网络传输时，必须将数据拷贝至直接内存，合理利用好直接内存，<br>能够显著提高性能。</p>
 <ul>
 <li>Pool 和 Unpool的区别</li>
@@ -422,16 +422,16 @@
 <li>PoolArena</li>
 </ul>
 <p>PoolArena作为Netty底层内存池核心管理类，主要原理是首先申请一些内存块，不同的成员变量来完成不同大小的内存块分配。下图描述了PoolArena最重要的成员变量：</p>
-<p><img lazyload src="/images/loading.svg" data-src="PoolArena%E9%87%8D%E8%A6%81%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F.png" alt></p>
+<p><img src="PoolArena%E9%87%8D%E8%A6%81%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F.png" alt></p>
 <p>Tiny解决 16b～498b 之间的内存分配，Small解决 512b~4kb 的内存分配，Normal解决 8kb～16mb 的内存分配。</p>
 <ul>
 <li>PoolArena的内存分配</li>
 </ul>
 <p>线程分配内存主要从两个地方分配：PoolThreadCache 和 PoolArena</p>
-<p><img lazyload src="/images/loading.svg" data-src="%E7%BA%BF%E7%A8%8B%E5%88%86%E9%85%8D%E5%86%85%E5%AD%98%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%96%B9%E5%BC%8F.png" alt></p>
+<p><img src="%E7%BA%BF%E7%A8%8B%E5%88%86%E9%85%8D%E5%86%85%E5%AD%98%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%96%B9%E5%BC%8F.png" alt></p>
 <p>其中 PoolThreadCache 线程独享，PoolArena为几个线程共享。</p>
 <p>Netty真正申请内存时的调用过程：</p>
-<p><img lazyload src="/images/loading.svg" data-src="PoolArena%E4%B8%AD%E7%94%B3%E8%AF%B7%E5%86%85%E5%AD%98%E7%9A%84%E6%B5%81%E7%A8%8B%E5%9B%BE.png" alt></p>
+<p><img src="PoolArena%E4%B8%AD%E7%94%B3%E8%AF%B7%E5%86%85%E5%AD%98%E7%9A%84%E6%B5%81%E7%A8%8B%E5%9B%BE.png" alt></p>
 <p>PoolArena.allocate() 分配内存主要考虑先尝试从缓存中，然后再尝试从PoolArena分配。Tiny 和 Small 的申请过程一样，以Tiny申请为例，具体过程如下：</p>
 <p>1）对申请的内存进行规范化，就是说只能申请某些固定大小的内存，比如Tiny范围的是16b倍数的内存，Small为512b、1k、2k、4k 的内存，Normal为8k、16k … 16m</p>
 <p>  范围的内存，始终是2的幂次方。申请的内存不足16b的，按照16b去申请。</p>
@@ -442,7 +442,7 @@
 <p>3）若分配normal类型的类型, 首先也会尝试从缓存中分配, 然后再考虑从allocateNormal进行内存分配。</p>
 <p>4）若分配大于16m的内存, 则直接通过allocateHuge()从内存池外分配内存。</p>
 <h3 id="PoolChunkList"><a href="#PoolChunkList" class="headerlink" title="PoolChunkList"></a>PoolChunkList</h3><p>对于在q050、q025、q000、qInit、q075这些PoolChunkList里申请内存的流程图如下：</p>
-<p><img lazyload src="/images/loading.svg" data-src="%E5%9C%A8PoolChunkList%E4%B8%AD%E7%94%B3%E8%AF%B7%E5%86%85%E5%AD%98.png" alt></p>
+<p><img src="%E5%9C%A8PoolChunkList%E4%B8%AD%E7%94%B3%E8%AF%B7%E5%86%85%E5%AD%98.png" alt></p>
 <p>按照以上顺序，这样安排的考虑是：</p>
 <p>将PoolChunk分配维持在较高的比例上</p>
 <p>保存一些空闲较大的内存，以便大内存的分配</p>
@@ -451,25 +451,25 @@
 <li>双向链表</li>
 </ul>
 <p>添加节点：</p>
-<div class="highlight-container" data-rel="Code"><figure class="iseeu highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">private void addToPool(PoolSubpage&lt;T&gt; head) &#123;</span><br><span class="line">    assert prev == null &amp;&amp; next == null;</span><br><span class="line">    prev = head;</span><br><span class="line">    next = head.next;</span><br><span class="line">    next.prev = this;</span><br><span class="line">    head.next = this;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">private void addToPool(PoolSubpage&lt;T&gt; head) &#123;</span><br><span class="line">    assert prev == null &amp;&amp; next == null;</span><br><span class="line">    prev = head;</span><br><span class="line">    next = head.next;</span><br><span class="line">    next.prev = this;</span><br><span class="line">    head.next = this;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>双向列表的插入：</p>
-<p><img lazyload src="/images/loading.svg" data-src="%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8%E7%9A%84%E6%8F%92%E5%85%A5%E5%9B%BE%E8%A7%A3.png" alt></p>
+<p><img src="%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8%E7%9A%84%E6%8F%92%E5%85%A5%E5%9B%BE%E8%A7%A3.png" alt></p>
 <p>第一步：首先找到插入位置，节点 s 将插入到节点 p 之前<br>第二步：将节点 s 的前驱指向节点 p 的前驱，即 s-&gt;prior = p-&gt;prior;<br>第三步：将节点 p 的前驱的后继指向节点 s 即 p-&gt;prior-&gt;next = s;<br>第四步：将节点 s 的后继指向节点 p 即 s-&gt;next = p;<br>第五步：将节点 p 的前驱指向节点 s 即 p-&gt;prior = s;</p>
 <p>移除节点：</p>
-<div class="highlight-container" data-rel="Code"><figure class="iseeu highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">private void removeFromPool() &#123;</span><br><span class="line">    assert prev != null &amp;&amp; next != null;</span><br><span class="line">    prev.next = next;</span><br><span class="line">    next.prev = prev;</span><br><span class="line">    next = null;</span><br><span class="line">    prev = null;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">private void removeFromPool() &#123;</span><br><span class="line">    assert prev != null &amp;&amp; next != null;</span><br><span class="line">    prev.next = next;</span><br><span class="line">    next.prev = prev;</span><br><span class="line">    next = null;</span><br><span class="line">    prev = null;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>双向列表的删除：</p>
-<p><img lazyload src="/images/loading.svg" data-src="%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8%E7%9A%84%E5%88%A0%E9%99%A4%E5%9B%BE%E8%A7%A3.png" alt></p>
+<p><img src="%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8%E7%9A%84%E5%88%A0%E9%99%A4%E5%9B%BE%E8%A7%A3.png" alt></p>
 <p>第一步：找到即将被删除的节点 p<br>第二步：将 p 的前驱的后继指向 p 的后继，即 p-&gt;prior-&gt;next = p-&gt;next;<br>第三步：将 p 的后继的前驱指向 p 的前驱，即 p-&gt;next-&gt;prior = p-&gt;prior;<br>第四步：删除节点 p 即 delete p;</p>
 <p>PoolSubpage 管理8k的内存，如下图：</p>
-<p><img lazyload src="/images/loading.svg" data-src="PoolSubpage%E6%9D%A5%E7%AE%A1%E7%90%868k%E7%9A%84%E5%86%85%E5%AD%98.png" alt></p>
+<p><img src="PoolSubpage%E6%9D%A5%E7%AE%A1%E7%90%868k%E7%9A%84%E5%86%85%E5%AD%98.png" alt></p>
 <p>每一个PoolSubpage都会与PoolChunk里面的一个叶子节点映射起来。</p>
 <p>1.首次请求Arena分配，Arena中的双向链表为空，不能分配；</p>
 <p>2.传递给Chunk分配，Chunk找到一个空闲的Page，然后均等切分并加入到Arena链表中，最后分配满足要求的大小。<br>之后请求分配同样大小的内存，则直接在Arena中的PoolSubpage双向链表进行分配；如果链表中的节点都没有空间分配，则重复1步骤。</p>
 <p>Netty使用一个long整型表示在 PoolSubpage 中的分配结果，高32位表示均等切分小块的块号，其中的低6位用来表示64位即一个long的分配信息，其余位用来表示long数组的索引。低32位表示所属Chunk号。</p>
 <p>以下是PoolSubpage的init及allocate流程图:</p>
-<p><img lazyload src="/images/loading.svg" data-src="PoolSubpage%E7%9A%84init%E5%8F%8Aallocate%E6%B5%81%E7%A8%8B%E5%9B%BE.png" alt></p>
+<p><img src="PoolSubpage%E7%9A%84init%E5%8F%8Aallocate%E6%B5%81%E7%A8%8B%E5%9B%BE.png" alt></p>
 <h3 id="DirectByteBuffer"><a href="#DirectByteBuffer" class="headerlink" title="DirectByteBuffer"></a>DirectByteBuffer</h3><p>我们知道, 在使用IO传输数据时, 首先会将数据传输到堆外直接内存中, 然后才通过网络发送出去。这样的话, 数据多了次中间copy, 能否不经过copy而直接将数据发送出去呢, 其实是可以的, 存放的位置就是本文要讲的主角:DirectByteBuffer 。</p>
 <p>JVM内存主要分为heap内存和堆外内存(一般我们也会称呼为直接内存), heap内存我们不用care, jvm能自动帮我们管理, 而堆外内存回收不受JVM GC控制, 因此, 堆外内存使用必须小心。</p>
 
