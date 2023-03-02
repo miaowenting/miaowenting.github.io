@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -88,50 +88,50 @@
 <meta property="og:site_name" content="Matty&#39;s Blog">
 <meta property="og:description" content="网络流控是为了在上下游速度不匹配的情况下，如何防止下游出现过载的手段网络流控有静态限速和动态反压两种手段Flink 1.5以前是基于TCP流控+bounded buffer来实现反压Flink 1.5之后实现了自己托管的credit-based流控机制，在应用层模拟TCP流控的机制 本文将对以上几点逐一介绍，并介绍几种常见的反压问题的处理方式。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/%E7%BD%91%E7%BB%9C%E6%B5%81%E6%8E%A7%E7%9A%84%E6%A6%82%E5%BF%B5.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/%E9%9D%99%E6%80%81%E9%99%90%E9%80%9F.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/%E5%8A%A8%E6%80%81%E5%8F%8D%E9%A6%88%E4%B8%8E%E8%87%AA%E5%8A%A8%E5%8F%8D%E5%8E%8B.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/storm%E5%8F%8D%E5%8E%8B.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/spark-streaming%E5%8F%8D%E5%8E%8B.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/Flink%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E7%9A%84%E6%95%B0%E6%8D%AE%E6%B5%81%E5%90%91.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/TCP_Packet.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/TCP%E6%B5%81%E6%8E%A7_%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3_1.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/TCP%E6%B5%81%E6%8E%A7_%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3_2.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/TCP%E6%B5%81%E6%8E%A7_%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3_3.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/TCP%E6%B5%81%E6%8E%A7_%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3_4.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/TCP%E6%B5%81%E6%8E%A7_%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3_5.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/TCP%E6%B5%81%E6%8E%A7_%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3_6.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/TCP%E6%B5%81%E6%8E%A7_%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3_7.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/TCP%E6%B5%81%E6%8E%A7_%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3_8.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/TCP%E6%B5%81%E6%8E%A7_%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3_9.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/TCP%E6%B5%81%E6%8E%A7_%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3_10.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/%E7%BC%96%E8%AF%91%E9%98%B6%E6%AE%B5_%E7%94%9F%E6%88%90JobGraph.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/%E8%BF%90%E8%A1%8C%E9%98%B6%E6%AE%B5_%E8%B0%83%E5%BA%A6ExecutionGraph.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/%E5%8F%8D%E5%8E%8B%E4%BC%A0%E6%92%AD%E4%B8%A4%E9%98%B6%E6%AE%B5.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/%E8%B7%A8TaskManager%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E6%B5%81%E5%90%91.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/%E8%B7%A8TaskManager%E5%8F%8D%E5%8E%8B%E8%BF%87%E7%A8%8B_1.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/%E8%B7%A8TaskManager%E5%8F%8D%E5%8E%8B%E8%BF%87%E7%A8%8B_2.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/%E8%B7%A8TaskManager%E5%8F%8D%E5%8E%8B%E8%BF%87%E7%A8%8B_3.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/%E8%B7%A8TaskManager%E5%8F%8D%E5%8E%8B%E8%BF%87%E7%A8%8B_4.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/%E8%B7%A8TaskManager%E5%8F%8D%E5%8E%8B%E8%BF%87%E7%A8%8B_5.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/%E8%B7%A8TaskManager%E5%8F%8D%E5%8E%8B%E8%BF%87%E7%A8%8B_6.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/%E8%B7%A8TaskManager%E5%8F%8D%E5%8E%8B%E8%BF%87%E7%A8%8B_7.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/%E8%B7%A8TaskManager%E5%8F%8D%E5%8E%8B%E8%BF%87%E7%A8%8B_8.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/%E8%B7%A8TaskManager%E5%8F%8D%E5%8E%8B%E8%BF%87%E7%A8%8B_9.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/TaskManager%E5%86%85%E5%8F%8D%E5%8E%8B%E8%BF%87%E7%A8%8B_1.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/TaskManager%E5%86%85%E5%8F%8D%E5%8E%8B%E8%BF%87%E7%A8%8B_2.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/TaskManager%E5%86%85%E5%8F%8D%E5%8E%8B%E8%BF%87%E7%A8%8B_3.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/TaskManager%E5%86%85%E5%8F%8D%E5%8E%8B%E8%BF%87%E7%A8%8B_4.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/TCP-based%E5%8F%8D%E5%8E%8B%E7%9A%84%E5%BC%8A%E7%AB%AF.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/Credit-based%E5%8F%8D%E5%8E%8B.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/Credit-based%E5%8F%8D%E5%8E%8B%E8%BF%87%E7%A8%8B_1.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/Credit-based%E5%8F%8D%E5%8E%8B%E8%BF%87%E7%A8%8B_2.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/%E5%8F%8D%E5%8E%8B%E4%B8%8D%E8%A7%A6%E5%8F%91%E6%97%B6%E7%9A%84%E9%9D%99%E6%80%81%E9%99%90%E9%80%9F.png">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
 <meta property="og:updated_time" content="2020-04-05T09:14:13.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Flink网络流控及反压剖析">
 <meta name="twitter:description" content="网络流控是为了在上下游速度不匹配的情况下，如何防止下游出现过载的手段网络流控有静态限速和动态反压两种手段Flink 1.5以前是基于TCP流控+bounded buffer来实现反压Flink 1.5之后实现了自己托管的credit-based流控机制，在应用层模拟TCP流控的机制 本文将对以上几点逐一介绍，并介绍几种常见的反压问题的处理方式。">
-<meta name="twitter:image" content="http://yoursite.com/2019/09/22/Flink网络流控及反压剖析/%E7%BD%91%E7%BB%9C%E6%B5%81%E6%8E%A7%E7%9A%84%E6%A6%82%E5%BF%B5.png">
+<meta name="twitter:image" content="http://yoursite.com/images/loading.svg">
 
 
 
@@ -139,7 +139,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Mist',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -232,6 +232,36 @@
         </li>
       
         
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
@@ -243,9 +273,41 @@
       
 
       
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
     </ul>
   
 
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
   
 </nav>
 
@@ -279,7 +341,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="miaowenting">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/2.JPG">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -367,163 +429,163 @@
 <p>本文将对以上几点逐一介绍，并介绍几种常见的反压问题的处理方式。</p>
 <a id="more"></a>
 
-<h2 id="网络流控的概念与背景"><a href="#网络流控的概念与背景" class="headerlink" title="网络流控的概念与背景"></a>网络流控的概念与背景</h2><h3 id="为什么需要网络流控"><a href="#为什么需要网络流控" class="headerlink" title="为什么需要网络流控"></a>为什么需要网络流控</h3><p><img src="%E7%BD%91%E7%BB%9C%E6%B5%81%E6%8E%A7%E7%9A%84%E6%A6%82%E5%BF%B5.png" alt="avatar"></p>
+<h2 id="网络流控的概念与背景"><a href="#网络流控的概念与背景" class="headerlink" title="网络流控的概念与背景"></a>网络流控的概念与背景</h2><h3 id="为什么需要网络流控"><a href="#为什么需要网络流控" class="headerlink" title="为什么需要网络流控"></a>为什么需要网络流控</h3><p><img lazyload src="/images/loading.svg" data-src="%E7%BD%91%E7%BB%9C%E6%B5%81%E6%8E%A7%E7%9A%84%E6%A6%82%E5%BF%B5.png" alt="avatar"></p>
 <p>5s后，将面临以下两种情况之一：</p>
 <ol>
 <li>bounded receive buffer： consumer丢弃新到达的数据。</li>
 <li>unbounded receive buffer：buffer持续扩张，耗尽consumer的内存。</li>
 </ol>
-<h3 id="静态限速"><a href="#静态限速" class="headerlink" title="静态限速"></a>静态限速</h3><p><img src="%E9%9D%99%E6%80%81%E9%99%90%E9%80%9F.png" alt="avatar"></p>
+<h3 id="静态限速"><a href="#静态限速" class="headerlink" title="静态限速"></a>静态限速</h3><p><img lazyload src="/images/loading.svg" data-src="%E9%9D%99%E6%80%81%E9%99%90%E9%80%9F.png" alt="avatar"></p>
 <p>静态限流有两种限制：</p>
 <ol>
 <li>通常无法预估consumer端能承受的最大速率。</li>
 <li>consumer承受能力通常会动态波动。</li>
 </ol>
-<h4 id="guava包中基于令牌桶实现的静态限速"><a href="#guava包中基于令牌桶实现的静态限速" class="headerlink" title="guava包中基于令牌桶实现的静态限速"></a>guava包中基于令牌桶实现的静态限速</h4><h3 id="动态反馈-自动反压"><a href="#动态反馈-自动反压" class="headerlink" title="动态反馈/自动反压"></a>动态反馈/自动反压</h3><p><img src="%E5%8A%A8%E6%80%81%E5%8F%8D%E9%A6%88%E4%B8%8E%E8%87%AA%E5%8A%A8%E5%8F%8D%E5%8E%8B.png" alt="avatar"></p>
+<h4 id="guava包中基于令牌桶实现的静态限速"><a href="#guava包中基于令牌桶实现的静态限速" class="headerlink" title="guava包中基于令牌桶实现的静态限速"></a>guava包中基于令牌桶实现的静态限速</h4><h3 id="动态反馈-自动反压"><a href="#动态反馈-自动反压" class="headerlink" title="动态反馈/自动反压"></a>动态反馈/自动反压</h3><p><img lazyload src="/images/loading.svg" data-src="%E5%8A%A8%E6%80%81%E5%8F%8D%E9%A6%88%E4%B8%8E%E8%87%AA%E5%8A%A8%E5%8F%8D%E5%8E%8B.png" alt="avatar"></p>
 <p>动态反馈氛围两种，广义上的反压机制都涵盖：</p>
 <ol>
 <li>负反馈：接收速率小于发送速率时发生。</li>
 <li>正反馈：接收速率大于发送速率时发生。</li>
 </ol>
-<h3 id="Storm反压"><a href="#Storm反压" class="headerlink" title="Storm反压"></a>Storm反压</h3><p><img src="storm%E5%8F%8D%E5%8E%8B.png" alt="avatar"></p>
+<h3 id="Storm反压"><a href="#Storm反压" class="headerlink" title="Storm反压"></a>Storm反压</h3><p><img lazyload src="/images/loading.svg" data-src="storm%E5%8F%8D%E5%8E%8B.png" alt="avatar"></p>
 <ol>
 <li>每个bolt中都有检测 backpressure 的线程，此线程检测到 bolt 中的阻塞队列有严重的阻塞情况。</li>
 <li>将反压信息 feedback 写入 zookeeper。</li>
 <li>zookeeper 被 spout 监听，监听到阻塞 feedback，就会停止发送。</li>
 </ol>
-<h3 id="Spark-Streaming反压"><a href="#Spark-Streaming反压" class="headerlink" title="Spark Streaming反压"></a>Spark Streaming反压</h3><p><img src="spark-streaming%E5%8F%8D%E5%8E%8B.png" alt="avatar"></p>
+<h3 id="Spark-Streaming反压"><a href="#Spark-Streaming反压" class="headerlink" title="Spark Streaming反压"></a>Spark Streaming反压</h3><p><img lazyload src="/images/loading.svg" data-src="spark-streaming%E5%8F%8D%E5%8E%8B.png" alt="avatar"></p>
 <p>从中间的 buffer 或者每个处理节点中实时收集一些动态指标，将速度控制的情况返回到接收端，将接收端的速度也降下来。</p>
 <h3 id="Flink网络传输的数据流向"><a href="#Flink网络传输的数据流向" class="headerlink" title="Flink网络传输的数据流向"></a>Flink网络传输的数据流向</h3><p>为什么Flink（before V1.5）里没有类似的feedback机制？<br>因为TCP天然具备feedback流控机制，Flink基于它实现反压。</p>
-<p>每个 operator 经过自己的Network stack，底层使用Netty通信：<br><img src="Flink%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E7%9A%84%E6%95%B0%E6%8D%AE%E6%B5%81%E5%90%91.png" alt="avatar"></p>
-<h2 id="TCP流控机制"><a href="#TCP流控机制" class="headerlink" title="TCP流控机制"></a>TCP流控机制</h2><h3 id="TCP-Packet"><a href="#TCP-Packet" class="headerlink" title="TCP Packet"></a>TCP Packet</h3><p><img src="TCP_Packet.png" alt="avatar"></p>
+<p>每个 operator 经过自己的Network stack，底层使用Netty通信：<br><img lazyload src="/images/loading.svg" data-src="Flink%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E7%9A%84%E6%95%B0%E6%8D%AE%E6%B5%81%E5%90%91.png" alt="avatar"></p>
+<h2 id="TCP流控机制"><a href="#TCP流控机制" class="headerlink" title="TCP流控机制"></a>TCP流控机制</h2><h3 id="TCP-Packet"><a href="#TCP-Packet" class="headerlink" title="TCP Packet"></a>TCP Packet</h3><p><img lazyload src="/images/loading.svg" data-src="TCP_Packet.png" alt="avatar"></p>
 <h3 id="TCP流控：滑动窗口"><a href="#TCP流控：滑动窗口" class="headerlink" title="TCP流控：滑动窗口"></a>TCP流控：滑动窗口</h3><ul>
 <li>定义生产者速度为 3packets/s，消费者速度为 1packet/s。 发送窗口初始大小为3，接收窗口初始大小为5。</li>
 </ul>
-<p><img src="TCP%E6%B5%81%E6%8E%A7_%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3_1.png" alt="avatar"></p>
+<p><img lazyload src="/images/loading.svg" data-src="TCP%E6%B5%81%E6%8E%A7_%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3_1.png" alt="avatar"></p>
 <ul>
 <li>生产者端向消费者端发送数据&lt;1,2,3&gt;。</li>
 </ul>
-<p><img src="TCP%E6%B5%81%E6%8E%A7_%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3_2.png" alt="avatar"></p>
+<p><img lazyload src="/images/loading.svg" data-src="TCP%E6%B5%81%E6%8E%A7_%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3_2.png" alt="avatar"></p>
 <ul>
 <li>用户态消费者消费了数据&lt;1&gt;，消费者端的滑动窗口向前滑动 1 格。并向生产者端发送ACK = 4，以及自己的窗口内的剩余缓冲区大小 3。发送窗口向前滑动 3 格。</li>
 </ul>
-<p><img src="TCP%E6%B5%81%E6%8E%A7_%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3_3.png" alt="avatar"></p>
+<p><img lazyload src="/images/loading.svg" data-src="TCP%E6%B5%81%E6%8E%A7_%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3_3.png" alt="avatar"></p>
 <ul>
 <li>生产者端向消费者端发送数据&lt;4,5,6&gt;。</li>
 </ul>
-<p><img src="TCP%E6%B5%81%E6%8E%A7_%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3_4.png" alt="avatar"></p>
+<p><img lazyload src="/images/loading.svg" data-src="TCP%E6%B5%81%E6%8E%A7_%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3_4.png" alt="avatar"></p>
 <ul>
 <li>用户态消费者消费了数据&lt;2&gt;，消费者端的滑动窗口向前滑动 1 格。并向生产者端发送ACK = 7，以及自己的窗口内的剩余缓冲区大小 1。发送窗口向前滑动 1 格。发送端此时已被节流，速度降为 1packet/s。</li>
 </ul>
-<p><img src="TCP%E6%B5%81%E6%8E%A7_%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3_5.png" alt="avatar"></p>
+<p><img lazyload src="/images/loading.svg" data-src="TCP%E6%B5%81%E6%8E%A7_%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3_5.png" alt="avatar"></p>
 <ul>
 <li>生产者端向消费者端发送数据&lt;7&gt;。</li>
 </ul>
-<p><img src="TCP%E6%B5%81%E6%8E%A7_%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3_6.png" alt="avatar"></p>
+<p><img lazyload src="/images/loading.svg" data-src="TCP%E6%B5%81%E6%8E%A7_%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3_6.png" alt="avatar"></p>
 <ul>
 <li>用户态消费者此时停止消费，向生产者端发送ACK = 8，以及自己的窗口内的剩余缓冲区大小 0。发送端速度降为 0packet/s。</li>
 </ul>
-<p><img src="TCP%E6%B5%81%E6%8E%A7_%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3_7.png" alt="avatar"></p>
+<p><img lazyload src="/images/loading.svg" data-src="TCP%E6%B5%81%E6%8E%A7_%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3_7.png" alt="avatar"></p>
 <ul>
 <li>生产者端向消费者端发送轮询探针，如果消费者端缓冲区有空间，将会应答window大小。</li>
 </ul>
-<p><img src="TCP%E6%B5%81%E6%8E%A7_%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3_8.png" alt="avatar"></p>
+<p><img lazyload src="/images/loading.svg" data-src="TCP%E6%B5%81%E6%8E%A7_%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3_8.png" alt="avatar"></p>
 <ul>
 <li>用户态消费者恢复消费，消费了数据&lt;3&gt;，消费者端的滑动窗口向前滑动 1 格。接收到了生产者端的probe。</li>
 </ul>
-<p><img src="TCP%E6%B5%81%E6%8E%A7_%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3_9.png" alt="avatar"></p>
+<p><img lazyload src="/images/loading.svg" data-src="TCP%E6%B5%81%E6%8E%A7_%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3_9.png" alt="avatar"></p>
 <ul>
 <li>向生产者端发送ACK = 8，以及自己的窗口内的剩余缓冲区大小 1。生产者端的生产速度恢复为 1packet/s。</li>
 </ul>
-<p><img src="TCP%E6%B5%81%E6%8E%A7_%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3_10.png" alt="avatar"></p>
-<h2 id="Flink-TCP-based反压机制（before-V1-5）"><a href="#Flink-TCP-based反压机制（before-V1-5）" class="headerlink" title="Flink TCP-based反压机制（before V1.5）"></a>Flink TCP-based反压机制（before V1.5）</h2><h3 id="Flink代码中的网络模块抽象"><a href="#Flink代码中的网络模块抽象" class="headerlink" title="Flink代码中的网络模块抽象"></a>Flink代码中的网络模块抽象</h3><h4 id="示例：WindowWordCount"><a href="#示例：WindowWordCount" class="headerlink" title="示例：WindowWordCount"></a>示例：WindowWordCount</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">	StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();</span><br><span class="line"></span><br><span class="line">	DataStream&lt;Tuple2&lt;String,Integer&gt;&gt; dataStream = env</span><br><span class="line">		.socketTextStream(<span class="string">"localhost"</span>,<span class="number">9999</span>)</span><br><span class="line">		.flatMap(<span class="keyword">new</span> Splitter())</span><br><span class="line">		.keyBy(<span class="number">0</span>)</span><br><span class="line">		.timeWindow(Time.seconds(<span class="number">5</span>))</span><br><span class="line">		.sum(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">	dataStream.print();</span><br><span class="line"></span><br><span class="line">	env.execute(<span class="string">"Window WordCount"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img lazyload src="/images/loading.svg" data-src="TCP%E6%B5%81%E6%8E%A7_%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3_10.png" alt="avatar"></p>
+<h2 id="Flink-TCP-based反压机制（before-V1-5）"><a href="#Flink-TCP-based反压机制（before-V1-5）" class="headerlink" title="Flink TCP-based反压机制（before V1.5）"></a>Flink TCP-based反压机制（before V1.5）</h2><h3 id="Flink代码中的网络模块抽象"><a href="#Flink代码中的网络模块抽象" class="headerlink" title="Flink代码中的网络模块抽象"></a>Flink代码中的网络模块抽象</h3><h4 id="示例：WindowWordCount"><a href="#示例：WindowWordCount" class="headerlink" title="示例：WindowWordCount"></a>示例：WindowWordCount</h4><div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">	StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();</span><br><span class="line"></span><br><span class="line">	DataStream&lt;Tuple2&lt;String,Integer&gt;&gt; dataStream = env</span><br><span class="line">		.socketTextStream(<span class="string">"localhost"</span>,<span class="number">9999</span>)</span><br><span class="line">		.flatMap(<span class="keyword">new</span> Splitter())</span><br><span class="line">		.keyBy(<span class="number">0</span>)</span><br><span class="line">		.timeWindow(Time.seconds(<span class="number">5</span>))</span><br><span class="line">		.sum(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">	dataStream.print();</span><br><span class="line"></span><br><span class="line">	env.execute(<span class="string">"Window WordCount"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
-<h4 id="编译阶段：生成JobGraph"><a href="#编译阶段：生成JobGraph" class="headerlink" title="编译阶段：生成JobGraph"></a>编译阶段：生成JobGraph</h4><p>Client端通过 StreamGraph 生成 JobGraph：<br><img src="%E7%BC%96%E8%AF%91%E9%98%B6%E6%AE%B5_%E7%94%9F%E6%88%90JobGraph.png" alt="avatar"></p>
+<h4 id="编译阶段：生成JobGraph"><a href="#编译阶段：生成JobGraph" class="headerlink" title="编译阶段：生成JobGraph"></a>编译阶段：生成JobGraph</h4><p>Client端通过 StreamGraph 生成 JobGraph：<br><img lazyload src="/images/loading.svg" data-src="%E7%BC%96%E8%AF%91%E9%98%B6%E6%AE%B5_%E7%94%9F%E6%88%90JobGraph.png" alt="avatar"></p>
 <p>JobGraph 是向集群提交的最基本单元，对任务做了部分优化，合并了相应节点，因为这些节点之间没有任何的shuffle。</p>
-<h4 id="调度阶段：调度ExecutionGraph"><a href="#调度阶段：调度ExecutionGraph" class="headerlink" title="调度阶段：调度ExecutionGraph"></a>调度阶段：调度ExecutionGraph</h4><p>在 JobManager 中创建 ExecutionGraph：<br><img src="%E8%BF%90%E8%A1%8C%E9%98%B6%E6%AE%B5_%E8%B0%83%E5%BA%A6ExecutionGraph.png" alt="avatar"></p>
+<h4 id="调度阶段：调度ExecutionGraph"><a href="#调度阶段：调度ExecutionGraph" class="headerlink" title="调度阶段：调度ExecutionGraph"></a>调度阶段：调度ExecutionGraph</h4><p>在 JobManager 中创建 ExecutionGraph：<br><img lazyload src="/images/loading.svg" data-src="%E8%BF%90%E8%A1%8C%E9%98%B6%E6%AE%B5_%E8%B0%83%E5%BA%A6ExecutionGraph.png" alt="avatar"></p>
 <p>已经具备了执行的雏形，每个任务都拆解出了subtask。Execution Edge 之前会有一个发送数据的模块，Intermediate Result Partition。<br>将 ExecutionGraph 交给 JobManager 的调度器，调度器负责把整个 ExecutionGraph 给调度起来，形成虚拟的物理执行图。<br>每个 subtask 之前都有统一接收数据的 InputGate ，ResultPartition 可以认为是发送数据，二者是对应的关系。ResultPartition 内部又会做分区，因为输出结果可能会shuffle给下游的多个task。</p>
-<h3 id="反压传播两个阶段"><a href="#反压传播两个阶段" class="headerlink" title="反压传播两个阶段"></a>反压传播两个阶段</h3><p><img src="%E5%8F%8D%E5%8E%8B%E4%BC%A0%E6%92%AD%E4%B8%A4%E9%98%B6%E6%AE%B5.png" alt="avatar"></p>
+<h3 id="反压传播两个阶段"><a href="#反压传播两个阶段" class="headerlink" title="反压传播两个阶段"></a>反压传播两个阶段</h3><p><img lazyload src="/images/loading.svg" data-src="%E5%8F%8D%E5%8E%8B%E4%BC%A0%E6%92%AD%E4%B8%A4%E9%98%B6%E6%AE%B5.png" alt="avatar"></p>
 <ol>
 <li>跨TaskManager：反压如何从 InputChannel 传播到 ResultSubpartition。</li>
 <li>TaskManager：反压如何从 ResultSubpartition 传播到 InputChannel。</li>
 </ol>
-<h4 id="跨TaskManager数据传输"><a href="#跨TaskManager数据传输" class="headerlink" title="跨TaskManager数据传输"></a>跨TaskManager数据传输</h4><p><img src="%E8%B7%A8TaskManager%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E6%B5%81%E5%90%91.png" alt="avatar"></p>
+<h4 id="跨TaskManager数据传输"><a href="#跨TaskManager数据传输" class="headerlink" title="跨TaskManager数据传输"></a>跨TaskManager数据传输</h4><p><img lazyload src="/images/loading.svg" data-src="%E8%B7%A8TaskManager%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E6%B5%81%E5%90%91.png" alt="avatar"></p>
 <p>LBP：Task 线程启动时，会向 NetworkEnvironment 注册，NetworkEnvironment 会为 Task 的 IG 和 RS 分别创建一个 LocalBufferPool 并设置可申请的 MemorySegment 数量。给每一个 task 创建一个 Local Buffer Pool。<br>NBP：TM在启动时，会先初始化 NetworkEnvironment 对象，TM种所有与网络相关的东西都由该类来管理（如Netty连接），其中就包括 NetworkBufferPool 。NetworkEnvironment 和 NetworkBufferPool 是Task间共享的，每个TM只会实例化一个 ，初始化时从 Off-heap Memory中申请，不依赖于JVM。<br>Off-heap Memory：<br>ResultSubPartition 的 buffer 拷贝至 Netty 的 buffer，Netty 的用户态 buffer 拷贝至 Socket 的内核态 buffer。</p>
 <h4 id="跨TaskManager反压过程"><a href="#跨TaskManager反压过程" class="headerlink" title="跨TaskManager反压过程"></a>跨TaskManager反压过程</h4><p>假设生产速度为2，消费速度为1，模拟速度上下游不匹配的情况。数据一直在发送。</p>
 <ul>
 <li>运行一段时间之后，InputChannel 的 buffer 已满，向 LBP 申请新的 buffer，被申请过的 buffer 标识为 ‘Used’。</li>
 </ul>
-<p><img src="%E8%B7%A8TaskManager%E5%8F%8D%E5%8E%8B%E8%BF%87%E7%A8%8B_1.png" alt="avatar"></p>
+<p><img lazyload src="/images/loading.svg" data-src="%E8%B7%A8TaskManager%E5%8F%8D%E5%8E%8B%E8%BF%87%E7%A8%8B_1.png" alt="avatar"></p>
 <ul>
 <li>又运行一段时间之后，LBP 已满，只能向 NBP 申请新的 buffer，每个 LBP 都有最大可用 buffer。</li>
 </ul>
-<p><img src="%E8%B7%A8TaskManager%E5%8F%8D%E5%8E%8B%E8%BF%87%E7%A8%8B_2.png" alt="avatar"></p>
+<p><img lazyload src="/images/loading.svg" data-src="%E8%B7%A8TaskManager%E5%8F%8D%E5%8E%8B%E8%BF%87%E7%A8%8B_2.png" alt="avatar"></p>
 <ul>
 <li>又运行一段时间之后，NBP 已满 或者 LBP 达到了使用份额，Netty 还是一直想把数据写到 InputChannel 中，此时就会在 Socket 层 disable Netty 的 autoRead，<br>Netty 不再从 Socket 中读取消息，只能在 Socket 自己的 buffer 中一直做缓存。</li>
 </ul>
-<p><img src="%E8%B7%A8TaskManager%E5%8F%8D%E5%8E%8B%E8%BF%87%E7%A8%8B_3.png" alt="avatar"></p>
+<p><img lazyload src="/images/loading.svg" data-src="%E8%B7%A8TaskManager%E5%8F%8D%E5%8E%8B%E8%BF%87%E7%A8%8B_3.png" alt="avatar"></p>
 <ul>
 <li>又运行一段时间之后，Socket receive buffer 很快就会满，就会把 window = 0 的消息反馈给发送端。</li>
 </ul>
-<p><img src="%E8%B7%A8TaskManager%E5%8F%8D%E5%8E%8B%E8%BF%87%E7%A8%8B_4.png" alt="avatar"></p>
+<p><img lazyload src="/images/loading.svg" data-src="%E8%B7%A8TaskManager%E5%8F%8D%E5%8E%8B%E8%BF%87%E7%A8%8B_4.png" alt="avatar"></p>
 <ul>
 <li>又运行一段时间之后，发送端接收到 window = 0，停止发送。Socket send buffer 也很快就会被写满。Netty 也写不进去到 Socket 了，也会停止写。</li>
 </ul>
-<p><img src="%E8%B7%A8TaskManager%E5%8F%8D%E5%8E%8B%E8%BF%87%E7%A8%8B_5.png" alt="avatar"></p>
+<p><img lazyload src="/images/loading.svg" data-src="%E8%B7%A8TaskManager%E5%8F%8D%E5%8E%8B%E8%BF%87%E7%A8%8B_5.png" alt="avatar"></p>
 <ul>
 <li>又运行一段时间之后，Netty 的 buffer 是无界的，通过 HW 控制是否可写入 Netty 的 buffer，ResultSubpartition 每次写之前会检查 channel.isWritable() ，避免 Netty 的 buffer 无限增长。</li>
 </ul>
-<p><img src="%E8%B7%A8TaskManager%E5%8F%8D%E5%8E%8B%E8%BF%87%E7%A8%8B_6.png" alt="avatar"></p>
+<p><img lazyload src="/images/loading.svg" data-src="%E8%B7%A8TaskManager%E5%8F%8D%E5%8E%8B%E8%BF%87%E7%A8%8B_6.png" alt="avatar"></p>
 <ul>
 <li>又运行一段时间之后，ResultSubpartition 的 buffer 会不断累积，然后会向 LBP 申请内存.</li>
 </ul>
-<p><img src="%E8%B7%A8TaskManager%E5%8F%8D%E5%8E%8B%E8%BF%87%E7%A8%8B_7.png" alt="avatar"></p>
+<p><img lazyload src="/images/loading.svg" data-src="%E8%B7%A8TaskManager%E5%8F%8D%E5%8E%8B%E8%BF%87%E7%A8%8B_7.png" alt="avatar"></p>
 <ul>
 <li>又运行一段时间之后，LBP 已满，向 NBP 申请内存。</li>
 </ul>
-<p><img src="%E8%B7%A8TaskManager%E5%8F%8D%E5%8E%8B%E8%BF%87%E7%A8%8B_8.png" alt="avatar"></p>
+<p><img lazyload src="/images/loading.svg" data-src="%E8%B7%A8TaskManager%E5%8F%8D%E5%8E%8B%E8%BF%87%E7%A8%8B_8.png" alt="avatar"></p>
 <ul>
 <li>又运行一段时间之后，NBP 也满，申请不到内存时 Record Writer 就会 block 住，申请不到 buffer 时就会有一个 wait 操作。</li>
 </ul>
-<p><img src="%E8%B7%A8TaskManager%E5%8F%8D%E5%8E%8B%E8%BF%87%E7%A8%8B_9.png" alt="avatar"></p>
+<p><img lazyload src="/images/loading.svg" data-src="%E8%B7%A8TaskManager%E5%8F%8D%E5%8E%8B%E8%BF%87%E7%A8%8B_9.png" alt="avatar"></p>
 <h4 id="TaskManager内反压过程"><a href="#TaskManager内反压过程" class="headerlink" title="TaskManager内反压过程"></a>TaskManager内反压过程</h4><ul>
 <li>假定 TaskA 的 ResultPartition 已经由于下游消费过慢出现反压，已经写阻塞了。将写的阻塞传播给读，输入和输出是在同一个线程里的，线程已经被写 block 住了，当然也没办法消费数据了。<br>InputGate 也会被 block 住。</li>
 </ul>
-<p><img src="TaskManager%E5%86%85%E5%8F%8D%E5%8E%8B%E8%BF%87%E7%A8%8B_1.png" alt="avatar"></p>
+<p><img lazyload src="/images/loading.svg" data-src="TaskManager%E5%86%85%E5%8F%8D%E5%8E%8B%E8%BF%87%E7%A8%8B_1.png" alt="avatar"></p>
 <ul>
 <li>紧接着会打满各层的 buffer ，并向上游的 TaskManger 推进反压情况。</li>
 </ul>
-<p><img src="TaskManager%E5%86%85%E5%8F%8D%E5%8E%8B%E8%BF%87%E7%A8%8B_2.png" alt="avatar"></p>
-<p><img src="TaskManager%E5%86%85%E5%8F%8D%E5%8E%8B%E8%BF%87%E7%A8%8B_3.png" alt="avatar"></p>
-<p><img src="TaskManager%E5%86%85%E5%8F%8D%E5%8E%8B%E8%BF%87%E7%A8%8B_4.png" alt="avatar"></p>
-<h2 id="Flink-Credit-based反压机制（since-v1-5）"><a href="#Flink-Credit-based反压机制（since-v1-5）" class="headerlink" title="Flink Credit-based反压机制（since v1.5）"></a>Flink Credit-based反压机制（since v1.5）</h2><h3 id="TCP-based反压的弊端"><a href="#TCP-based反压的弊端" class="headerlink" title="TCP-based反压的弊端"></a>TCP-based反压的弊端</h3><p><img src="TCP-based%E5%8F%8D%E5%8E%8B%E7%9A%84%E5%BC%8A%E7%AB%AF.png" alt="avatar"></p>
+<p><img lazyload src="/images/loading.svg" data-src="TaskManager%E5%86%85%E5%8F%8D%E5%8E%8B%E8%BF%87%E7%A8%8B_2.png" alt="avatar"></p>
+<p><img lazyload src="/images/loading.svg" data-src="TaskManager%E5%86%85%E5%8F%8D%E5%8E%8B%E8%BF%87%E7%A8%8B_3.png" alt="avatar"></p>
+<p><img lazyload src="/images/loading.svg" data-src="TaskManager%E5%86%85%E5%8F%8D%E5%8E%8B%E8%BF%87%E7%A8%8B_4.png" alt="avatar"></p>
+<h2 id="Flink-Credit-based反压机制（since-v1-5）"><a href="#Flink-Credit-based反压机制（since-v1-5）" class="headerlink" title="Flink Credit-based反压机制（since v1.5）"></a>Flink Credit-based反压机制（since v1.5）</h2><h3 id="TCP-based反压的弊端"><a href="#TCP-based反压的弊端" class="headerlink" title="TCP-based反压的弊端"></a>TCP-based反压的弊端</h3><p><img lazyload src="/images/loading.svg" data-src="TCP-based%E5%8F%8D%E5%8E%8B%E7%9A%84%E5%BC%8A%E7%AB%AF.png" alt="avatar"></p>
 <ol>
 <li>由于多路复用Socket，单个Task导致的反压，会阻断整个TM-TM的Socket，连checkpoint barrier也无法发出，导致 checkpoint 延时增大。</li>
 <li>反压传播路径太长，导致生效延迟比较大。</li>
 </ol>
 <h3 id="Credit-based反压"><a href="#Credit-based反压" class="headerlink" title="Credit-based反压"></a>Credit-based反压</h3><p>在Flink层面实现类似 TCP 流控的 feedback 机制，credit 可类比为 TCP window。<br>不会要占满 Socket 的 buffer 才出现反压，在ResultSubpartition 和 InputGate 就可以直接产生反压。</p>
-<p><img src="Credit-based%E5%8F%8D%E5%8E%8B.png" alt="avatar"></p>
+<p><img lazyload src="/images/loading.svg" data-src="Credit-based%E5%8F%8D%E5%8E%8B.png" alt="avatar"></p>
 <ol>
 <li>ResultSubpartition 向 InputGate 发送数据时，会打上 backlog size ，代表 ResultSubpartition 端积压了多少数据。</li>
 <li>InputGate 就根据 backlog size 去估算内存情况，返回credit给发送端。</li>
 <li>ResultSubpartition 接收到 credit 之后才会真正发送数据。</li>
 </ol>
 <h3 id="Credit-based反压过程"><a href="#Credit-based反压过程" class="headerlink" title="Credit-based反压过程"></a>Credit-based反压过程</h3><p>仍然假设生产速度为2，消费速度为1，模拟速度上下游不匹配的情况。</p>
-<p><img src="Credit-based%E5%8F%8D%E5%8E%8B%E8%BF%87%E7%A8%8B_1.png" alt="avatar"></p>
-<p><img src="Credit-based%E5%8F%8D%E5%8E%8B%E8%BF%87%E7%A8%8B_2.png" alt="avatar"></p>
+<p><img lazyload src="/images/loading.svg" data-src="Credit-based%E5%8F%8D%E5%8E%8B%E8%BF%87%E7%A8%8B_1.png" alt="avatar"></p>
+<p><img lazyload src="/images/loading.svg" data-src="Credit-based%E5%8F%8D%E5%8E%8B%E8%BF%87%E7%A8%8B_2.png" alt="avatar"></p>
 <h2 id="反压问题排查"><a href="#反压问题排查" class="headerlink" title="反压问题排查"></a>反压问题排查</h2><p>定位到反压节点后，分析造成原因的办法和我们分析一个普通程序的性能瓶颈的办法是十分类似的，可能还要更简单一点，因为我们要观察的主要是 Task Thread。</p>
 <p>在实践中，很多情况下的反压是由于数据倾斜造成的，这点我们可以通过 Web UI 各个 SubTask 的 Records Sent 和 Record Received 来确认，另外 Checkpoint detail 里不同 SubTask 的 State size 也是一个分析数据倾斜的有用指标。</p>
 <p>此外，最常见的问题可能是用户代码的执行效率问题（频繁被阻塞或者性能问题）。最有用的办法就是对 TaskManager 进行 CPU profile，从中我们可以分析到 Task Thread 是否跑满一个 CPU 核：如果是的话要分析 CPU 主要花费在哪些函数里面，比如我们生产环境中就偶尔遇到卡在 Regex 的用户函数（ReDoS）；如果不是的话要看 Task Thread 阻塞在哪里，可能是用户函数本身有些同步的调用，可能是 checkpoint 或者 GC 等系统活动导致的暂时系统暂停。</p>
 <p>当然，性能分析的结果也可能是正常的，只是作业申请的资源不足而导致了反压，这就通常要求拓展并行度。值得一提的，在未来的版本 Flink 将会直接在 WebUI 提供 JVM 的 CPU 火焰图[5]，这将大大简化性能瓶颈的分析。</p>
 <p>另外 TaskManager 的内存以及 GC 问题也可能会导致反压，包括 TaskManager JVM 各区内存不合理导致的频繁 Full GC 甚至失联。推荐可以通过给 TaskManager 启用 G1 垃圾回收器来优化 GC，并加上 -XX:+PrintGCDetails 来打印 GC 日志的方式来观察 GC 的问题。</p>
 <h3 id="反压监控"><a href="#反压监控" class="headerlink" title="反压监控"></a>反压监控</h3><p>在storm中，只要监控队列满了，就可以记录下拓扑进入反压了。但是Flink的反压过于天然，无法简单的通过监控队列来监控反压状态。如果一个Task因为反压而降速了，那么它会卡在向 LocalBufferPool 申请内存块上。此时该 Task 的 stack trace 如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">java.lang.Object.wait(Native Method)</span><br><span class="line">o.a.f.[...].LocalBufferPool.requestBuffer(LocalBufferPool.java:163)</span><br><span class="line">o.a.f.[...].LocalBufferPool.requestBufferBlocking(LocalBufferPool.java:133) &lt;--- BLOCKING request</span><br><span class="line">[...]</span><br></pre></td></tr></table></figure>
+<div class="highlight-container" data-rel="Code"><figure class="iseeu highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">java.lang.Object.wait(Native Method)</span><br><span class="line">o.a.f.[...].LocalBufferPool.requestBuffer(LocalBufferPool.java:163)</span><br><span class="line">o.a.f.[...].LocalBufferPool.requestBufferBlocking(LocalBufferPool.java:133) &lt;--- BLOCKING request</span><br><span class="line">[...]</span><br></pre></td></tr></table></figure></div>
 
 <p>Flink 就是通过不断采样每个 Task 的 stack trace 来实现反压监控的。JM 会通过 Akka 给每个 TM 发送 TriggerStackTraceSample 消息。</p>
 <h3 id="业务代码优化"><a href="#业务代码优化" class="headerlink" title="业务代码优化"></a>业务代码优化</h3><p>left join 可能会产生大量的 null 数据，导致网络流量剧增，最终导致反压、checkpoint超时等问题。此时可以考虑优化代码，减少 left join、增大operator并发度、拆解任务等。</p>
 <h3 id="网络调参"><a href="#网络调参" class="headerlink" title="网络调参"></a>网络调参</h3><p>// 待补充</p>
 <h3 id="反压不触发时的静态限速"><a href="#反压不触发时的静态限速" class="headerlink" title="反压不触发时的静态限速"></a>反压不触发时的静态限速</h3><p>有了动态反压，静态限速是不是完全没有作用了？</p>
-<p><img src="%E5%8F%8D%E5%8E%8B%E4%B8%8D%E8%A7%A6%E5%8F%91%E6%97%B6%E7%9A%84%E9%9D%99%E6%80%81%E9%99%90%E9%80%9F.png" alt="avatar"></p>
+<p><img lazyload src="/images/loading.svg" data-src="%E5%8F%8D%E5%8E%8B%E4%B8%8D%E8%A7%A6%E5%8F%91%E6%97%B6%E7%9A%84%E9%9D%99%E6%80%81%E9%99%90%E9%80%9F.png" alt="avatar"></p>
 <p>Storage 到 Sink 之间的反压是整个反压的源头，但是不一定被触发，取决于 Storage 的内部实现，如Kafka内部有quato限流机制。<br>但是不是所有的Storage都有这个能力，如 ES ，可能在 ES 端已经出现了大量的 timeout ，也不会向上游反压，此时就需要在 Source 端做静态限流。<br>Flink 1.8 的 kafka source 支持限流，setRate 设置 consumer 每秒钟不能消费超过多少的数据。</p>
 
       
@@ -627,6 +689,8 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
+              <img class="site-author-image" itemprop="image" src="/images/2.JPG" alt="miaowenting">
+            
               <p class="site-author-name" itemprop="name">miaowenting</p>
               <p class="site-description motion-element" itemprop="description"></p>
           </div>
@@ -678,11 +742,39 @@
           
 
           
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/miaowenting" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
 
           
           
 
           
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://ci.apache.org/projects/flink/flink-docs-stable/" title="flink文档" target="_blank">flink文档</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href title="flink社区" target="_blank">flink社区</a>
+                  </li>
+                
+              </ul>
+            </div>
           
 
           
@@ -738,7 +830,7 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
 
 
 
@@ -885,6 +977,323 @@
 
 
   
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
 
 
 

@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -88,38 +88,38 @@
 <meta property="og:site_name" content="Matty&#39;s Blog">
 <meta property="og:description" content="本文为 Apache Pulsar 的入门学习笔记。  企业在考虑部署实时消息系统时，总体硬件成本很重要的。Kafka 是基于磁盘存储数据的，存储成本较高。而 Pulsar Broker 不直接存储数据，而是使用 Apache BookKeeper 来存储数据。数据发送/接收和存储的解耦使得 BookKeeper 可以在运行在独立的物理计算机或容器上。 当新生事物出现有两种角度去观察它，要么把它看">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2021/05/25/Apache-Pulsar/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E5%8F%91%E5%B1%95%E5%8F%B2.png">
-<meta property="og:image" content="http://yoursite.com/2021/05/25/Apache-Pulsar/pulsar%E4%B9%8B%E5%89%8D.png">
-<meta property="og:image" content="http://yoursite.com/2021/05/25/Apache-Pulsar/Queuing_vs_Streaming.png">
-<meta property="og:image" content="http://yoursite.com/2021/05/25/Apache-Pulsar/Queuing+Streaming.png">
-<meta property="og:image" content="http://yoursite.com/2021/05/25/Apache-Pulsar/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E5%9C%A8%E4%B8%9A%E5%8A%A1%E5%9C%BA%E6%99%AF%E4%B8%AD%E7%9A%84%E5%B8%B8%E8%A7%81%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F.png">
-<meta property="og:image" content="http://yoursite.com/2021/05/25/Apache-Pulsar/%E5%A4%9A%E7%A7%8D%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E7%9A%84%E4%BD%BF%E7%94%A8%E5%AF%BC%E8%87%B4%E7%B3%BB%E7%BB%9F%E4%B9%8B%E9%97%B4%E4%B8%80%E5%9B%A2%E4%B9%B1%E9%BA%BB.png">
-<meta property="og:image" content="http://yoursite.com/2021/05/25/Apache-Pulsar/Pulsar=Queues+Streams%E7%9A%84%E8%9E%8D%E5%90%88.png">
-<meta property="og:image" content="http://yoursite.com/2021/05/25/Apache-Pulsar/%E4%BC%A0%E7%BB%9F%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%84%E7%90%86%E5%BA%94%E7%94%A8.png">
-<meta property="og:image" content="http://yoursite.com/2021/05/25/Apache-Pulsar/%E5%BF%AB%E9%80%92%E5%91%98%E9%80%81%E9%A4%90%E6%A1%88%E4%BE%8B_%E5%AE%9E%E6%97%B6%E4%BD%8D%E7%BD%AE.png">
-<meta property="og:image" content="http://yoursite.com/2021/05/25/Apache-Pulsar/%E5%BF%AB%E9%80%92%E5%91%98%E9%80%81%E9%A4%90%E6%A1%88%E4%BE%8B_%E5%AE%9E%E6%97%B6%E4%BD%8D%E7%BD%AE_%E7%BB%93%E5%90%88%E5%8E%86%E5%8F%B2%E7%BB%8F%E9%AA%8C%E6%95%B0%E6%8D%AE.png">
-<meta property="og:image" content="http://yoursite.com/2021/05/25/Apache-Pulsar/Pulsar%E7%9A%84%E6%89%B9%E6%B5%81%E5%AD%98%E5%82%A8%E8%9E%8D%E5%90%88%E5%AE%9E%E7%8E%B0.png">
-<meta property="og:image" content="http://yoursite.com/2021/05/25/Apache-Pulsar/%E4%BA%91%E5%8E%9F%E7%94%9F%E7%B3%BB%E7%BB%9F%E6%A6%82%E5%BF%B5.png">
-<meta property="og:image" content="http://yoursite.com/2021/05/25/Apache-Pulsar/data_tiering_and_io_isolation.png">
-<meta property="og:image" content="http://yoursite.com/2021/05/25/Apache-Pulsar/pulsar%E7%9A%84%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84%E5%9B%BE.png">
-<meta property="og:image" content="http://yoursite.com/2021/05/25/Apache-Pulsar/pulsar%E7%9A%84%E4%BA%91%E5%8E%9F%E7%94%9F%E6%9E%B6%E6%9E%84.png">
-<meta property="og:image" content="http://yoursite.com/2021/05/25/Apache-Pulsar/pulsar%E6%94%AF%E6%8C%81%E5%A4%9A%E7%A7%9F%E6%88%B7.png">
-<meta property="og:image" content="http://yoursite.com/2021/05/25/Apache-Pulsar/Pulsar%E7%9A%84topic%E9%80%BB%E8%BE%91%E6%8A%BD%E8%B1%A1.png">
-<meta property="og:image" content="http://yoursite.com/2021/05/25/Apache-Pulsar/pulsar%E6%94%AF%E6%8C%81%E5%8E%9F%E7%94%9F%E8%B7%A8%E5%9C%B0%E5%9F%9F%E5%A4%8D%E5%88%B6.png">
-<meta property="og:image" content="http://yoursite.com/2021/05/25/Apache-Pulsar/pulsar%E6%95%B0%E6%8D%AE%E8%A7%86%E5%9B%BE_topic_partition%E5%88%86%E5%8C%BA.png">
-<meta property="og:image" content="http://yoursite.com/2021/05/25/Apache-Pulsar/pulsar%E6%95%B0%E6%8D%AE%E8%A7%86%E5%9B%BE_partition_segment%E5%88%86%E7%89%87.png">
-<meta property="og:image" content="http://yoursite.com/2021/05/25/Apache-Pulsar/pulsar%E8%AE%A1%E7%AE%97%E5%8E%86%E5%8F%B2%E6%95%B0%E6%8D%AE.png">
-<meta property="og:image" content="http://yoursite.com/2021/05/25/Apache-Pulsar/pulsar%E8%AE%A1%E7%AE%97%E5%AE%9E%E6%97%B6%E6%95%B0%E6%8D%AE.png">
-<meta property="og:image" content="http://yoursite.com/2021/05/25/Apache-Pulsar/pulsar%E7%9A%84%E5%AE%8C%E6%95%B4%E6%80%A7.png">
-<meta property="og:image" content="http://yoursite.com/2021/05/25/Apache-Pulsar/pulsar%E9%AB%98%E5%90%9E%E5%90%90.png">
-<meta property="og:image" content="http://yoursite.com/2021/05/25/Apache-Pulsar/pulsar%E7%A8%B3%E5%AE%9A%E7%9A%84%E4%BD%8E%E5%BB%B6%E6%97%B6%E7%89%B9%E6%80%A7.png">
-<meta property="og:image" content="http://yoursite.com/2021/05/25/Apache-Pulsar/pulsar%E7%9A%84%E7%94%9F%E6%80%81%E6%94%AF%E6%8C%81.png">
-<meta property="og:image" content="http://yoursite.com/2021/05/25/Apache-Pulsar/Pulsar%E5%9C%A8%E6%97%A5%E5%BF%97%E6%9C%8D%E5%8A%A1%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8.png">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
 <meta property="og:updated_time" content="2023-03-02T08:56:43.411Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Apache Pulsar">
 <meta name="twitter:description" content="本文为 Apache Pulsar 的入门学习笔记。  企业在考虑部署实时消息系统时，总体硬件成本很重要的。Kafka 是基于磁盘存储数据的，存储成本较高。而 Pulsar Broker 不直接存储数据，而是使用 Apache BookKeeper 来存储数据。数据发送/接收和存储的解耦使得 BookKeeper 可以在运行在独立的物理计算机或容器上。 当新生事物出现有两种角度去观察它，要么把它看">
-<meta name="twitter:image" content="http://yoursite.com/2021/05/25/Apache-Pulsar/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E5%8F%91%E5%B1%95%E5%8F%B2.png">
+<meta name="twitter:image" content="http://yoursite.com/images/loading.svg">
 
 
 
@@ -127,7 +127,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Mist',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -220,6 +220,36 @@
         </li>
       
         
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
@@ -231,9 +261,41 @@
       
 
       
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
     </ul>
   
 
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
   
 </nav>
 
@@ -267,7 +329,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="miaowenting">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/2.JPG">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -378,13 +440,13 @@
 <p>当新生事物出现有两种角度去观察它，要么把它看小，要么把它放大。对 Apache Pulsar，把它看小的角度通常是”Apache Pulsar 只是一个新的消息队列而已”，或者“Apache Pulsar 只是一个新的数据管道而已”，“队列系统早就有了，只是 Apache Pulsar 更具扩展性也能解决某些场景问题而已，基本没啥本质区别”。很明显上述认识都不对，Apache Pulsar 在消息、流、数据管理和技术基础设施层面都有技术演进，详看正文。</p>
 <a id="more"></a>
 
-<h2 id="Pulsar-兴起的原因"><a href="#Pulsar-兴起的原因" class="headerlink" title="Pulsar 兴起的原因"></a>Pulsar 兴起的原因</h2><p>消息队列的发展史：<br><img src="%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E5%8F%91%E5%B1%95%E5%8F%B2.png" alt></p>
+<h2 id="Pulsar-兴起的原因"><a href="#Pulsar-兴起的原因" class="headerlink" title="Pulsar 兴起的原因"></a>Pulsar 兴起的原因</h2><p>消息队列的发展史：<br><img lazyload src="/images/loading.svg" data-src="%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E5%8F%91%E5%B1%95%E5%8F%B2.png" alt></p>
 <p>在 pulsar 之前，消息系统主要有两个应用场景：</p>
 <ul>
 <li>应用之间的解耦缓冲，出现了大量的MQ。</li>
 <li>随着流计算的兴起，Kafka 被大量使用。   </li>
 </ul>
-<p><img src="pulsar%E4%B9%8B%E5%89%8D.png" alt></p>
+<p><img lazyload src="/images/loading.svg" data-src="pulsar%E4%B9%8B%E5%89%8D.png" alt></p>
 <p>未来实时技术设施建设通常有以下3大趋势：</p>
 <ul>
 <li>消息系统的融合</li>
@@ -400,29 +462,29 @@
 <ul>
 <li>Queuing vs Streaming</li>
 </ul>
-<p>队列和流通常用于不同的应用场景下。<br><img src="Queuing_vs_Streaming.png" alt></p>
+<p>队列和流通常用于不同的应用场景下。<br><img lazyload src="/images/loading.svg" data-src="Queuing_vs_Streaming.png" alt></p>
 <ul>
 <li>Queuing + Streaming</li>
 </ul>
 <p>队列和流本身是做不到完全隔离的，队列中的数据通常需要通过流导入到数仓中。</p>
-<p><img src="Queuing+Streaming.png" alt></p>
+<p><img lazyload src="/images/loading.svg" data-src="Queuing+Streaming.png" alt></p>
 <p>一个业务系统通常需要使用多个消息系统，举例如下：</p>
 <p>刚开始做业务的时候，创建了两个微服务，如果两个微服务之间需要通信，就会拉一个消息队列（RabbitMQ、ActiveMQ等）进来。随着业务的增长，需要接入一些 IoT 设备，使用 MQTT broker 去查一些 IoT 设备。此时业务需要对 IoT 设备进行流计算计数等处理，此时就会引入 Kafka，所有数据通过 Kafka Connector 集中汇聚到 Kafka，做集中的流计算处理。同时流计算的处理结果，可能需要写回 MQTT 或者其他业务系统。</p>
-<p><img src="%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E5%9C%A8%E4%B8%9A%E5%8A%A1%E5%9C%BA%E6%99%AF%E4%B8%AD%E7%9A%84%E5%B8%B8%E8%A7%81%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F.png" alt></p>
+<p><img lazyload src="/images/loading.svg" data-src="%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E5%9C%A8%E4%B8%9A%E5%8A%A1%E5%9C%BA%E6%99%AF%E4%B8%AD%E7%9A%84%E5%B8%B8%E8%A7%81%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F.png" alt></p>
 <p>此时调用链路和数据存储方式是比较混乱的，业务人员可能不知道从哪里取数：</p>
-<p><img src="%E5%A4%9A%E7%A7%8D%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E7%9A%84%E4%BD%BF%E7%94%A8%E5%AF%BC%E8%87%B4%E7%B3%BB%E7%BB%9F%E4%B9%8B%E9%97%B4%E4%B8%80%E5%9B%A2%E4%B9%B1%E9%BA%BB.png" alt></p>
+<p><img lazyload src="/images/loading.svg" data-src="%E5%A4%9A%E7%A7%8D%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E7%9A%84%E4%BD%BF%E7%94%A8%E5%AF%BC%E8%87%B4%E7%B3%BB%E7%BB%9F%E4%B9%8B%E9%97%B4%E4%B8%80%E5%9B%A2%E4%B9%B1%E9%BA%BB.png" alt></p>
 <p>Pulsar = Queues + Streams 的融合：</p>
-<p><img src="Pulsar=Queues+Streams%E7%9A%84%E8%9E%8D%E5%90%88.png" alt></p>
+<p><img lazyload src="/images/loading.svg" data-src="Pulsar=Queues+Streams%E7%9A%84%E8%9E%8D%E5%90%88.png" alt></p>
 <p>据调研，有42%的用户在考虑用 Pulsar 替换业务中使用的2种及以上的消息队列。</p>
 <h3 id="Unified-Batch-and-Event-Stream-Storage-批流存储融合"><a href="#Unified-Batch-and-Event-Stream-Storage-批流存储融合" class="headerlink" title="Unified Batch and Event-Stream Storage 批流存储融合"></a>Unified Batch and Event-Stream Storage 批流存储融合</h3><p>传统的数据库处理，就是不停的插入数据，再用 SQL 批量查询出数据：</p>
-<p><img src="%E4%BC%A0%E7%BB%9F%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%84%E7%90%86%E5%BA%94%E7%94%A8.png" alt></p>
+<p><img lazyload src="/images/loading.svg" data-src="%E4%BC%A0%E7%BB%9F%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%84%E7%90%86%E5%BA%94%E7%94%A8.png" alt></p>
 <p>举一个快递员送餐的例子，用户一旦下单，他最关心的是餐什么时候能送到？<br>不仅要看当前的实时位置信息，还需要结合历史经验数据中天气、交通等因素对送餐速度的影响：</p>
-<p><img src="%E5%BF%AB%E9%80%92%E5%91%98%E9%80%81%E9%A4%90%E6%A1%88%E4%BE%8B_%E5%AE%9E%E6%97%B6%E4%BD%8D%E7%BD%AE.png" alt></p>
-<p><img src="%E5%BF%AB%E9%80%92%E5%91%98%E9%80%81%E9%A4%90%E6%A1%88%E4%BE%8B_%E5%AE%9E%E6%97%B6%E4%BD%8D%E7%BD%AE_%E7%BB%93%E5%90%88%E5%8E%86%E5%8F%B2%E7%BB%8F%E9%AA%8C%E6%95%B0%E6%8D%AE.png" alt></p>
+<p><img lazyload src="/images/loading.svg" data-src="%E5%BF%AB%E9%80%92%E5%91%98%E9%80%81%E9%A4%90%E6%A1%88%E4%BE%8B_%E5%AE%9E%E6%97%B6%E4%BD%8D%E7%BD%AE.png" alt></p>
+<p><img lazyload src="/images/loading.svg" data-src="%E5%BF%AB%E9%80%92%E5%91%98%E9%80%81%E9%A4%90%E6%A1%88%E4%BE%8B_%E5%AE%9E%E6%97%B6%E4%BD%8D%E7%BD%AE_%E7%BB%93%E5%90%88%E5%8E%86%E5%8F%B2%E7%BB%8F%E9%AA%8C%E6%95%B0%E6%8D%AE.png" alt></p>
 <p>Pulsar = 批 + 流 的存储融合：</p>
-<p><img src="Pulsar%E7%9A%84%E6%89%B9%E6%B5%81%E5%AD%98%E5%82%A8%E8%9E%8D%E5%90%88%E5%AE%9E%E7%8E%B0.png" alt></p>
+<p><img lazyload src="/images/loading.svg" data-src="Pulsar%E7%9A%84%E6%89%B9%E6%B5%81%E5%AD%98%E5%82%A8%E8%9E%8D%E5%90%88%E5%AE%9E%E7%8E%B0.png" alt></p>
 <h3 id="Cloud-Native-Operations-以云原生的方式部署和运维"><a href="#Cloud-Native-Operations-以云原生的方式部署和运维" class="headerlink" title="Cloud-Native Operations 以云原生的方式部署和运维"></a>Cloud-Native Operations 以云原生的方式部署和运维</h3><p>Cloud Native Computing Foundation，云原生计算基金会。<br><code>Cloud native technologies empower organizations to build and run scalable applications in modern, dynamic environments such as public, private, and hybrid cloud. Containers, service meshes, microservices, immutable infrastructure, and declarative APIs exemplify this approach.</code></p>
-<p><img src="%E4%BA%91%E5%8E%9F%E7%94%9F%E7%B3%BB%E7%BB%9F%E6%A6%82%E5%BF%B5.png" alt></p>
+<p><img lazyload src="/images/loading.svg" data-src="%E4%BA%91%E5%8E%9F%E7%94%9F%E7%B3%BB%E7%BB%9F%E6%A6%82%E5%BF%B5.png" alt></p>
 <ul>
 <li>Kubernets ，应该是跑在 k8s</li>
 <li>Infinite，可以支持无限扩容</li>
@@ -433,15 +495,15 @@
 <li>Secure and reliable，协议和数据存储应该是加密的，端到端的传输也是加密的</li>
 <li>API-driven operations，透出统一的 API 服务</li>
 </ul>
-<p>Pulsar 的 Hot data、Warm data、Cold data 存储分离：<br><img src="data_tiering_and_io_isolation.png" alt></p>
+<p>Pulsar 的 Hot data、Warm data、Cold data 存储分离：<br><img lazyload src="/images/loading.svg" data-src="data_tiering_and_io_isolation.png" alt></p>
 <p>据调研，有50%的用户倾向于部署在 k8s/Cloud。</p>
-<h2 id="Apache-Pulsar-简介"><a href="#Apache-Pulsar-简介" class="headerlink" title="Apache Pulsar 简介"></a>Apache Pulsar 简介</h2><p>综上，Pulsar 可以很容易的运行在 k8s 上，同时能集成多种云厂商作为其层级存储。Pulsar 提供了队列和流的统一模型，同时通过 Protocol Handler 的方式支持了其他消息系统的协议，如 Kafka Clients、AMQP Clients、MQTT Clients。这些都使得 Pulsar 完美的成为消息、流、存储融合的解决方案。<br><img src="pulsar%E7%9A%84%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84%E5%9B%BE.png" alt></p>
+<h2 id="Apache-Pulsar-简介"><a href="#Apache-Pulsar-简介" class="headerlink" title="Apache Pulsar 简介"></a>Apache Pulsar 简介</h2><p>综上，Pulsar 可以很容易的运行在 k8s 上，同时能集成多种云厂商作为其层级存储。Pulsar 提供了队列和流的统一模型，同时通过 Protocol Handler 的方式支持了其他消息系统的协议，如 Kafka Clients、AMQP Clients、MQTT Clients。这些都使得 Pulsar 完美的成为消息、流、存储融合的解决方案。<br><img lazyload src="/images/loading.svg" data-src="pulsar%E7%9A%84%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84%E5%9B%BE.png" alt></p>
 <h3 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h3><ul>
-<li><p>计算与存储分离<br>Pulsar 的 Producer 和 Consumer 都与 broker 相连接，broker 作为无状态服务，可以横向扩缩容，扩缩容时不会影响数据的整体生产和消费；broker 不存储数据，数据存储在 broker 的下一层，即 bookie 中，实现了计算与存储分离。<br><img src="pulsar%E7%9A%84%E4%BA%91%E5%8E%9F%E7%94%9F%E6%9E%B6%E6%9E%84.png" alt></p>
+<li><p>计算与存储分离<br>Pulsar 的 Producer 和 Consumer 都与 broker 相连接，broker 作为无状态服务，可以横向扩缩容，扩缩容时不会影响数据的整体生产和消费；broker 不存储数据，数据存储在 broker 的下一层，即 bookie 中，实现了计算与存储分离。<br><img lazyload src="/images/loading.svg" data-src="pulsar%E7%9A%84%E4%BA%91%E5%8E%9F%E7%94%9F%E6%9E%B6%E6%9E%84.png" alt></p>
 </li>
 <li><p>节点对等，独立扩展，弹性水平扩容<br>对于云端产品而言，Pulsar 无需重平衡即可实现 broker 扩缩容。相比之下，Kafka 扩缩容前需要先进行重平衡操作，可能会导致集群负载较高，也会对整体服务产生影响。其次，Pulsar topic 分区也可以实现无限扩容，扩容之后，通过负载均衡策略自动平衡整个分片和流量。</p>
 </li>
-<li><p>Pulsar 多租户<br>Pulsar 原生支持多租户。在日志服务中也有租户的概念，每一条产品线属于一个租户，实现了产品线之间的数据隔离。Pulsar 集群支持数百万个 topic，整个 topic 也通过租户实现了隔离，在租户级别，Pulsar 实现了存储配额、消息过期删除、隔离策略等优越特性，且支持单独的认证和授权机制。<br><img src="pulsar%E6%94%AF%E6%8C%81%E5%A4%9A%E7%A7%9F%E6%88%B7.png" alt></p>
+<li><p>Pulsar 多租户<br>Pulsar 原生支持多租户。在日志服务中也有租户的概念，每一条产品线属于一个租户，实现了产品线之间的数据隔离。Pulsar 集群支持数百万个 topic，整个 topic 也通过租户实现了隔离，在租户级别，Pulsar 实现了存储配额、消息过期删除、隔离策略等优越特性，且支持单独的认证和授权机制。<br><img lazyload src="/images/loading.svg" data-src="pulsar%E6%94%AF%E6%8C%81%E5%A4%9A%E7%A7%9F%E6%88%B7.png" alt></p>
 </li>
 <li><p>负载均衡策略<br>Pulsar 在命名空间级别有 bundle 的概念，如果当前 broker 负载较高，bundle 会通过管理 topic 分区策略进行 bundle split 的操作，自动将子分区均衡到其他负载较低的 broker 上。在创建 topic 时，Pulsar 也会自动把 topic 优先分配到当前负载较低的 broker 上。</p>
 </li>
@@ -451,7 +513,7 @@
 </li>
 <li><p>Topic 创建、生产与消费<br>在控制台创建 topic 后，将 topic 信息和租户信息记录到 etcd 和 MySQL 中，producer 和 consumer 两类服务会监听 etcd。producer 类服务，监听创建或删除 topic 的内部操作。consumer 服务监听到创建 topic 操作后，对应的服务会连接到 Pulsar topic，实时消费 topic 上的数据。 producer 开始接收数据，并判断应该向哪一个 topic 写入数据，consumer 消费数据并在判断后写入，或转存再写入到 ES 等其他存储中。</p>
 </li>
-<li><p>Topic 逻辑抽象<br>Pulsar 有3个级别：topic、命名空间和租户。在日志服务中，topic 对应 Pulsar 逻辑上的分片，命名空间对应 Pulsar 逻辑上的 topic。通过将整体概念往上提一层，实现了两个功能，一是动态增加和减少分片数量，二是在后台启动的 Flink 任务可以消费单个项目级别的数据。<br><img src="Pulsar%E7%9A%84topic%E9%80%BB%E8%BE%91%E6%8A%BD%E8%B1%A1.png" alt></p>
+<li><p>Topic 逻辑抽象<br>Pulsar 有3个级别：topic、命名空间和租户。在日志服务中，topic 对应 Pulsar 逻辑上的分片，命名空间对应 Pulsar 逻辑上的 topic。通过将整体概念往上提一层，实现了两个功能，一是动态增加和减少分片数量，二是在后台启动的 Flink 任务可以消费单个项目级别的数据。<br><img lazyload src="/images/loading.svg" data-src="Pulsar%E7%9A%84topic%E9%80%BB%E8%BE%91%E6%8A%BD%E8%B1%A1.png" alt></p>
 </li>
 <li><p>消息订阅模型<br>Pulsar 提供四种消息订阅模型：</p>
 <ol>
@@ -465,30 +527,30 @@
 </li>
 <li><p>Bookie 故障恢复<br>bookie 层使用分片存储信息。由于 bookie 本身有多副本机制，当某个 bookie 出现故障时，系统会从其他 bookie 读取对应分片的信息，并进行重平衡，因此整个 bookie 的写入不会受到影响，保证整个 topic 的可用性。</p>
 </li>
-<li><p>原生跨地域复制<br><img src="pulsar%E6%94%AF%E6%8C%81%E5%8E%9F%E7%94%9F%E8%B7%A8%E5%9C%B0%E5%9F%9F%E5%A4%8D%E5%88%B6.png" alt></p>
+<li><p>原生跨地域复制<br><img lazyload src="/images/loading.svg" data-src="pulsar%E6%94%AF%E6%8C%81%E5%8E%9F%E7%94%9F%E8%B7%A8%E5%9C%B0%E5%9F%9F%E5%A4%8D%E5%88%B6.png" alt></p>
 </li>
 </ul>
 <h3 id="数据视图"><a href="#数据视图" class="headerlink" title="数据视图"></a>数据视图</h3><p>pulsar视图之topic_partiiton分区：</p>
-<p><img src="pulsar%E6%95%B0%E6%8D%AE%E8%A7%86%E5%9B%BE_topic_partition%E5%88%86%E5%8C%BA.png" alt></p>
+<p><img lazyload src="/images/loading.svg" data-src="pulsar%E6%95%B0%E6%8D%AE%E8%A7%86%E5%9B%BE_topic_partition%E5%88%86%E5%8C%BA.png" alt></p>
 <p>pulsar视图之partiiton_segment分片：</p>
-<p><img src="pulsar%E6%95%B0%E6%8D%AE%E8%A7%86%E5%9B%BE_partition_segment%E5%88%86%E7%89%87.png" alt></p>
+<p><img lazyload src="/images/loading.svg" data-src="pulsar%E6%95%B0%E6%8D%AE%E8%A7%86%E5%9B%BE_partition_segment%E5%88%86%E7%89%87.png" alt></p>
 <p>pulsar计算历史数据：</p>
 <ul>
 <li>获取 Segments 列表</li>
 <li>选择需要扫描的 Segments</li>
 <li>使用 Segments reader 直接访问 Segments</li>
 </ul>
-<p><img src="pulsar%E8%AE%A1%E7%AE%97%E5%8E%86%E5%8F%B2%E6%95%B0%E6%8D%AE.png" alt></p>
+<p><img lazyload src="/images/loading.svg" data-src="pulsar%E8%AE%A1%E7%AE%97%E5%8E%86%E5%8F%B2%E6%95%B0%E6%8D%AE.png" alt></p>
 <p>pulsar计算实时数据：</p>
 <ul>
 <li>使用 Pulsar broker 的接口：Pub/Sub API </li>
 </ul>
-<p><img src="pulsar%E8%AE%A1%E7%AE%97%E5%AE%9E%E6%97%B6%E6%95%B0%E6%8D%AE.png" alt></p>
+<p><img lazyload src="/images/loading.svg" data-src="pulsar%E8%AE%A1%E7%AE%97%E5%AE%9E%E6%97%B6%E6%95%B0%E6%8D%AE.png" alt></p>
 <h3 id="功能完整性"><a href="#功能完整性" class="headerlink" title="功能完整性"></a>功能完整性</h3><p>Pulsar 是一个完整的消息和流融合的产品：</p>
-<p><img src="pulsar%E7%9A%84%E5%AE%8C%E6%95%B4%E6%80%A7.png" alt></p>
-<h3 id="高吞吐量"><a href="#高吞吐量" class="headerlink" title="高吞吐量"></a>高吞吐量</h3><p><img src="pulsar%E9%AB%98%E5%90%9E%E5%90%90.png" alt></p>
-<h3 id="稳定的低延时"><a href="#稳定的低延时" class="headerlink" title="稳定的低延时"></a>稳定的低延时</h3><p>pulsar 的时延基本稳定在 5～10ms 之间，Kafka 随着partitions数据的增多，时延会升高。<br><img src="pulsar%E7%A8%B3%E5%AE%9A%E7%9A%84%E4%BD%8E%E5%BB%B6%E6%97%B6%E7%89%B9%E6%80%A7.png" alt></p>
-<h3 id="生态社区支持"><a href="#生态社区支持" class="headerlink" title="生态社区支持"></a>生态社区支持</h3><p><img src="pulsar%E7%9A%84%E7%94%9F%E6%80%81%E6%94%AF%E6%8C%81.png" alt></p>
+<p><img lazyload src="/images/loading.svg" data-src="pulsar%E7%9A%84%E5%AE%8C%E6%95%B4%E6%80%A7.png" alt></p>
+<h3 id="高吞吐量"><a href="#高吞吐量" class="headerlink" title="高吞吐量"></a>高吞吐量</h3><p><img lazyload src="/images/loading.svg" data-src="pulsar%E9%AB%98%E5%90%9E%E5%90%90.png" alt></p>
+<h3 id="稳定的低延时"><a href="#稳定的低延时" class="headerlink" title="稳定的低延时"></a>稳定的低延时</h3><p>pulsar 的时延基本稳定在 5～10ms 之间，Kafka 随着partitions数据的增多，时延会升高。<br><img lazyload src="/images/loading.svg" data-src="pulsar%E7%A8%B3%E5%AE%9A%E7%9A%84%E4%BD%8E%E5%BB%B6%E6%97%B6%E7%89%B9%E6%80%A7.png" alt></p>
+<h3 id="生态社区支持"><a href="#生态社区支持" class="headerlink" title="生态社区支持"></a>生态社区支持</h3><p><img lazyload src="/images/loading.svg" data-src="pulsar%E7%9A%84%E7%94%9F%E6%80%81%E6%94%AF%E6%8C%81.png" alt></p>
 <h3 id="Cloud-offerings"><a href="#Cloud-offerings" class="headerlink" title="Cloud offerings"></a>Cloud offerings</h3><p>StreamNative Cloud<br>Apache Pulsar as a Service</p>
 <p>除了阿里云，还会部署到 Google Cloud、Microsoft Azure、亚马逊、腾讯云等。</p>
 <h3 id="Roadmap"><a href="#Roadmap" class="headerlink" title="Roadmap"></a>Roadmap</h3><ul>
@@ -628,7 +690,7 @@
 <li>Pulsar 在日志服务中的应用</li>
 </ol>
 <p>日志服务系统的最底层是数据采集工具，我们基于开源的数据采集工具（如 Logstash、Flume、Beats）进行了定制化开发。数据存储中日志池是一个逻辑概念，对应于 Pulsar 中的 topic。日志服务系统的上层为查询分析和业务应用，查询分析指在日志服务的工作台进行检索分析，或通过 SQL 语法进行查询；业务应用指在控制台定制仪表盘和图表，实现实时告警等。<br>查询分析和业务应用都支持数据转存，即把日志数据转存到存储介质或价格较低的存储设备中，如基于 KS3 的对象存储、ElasticSearch 集群或 Kafka。</p>
-<p><img src="Pulsar%E5%9C%A8%E6%97%A5%E5%BF%97%E6%9C%8D%E5%8A%A1%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8.png" alt></p>
+<p><img lazyload src="/images/loading.svg" data-src="Pulsar%E5%9C%A8%E6%97%A5%E5%BF%97%E6%9C%8D%E5%8A%A1%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8.png" alt></p>
 <ol start="2">
 <li><p>计费平台、支付平台、交易系统</p>
 </li>
@@ -652,26 +714,26 @@
 <li>通过层级存储提供无限的流存储</li>
 <li>提供统一的消费模型</li>
 </ul>
-<p>pulsar flink connector 目前还没有合并到 flink 仓库，维护在单独的仓库中：<a href="https://github.com/streamnative/pulsar-flink" target="_blank" rel="noopener">pulsar-flink github地址</a></p>
+<p>pulsar flink connector 目前还没有合并到 flink 仓库，维护在单独的仓库中：<a class="link" href="https://github.com/streamnative/pulsar-flink" target="_blank" rel="noopener">pulsar-flink github地址 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
 <ul>
 <li>Pulsar Schema<br>第一种是常见的消息元数据，包括消息的key、消息产生时间、或其他元数据的信息。Primitive Schema:</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">root</span><br><span class="line">|-- value: double (nullable = false)</span><br><span class="line">|-- __key: binary (nullable = true)</span><br><span class="line">|-- __topic: string (nullable = true)</span><br><span class="line">|-- __messageId: binary (nullable = true)</span><br><span class="line">|-- __publishTime: timestamp (nullable = true)</span><br><span class="line">|-- __eventTime: timestamp (nullable = true)</span><br></pre></td></tr></table></figure>
+<div class="highlight-container" data-rel="Code"><figure class="iseeu highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">root</span><br><span class="line">|-- value: double (nullable = false)</span><br><span class="line">|-- __key: binary (nullable = true)</span><br><span class="line">|-- __topic: string (nullable = true)</span><br><span class="line">|-- __messageId: binary (nullable = true)</span><br><span class="line">|-- __publishTime: timestamp (nullable = true)</span><br><span class="line">|-- __eventTime: timestamp (nullable = true)</span><br></pre></td></tr></table></figure></div>
 
 <p>第二种是对消息的内容的数据结构的描述，常见的是 Avro 格式，用户访问的时候就可以通过 Schema 知道每个消息对应的数据结构。Avro Schema:</p>
-<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">case</span> <span class="class"><span class="keyword">class</span> <span class="title">Foo</span>(<span class="params">i: <span class="type">Int</span>, f: <span class="type">Float</span>, bar: <span class="type">Bar</span></span>)</span></span><br><span class="line"><span class="class"><span class="title">case</span> <span class="title">class</span> <span class="title">Bar</span>(<span class="params">b: <span class="type">Boolean</span>, s: <span class="type">String</span></span>)</span></span><br><span class="line"><span class="class"><span class="title">val</span> <span class="title">s</span> </span>= <span class="type">Schema</span>.<span class="type">AVRO</span>(<span class="type">Foo</span>.getClass)</span><br></pre></td></tr></table></figure>
+<div class="highlight-container" data-rel="Scala"><figure class="iseeu highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">case</span> <span class="class"><span class="keyword">class</span> <span class="title">Foo</span>(<span class="params">i: <span class="type">Int</span>, f: <span class="type">Float</span>, bar: <span class="type">Bar</span></span>)</span></span><br><span class="line"><span class="class"><span class="title">case</span> <span class="title">class</span> <span class="title">Bar</span>(<span class="params">b: <span class="type">Boolean</span>, s: <span class="type">String</span></span>)</span></span><br><span class="line"><span class="class"><span class="title">val</span> <span class="title">s</span> </span>= <span class="type">Schema</span>.<span class="type">AVRO</span>(<span class="type">Foo</span>.getClass)</span><br></pre></td></tr></table></figure></div>
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">root</span><br><span class="line">|-- i: integer (nullable = false)</span><br><span class="line">|-- f: float (nullable = false)</span><br><span class="line">|-- bar: struct (nullable = true)</span><br><span class="line">|    |-- b: boolean (nullable = false)</span><br><span class="line">|    |-- s: string (nullable = false)</span><br><span class="line">|-- __key: binary (nullable = true)</span><br><span class="line">|-- __topic: string (nullable = true)</span><br><span class="line">|-- __messageId: binary (nullable = true)</span><br><span class="line">|-- __publishTime: timestamp (nullable = true)</span><br><span class="line">|-- __eventTime: timestamp (nullable = true)</span><br></pre></td></tr></table></figure>
+<div class="highlight-container" data-rel="Code"><figure class="iseeu highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">root</span><br><span class="line">|-- i: integer (nullable = false)</span><br><span class="line">|-- f: float (nullable = false)</span><br><span class="line">|-- bar: struct (nullable = true)</span><br><span class="line">|    |-- b: boolean (nullable = false)</span><br><span class="line">|    |-- s: string (nullable = false)</span><br><span class="line">|-- __key: binary (nullable = true)</span><br><span class="line">|-- __topic: string (nullable = true)</span><br><span class="line">|-- __messageId: binary (nullable = true)</span><br><span class="line">|-- __publishTime: timestamp (nullable = true)</span><br><span class="line">|-- __eventTime: timestamp (nullable = true)</span><br></pre></td></tr></table></figure></div>
 
 <ul>
 <li>Pulsar Source<br>有了 Schema ，就可以把它作为一个 source：</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">StreamExecutionEnvironment see = StreamExecutionEnvironment.getExecutionEnvironment();</span><br><span class="line">Properties props = <span class="keyword">new</span> Properties();</span><br><span class="line">props.setProperty(<span class="string">"topic"</span>,<span class="string">"test-source-topic"</span>);</span><br><span class="line">props.setProperty(<span class="string">"partitiondiscoveryintervalmillis"</span>,<span class="string">"5000"</span>);</span><br><span class="line"></span><br><span class="line">FlinkPulsarSource&lt;String&gt; source =</span><br><span class="line">	<span class="keyword">new</span> FlinkPulsarSource&lt;&gt;(serviceUrl, adminUrl, <span class="keyword">new</span> SimpleStringSchema(), props);</span><br><span class="line"></span><br><span class="line"><span class="comment">// or setStartFromLatest, setStartFromSpecificOffsets, setStartFromSubscription</span></span><br><span class="line">source.setStartFromEarliest();</span><br><span class="line"></span><br><span class="line">DataStream&lt;String&gt; stream = see.addSource(source);</span><br><span class="line"></span><br><span class="line">see.execute();</span><br></pre></td></tr></table></figure>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">StreamExecutionEnvironment see = StreamExecutionEnvironment.getExecutionEnvironment();</span><br><span class="line">Properties props = <span class="keyword">new</span> Properties();</span><br><span class="line">props.setProperty(<span class="string">"topic"</span>,<span class="string">"test-source-topic"</span>);</span><br><span class="line">props.setProperty(<span class="string">"partitiondiscoveryintervalmillis"</span>,<span class="string">"5000"</span>);</span><br><span class="line"></span><br><span class="line">FlinkPulsarSource&lt;String&gt; source =</span><br><span class="line">	<span class="keyword">new</span> FlinkPulsarSource&lt;&gt;(serviceUrl, adminUrl, <span class="keyword">new</span> SimpleStringSchema(), props);</span><br><span class="line"></span><br><span class="line"><span class="comment">// or setStartFromLatest, setStartFromSpecificOffsets, setStartFromSubscription</span></span><br><span class="line">source.setStartFromEarliest();</span><br><span class="line"></span><br><span class="line">DataStream&lt;String&gt; stream = see.addSource(source);</span><br><span class="line"></span><br><span class="line">see.execute();</span><br></pre></td></tr></table></figure></div>
 
 <ul>
 <li>Pulsar Sink<br>也可以把 Flink 计算的结果返回给 Pulsar：</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">FlinkPulsarSink&lt;Person&gt; sink = <span class="keyword">new</span> FlinkPulsarSink(</span><br><span class="line">	serviceUrl,</span><br><span class="line">	adminUrl,</span><br><span class="line">	Optional.of(topic),</span><br><span class="line">	props,</span><br><span class="line">	TopicKeyExtractor.NULL,</span><br><span class="line">	Person.class,</span><br><span class="line">	RecordSchemaType.AVRO</span><br><span class="line">	);</span><br><span class="line"></span><br><span class="line">stream.addSink(sink);</span><br></pre></td></tr></table></figure>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">FlinkPulsarSink&lt;Person&gt; sink = <span class="keyword">new</span> FlinkPulsarSink(</span><br><span class="line">	serviceUrl,</span><br><span class="line">	adminUrl,</span><br><span class="line">	Optional.of(topic),</span><br><span class="line">	props,</span><br><span class="line">	TopicKeyExtractor.NULL,</span><br><span class="line">	Person.class,</span><br><span class="line">	RecordSchemaType.AVRO</span><br><span class="line">	);</span><br><span class="line"></span><br><span class="line">stream.addSink(sink);</span><br></pre></td></tr></table></figure></div>
 
 <ul>
 <li>Metadata</li>
@@ -725,20 +787,20 @@
 <ul>
 <li>Stream Tables<br>有了 source 和 sink 的支持，就自然能支持 table。</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">StreamExecutionEnvironment see = StreamExecutionEnvironment.getExecutionEnvironment();</span><br><span class="line">see.setParallelism(<span class="number">1</span>);</span><br><span class="line">StreamTableEnvironment tEnv = StreamTableEnvironment.create(see);</span><br><span class="line"></span><br><span class="line">String topic  = <span class="string">""</span>;</span><br><span class="line">String topicName = <span class="string">"pulsarTable"</span>;</span><br><span class="line"></span><br><span class="line">TableSchame tSchema = TableSchame.builder().field(<span class="string">"value"</span>, DataTypes.BOOLEAN()).build();</span><br><span class="line"></span><br><span class="line">tEnv.connect(</span><br><span class="line">		<span class="keyword">new</span> Pulsar()</span><br><span class="line">		.urls(getServiceUrl(), getAdminUrl())</span><br><span class="line">		.topic(topic)</span><br><span class="line">		.setStartFromEarliest()</span><br><span class="line">		.property(PulsarOptions.PARTITION_DISCOVERY_INTERVAL_MS_OPTION_KEY, <span class="string">"5000"</span>))</span><br><span class="line">     .withSchema(<span class="keyword">new</span> Schema().schema(tSchema))</span><br><span class="line">     .inAppendMode()</span><br><span class="line">     .createTemporaryTable(tableName);</span><br><span class="line"></span><br><span class="line">Table t = tEnv.sqlQuery(<span class="string">"select `value` from "</span> + tableName);</span><br></pre></td></tr></table></figure>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">StreamExecutionEnvironment see = StreamExecutionEnvironment.getExecutionEnvironment();</span><br><span class="line">see.setParallelism(<span class="number">1</span>);</span><br><span class="line">StreamTableEnvironment tEnv = StreamTableEnvironment.create(see);</span><br><span class="line"></span><br><span class="line">String topic  = <span class="string">""</span>;</span><br><span class="line">String topicName = <span class="string">"pulsarTable"</span>;</span><br><span class="line"></span><br><span class="line">TableSchame tSchema = TableSchame.builder().field(<span class="string">"value"</span>, DataTypes.BOOLEAN()).build();</span><br><span class="line"></span><br><span class="line">tEnv.connect(</span><br><span class="line">		<span class="keyword">new</span> Pulsar()</span><br><span class="line">		.urls(getServiceUrl(), getAdminUrl())</span><br><span class="line">		.topic(topic)</span><br><span class="line">		.setStartFromEarliest()</span><br><span class="line">		.property(PulsarOptions.PARTITION_DISCOVERY_INTERVAL_MS_OPTION_KEY, <span class="string">"5000"</span>))</span><br><span class="line">     .withSchema(<span class="keyword">new</span> Schema().schema(tSchema))</span><br><span class="line">     .inAppendMode()</span><br><span class="line">     .createTemporaryTable(tableName);</span><br><span class="line"></span><br><span class="line">Table t = tEnv.sqlQuery(<span class="string">"select `value` from "</span> + tableName);</span><br></pre></td></tr></table></figure></div>
 
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> table_pulsar (</span><br><span class="line">	...</span><br><span class="line">) <span class="keyword">WITH</span> (</span><br><span class="line">	<span class="string">'connector'</span>=<span class="string">'pulsar'</span>,</span><br><span class="line">	<span class="string">'topic'</span>=<span class="string">'persist://public/default/topic123'</span>,</span><br><span class="line">	<span class="string">'key.format'</span>=<span class="string">'raw'</span>,</span><br><span class="line">	<span class="string">'key.fields'</span>=<span class="string">'key'</span>,</span><br><span class="line">	<span class="string">'value.format'</span>=<span class="string">'avro'</span>,</span><br><span class="line">	<span class="string">'service-url'</span>=<span class="string">'pulsar://localhost:6650'</span>,</span><br><span class="line">	<span class="string">'admin-url'</span>=<span class="string">'http://localhost:8080'</span>,</span><br><span class="line">	<span class="string">'scan.startup.mode'</span>=<span class="string">'earliest'</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<div class="highlight-container" data-rel="Sql"><figure class="iseeu highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> table_pulsar (</span><br><span class="line">	...</span><br><span class="line">) <span class="keyword">WITH</span> (</span><br><span class="line">	<span class="string">'connector'</span>=<span class="string">'pulsar'</span>,</span><br><span class="line">	<span class="string">'topic'</span>=<span class="string">'persist://public/default/topic123'</span>,</span><br><span class="line">	<span class="string">'key.format'</span>=<span class="string">'raw'</span>,</span><br><span class="line">	<span class="string">'key.fields'</span>=<span class="string">'key'</span>,</span><br><span class="line">	<span class="string">'value.format'</span>=<span class="string">'avro'</span>,</span><br><span class="line">	<span class="string">'service-url'</span>=<span class="string">'pulsar://localhost:6650'</span>,</span><br><span class="line">	<span class="string">'admin-url'</span>=<span class="string">'http://localhost:8080'</span>,</span><br><span class="line">	<span class="string">'scan.startup.mode'</span>=<span class="string">'earliest'</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure></div>
 
 <ul>
 <li>Pulsar Catalog</li>
 </ul>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">catalog:</span></span><br><span class="line"><span class="attr">- name:</span> <span class="string">pulsarcatalog</span></span><br><span class="line"><span class="attr">    type:</span> <span class="string">pulsar</span></span><br><span class="line"><span class="attr">    default-database:</span> <span class="string">tn/ns</span></span><br><span class="line">    <span class="string">service.url:</span>  <span class="string">"pulsar://localhost:6650"</span></span><br><span class="line">    <span class="string">admin.url:</span> <span class="string">"http://localhost:8080"</span></span><br></pre></td></tr></table></figure>
+<div class="highlight-container" data-rel="Yaml"><figure class="iseeu highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">catalog:</span></span><br><span class="line"><span class="attr">- name:</span> <span class="string">pulsarcatalog</span></span><br><span class="line"><span class="attr">    type:</span> <span class="string">pulsar</span></span><br><span class="line"><span class="attr">    default-database:</span> <span class="string">tn/ns</span></span><br><span class="line">    <span class="string">service.url:</span>  <span class="string">"pulsar://localhost:6650"</span></span><br><span class="line">    <span class="string">admin.url:</span> <span class="string">"http://localhost:8080"</span></span><br></pre></td></tr></table></figure></div>
 
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tableEnv.useCatalog(<span class="string">"pulsarcatalog"</span>);</span><br><span class="line">tableEnv.useDatabase<span class="string">"public/default"</span>);</span><br><span class="line">tableEnv.scan<span class="string">"topic0"</span>);</span><br></pre></td></tr></table></figure>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tableEnv.useCatalog(<span class="string">"pulsarcatalog"</span>);</span><br><span class="line">tableEnv.useDatabase<span class="string">"public/default"</span>);</span><br><span class="line">tableEnv.scan<span class="string">"topic0"</span>);</span><br></pre></td></tr></table></figure></div>
 
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Flink SQL&gt; USE CATALOG pulsarcatalog;</span><br><span class="line">Flink SQL&gt; USE `public/default`;</span><br><span class="line">Flink SQL&gt; SELECT * FROM topic0;</span><br></pre></td></tr></table></figure>
 
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="http://pulsar.apache.org/" target="_blank" rel="noopener">Pulsar 官网</a><br><a href="http://pulsar.apache.org/en/powered-by/" target="_blank" rel="noopener">Pulsar 社区</a><br><a href="https://segmentfault.com/a/1190000023087253" target="_blank" rel="noopener">Apache Pulsar 分层存储帮你省钱</a><br><a href="https://developer.aliyun.com/article/784282?spm=a2c6h.13148508.0.0.6dce4f0eQtZ5Kx" target="_blank" rel="noopener">Flink 和 Pulsar 的批流融合 文章</a><br><a href="https://www.bilibili.com/video/BV11X4y1P7PD?from=search&seid=4562849170423649332" target="_blank" rel="noopener">Flink 和 Pulsar 的批流融合 视频</a><br><a href="https://www.bilibili.com/video/BV12U4y1b7Tr?from=search&seid=4562849170423649332" target="_blank" rel="noopener">Apache Pulsar 在腾讯大数据场景下的落地实践 视频</a><br><a href="https://www.bilibili.com/video/BV1da4y1p7pv?from=search&seid=4562849170423649332" target="_blank" rel="noopener">Pulsar Summit Asia 2020 主题演讲：大融合：消息、流、存储三位一体（郭斯杰）</a><br><a href="https://www.bilibili.com/video/BV1HK4y1S7aF?from=search&seid=4562849170423649332" target="_blank" rel="noopener">Apache Pulsar 消息、流和存储的融合 视频</a><br><a href="https://mp.weixin.qq.com/s/N7JJYLv8p-dzgZfpkA1CEg" target="_blank" rel="noopener">RocketMQ 淘汰倒计时！这个新一代消息中间件，腾讯、华为都用疯了？</a><br><a href="https://mp.weixin.qq.com/s/84HsT9SFlBF7EZhiQBj-Rw" target="_blank" rel="noopener">为了处理日均TB级数据量，金山云选择用 Pulsar 实现日志服务</a></p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a class="link" href="http://pulsar.apache.org/" target="_blank" rel="noopener">Pulsar 官网 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a><br><a class="link" href="http://pulsar.apache.org/en/powered-by/" target="_blank" rel="noopener">Pulsar 社区 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a><br><a class="link" href="https://segmentfault.com/a/1190000023087253" target="_blank" rel="noopener">Apache Pulsar 分层存储帮你省钱 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a><br><a class="link" href="https://developer.aliyun.com/article/784282?spm=a2c6h.13148508.0.0.6dce4f0eQtZ5Kx" target="_blank" rel="noopener">Flink 和 Pulsar 的批流融合 文章 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a><br><a class="link" href="https://www.bilibili.com/video/BV11X4y1P7PD?from=search&seid=4562849170423649332" target="_blank" rel="noopener">Flink 和 Pulsar 的批流融合 视频 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a><br><a class="link" href="https://www.bilibili.com/video/BV12U4y1b7Tr?from=search&seid=4562849170423649332" target="_blank" rel="noopener">Apache Pulsar 在腾讯大数据场景下的落地实践 视频 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a><br><a class="link" href="https://www.bilibili.com/video/BV1da4y1p7pv?from=search&seid=4562849170423649332" target="_blank" rel="noopener">Pulsar Summit Asia 2020 主题演讲：大融合：消息、流、存储三位一体（郭斯杰） <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a><br><a class="link" href="https://www.bilibili.com/video/BV1HK4y1S7aF?from=search&seid=4562849170423649332" target="_blank" rel="noopener">Apache Pulsar 消息、流和存储的融合 视频 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a><br><a class="link" href="https://mp.weixin.qq.com/s/N7JJYLv8p-dzgZfpkA1CEg" target="_blank" rel="noopener">RocketMQ 淘汰倒计时！这个新一代消息中间件，腾讯、华为都用疯了？ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a><br><a class="link" href="https://mp.weixin.qq.com/s/84HsT9SFlBF7EZhiQBj-Rw" target="_blank" rel="noopener">为了处理日均TB级数据量，金山云选择用 Pulsar 实现日志服务 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
 
       
     </div>
@@ -841,6 +903,8 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
+              <img class="site-author-image" itemprop="image" src="/images/2.JPG" alt="miaowenting">
+            
               <p class="site-author-name" itemprop="name">miaowenting</p>
               <p class="site-description motion-element" itemprop="description"></p>
           </div>
@@ -892,11 +956,39 @@
           
 
           
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/miaowenting" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
 
           
           
 
           
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://ci.apache.org/projects/flink/flink-docs-stable/" title="flink文档" target="_blank">flink文档</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href title="flink社区" target="_blank">flink社区</a>
+                  </li>
+                
+              </ul>
+            </div>
           
 
           
@@ -952,7 +1044,7 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
 
 
 
@@ -1099,6 +1191,323 @@
 
 
   
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
 
 
 

@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -99,7 +99,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Mist',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -192,6 +192,36 @@
         </li>
       
         
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
@@ -203,9 +233,41 @@
       
 
       
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
     </ul>
   
 
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
   
 </nav>
 
@@ -239,7 +301,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="miaowenting">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/2.JPG">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -335,19 +397,19 @@
 
       
         <p><code>DESCRIBE</code>、<code>EXPLAIN</code>、<code>SHOW</code> 等 Statement 相关 SQL 解析。</p>
-<p>Flink SQL 解析的代码参考：<a href="https://github.com/miaowenting/calcite-learning/tree/master/flink-sql-parser" target="_blank" rel="noopener">Flink SQL 解析</a></p>
+<p>Flink SQL 解析的代码参考：<a class="link" href="https://github.com/miaowenting/calcite-learning/tree/master/flink-sql-parser" target="_blank" rel="noopener">Flink SQL 解析 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
 <a id="more"></a>
 
 <p>Parser.tdd 和 parserImpls.ftl 文件中的相关变更如下：</p>
-<figure class="highlight plain"><figcaption><span>Parser.tdd </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">imports: [</span><br><span class="line">    ...</span><br><span class="line">    &quot;com.matty.flink.sql.parser.dql.SqlShowTables&quot;,</span><br><span class="line">    &quot;com.matty.flink.sql.parser.dql.SqlRichExplain&quot;,</span><br><span class="line">    &quot;com.matty.flink.sql.parser.dql.SqlRichDescribeTable&quot;,</span><br><span class="line">    &quot;com.matty.flink.sql.parser.dml.SqlStatementSet&quot;,</span><br><span class="line">    &quot;java.util.Set&quot;</span><br><span class="line">    &quot;java.util.HashSet&quot;</span><br><span class="line">    &quot;com.matty.flink.sql.parser.utils.ParserResource&quot;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">keywords: [</span><br><span class="line">    ...</span><br><span class="line">    &quot;EXTENDED&quot;,</span><br><span class="line">    &quot;ESTIMATED_COST&quot;,</span><br><span class="line">    &quot;CHANGELOG_MODE&quot;,</span><br><span class="line">    &quot;JSON_EXECUTION_PLAN&quot;,</span><br><span class="line">    &quot;TABLES&quot;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">statementParserMethods: [</span><br><span class="line">    ...</span><br><span class="line">    &quot;SqlRichDescribeTable()&quot;</span><br><span class="line">    &quot;SqlRichExplain()&quot;</span><br><span class="line">    &quot;SqlShowTables()&quot;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<div class="highlight-container" data-rel="Code"><figure class="iseeu highlight plain"><figcaption><span>Parser.tdd </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">imports: [</span><br><span class="line">    ...</span><br><span class="line">    &quot;com.matty.flink.sql.parser.dql.SqlShowTables&quot;,</span><br><span class="line">    &quot;com.matty.flink.sql.parser.dql.SqlRichExplain&quot;,</span><br><span class="line">    &quot;com.matty.flink.sql.parser.dql.SqlRichDescribeTable&quot;,</span><br><span class="line">    &quot;com.matty.flink.sql.parser.dml.SqlStatementSet&quot;,</span><br><span class="line">    &quot;java.util.Set&quot;</span><br><span class="line">    &quot;java.util.HashSet&quot;</span><br><span class="line">    &quot;com.matty.flink.sql.parser.utils.ParserResource&quot;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">keywords: [</span><br><span class="line">    ...</span><br><span class="line">    &quot;EXTENDED&quot;,</span><br><span class="line">    &quot;ESTIMATED_COST&quot;,</span><br><span class="line">    &quot;CHANGELOG_MODE&quot;,</span><br><span class="line">    &quot;JSON_EXECUTION_PLAN&quot;,</span><br><span class="line">    &quot;TABLES&quot;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">statementParserMethods: [</span><br><span class="line">    ...</span><br><span class="line">    &quot;SqlRichDescribeTable()&quot;</span><br><span class="line">    &quot;SqlRichExplain()&quot;</span><br><span class="line">    &quot;SqlShowTables()&quot;</span><br><span class="line">]</span><br></pre></td></tr></table></figure></div>
 
-<figure class="highlight plain"><figcaption><span>parserImpls.ftl</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">...</span><br><span class="line">/**</span><br><span class="line"> * DESCRIBE | DESC [ EXTENDED] [[catalogName.] dataBasesName].tableName sql call.</span><br><span class="line"> * Here we add Rich in className to distinguish from calcite&apos;s original SqlDescribeTable.</span><br><span class="line"> */</span><br><span class="line">SqlRichDescribeTable SqlRichDescribeTable() :</span><br><span class="line">&#123;</span><br><span class="line">    SqlIdentifier tableName;</span><br><span class="line">    SqlParserPos pos;</span><br><span class="line">    boolean isExtended = false;</span><br><span class="line">&#125;</span><br><span class="line">&#123;</span><br><span class="line">    ( &lt;DESCRIBE&gt; | &lt;DESC&gt; ) &#123; pos = getPos();&#125;</span><br><span class="line">    [ &lt;EXTENDED&gt; &#123; isExtended = true;&#125; ]</span><br><span class="line">    tableName = CompoundIdentifier()</span><br><span class="line">    &#123;</span><br><span class="line">        return new SqlRichDescribeTable(pos, tableName, isExtended);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line">* Parses an explain module statement.</span><br><span class="line">*/</span><br><span class="line">SqlNode SqlRichExplain() :</span><br><span class="line">&#123;</span><br><span class="line">    SqlNode stmt;</span><br><span class="line">    Set&lt;String&gt; explainDetails = new HashSet&lt;String&gt;();</span><br><span class="line">&#125;</span><br><span class="line">&#123;</span><br><span class="line">    (</span><br><span class="line">    LOOKAHEAD(3) &lt;EXPLAIN&gt; &lt;PLAN&gt; &lt;FOR&gt;</span><br><span class="line">    |</span><br><span class="line">    LOOKAHEAD(2) &lt;EXPLAIN&gt; ParseExplainDetail(explainDetails) ( &lt;COMMA&gt; ParseExplainDetail(explainDetails) )*</span><br><span class="line">    |</span><br><span class="line">    &lt;EXPLAIN&gt;</span><br><span class="line">    )</span><br><span class="line">    (</span><br><span class="line">        stmt = SqlStatementSet()</span><br><span class="line">        |</span><br><span class="line">        stmt = OrderedQueryOrExpr(ExprContext.ACCEPT_QUERY)</span><br><span class="line">        |</span><br><span class="line">        stmt = RichSqlInsert()</span><br><span class="line">    )</span><br><span class="line">    &#123;</span><br><span class="line">        return new SqlRichExplain(getPos(), stmt, explainDetails);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line">* Parse a statement set.</span><br><span class="line">*</span><br><span class="line">* STATEMENT SET BEGIN (RichSqlInsert();)+ END</span><br><span class="line">*/</span><br><span class="line">SqlNode SqlStatementSet() :</span><br><span class="line">&#123;</span><br><span class="line">    SqlParserPos startPos;</span><br><span class="line">    SqlNode insert;</span><br><span class="line">    List&lt;RichSqlInsert&gt; inserts = new ArrayList&lt;RichSqlInsert&gt;();</span><br><span class="line">&#125;</span><br><span class="line">&#123;</span><br><span class="line">    &lt;STATEMENT&gt;&#123; startPos = getPos(); &#125; &lt;SET&gt; &lt;BEGIN&gt;</span><br><span class="line">    (</span><br><span class="line">        insert = RichSqlInsert()</span><br><span class="line">        &lt;SEMICOLON&gt;</span><br><span class="line">        &#123;</span><br><span class="line">            inserts.add((RichSqlInsert) insert);</span><br><span class="line">        &#125;</span><br><span class="line">    )+</span><br><span class="line">    &lt;END&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        return new SqlStatementSet(inserts, startPos);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void ParseExplainDetail(Set&lt;String&gt; explainDetails):</span><br><span class="line">&#123;</span><br><span class="line">&#125;</span><br><span class="line">&#123;</span><br><span class="line">    (</span><br><span class="line">        &lt;ESTIMATED_COST&gt;</span><br><span class="line">        |</span><br><span class="line">        &lt;CHANGELOG_MODE&gt;</span><br><span class="line">        |</span><br><span class="line">        &lt;JSON_EXECUTION_PLAN&gt;</span><br><span class="line">    )</span><br><span class="line">    &#123;</span><br><span class="line">        if (explainDetails.contains(token.image.toUpperCase())) &#123;</span><br><span class="line">            throw SqlUtil.newContextException(</span><br><span class="line">                getPos(),</span><br><span class="line">                ParserResource.RESOURCE.explainDetailIsDuplicate());</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            explainDetails.add(token.image.toUpperCase());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line">* SHOW TABLES FROM [catalog.] database sql call.</span><br><span class="line">*/</span><br><span class="line">SqlShowTables SqlShowTables() :</span><br><span class="line">&#123;</span><br><span class="line">    SqlIdentifier databaseName = null;</span><br><span class="line">    SqlCharStringLiteral likeLiteral = null;</span><br><span class="line">    String prep = null;</span><br><span class="line">    boolean notLike = false;</span><br><span class="line">    SqlParserPos pos;</span><br><span class="line">&#125;</span><br><span class="line">&#123;</span><br><span class="line">    &lt;SHOW&gt; &lt;TABLES&gt;</span><br><span class="line">    &#123; pos = getPos(); &#125;</span><br><span class="line">    [</span><br><span class="line">        ( &lt;FROM&gt; &#123; prep = &quot;FROM&quot;; &#125; | &lt;IN&gt; &#123; prep = &quot;IN&quot;; &#125; )</span><br><span class="line">        &#123; pos = getPos(); &#125;</span><br><span class="line">        databaseName = CompoundIdentifier()</span><br><span class="line">    ]</span><br><span class="line">    [</span><br><span class="line">        [</span><br><span class="line">            &lt;NOT&gt;</span><br><span class="line">            &#123;</span><br><span class="line">                notLike = true;</span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">        &lt;LIKE&gt;  &lt;QUOTED_STRING&gt;</span><br><span class="line">        &#123;</span><br><span class="line">            String likeCondition = SqlParserUtil.parseString(token.image);</span><br><span class="line">            likeLiteral = SqlLiteral.createCharString(likeCondition, getPos());</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">    &#123;</span><br><span class="line">        return new SqlShowTables(pos, prep, databaseName, notLike, likeLiteral);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<div class="highlight-container" data-rel="Code"><figure class="iseeu highlight plain"><figcaption><span>parserImpls.ftl</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">...</span><br><span class="line">/**</span><br><span class="line"> * DESCRIBE | DESC [ EXTENDED] [[catalogName.] dataBasesName].tableName sql call.</span><br><span class="line"> * Here we add Rich in className to distinguish from calcite&apos;s original SqlDescribeTable.</span><br><span class="line"> */</span><br><span class="line">SqlRichDescribeTable SqlRichDescribeTable() :</span><br><span class="line">&#123;</span><br><span class="line">    SqlIdentifier tableName;</span><br><span class="line">    SqlParserPos pos;</span><br><span class="line">    boolean isExtended = false;</span><br><span class="line">&#125;</span><br><span class="line">&#123;</span><br><span class="line">    ( &lt;DESCRIBE&gt; | &lt;DESC&gt; ) &#123; pos = getPos();&#125;</span><br><span class="line">    [ &lt;EXTENDED&gt; &#123; isExtended = true;&#125; ]</span><br><span class="line">    tableName = CompoundIdentifier()</span><br><span class="line">    &#123;</span><br><span class="line">        return new SqlRichDescribeTable(pos, tableName, isExtended);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line">* Parses an explain module statement.</span><br><span class="line">*/</span><br><span class="line">SqlNode SqlRichExplain() :</span><br><span class="line">&#123;</span><br><span class="line">    SqlNode stmt;</span><br><span class="line">    Set&lt;String&gt; explainDetails = new HashSet&lt;String&gt;();</span><br><span class="line">&#125;</span><br><span class="line">&#123;</span><br><span class="line">    (</span><br><span class="line">    LOOKAHEAD(3) &lt;EXPLAIN&gt; &lt;PLAN&gt; &lt;FOR&gt;</span><br><span class="line">    |</span><br><span class="line">    LOOKAHEAD(2) &lt;EXPLAIN&gt; ParseExplainDetail(explainDetails) ( &lt;COMMA&gt; ParseExplainDetail(explainDetails) )*</span><br><span class="line">    |</span><br><span class="line">    &lt;EXPLAIN&gt;</span><br><span class="line">    )</span><br><span class="line">    (</span><br><span class="line">        stmt = SqlStatementSet()</span><br><span class="line">        |</span><br><span class="line">        stmt = OrderedQueryOrExpr(ExprContext.ACCEPT_QUERY)</span><br><span class="line">        |</span><br><span class="line">        stmt = RichSqlInsert()</span><br><span class="line">    )</span><br><span class="line">    &#123;</span><br><span class="line">        return new SqlRichExplain(getPos(), stmt, explainDetails);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line">* Parse a statement set.</span><br><span class="line">*</span><br><span class="line">* STATEMENT SET BEGIN (RichSqlInsert();)+ END</span><br><span class="line">*/</span><br><span class="line">SqlNode SqlStatementSet() :</span><br><span class="line">&#123;</span><br><span class="line">    SqlParserPos startPos;</span><br><span class="line">    SqlNode insert;</span><br><span class="line">    List&lt;RichSqlInsert&gt; inserts = new ArrayList&lt;RichSqlInsert&gt;();</span><br><span class="line">&#125;</span><br><span class="line">&#123;</span><br><span class="line">    &lt;STATEMENT&gt;&#123; startPos = getPos(); &#125; &lt;SET&gt; &lt;BEGIN&gt;</span><br><span class="line">    (</span><br><span class="line">        insert = RichSqlInsert()</span><br><span class="line">        &lt;SEMICOLON&gt;</span><br><span class="line">        &#123;</span><br><span class="line">            inserts.add((RichSqlInsert) insert);</span><br><span class="line">        &#125;</span><br><span class="line">    )+</span><br><span class="line">    &lt;END&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        return new SqlStatementSet(inserts, startPos);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void ParseExplainDetail(Set&lt;String&gt; explainDetails):</span><br><span class="line">&#123;</span><br><span class="line">&#125;</span><br><span class="line">&#123;</span><br><span class="line">    (</span><br><span class="line">        &lt;ESTIMATED_COST&gt;</span><br><span class="line">        |</span><br><span class="line">        &lt;CHANGELOG_MODE&gt;</span><br><span class="line">        |</span><br><span class="line">        &lt;JSON_EXECUTION_PLAN&gt;</span><br><span class="line">    )</span><br><span class="line">    &#123;</span><br><span class="line">        if (explainDetails.contains(token.image.toUpperCase())) &#123;</span><br><span class="line">            throw SqlUtil.newContextException(</span><br><span class="line">                getPos(),</span><br><span class="line">                ParserResource.RESOURCE.explainDetailIsDuplicate());</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            explainDetails.add(token.image.toUpperCase());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line">* SHOW TABLES FROM [catalog.] database sql call.</span><br><span class="line">*/</span><br><span class="line">SqlShowTables SqlShowTables() :</span><br><span class="line">&#123;</span><br><span class="line">    SqlIdentifier databaseName = null;</span><br><span class="line">    SqlCharStringLiteral likeLiteral = null;</span><br><span class="line">    String prep = null;</span><br><span class="line">    boolean notLike = false;</span><br><span class="line">    SqlParserPos pos;</span><br><span class="line">&#125;</span><br><span class="line">&#123;</span><br><span class="line">    &lt;SHOW&gt; &lt;TABLES&gt;</span><br><span class="line">    &#123; pos = getPos(); &#125;</span><br><span class="line">    [</span><br><span class="line">        ( &lt;FROM&gt; &#123; prep = &quot;FROM&quot;; &#125; | &lt;IN&gt; &#123; prep = &quot;IN&quot;; &#125; )</span><br><span class="line">        &#123; pos = getPos(); &#125;</span><br><span class="line">        databaseName = CompoundIdentifier()</span><br><span class="line">    ]</span><br><span class="line">    [</span><br><span class="line">        [</span><br><span class="line">            &lt;NOT&gt;</span><br><span class="line">            &#123;</span><br><span class="line">                notLike = true;</span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">        &lt;LIKE&gt;  &lt;QUOTED_STRING&gt;</span><br><span class="line">        &#123;</span><br><span class="line">            String likeCondition = SqlParserUtil.parseString(token.image);</span><br><span class="line">            likeLiteral = SqlLiteral.createCharString(likeCondition, getPos());</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">    &#123;</span><br><span class="line">        return new SqlShowTables(pos, prep, databaseName, notLike, likeLiteral);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
-<h2 id="DESCRIBE"><a href="#DESCRIBE" class="headerlink" title="DESCRIBE"></a>DESCRIBE</h2><figure class="highlight java"><figcaption><span>SqlRichDescribeTableTest.java</span><a href="https://github.com/miaowenting/calcite-learning/blob/master/flink-sql-parser/src/test/java/com/matty/flink/sql/parser/dql/SqlRichDescribeTableTest.java" target="_blank" rel="noopener">git 地址</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SqlRichDescribeTableTest</span> <span class="keyword">extends</span> <span class="title">BaseParser</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">describeTable</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        String sql = <span class="string">"DESC Orders"</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">final</span> SqlNode sqlNode = parseStmtAndHandleEx(sql);</span><br><span class="line">        <span class="keyword">assert</span> sqlNode <span class="keyword">instanceof</span> SqlRichDescribeTable;</span><br><span class="line">        <span class="keyword">final</span> SqlRichDescribeTable sqlRichDescribeTable = (SqlRichDescribeTable) sqlNode;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// SqlRichDescribeTable -&gt; DescribeTableOperation</span></span><br><span class="line">        <span class="comment">// catalogManager.getTable(ObjectIdentifier)</span></span><br><span class="line">        String[] fullTableName = sqlRichDescribeTable.fullTableName();</span><br><span class="line">        LOG.debug(<span class="string">"fullTableName: &#123;&#125;"</span>, fullTableName);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="DESCRIBE"><a href="#DESCRIBE" class="headerlink" title="DESCRIBE"></a>DESCRIBE</h2><div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><figcaption><span>SqlRichDescribeTableTest.java</span><a class="link" href="https://github.com/miaowenting/calcite-learning/blob/master/flink-sql-parser/src/test/java/com/matty/flink/sql/parser/dql/SqlRichDescribeTableTest.java" target="_blank" rel="noopener">git 地址 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SqlRichDescribeTableTest</span> <span class="keyword">extends</span> <span class="title">BaseParser</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">describeTable</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        String sql = <span class="string">"DESC Orders"</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">final</span> SqlNode sqlNode = parseStmtAndHandleEx(sql);</span><br><span class="line">        <span class="keyword">assert</span> sqlNode <span class="keyword">instanceof</span> SqlRichDescribeTable;</span><br><span class="line">        <span class="keyword">final</span> SqlRichDescribeTable sqlRichDescribeTable = (SqlRichDescribeTable) sqlNode;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// SqlRichDescribeTable -&gt; DescribeTableOperation</span></span><br><span class="line">        <span class="comment">// catalogManager.getTable(ObjectIdentifier)</span></span><br><span class="line">        String[] fullTableName = sqlRichDescribeTable.fullTableName();</span><br><span class="line">        LOG.debug(<span class="string">"fullTableName: &#123;&#125;"</span>, fullTableName);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
-<h2 id="EXPLAIN"><a href="#EXPLAIN" class="headerlink" title="EXPLAIN"></a>EXPLAIN</h2><figure class="highlight java"><figcaption><span>SqlRichExplainTest.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SqlRichExplainTest</span> <span class="keyword">extends</span> <span class="title">BaseParser</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">explainForCBO</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        String sql = <span class="string">"EXPLAIN ESTIMATED_COST, CHANGELOG_MODE, JSON_EXECUTION_PLAN \n"</span> +</span><br><span class="line">                <span class="string">"  SELECT `count`, word FROM MyTable1 WHERE word LIKE 'F%' \n"</span> +</span><br><span class="line">                <span class="string">"  UNION ALL \n"</span> +</span><br><span class="line">                <span class="string">"  SELECT `count`, word FROM MyTable2"</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">final</span> SqlNode sqlNode = parseStmtAndHandleEx(sql);</span><br><span class="line">        <span class="keyword">assert</span> sqlNode <span class="keyword">instanceof</span> SqlRichExplain;</span><br><span class="line">        <span class="keyword">final</span> SqlRichExplain sqlRichExplain = (SqlRichExplain) sqlNode;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// ExplainOperation(PlannerQueryOperation)</span></span><br><span class="line">        SqlNode sqlQueryNode = sqlRichExplain.getStatement();</span><br><span class="line">        <span class="keyword">assert</span> sqlQueryNode.getKind().belongsTo(SqlKind.QUERY);</span><br><span class="line"></span><br><span class="line">        Set&lt;String&gt; explainDetails = sqlRichExplain.getExplainDetails();</span><br><span class="line">        LOG.debug(<span class="string">"explainDetails: &#123;&#125;"</span>, explainDetails);</span><br><span class="line"></span><br><span class="line">        List&lt;SqlNode&gt; operandList = sqlRichExplain.getOperandList();</span><br><span class="line">        LOG.debug(<span class="string">"operandList: &#123;&#125;"</span>, operandList);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="EXPLAIN"><a href="#EXPLAIN" class="headerlink" title="EXPLAIN"></a>EXPLAIN</h2><div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><figcaption><span>SqlRichExplainTest.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SqlRichExplainTest</span> <span class="keyword">extends</span> <span class="title">BaseParser</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">explainForCBO</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        String sql = <span class="string">"EXPLAIN ESTIMATED_COST, CHANGELOG_MODE, JSON_EXECUTION_PLAN \n"</span> +</span><br><span class="line">                <span class="string">"  SELECT `count`, word FROM MyTable1 WHERE word LIKE 'F%' \n"</span> +</span><br><span class="line">                <span class="string">"  UNION ALL \n"</span> +</span><br><span class="line">                <span class="string">"  SELECT `count`, word FROM MyTable2"</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">final</span> SqlNode sqlNode = parseStmtAndHandleEx(sql);</span><br><span class="line">        <span class="keyword">assert</span> sqlNode <span class="keyword">instanceof</span> SqlRichExplain;</span><br><span class="line">        <span class="keyword">final</span> SqlRichExplain sqlRichExplain = (SqlRichExplain) sqlNode;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// ExplainOperation(PlannerQueryOperation)</span></span><br><span class="line">        SqlNode sqlQueryNode = sqlRichExplain.getStatement();</span><br><span class="line">        <span class="keyword">assert</span> sqlQueryNode.getKind().belongsTo(SqlKind.QUERY);</span><br><span class="line"></span><br><span class="line">        Set&lt;String&gt; explainDetails = sqlRichExplain.getExplainDetails();</span><br><span class="line">        LOG.debug(<span class="string">"explainDetails: &#123;&#125;"</span>, explainDetails);</span><br><span class="line"></span><br><span class="line">        List&lt;SqlNode&gt; operandList = sqlRichExplain.getOperandList();</span><br><span class="line">        LOG.debug(<span class="string">"operandList: &#123;&#125;"</span>, operandList);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
-<h2 id="SHOW"><a href="#SHOW" class="headerlink" title="SHOW"></a>SHOW</h2><figure class="highlight java"><figcaption><span>SqlShowTablesTest.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SqlShowTablesTest</span> <span class="keyword">extends</span> <span class="title">BaseParser</span> </span>&#123;</span><br><span class="line">   </span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">showTables</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        String sql = <span class="string">"show tables"</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">final</span> SqlNode sqlNode = parseStmtAndHandleEx(sql);</span><br><span class="line">        <span class="keyword">assert</span> sqlNode <span class="keyword">instanceof</span> SqlShowTables;</span><br><span class="line">        <span class="keyword">final</span> SqlShowTables sqlShowTables = (SqlShowTables) sqlNode;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// SqlShowTables -&gt; ShowTablesOperation -&gt; catalogManager.listTables</span></span><br><span class="line">        List&lt;SqlNode&gt; operandList = sqlShowTables.getOperandList();</span><br><span class="line"></span><br><span class="line">        LOG.debug(<span class="string">"operandList: &#123;&#125;"</span>, operandList);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="SHOW"><a href="#SHOW" class="headerlink" title="SHOW"></a>SHOW</h2><div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><figcaption><span>SqlShowTablesTest.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SqlShowTablesTest</span> <span class="keyword">extends</span> <span class="title">BaseParser</span> </span>&#123;</span><br><span class="line">   </span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">showTables</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        String sql = <span class="string">"show tables"</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">final</span> SqlNode sqlNode = parseStmtAndHandleEx(sql);</span><br><span class="line">        <span class="keyword">assert</span> sqlNode <span class="keyword">instanceof</span> SqlShowTables;</span><br><span class="line">        <span class="keyword">final</span> SqlShowTables sqlShowTables = (SqlShowTables) sqlNode;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// SqlShowTables -&gt; ShowTablesOperation -&gt; catalogManager.listTables</span></span><br><span class="line">        List&lt;SqlNode&gt; operandList = sqlShowTables.getOperandList();</span><br><span class="line"></span><br><span class="line">        LOG.debug(<span class="string">"operandList: &#123;&#125;"</span>, operandList);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
 
       
@@ -451,6 +513,8 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
+              <img class="site-author-image" itemprop="image" src="/images/2.JPG" alt="miaowenting">
+            
               <p class="site-author-name" itemprop="name">miaowenting</p>
               <p class="site-description motion-element" itemprop="description"></p>
           </div>
@@ -502,11 +566,39 @@
           
 
           
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/miaowenting" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
 
           
           
 
           
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://ci.apache.org/projects/flink/flink-docs-stable/" title="flink文档" target="_blank">flink文档</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href title="flink社区" target="_blank">flink社区</a>
+                  </li>
+                
+              </ul>
+            </div>
           
 
           
@@ -562,7 +654,7 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
 
 
 
@@ -709,6 +801,323 @@
 
 
   
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
 
 
 

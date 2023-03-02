@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -99,7 +99,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Mist',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -192,6 +192,36 @@
         </li>
       
         
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
@@ -203,9 +233,41 @@
       
 
       
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
     </ul>
   
 
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
   
 </nav>
 
@@ -239,7 +301,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="miaowenting">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/2.JPG">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -329,7 +391,7 @@
     <label for="hbePass">Hey, password is required here.</label>
     <div class="bottom-line"></div>
   </div>
-  <script id="hbeData" type="hbeData" data-hmacdigest="01153083c6d8698f9a02df416d4b0aa8d48e8a397e1f373c7996a8f9302865a7">49f7eb9bea6cd6a47e660ee8aad95e5fd65e2b87547d9ea2df2fa54ec1de99c0ab62e07f1ad7330285224520fc3fe6ca39499eac81d0d2b79d6e1e0b25e7a43cffe3ed45e0d2801aa681491b4062450cc09da150720007660d494590d3d7f36a8334460655741889111ba49ac3427417eb40bd2ae2cee82d21e8e0bc50d0032a5762e3613332cae04f48a87e6e267a306afc2f2afffc18ab0d54a8eeafe6993fbcece649e8a12c0fd9c605dd69aabfcf9164aac1b0d6ecd8efe14c747a35e39a7910580a103bfd60000b7e76c158b36b8a5e8b1d88aa5a7a5862c3885c6dc76f2751e0fc3a377455a275996369ee9d5d04173ed33a0deffe2977206eba3a6f96b264e0413f623eaec374e42897511e2a064fbb80a0d44149fa0fdd8b3190047b3614a548f70602d87653cd0fd574ab4702c92fb820245341b0a3665ccc51511782068331d309af1d294dd66d01ab5dde0d0695822320a28abff890445f5c74db113449b43cff627796231fd8d11f98bf6c0bb3b69d31d9ac26fc00de018068b66234bc5e76fde49b74697682d4acb2e4bec7ed2b3acb7e2d1058078e8a4293ad8cbf5c3630f0db65f9c2ef62e33ce50745121246fd20019f4dab510a1427b4d844c940f6e57883ded5a0f723bf6312f48396717825f2aff253aac786b31a25de460c66439bcc2ee3ce1cd0b029c6f52dfb124931406e2a8f86074f6d127325a43f02bd2c8da6b3315d28bc219b79ab7b622937fc7e82aa8f6c09224b16c1a36420a8083e4e07d80bd8b4fbb83ea3c62d54a9b0f3671fa7c47d15cb069d676c360c8f3628e7e4309141b549e52a601dffb20c430bbaa105f5a5add4dab71e469cd69324c0d7bebed346f45172ebd7e736374e75d1e562321fb00f1e031b592bcaefee10429d6a6ce2039f5e4b0e1fef081876b49e75997a11e5ddc56ea7770fa3443ac3c974b2e5ffe19dd80cdf8e91345bbf516ce660f64009244ec59761bd30793994a5b5214ae4574b851b8229e4533b655c9236ce22719d9b781bfe06c3e2acb27b861113f1fb5814d8c0082f16908375147c66af605198af2c85e283eb02448894b47ca9866ff916c745cd6632920c1ffc2566e3744454ffbb0766bd4c59935c14d163a91c976f9de59cd52aa66c5dd5b4066f23e80d3d5e390e1ab50fa8f0e815ae87d46aa91cd7ceacd13cc98258a86c632ba4b197a47ef4f5312a1e983b9fe3528e228443e78d82e2af1490846a2db1fb1aa4111db74d71e065db414b88a19501ea1cd524db0a74ad49be146103f7f87d990496657c22fe3ff524cbe33d717ea36795cc7dbee0aa8f139f5551492bb77b67e3c098660095a0657b273dc2bb649a324e5f5b3f7208cb4d6fe2e8749fc88729177b2a7f9c831502ec66db5a5ab1759cee5f2cd423f3ed5a50ab4f2445427a2831e290a91345bb94dc74851b5085b4ec339789010ea153d2bb8334c06c14fdb09b31c28b43af4c06277f2b0fb92a375eda217a7c3299447609b123033368de00cafa70e319540ae4a665245510f1b39922fc0f4b41d16334d9c3d2d1e3aca93ed01c43b38de703372e52cef8cab92216f4e4e66aa010720e9afc70</script>
+  <script id="hbeData" type="hbeData" data-hmacdigest="a8d2d8b0341e69f1019efd88b3afd2a22fd76df868af8933e1cdaa3c172ddd17">49f7eb9bea6cd6a47e660ee8aad95e5fd65e2b87547d9ea2df2fa54ec1de99c0ab62e07f1ad7330285224520fc3fe6ca39499eac81d0d2b79d6e1e0b25e7a43cffe3ed45e0d2801aa681491b4062450cc09da150720007660d494590d3d7f36a8334460655741889111ba49ac3427417eb40bd2ae2cee82d21e8e0bc50d0032a5762e3613332cae04f48a87e6e267a306afc2f2afffc18ab0d54a8eeafe6993fbcece649e8a12c0fd9c605dd69aabfcf9164aac1b0d6ecd8efe14c747a35e39a7910580a103bfd60000b7e76c158b36b8a5e8b1d88aa5a7a5862c3885c6dc76f2751e0fc3a377455a275996369ee9d5d04173ed33a0deffe2977206eba3a6f96b264e0413f623eaec374e42897511e2a064fbb80a0d44149fa0fdd8b3190047b3614a548f70602d87653cd0fd574ab4702c92fb820245341b0a3665ccc51511782068331d309af1d294dd66d01ab5dde0d0695822320a28abff890445f5c74dbb9e3177ecd9dd9dbf909ae48a3011fe1f5f3655a1283377511f993087e39a31b9cb3fa014c88170db7ac57e01d1134477499ed796193da9f8749497abb53f1a941061feef40e2c12b64090dee1a5d98cb6a9d1aed5055e747f91e55e6c25a8f0d4f94ab7b8ce4cafebde4096fbcb2dd3756e8c8ae91444c19ab4b0ba19fed6e0d469c1aa8e11e5e6b3f0547b46165013df30e9e833bb88c96ab6ab9d9a54ac05b20e05d36618e88855c25abe43ce4f4aab636ed802b252c55b01b6f9774acf8e720bd74a36867e19a995466911e775757be8ed64bde0335fddf4633f02738cc8f9dbb07825e5df0818e7e4f99d560902faf6ca7ee1939ab6ac04e0ea83383f8a5e60582e500aa065ad88128bfefed1c9fa6a88a08d1ad7067fd6aa4d54421bd02f4e8fa44baad04434e0f24987e63edfd5f0f006409bf4611c75dd2a5591b76cecf955f4cdba5226b3f53f02249fffd2270d84269424fc0022b1e3ccc6b457c4d0aa3aa8ab3e33e3d35d58ec13892c840657ba3ba348c44f64bb01cb33cf89854168cf225c204767784a616d7c7230afb23ab646e28d2db99a9e27bdc4e53f16c285bf41fb3ae0954aac53a8326b25e5558a2094deee86a576c3dc92456eec4e02bd4b79663b32e5f8221f7382711337b77bdbe6824b0a239293a67c978cef4c1584ed03ab15bbc9f2926a4847503f18e176b8b750c0f06c72038a721e1faa3c952cc18bc55eb1a614893057fa7c254c842e04a20f75639e685bfbe899ab9b949f9dbce57439533e28a2a85d1c371f06eb347c26d2acf5f289086148aa9a702103499e7495d7306e1af476a5eedb6aba50ef5c749276102255d1d52d3756e5e706969004cbd3f2cd5dcfecb9212000471893f978312f5e72eb395f810e2958b19f714b90332ff8b23fde124b2e91d1f610d1f7e6b9388491bf5c1d97d190e332ef080defb34068ea7c4947eeb6f5f8191907e407862cc15145ffdfc36bb7bcf975d9d5b498239d9976e21ddc464db62c08564a1ad611974dbfda36a61b737aff396a76ae0638022d8b9f2f7a9b31e0353de1def0bbaad5a392b45935a68ba5f1b4214afa514f52ab0d35131f35ec648903c3c26467d6197dccaa72bd43d43efa2de0de75d90aec7a1482f03f8eaa051b005d6293f61b54a17fbb30670f78eac7418d520543c2facc101cdda430f20c26ebaac1b00f9e3af8b09750c5bbbfe53734859ea71fe9e9bfab25b8eea5cbe2fbb6767b88c7cf4f3364e6187e41a3b3fb4fc30948ac9981f8ceb32f9ef3ab4a4e9fcd7f2652537dae59d0a062de3de19286e1b1996653676b9fd184bd8ac0143579be10b9eca344a328e93149cfe8e8b7b8cc2f538dc3461b135ef2b3fa18dbf72efd317515dc27dbb43e33a5daa19ca6eb734dd56da4ff2671d9c4369b83b7b2dbdccb3bd5ea6a1e88a9ebe0bf5bee96</script>
 </div>
 <script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">
       
@@ -424,6 +486,8 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
+              <img class="site-author-image" itemprop="image" src="/images/2.JPG" alt="miaowenting">
+            
               <p class="site-author-name" itemprop="name">miaowenting</p>
               <p class="site-description motion-element" itemprop="description"></p>
           </div>
@@ -475,11 +539,39 @@
           
 
           
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/miaowenting" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
 
           
           
 
           
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://ci.apache.org/projects/flink/flink-docs-stable/" title="flink文档" target="_blank">flink文档</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href title="flink社区" target="_blank">flink社区</a>
+                  </li>
+                
+              </ul>
+            </div>
           
 
           
@@ -519,7 +611,7 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
 
 
 
@@ -666,6 +758,323 @@
 
 
   
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
 
 
 

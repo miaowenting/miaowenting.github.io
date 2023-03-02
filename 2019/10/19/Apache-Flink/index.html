@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -88,64 +88,64 @@
 <meta property="og:site_name" content="Matty&#39;s Blog">
 <meta property="og:description" content="本文将全局介绍 Flink 的整体架构。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2019/10/19/Apache-Flink/application%E6%8F%90%E4%BA%A4%E5%92%8Ccomponets%E9%97%B4%E7%9A%84%E4%BA%A4%E4%BA%92.png">
-<meta property="og:image" content="http://yoursite.com/2019/10/19/Apache-Flink/task%E6%89%A7%E8%A1%8C%E9%80%BB%E8%BE%91%E5%9B%BE.png">
-<meta property="og:image" content="http://yoursite.com/2019/10/19/Apache-Flink/Flink%E9%AB%98%E5%8F%AF%E7%94%A8%E6%A8%A1%E5%BC%8F%E9%83%A8%E7%BD%B2.png">
-<meta property="og:image" content="http://yoursite.com/2019/10/19/Apache-Flink/Data%E4%BC%A0%E8%BE%93.png">
-<meta property="og:image" content="http://yoursite.com/2019/10/19/Apache-Flink/%E4%BD%BF%E7%94%A8%E4%BA%86task_chaining%E7%9A%84operator_pipeline.png">
-<meta property="og:image" content="http://yoursite.com/2019/10/19/Apache-Flink/chained_task%E7%9A%84%E4%B8%8D%E5%90%8Cfunction%E4%B9%8B%E9%97%B4%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E8%B0%83%E7%94%A8.png">
-<meta property="og:image" content="http://yoursite.com/2019/10/19/Apache-Flink/chained_task%E7%9A%84%E4%B8%8D%E5%90%8Cfunction%E4%B9%8B%E9%97%B4%E4%BD%BF%E7%94%A8buffer_channel%E5%92%8C%E5%BA%8F%E5%88%97%E5%8C%96%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%99%A8.png">
-<meta property="og:image" content="http://yoursite.com/2019/10/19/Apache-Flink/%E7%90%86%E6%83%B3%E6%83%85%E5%86%B5%E4%B8%8E%E5%AE%9E%E9%99%85%E6%83%85%E5%86%B5%E4%B8%AD%E7%9A%84%E4%BA%8B%E4%BB%B6%E5%88%B0%E8%BE%BE%E9%A1%BA%E5%BA%8F.png">
-<meta property="og:image" content="http://yoursite.com/2019/10/19/Apache-Flink/%E5%8C%85%E5%90%ABrecord%E5%92%8Cwatermark%E7%9A%84event_time%E4%BA%8B%E4%BB%B6%E6%B5%81.png">
-<meta property="og:image" content="http://yoursite.com/2019/10/19/Apache-Flink/%E6%9C%89%E5%BA%8F%E6%B5%81%E7%9A%84Watermark%E7%A4%BA%E6%84%8F%E5%9B%BE.png">
-<meta property="og:image" content="http://yoursite.com/2019/10/19/Apache-Flink/%E4%B9%B1%E5%BA%8F%E6%B5%81%E7%9A%84Watermark%E7%A4%BA%E6%84%8F%E5%9B%BE.png">
-<meta property="og:image" content="http://yoursite.com/2019/10/19/Apache-Flink/%E6%BB%9A%E5%8A%A8%E7%AA%97%E5%8F%A3%E5%88%86%E9%85%8D%E7%A4%BA%E6%84%8F%E5%9B%BE.png">
-<meta property="og:image" content="http://yoursite.com/2019/10/19/Apache-Flink/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E5%88%86%E9%85%8D%E7%A4%BA%E6%84%8F%E5%9B%BE.png">
-<meta property="og:image" content="http://yoursite.com/2019/10/19/Apache-Flink/%E4%BC%9A%E8%AF%9D%E7%AA%97%E5%8F%A3%E5%88%86%E9%85%8D%E7%A4%BA%E6%84%8F%E5%9B%BE.png">
-<meta property="og:image" content="http://yoursite.com/2019/10/19/Apache-Flink/BoundedOutOfOrdernessGenerator_periodic_watermark.png">
-<meta property="og:image" content="http://yoursite.com/2019/10/19/Apache-Flink/TimeLagWatermarkGenerator_periodic_watermark.png">
-<meta property="og:image" content="http://yoursite.com/2019/10/19/Apache-Flink/watermark_eventTime_window%E7%9A%84%E5%85%B3%E7%B3%BB%E5%9B%BE.png">
-<meta property="og:image" content="http://yoursite.com/2019/10/19/Apache-Flink/%E6%9C%89%E5%BA%8F%E6%B5%81%E7%9A%84%E7%AA%97%E5%8F%A3%E8%A7%A6%E5%8F%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%88%B6_watermark%E5%BB%B6%E8%BF%9F%E4%B8%BA0.png">
-<meta property="og:image" content="http://yoursite.com/2019/10/19/Apache-Flink/%E6%97%A0%E5%BA%8F%E6%B5%81%E7%9A%84%E7%AA%97%E5%8F%A3%E8%A7%A6%E5%8F%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%88%B6_watermark%E5%BB%B6%E8%BF%9F%E4%B8%BA3.png">
-<meta property="og:image" content="http://yoursite.com/2019/10/19/Apache-Flink/%E6%A0%B9%E6%8D%AE%E6%8E%A5%E6%94%B6%E5%88%B0%E7%9A%84watermark%E6%9B%B4%E6%96%B0event_time_clock.png">
-<meta property="og:image" content="http://yoursite.com/2019/10/19/Apache-Flink/stateful_stream_processing_task.png">
-<meta property="og:image" content="http://yoursite.com/2019/10/19/Apache-Flink/Tasks_with_operator_state.png">
-<meta property="og:image" content="http://yoursite.com/2019/10/19/Apache-Flink/Tasks_with_keyed_state.png">
-<meta property="og:image" content="http://yoursite.com/2019/10/19/Apache-Flink/scaling_an_operator_with_keyed_state_out_and_in.png">
-<meta property="og:image" content="http://yoursite.com/2019/10/19/Apache-Flink/Scaling_an_operator_with_operator_list_state_out_and_in.png">
-<meta property="og:image" content="http://yoursite.com/2019/10/19/Apache-Flink/scaling_an_operator_with_operator_union_list_state_out_and_in.png">
-<meta property="og:image" content="http://yoursite.com/2019/10/19/Apache-Flink/Scaling_an_operator_with_operator_broadcase_state_out_and_in.png">
-<meta property="og:image" content="http://yoursite.com/2019/10/19/Apache-Flink/A_consitent_checkpoint_of_a_streaming_application.png">
-<meta property="og:image" content="http://yoursite.com/2019/10/19/Apache-Flink/Recovering_an_application_from_a_checkpoint.png">
-<meta property="og:image" content="http://yoursite.com/2019/10/19/Apache-Flink/application_with_two_stateful_sources_two_stateful_tasks_two_stateless_sinks.png">
-<meta property="og:image" content="http://yoursite.com/2019/10/19/Apache-Flink/JobManager_initiate_a_checkpoint_by_sending_a_message_to_all_sources.png">
-<meta property="og:image" content="http://yoursite.com/2019/10/19/Apache-Flink/source%E5%81%9Acheckpoint%E5%B9%B6%E5%8F%91%E9%80%81%E4%B8%80%E4%B8%AAcheckpoint_barrier.png">
-<meta property="og:image" content="http://yoursite.com/2019/10/19/Apache-Flink/task%E7%AD%89%E5%BE%85%E6%8E%A5%E6%94%B6%E6%9D%A5%E8%87%AA%E6%AF%8F%E4%B8%AApartition%E7%9A%84barrier.png">
-<meta property="og:image" content="http://yoursite.com/2019/10/19/Apache-Flink/%E5%BD%93task%E6%8E%A5%E6%94%B6%E5%88%B0%E6%89%80%E6%9C%89%E5%88%86%E5%8C%BA%E7%9A%84checkpoint_barrier_%E4%BC%9A%E5%90%91%E5%89%8D%E7%BB%A7%E7%BB%AD%E5%8F%91%E9%80%81barrier.png">
-<meta property="og:image" content="http://yoursite.com/2019/10/19/Apache-Flink/task%E5%90%91%E5%89%8D%E5%8F%91%E9%80%81%E5%AE%8Ccheckpoint_barrier%E4%B9%8B%E5%90%8E%E7%BB%A7%E7%BB%AD%E8%BF%9B%E8%A1%8C%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86.png">
-<meta property="og:image" content="http://yoursite.com/2019/10/19/Apache-Flink/sinks%E6%8E%A5%E6%94%B6%E5%88%B0checkpoint_barrier%E4%B9%8B%E5%90%8E%E4%BC%9A%E5%90%91JobManager%E5%8F%91%E9%80%81%E8%AE%A4%E8%AF%81_%E4%B8%80%E6%AC%A1checkpoint%E5%AE%8C%E6%88%90.png">
-<meta property="og:image" content="http://yoursite.com/2019/10/19/Apache-Flink/Taking_a_savepoint_from_an_application_and_restoring_an_application_from_a_savepoint.png">
-<meta property="og:image" content="http://yoursite.com/2019/10/19/Apache-Flink/%E7%AE%97%E5%AD%90%E8%8A%82%E7%82%B9%E7%9A%84state%E9%80%BB%E8%BE%91%E5%9B%BE.png">
-<meta property="og:image" content="http://yoursite.com/2019/10/19/Apache-Flink/%E7%AE%97%E5%AD%90%E8%8A%82%E7%82%B9%E7%9A%84state%E7%B1%BB%E6%AF%94%E6%88%90%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A1%A8.png">
-<meta property="og:image" content="http://yoursite.com/2019/10/19/Apache-Flink/join_in_continuous_query_1.png">
-<meta property="og:image" content="http://yoursite.com/2019/10/19/Apache-Flink/join_in_continuous_query_2.png">
-<meta property="og:image" content="http://yoursite.com/2019/10/19/Apache-Flink/join_in_continuous_query_3.png">
-<meta property="og:image" content="http://yoursite.com/2019/10/19/Apache-Flink/%E5%8F%8C%E6%B5%81join%E4%B8%AD%E7%9A%84Lstate%E5%92%8CRstate%E5%AD%98%E5%82%A8.png">
-<meta property="og:image" content="http://yoursite.com/2019/10/19/Apache-Flink/Time-Windowed_Join%E7%9A%84%E6%97%B6%E9%97%B4%E4%B8%8B%E7%95%8C_Orders%E8%A1%A8.png">
-<meta property="og:image" content="http://yoursite.com/2019/10/19/Apache-Flink/Time-Windowed_Join%E7%9A%84%E6%97%B6%E9%97%B4%E4%B8%8B%E7%95%8C_Shipment%E8%A1%A8.png">
-<meta property="og:image" content="http://yoursite.com/2019/10/19/Apache-Flink/Temporal_Table_Content.png">
-<meta property="og:image" content="http://yoursite.com/2019/10/19/Apache-Flink/Temporable_Table_Join_Result.png">
-<meta property="og:image" content="http://yoursite.com/2019/10/19/Apache-Flink/inner_join%E7%9A%84%E5%AE%9E%E7%8E%B0%E7%A4%BA%E4%BE%8B%E5%9B%BE.png">
-<meta property="og:image" content="http://yoursite.com/2019/10/19/Apache-Flink/left_outer_join%E5%AE%9E%E7%8E%B0%E7%A4%BA%E4%BE%8B%E5%9B%BE.png">
-<meta property="og:image" content="http://yoursite.com/2019/10/19/Apache-Flink/left_outer_join%E5%AE%9E%E7%8E%B0%E7%A4%BA%E4%BE%8B2.png">
-<meta property="og:image" content="http://yoursite.com/2019/10/19/Apache-Flink/A_B_C%E8%BF%9E%E7%BB%ADjoin%E4%BA%A7%E7%94%9FNULL%E7%83%AD%E7%82%B9.png">
-<meta property="og:image" content="http://yoursite.com/2019/10/19/Apache-Flink/%E6%94%B9%E5%8F%98JOIN%E7%9A%84%E5%85%88%E5%90%8E%E9%A1%BA%E5%BA%8F.png">
-<meta property="og:image" content="http://yoursite.com/2019/10/19/Apache-Flink/join_reorder%E4%B9%8B%E5%90%8E%E7%9A%84%E7%BB%93%E6%9E%9C.png">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
 <meta property="og:updated_time" content="2021-07-05T11:02:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Apache Flink">
 <meta name="twitter:description" content="本文将全局介绍 Flink 的整体架构。">
-<meta name="twitter:image" content="http://yoursite.com/2019/10/19/Apache-Flink/application%E6%8F%90%E4%BA%A4%E5%92%8Ccomponets%E9%97%B4%E7%9A%84%E4%BA%A4%E4%BA%92.png">
+<meta name="twitter:image" content="http://yoursite.com/images/loading.svg">
 
 
 
@@ -153,7 +153,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Mist',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -246,6 +246,36 @@
         </li>
       
         
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
@@ -257,9 +287,41 @@
       
 
       
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
     </ul>
   
 
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
   
 </nav>
 
@@ -293,7 +355,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="miaowenting">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/2.JPG">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -380,18 +442,18 @@
         <p>本文将全局介绍 Flink 的整体架构。</p>
 <a id="more"></a>
 
-<h2 id="系统架构"><a href="#系统架构" class="headerlink" title="系统架构"></a>系统架构</h2><h3 id="Components"><a href="#Components" class="headerlink" title="Components"></a>Components</h3><p><img src="application%E6%8F%90%E4%BA%A4%E5%92%8Ccomponets%E9%97%B4%E7%9A%84%E4%BA%A4%E4%BA%92.png" alt></p>
+<h2 id="系统架构"><a href="#系统架构" class="headerlink" title="系统架构"></a>系统架构</h2><h3 id="Components"><a href="#Components" class="headerlink" title="Components"></a>Components</h3><p><img lazyload src="/images/loading.svg" data-src="application%E6%8F%90%E4%BA%A4%E5%92%8Ccomponets%E9%97%B4%E7%9A%84%E4%BA%A4%E4%BA%92.png" alt></p>
 <h4 id="JobManager"><a href="#JobManager" class="headerlink" title="JobManager"></a>JobManager</h4><p>一个 application 对应一个 JobManager，JobManager 接收待执行的 application。application 包含一个 JobGraph 和 JAR （包含所有需要的classes,libraries 和其他资源）。<br>JobManager 将 JobGraph 转成 ExecutionGraph，ExecutionGraph中包含可以并发执行的 tasks。<br>JobManager 向 ResourceManager 申请需要的资源（TaskManager slots），一旦分配到足够的slots，则分发 tasks 到 TaskManager 执行。<br>执行期间，JobManager 负责中央协调，如协调checkpoint等</p>
 <h4 id="ResourceManager"><a href="#ResourceManager" class="headerlink" title="ResourceManager"></a>ResourceManager</h4><p>负责管理 TaskManager slots，当 JobManager 申请 slots 时，ResourceManager 会通知拥有闲置 slots 的 TaskManager 提供 slots 给 JobManager 。</p>
 <h4 id="TaskManager"><a href="#TaskManager" class="headerlink" title="TaskManager"></a>TaskManager</h4><p>TaskManager 是 Flink 的工作进程，每个 TaskManager 提供一定数量的 slots ，slots的数量限制了 TaskManager 可以执行的 task 数。启动之后，TaskManager 向 ResourceManager 注册 slots 数，当接收到 ResourceManager 的分配通知后，会向 JobManager 提供一个或多个slots，紧接着 JobManager 将 tasks 分配到 slots 执行。执行期间，不同的 TaskManager 之间会进行数据交换</p>
 <h4 id="Dispatcher"><a href="#Dispatcher" class="headerlink" title="Dispatcher"></a>Dispatcher</h4><p>提供 REST 接口供提交任务，一旦 application 被提交执行，就会启动一个 JobManager 。还运行 Web Dashboard。</p>
-<h3 id="Task-Execution"><a href="#Task-Execution" class="headerlink" title="Task Execution"></a>Task Execution</h3><p><img src="task%E6%89%A7%E8%A1%8C%E9%80%BB%E8%BE%91%E5%9B%BE.png" alt></p>
+<h3 id="Task-Execution"><a href="#Task-Execution" class="headerlink" title="Task Execution"></a>Task Execution</h3><p><img lazyload src="/images/loading.svg" data-src="task%E6%89%A7%E8%A1%8C%E9%80%BB%E8%BE%91%E5%9B%BE.png" alt></p>
 <p>图左边是JobGraph，包含5个operators，A和C代表source，E代表sink。因为最大并行度为4，所以此 application 至少需要4个 slots。A、B、D的并行度为4，会被分配到每一个slot，C被分配到了Slot1.1和Slot2.1，E被分配到了Slot1.2和Slot2.2。 </p>
 <p>TaskManager在同一个JVM进程中多线程执行tasks。</p>
 <h3 id="高可用"><a href="#高可用" class="headerlink" title="高可用"></a>高可用</h3><p>实时应用程序通常设计成<code>7*24</code>的运行模式，因此应该保证 application 不停机。当进程出现故障时，第一步要重启失败的进程，第二步是重启 application 并恢复其状态。</p>
 <h4 id="TaskManager-failures"><a href="#TaskManager-failures" class="headerlink" title="TaskManager failures"></a>TaskManager failures</h4><p>假设一个Flink集群有4个 TaskManagers ，每个 TaskManager 提供2个 slots，所以一个 application 的最大并发为8。当其中一个 TaskManager 故障，可用的 slots 数就降为了6。此时，JobManager 会向 ResourceManager 申请新的 slots。在standalone模式下，将永远申请不到新的 slots，JobManager 也就不能重启 application，直到获得足够的 slots。重启策略决定 JobManager 重启 application 的次数以及重启的间隔。</p>
 <h4 id="JobManager-failures"><a href="#JobManager-failures" class="headerlink" title="JobManager failures"></a>JobManager failures</h4><p>比起 TaskManager 故障，JobManager 故障是更具有挑战性的问题。JobManager 控制 application 的执行，保存执行相关的元数据，如指向完整 checkpoints 的指针等。如果 JobManager 进程消失，application 将不能再继续执行，因此必须解决 JobManager 的单点故障问题。Flink提供了高可用模式，在当前 JobManager 进程消失时，将 JobManager 负责的功能和元数据传递给另一个 JobManager，依赖于 zookeeper。高可用模式下，JobManager 会将 JobGraph 和其所需的元数据，如 application 的jar包文件，持久化到远程公共存储上，并将存储路径写到 zookeeper 上。<br>执行期间，JobManager会收到各个task checkpoints 的状态处理，当一次 checkpoint 完成，即所有task都将状态持久化到远程存储上了，JobManager 将状态处理持久化到远程存储，并将存储路径写到 zookeeper 上。因此，当 JobManager 故障时，需要结合 zookeeper及远程存储来恢复 application。</p>
-<p><img src="Flink%E9%AB%98%E5%8F%AF%E7%94%A8%E6%A8%A1%E5%BC%8F%E9%83%A8%E7%BD%B2.png" alt></p>
+<p><img lazyload src="/images/loading.svg" data-src="Flink%E9%AB%98%E5%8F%AF%E7%94%A8%E6%A8%A1%E5%BC%8F%E9%83%A8%E7%BD%B2.png" alt></p>
 <p>当JobManager故障，其所属 application 的所有 tasks 都会自动取消，新的 JobManager 将会接管：</p>
 <ol>
 <li>从 Zookeeper 获取远程存储路径，取得 JobGraph 、jar包文件、上一次 checkpoint 的状态处理</li>
@@ -399,19 +461,19 @@
 <li>重启 application , 并根据上一次完整的 checkpoint 重置所有 tasks 的状态</li>
 </ol>
 <p>yarn模式下，Flink 尚存的进程会触发故障 JobManager 和 TaskManager 的重启。standalone模式下，Flink 不提供重启失败进程的方法，因此需要运行备用的 JobManager 和 TaskManager 。</p>
-<h2 id="数据传输"><a href="#数据传输" class="headerlink" title="数据传输"></a>数据传输</h2><p><img src="Data%E4%BC%A0%E8%BE%93.png" alt></p>
+<h2 id="数据传输"><a href="#数据传输" class="headerlink" title="数据传输"></a>数据传输</h2><p><img lazyload src="/images/loading.svg" data-src="Data%E4%BC%A0%E8%BE%93.png" alt></p>
 <p>每个sender task至少需要4个 network buffer，来发送数据到4个 receiver task 。每个 receiver task 至少需要4个 network buffer 来接收数据。不同 TaskManager 之间的数据传输使用相同的网络连接，多路复用。</p>
-<h3 id="Credit-Based-流控"><a href="#Credit-Based-流控" class="headerlink" title="Credit-Based 流控"></a>Credit-Based 流控</h3><p>Flink流控相关博客：<a href="https://miaowenting.site/2019/09/22/Flink%E7%BD%91%E7%BB%9C%E6%B5%81%E6%8E%A7%E5%8F%8A%E5%8F%8D%E5%8E%8B%E5%89%96%E6%9E%90/" target="_blank" rel="noopener">Flink网络流控及反压剖析</a></p>
+<h3 id="Credit-Based-流控"><a href="#Credit-Based-流控" class="headerlink" title="Credit-Based 流控"></a>Credit-Based 流控</h3><p>Flink流控相关博客：<a class="link" href="https://miaowenting.site/2019/09/22/Flink%E7%BD%91%E7%BB%9C%E6%B5%81%E6%8E%A7%E5%8F%8A%E5%8F%8D%E5%8E%8B%E5%89%96%E6%9E%90/" target="_blank" rel="noopener">Flink网络流控及反压剖析 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
 <h3 id="Task-Chaining"><a href="#Task-Chaining" class="headerlink" title="Task Chaining"></a>Task Chaining</h3><p>为了减少本地 tasks 间的通信成本，产生了Task chainning技术。想要chain在一起的operators，必须具有相同的 parallelism ，且由 local forward channel 相连。</p>
-<p><img src="%E4%BD%BF%E7%94%A8%E4%BA%86task_chaining%E7%9A%84operator_pipeline.png" alt></p>
+<p><img lazyload src="/images/loading.svg" data-src="%E4%BD%BF%E7%94%A8%E4%BA%86task_chaining%E7%9A%84operator_pipeline.png" alt></p>
 <p>Task chaining 可以减少本地本地 tasks 间的通信成本，operators 的 functions 被整合在一个线程中执行，function 产生的结果数据通过方法调用传递给下一个 function。因此，function之间是不产生通信以及序列化反序列化的成本的。</p>
-<p><img src="chained_task%E7%9A%84%E4%B8%8D%E5%90%8Cfunction%E4%B9%8B%E9%97%B4%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E8%B0%83%E7%94%A8.png" alt></p>
-<p>有的时候，需要打断一个很长的 chained tasks 的 pipeline ，将比较耗资源的 opeator 放到单独的 slot 中执行，以不影响其他 operator的执行，operators 的 functions 会运行在不同的线程中。<br><img src="chained_task%E7%9A%84%E4%B8%8D%E5%90%8Cfunction%E4%B9%8B%E9%97%B4%E4%BD%BF%E7%94%A8buffer_channel%E5%92%8C%E5%BA%8F%E5%88%97%E5%8C%96%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%99%A8.png" alt></p>
+<p><img lazyload src="/images/loading.svg" data-src="chained_task%E7%9A%84%E4%B8%8D%E5%90%8Cfunction%E4%B9%8B%E9%97%B4%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E8%B0%83%E7%94%A8.png" alt></p>
+<p>有的时候，需要打断一个很长的 chained tasks 的 pipeline ，将比较耗资源的 opeator 放到单独的 slot 中执行，以不影响其他 operator的执行，operators 的 functions 会运行在不同的线程中。<br><img lazyload src="/images/loading.svg" data-src="chained_task%E7%9A%84%E4%B8%8D%E5%90%8Cfunction%E4%B9%8B%E9%97%B4%E4%BD%BF%E7%94%A8buffer_channel%E5%92%8C%E5%BA%8F%E5%88%97%E5%8C%96%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%99%A8.png" alt></p>
 <h2 id="Watermarks"><a href="#Watermarks" class="headerlink" title="Watermarks"></a>Watermarks</h2><p>大家都知道，流处理从事件产生，到流经source，再到operator，中间是有一定过程和时间的，虽然大部分情况下，流到operator的数据都是按照事件产生的时间顺序来的，但是也不排除由于网络、背压等原因，导致乱序的产生。所谓乱序，就是指Flink接收到的事件的先后顺序不是严格按照事件的Event Time顺序排列的。</p>
-<p><img src="%E7%90%86%E6%83%B3%E6%83%85%E5%86%B5%E4%B8%8E%E5%AE%9E%E9%99%85%E6%83%85%E5%86%B5%E4%B8%AD%E7%9A%84%E4%BA%8B%E4%BB%B6%E5%88%B0%E8%BE%BE%E9%A1%BA%E5%BA%8F.png" alt></p>
+<p><img lazyload src="/images/loading.svg" data-src="%E7%90%86%E6%83%B3%E6%83%85%E5%86%B5%E4%B8%8E%E5%AE%9E%E9%99%85%E6%83%85%E5%86%B5%E4%B8%AD%E7%9A%84%E4%BA%8B%E4%BB%B6%E5%88%B0%E8%BE%BE%E9%A1%BA%E5%BA%8F.png" alt></p>
 <p>那么此时出现一个问题，一旦出现乱序，如果只根据 eventTime 决定 window 的运行，我们不能明确数据是否全部到位，但又不能无限期地等待下去，此时必须要有个机制来保证一个特定的时间后，必须要触发 window 去进行计算了，这个特别的机制，就是 watermark。</p>
 <p>Watermark 是一种衡量 Event Time 进展的机制，它是数据本身的一个隐藏属性，数据本身携带着对应的 Watermark 。数据流中的 Watermark 用于表示 timestamp 小于 Watermark 的数据都已经到达了，因此 window 的执行也是由 Watermark 触发的。</p>
-<p><img src="%E5%8C%85%E5%90%ABrecord%E5%92%8Cwatermark%E7%9A%84event_time%E4%BA%8B%E4%BB%B6%E6%B5%81.png" alt></p>
+<p><img lazyload src="/images/loading.svg" data-src="%E5%8C%85%E5%90%ABrecord%E5%92%8Cwatermark%E7%9A%84event_time%E4%BA%8B%E4%BB%B6%E6%B5%81.png" alt></p>
 <p>Watermarks 有两个基本特征：</p>
 <ol>
 <li>单调递增，保证event time时钟不会倒退</li>
@@ -419,15 +481,15 @@
 </ol>
 <p>第二个特征是用来处理 record 乱序迟到问题。如图中的 record 3 和 record 5 为乱序数据，record 4 为迟到数据，因为时间戳 4 &lt; 上一次接收到的 watermark 。后续会介绍 Flink 是如何处理迟到数据的。</p>
 <p>当 Flink 接收到每一条数据时，都会产生一条 Watermark ，这条 Watermark 就等于当前所有到达数据中的maxEventTime - 延迟时长（允许迟到的最大时长），也就是说，Watermark 是数据携带的，一旦数据携带的 Watermark 比当前未触发的窗口的停止时间要晚，那么就会触发相应窗口的执行。由于 Watermark 是由数据携带的，因此，如果运行过程中无法获取新的数据，那么没有被触发的窗口将永远都不被触发。</p>
-<p>有序流的 Watermark 如下图所示：（Watermark 延迟设置为0）<br><img src="%E6%9C%89%E5%BA%8F%E6%B5%81%E7%9A%84Watermark%E7%A4%BA%E6%84%8F%E5%9B%BE.png" alt></p>
-<p>乱序流的 Watermark 如下图所示：（Watermark 延迟设置为2）<br><img src="%E4%B9%B1%E5%BA%8F%E6%B5%81%E7%9A%84Watermark%E7%A4%BA%E6%84%8F%E5%9B%BE.png" alt></p>
+<p>有序流的 Watermark 如下图所示：（Watermark 延迟设置为0）<br><img lazyload src="/images/loading.svg" data-src="%E6%9C%89%E5%BA%8F%E6%B5%81%E7%9A%84Watermark%E7%A4%BA%E6%84%8F%E5%9B%BE.png" alt></p>
+<p>乱序流的 Watermark 如下图所示：（Watermark 延迟设置为2）<br><img lazyload src="/images/loading.svg" data-src="%E4%B9%B1%E5%BA%8F%E6%B5%81%E7%9A%84Watermark%E7%A4%BA%E6%84%8F%E5%9B%BE.png" alt></p>
 <p>上图中，我们设置的允许最大延迟时间为2s，所以时间戳为7s的事件对应的 Watermark 是5s，时间戳为12s的事件对应的 Watermark 是10s。如果窗口1是1s～5s，窗口2是6s～10s，那么时间戳为7s的事件到达时的 Watermark 恰好触发窗口1，时间戳为12s的事件到达时的 Watermark 恰好触发窗口2。</p>
 <h3 id="EventTimeWindow"><a href="#EventTimeWindow" class="headerlink" title="EventTimeWindow"></a>EventTimeWindow</h3><p>每一条记录来了之后会根据时间属性值采用不同的 window assigner 方法分配给一个或者多个窗口。</p>
 <p>当使用 EventTimeWindow 时，所有的 window 都是在 event time 的时间轴上切分的，也就是说，在 window 启动后，会根据初始的 event time 时间每隔一段时间划分一个窗口，如果 window 大小是3s，那么1分钟内会把窗口划分为如下的形式:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[00:00:00,00:00:03)</span><br><span class="line">[00:00:03,00:00:06)</span><br><span class="line">...</span><br><span class="line">[00:00:57,00:01:00)</span><br></pre></td></tr></table></figure>
+<div class="highlight-container" data-rel="Code"><figure class="iseeu highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[00:00:00,00:00:03)</span><br><span class="line">[00:00:03,00:00:06)</span><br><span class="line">...</span><br><span class="line">[00:00:57,00:01:00)</span><br></pre></td></tr></table></figure></div>
 
 <p>如果 window 大小是10s，那么1分钟内会把窗口划分为如下的形式:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[00:00:00,00:00:10)</span><br><span class="line">[00:00:10,00:00:20)</span><br><span class="line">...</span><br><span class="line">[00:00:50,00:01:00)</span><br></pre></td></tr></table></figure>
+<div class="highlight-container" data-rel="Code"><figure class="iseeu highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[00:00:00,00:00:10)</span><br><span class="line">[00:00:10,00:00:20)</span><br><span class="line">...</span><br><span class="line">[00:00:50,00:01:00)</span><br></pre></td></tr></table></figure></div>
 
 <p>窗口是左闭右开的。Window 的设定无关数据本身，而是系统定义好了的，也就是说，Window 会一直按照指定的时间间隔进行划分，不论这个 Window 中有没有数据，EventTime 在这个 Window 期间的数据会进入这个 Window。</p>
 <p>Window 会不断产生，属于这个 Window 范围的数据会被不断加入到 Window 中，所有未被触发的 Window 都会等待触发，只要 Window 还没触发，属于这个 Window 范围的数据就会一直被加入到 Window 中，直到 Window 被触发才会停止数据的追加，而当 Window 触发之后才接受到的属于被触发 Window 的数据会被丢弃。</p>
@@ -437,48 +499,48 @@
 <li>在[window_start_time,window_end_time)中有数据存在</li>
 </ul>
 <h4 id="Tumble"><a href="#Tumble" class="headerlink" title="Tumble"></a>Tumble</h4><p>滚动窗口分配: 一条记录只属于一个窗口</p>
-<p>窗口大小是5s，key为A的数据分别在0，4999ms，5000ms产生了数据，那么形成的window如下，窗口允许等待时间为5s:<br><img src="%E6%BB%9A%E5%8A%A8%E7%AA%97%E5%8F%A3%E5%88%86%E9%85%8D%E7%A4%BA%E6%84%8F%E5%9B%BE.png" alt></p>
+<p>窗口大小是5s，key为A的数据分别在0，4999ms，5000ms产生了数据，那么形成的window如下，窗口允许等待时间为5s:<br><img lazyload src="/images/loading.svg" data-src="%E6%BB%9A%E5%8A%A8%E7%AA%97%E5%8F%A3%E5%88%86%E9%85%8D%E7%A4%BA%E6%84%8F%E5%9B%BE.png" alt></p>
 <h4 id="Slide"><a href="#Slide" class="headerlink" title="Slide"></a>Slide</h4><p>滑动窗口分配: 一条记录属于多个窗口</p>
-<p>窗口大小是5s，滑动间隔为1s，key为A的数据分别在0，4999ms，5000ms产生了数据，那么形成的window如下：<br><img src="%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E5%88%86%E9%85%8D%E7%A4%BA%E6%84%8F%E5%9B%BE.png" alt></p>
+<p>窗口大小是5s，滑动间隔为1s，key为A的数据分别在0，4999ms，5000ms产生了数据，那么形成的window如下：<br><img lazyload src="/images/loading.svg" data-src="%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E5%88%86%E9%85%8D%E7%A4%BA%E6%84%8F%E5%9B%BE.png" alt></p>
 <h4 id="Session"><a href="#Session" class="headerlink" title="Session"></a>Session</h4><p>会话窗口分配: 一条记录属于一个窗口</p>
-<p>间隔5s中，key为A的数据分别在0，4999ms，5000ms产生了数据，那么形成的window如下：<br><img src="%E4%BC%9A%E8%AF%9D%E7%AA%97%E5%8F%A3%E5%88%86%E9%85%8D%E7%A4%BA%E6%84%8F%E5%9B%BE.png" alt></p>
+<p>间隔5s中，key为A的数据分别在0，4999ms，5000ms产生了数据，那么形成的window如下：<br><img lazyload src="/images/loading.svg" data-src="%E4%BC%9A%E8%AF%9D%E7%AA%97%E5%8F%A3%E5%88%86%E9%85%8D%E7%A4%BA%E6%84%8F%E5%9B%BE.png" alt></p>
 <h3 id="自定义Watermark"><a href="#自定义Watermark" class="headerlink" title="自定义Watermark"></a>自定义Watermark</h3><h4 id="Periodic-Watermark"><a href="#Periodic-Watermark" class="headerlink" title="Periodic Watermark"></a>Periodic Watermark</h4><ul>
-<li>示例一<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BoundedOutOfOrdernessGenerator</span> <span class="keyword">implements</span> <span class="title">AssignerWithPeriodicWatermarks</span>&lt;<span class="title">MyEvent</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">long</span> maxOutOfOrderness = <span class="number">3000</span>; <span class="comment">// 3.0 seconds</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">long</span> currentMaxTimestamp;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">long</span> <span class="title">extractTimestamp</span><span class="params">(MyEvent element, <span class="keyword">long</span> previousElementTimestamp)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">long</span> timestamp = element.getCreationTime();</span><br><span class="line">        currentMaxTimestamp = Math.max(timestamp, currentMaxTimestamp);</span><br><span class="line">        <span class="keyword">return</span> timestamp;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Watermark <span class="title">getCurrentWatermark</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// return the watermark as current highest timestamp minus the out-of-orderness bound</span></span><br><span class="line">        <span class="comment">// 以迄今为止收到的最大时间戳来生成 watermark</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Watermark(currentMaxTimestamp - maxOutOfOrderness);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li>示例一<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BoundedOutOfOrdernessGenerator</span> <span class="keyword">implements</span> <span class="title">AssignerWithPeriodicWatermarks</span>&lt;<span class="title">MyEvent</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">long</span> maxOutOfOrderness = <span class="number">3000</span>; <span class="comment">// 3.0 seconds</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">long</span> currentMaxTimestamp;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">long</span> <span class="title">extractTimestamp</span><span class="params">(MyEvent element, <span class="keyword">long</span> previousElementTimestamp)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">long</span> timestamp = element.getCreationTime();</span><br><span class="line">        currentMaxTimestamp = Math.max(timestamp, currentMaxTimestamp);</span><br><span class="line">        <span class="keyword">return</span> timestamp;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Watermark <span class="title">getCurrentWatermark</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// return the watermark as current highest timestamp minus the out-of-orderness bound</span></span><br><span class="line">        <span class="comment">// 以迄今为止收到的最大时间戳来生成 watermark</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Watermark(currentMaxTimestamp - maxOutOfOrderness);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
 </li>
 </ul>
 <p>效果解析：</p>
-<p><img src="BoundedOutOfOrdernessGenerator_periodic_watermark.png" alt></p>
+<p><img lazyload src="/images/loading.svg" data-src="BoundedOutOfOrdernessGenerator_periodic_watermark.png" alt></p>
 <p>图中是一个10s大小的窗口，10000～20000为一个窗口。当 eventTime 为 23000 的数据到来，生成的 watermark 的时间戳为20000，&gt;= 窗口的结束时间，会触发窗口计算。</p>
 <ul>
-<li>示例二<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TimeLagWatermarkGenerator</span> <span class="keyword">implements</span> <span class="title">AssignerWithPeriodicWatermarks</span>&lt;<span class="title">MyEvent</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">long</span> maxTimeLag = <span class="number">3000</span>; <span class="comment">// 3 seconds</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">long</span> <span class="title">extractTimestamp</span><span class="params">(MyEvent element, <span class="keyword">long</span> previousElementTimestamp)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> element.getCreationTime();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Watermark <span class="title">getCurrentWatermark</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// return the watermark as current time minus the maximum time lag</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Watermark(System.currentTimeMillis() - maxTimeLag);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li>示例二<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TimeLagWatermarkGenerator</span> <span class="keyword">implements</span> <span class="title">AssignerWithPeriodicWatermarks</span>&lt;<span class="title">MyEvent</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">long</span> maxTimeLag = <span class="number">3000</span>; <span class="comment">// 3 seconds</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">long</span> <span class="title">extractTimestamp</span><span class="params">(MyEvent element, <span class="keyword">long</span> previousElementTimestamp)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> element.getCreationTime();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Watermark <span class="title">getCurrentWatermark</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// return the watermark as current time minus the maximum time lag</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Watermark(System.currentTimeMillis() - maxTimeLag);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
 </li>
 </ul>
 <p>效果解析：</p>
-<p><img src="TimeLagWatermarkGenerator_periodic_watermark.png" alt></p>
+<p><img lazyload src="/images/loading.svg" data-src="TimeLagWatermarkGenerator_periodic_watermark.png" alt></p>
 <p>只是简单的用当前系统时间减去最大延迟时间生成 Watermark ，当 Watermark 为 20000时，&gt;= 窗口的结束时间，会触发10000～20000窗口计算。再当 eventTime 为 19500 的数据到来，它本应该是属于窗口 10000～20000窗口的，但这个窗口已经触发计算了，所以此数据会被丢弃。</p>
-<p><img src="watermark_eventTime_window%E7%9A%84%E5%85%B3%E7%B3%BB%E5%9B%BE.png" alt></p>
+<p><img lazyload src="/images/loading.svg" data-src="watermark_eventTime_window%E7%9A%84%E5%85%B3%E7%B3%BB%E5%9B%BE.png" alt></p>
 <ul>
-<li>示例3<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TumblingEventWindowExample</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();</span><br><span class="line">        env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime);</span><br><span class="line"></span><br><span class="line">        DataStream&lt;String&gt; socketStream = env.socketTextStream(<span class="string">"localhost"</span>, <span class="number">9999</span>);</span><br><span class="line">        DataStream&lt;Tuple2&lt;String, Long&gt;&gt; resultStream = socketStream</span><br><span class="line">            <span class="comment">// Time.seconds(3)有序的情况修改为0</span></span><br><span class="line">            .assignTimestampsAndWatermarks(<span class="keyword">new</span> BoundedOutOfOrdernessTimestampExtractor&lt;String&gt;(Time.seconds(<span class="number">3</span>)) &#123;</span><br><span class="line">                <span class="meta">@Override</span></span><br><span class="line">                <span class="function"><span class="keyword">public</span> <span class="keyword">long</span> <span class="title">extractTimestamp</span><span class="params">(String element)</span> </span>&#123;</span><br><span class="line">                    <span class="keyword">long</span> eventTime = Long.parseLong(element.split(<span class="string">" "</span>)[<span class="number">0</span>]);</span><br><span class="line">                    System.out.println(eventTime);</span><br><span class="line">                    <span class="keyword">return</span> eventTime;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;)</span><br><span class="line">            .map(<span class="keyword">new</span> MapFunction&lt;String, Tuple2&lt;String, Long&gt;&gt;() &#123;</span><br><span class="line">                <span class="meta">@Override</span></span><br><span class="line">                <span class="function"><span class="keyword">public</span> Tuple2&lt;String, Long&gt; <span class="title">map</span><span class="params">(String value)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">                    <span class="keyword">return</span> Tuple2.of(value.split(<span class="string">" "</span>)[<span class="number">1</span>], <span class="number">1L</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;)</span><br><span class="line">            .keyBy(<span class="number">0</span>)</span><br><span class="line">            .window(TumblingEventTimeWindows.of(Time.seconds(<span class="number">10</span>)))</span><br><span class="line">            .reduce(<span class="keyword">new</span> ReduceFunction&lt;Tuple2&lt;String, Long&gt;&gt;() &#123;</span><br><span class="line">                <span class="meta">@Override</span></span><br><span class="line">                <span class="function"><span class="keyword">public</span> Tuple2&lt;String, Long&gt; <span class="title">reduce</span><span class="params">(Tuple2&lt;String, Long&gt; value1, Tuple2&lt;String, Long&gt; value2)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">new</span> Tuple2&lt;&gt;(value1.f0, value1.f1 + value2.f1);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">        resultStream.print();</span><br><span class="line">        env.execute();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li>示例3<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TumblingEventWindowExample</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();</span><br><span class="line">        env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime);</span><br><span class="line"></span><br><span class="line">        DataStream&lt;String&gt; socketStream = env.socketTextStream(<span class="string">"localhost"</span>, <span class="number">9999</span>);</span><br><span class="line">        DataStream&lt;Tuple2&lt;String, Long&gt;&gt; resultStream = socketStream</span><br><span class="line">            <span class="comment">// Time.seconds(3)有序的情况修改为0</span></span><br><span class="line">            .assignTimestampsAndWatermarks(<span class="keyword">new</span> BoundedOutOfOrdernessTimestampExtractor&lt;String&gt;(Time.seconds(<span class="number">3</span>)) &#123;</span><br><span class="line">                <span class="meta">@Override</span></span><br><span class="line">                <span class="function"><span class="keyword">public</span> <span class="keyword">long</span> <span class="title">extractTimestamp</span><span class="params">(String element)</span> </span>&#123;</span><br><span class="line">                    <span class="keyword">long</span> eventTime = Long.parseLong(element.split(<span class="string">" "</span>)[<span class="number">0</span>]);</span><br><span class="line">                    System.out.println(eventTime);</span><br><span class="line">                    <span class="keyword">return</span> eventTime;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;)</span><br><span class="line">            .map(<span class="keyword">new</span> MapFunction&lt;String, Tuple2&lt;String, Long&gt;&gt;() &#123;</span><br><span class="line">                <span class="meta">@Override</span></span><br><span class="line">                <span class="function"><span class="keyword">public</span> Tuple2&lt;String, Long&gt; <span class="title">map</span><span class="params">(String value)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">                    <span class="keyword">return</span> Tuple2.of(value.split(<span class="string">" "</span>)[<span class="number">1</span>], <span class="number">1L</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;)</span><br><span class="line">            .keyBy(<span class="number">0</span>)</span><br><span class="line">            .window(TumblingEventTimeWindows.of(Time.seconds(<span class="number">10</span>)))</span><br><span class="line">            .reduce(<span class="keyword">new</span> ReduceFunction&lt;Tuple2&lt;String, Long&gt;&gt;() &#123;</span><br><span class="line">                <span class="meta">@Override</span></span><br><span class="line">                <span class="function"><span class="keyword">public</span> Tuple2&lt;String, Long&gt; <span class="title">reduce</span><span class="params">(Tuple2&lt;String, Long&gt; value1, Tuple2&lt;String, Long&gt; value2)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">new</span> Tuple2&lt;&gt;(value1.f0, value1.f1 + value2.f1);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">        resultStream.print();</span><br><span class="line">        env.execute();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
 </li>
 </ul>
 <p>运行程序之前，在本地启动命令行监听:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -l 9999</span><br></pre></td></tr></table></figure>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -l 9999</span><br></pre></td></tr></table></figure></div>
 
 <ul>
-<li>有序的情况下，watermark延迟时间为0<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">miaowenting@miaowentingdeMacBook-Pro flink$ nc -l 9999</span><br><span class="line">10000 a</span><br><span class="line">11000 a</span><br><span class="line">12000 b</span><br><span class="line">13000 b</span><br><span class="line">14000 a</span><br><span class="line">19888 a</span><br><span class="line">13000 a</span><br><span class="line">20000 a  时间戳20000触发第一个窗口计算，实际上19999也会触发，因为左闭右开的原则，20000这个时间戳并不会在第一个窗口计算，第一个窗口是[10000-20000)，第二个窗口是[20000-30000)，以此类推</span><br><span class="line">11000 a</span><br><span class="line">12000 b</span><br><span class="line">21000 b</span><br><span class="line">22000 a</span><br><span class="line">29999 a  第一个窗口触发计算后，后续来的11000，12000这两条数据被抛弃，29999直接触发窗口计算，并且本身也属于第二个窗口，所以也参与计算了。</span><br></pre></td></tr></table></figure>
+<li>有序的情况下，watermark延迟时间为0<div class="highlight-container" data-rel="Code"><figure class="iseeu highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">miaowenting@miaowentingdeMacBook-Pro flink$ nc -l 9999</span><br><span class="line">10000 a</span><br><span class="line">11000 a</span><br><span class="line">12000 b</span><br><span class="line">13000 b</span><br><span class="line">14000 a</span><br><span class="line">19888 a</span><br><span class="line">13000 a</span><br><span class="line">20000 a  时间戳20000触发第一个窗口计算，实际上19999也会触发，因为左闭右开的原则，20000这个时间戳并不会在第一个窗口计算，第一个窗口是[10000-20000)，第二个窗口是[20000-30000)，以此类推</span><br><span class="line">11000 a</span><br><span class="line">12000 b</span><br><span class="line">21000 b</span><br><span class="line">22000 a</span><br><span class="line">29999 a  第一个窗口触发计算后，后续来的11000，12000这两条数据被抛弃，29999直接触发窗口计算，并且本身也属于第二个窗口，所以也参与计算了。</span><br></pre></td></tr></table></figure></div>
 
 </li>
 </ul>
-<p><img src="%E6%9C%89%E5%BA%8F%E6%B5%81%E7%9A%84%E7%AA%97%E5%8F%A3%E8%A7%A6%E5%8F%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%88%B6_watermark%E5%BB%B6%E8%BF%9F%E4%B8%BA0.png" alt></p>
+<p><img lazyload src="/images/loading.svg" data-src="%E6%9C%89%E5%BA%8F%E6%B5%81%E7%9A%84%E7%AA%97%E5%8F%A3%E8%A7%A6%E5%8F%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%88%B6_watermark%E5%BB%B6%E8%BF%9F%E4%B8%BA0.png" alt></p>
 <ul>
-<li>无序的情况下，watermark延迟时间为3<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">miaowenting@miaowentingdeMacBook-Pro flink$ nc -l 9999</span><br><span class="line">10000 a</span><br><span class="line">11000 a</span><br><span class="line">12000 b</span><br><span class="line">20000 a  从数据中可以验证，第一个窗口在20000的时候没有触发计算</span><br><span class="line">21000 a</span><br><span class="line">22000 b</span><br><span class="line">23000 a  在23000的时候触发计算，计算内容是第一个窗口[10000-20000)，所以20000，21000，22000，23000属于第二个窗口，没有参与计算。</span><br><span class="line">24000 a</span><br><span class="line">29000 b</span><br><span class="line">30000 a</span><br><span class="line">22000 a</span><br><span class="line">23000 a</span><br><span class="line">33000 a  第二个窗口[20000-30000)，它是在33000触发计算，并且，迟到的数据22000，23000也被计算在内（如果这个数据在水印33000后到达，则会被抛弃），30000和33000是第三个窗口的数据，没有计算</span><br></pre></td></tr></table></figure>
+<li>无序的情况下，watermark延迟时间为3<div class="highlight-container" data-rel="Code"><figure class="iseeu highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">miaowenting@miaowentingdeMacBook-Pro flink$ nc -l 9999</span><br><span class="line">10000 a</span><br><span class="line">11000 a</span><br><span class="line">12000 b</span><br><span class="line">20000 a  从数据中可以验证，第一个窗口在20000的时候没有触发计算</span><br><span class="line">21000 a</span><br><span class="line">22000 b</span><br><span class="line">23000 a  在23000的时候触发计算，计算内容是第一个窗口[10000-20000)，所以20000，21000，22000，23000属于第二个窗口，没有参与计算。</span><br><span class="line">24000 a</span><br><span class="line">29000 b</span><br><span class="line">30000 a</span><br><span class="line">22000 a</span><br><span class="line">23000 a</span><br><span class="line">33000 a  第二个窗口[20000-30000)，它是在33000触发计算，并且，迟到的数据22000，23000也被计算在内（如果这个数据在水印33000后到达，则会被抛弃），30000和33000是第三个窗口的数据，没有计算</span><br></pre></td></tr></table></figure></div>
 
 </li>
 </ul>
-<p><img src="%E6%97%A0%E5%BA%8F%E6%B5%81%E7%9A%84%E7%AA%97%E5%8F%A3%E8%A7%A6%E5%8F%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%88%B6_watermark%E5%BB%B6%E8%BF%9F%E4%B8%BA3.png" alt></p>
+<p><img lazyload src="/images/loading.svg" data-src="%E6%97%A0%E5%BA%8F%E6%B5%81%E7%9A%84%E7%AA%97%E5%8F%A3%E8%A7%A6%E5%8F%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%88%B6_watermark%E5%BB%B6%E8%BF%9F%E4%B8%BA3.png" alt></p>
 <h3 id="Watermark传播"><a href="#Watermark传播" class="headerlink" title="Watermark传播"></a>Watermark传播</h3><p>Tasks 内部有一个 time services，维护 timers ，当接收到 watermark 时触发。例如，一个窗口 operator 为每一个活跃窗口在 time servive 注册一个 timer，当event time大于窗口结束时间时，清除窗口状态。</p>
 <p>当 task 接收到 watermark 后，会执行以下操作：</p>
 <ol>
@@ -486,13 +548,13 @@
 <li>time service 区分出所有时间戳小于更新之后的 event_time 的 timers，对超时的 timer，task 执行回调函数触发计算并发射数据。</li>
 <li>task 发射 watermark，时间戳为更新之后的 event_time。</li>
 </ol>
-<p><img src="%E6%A0%B9%E6%8D%AE%E6%8E%A5%E6%94%B6%E5%88%B0%E7%9A%84watermark%E6%9B%B4%E6%96%B0event_time_clock.png" alt></p>
+<p><img lazyload src="/images/loading.svg" data-src="%E6%A0%B9%E6%8D%AE%E6%8E%A5%E6%94%B6%E5%88%B0%E7%9A%84watermark%E6%9B%B4%E6%96%B0event_time_clock.png" alt></p>
 <p>Flink 会将数据流分成多个 partition，task 维护每个 partition 对应的 watermark。每个 partition 分别将 watermark 更新成接收到的最大值。task 将 event_time clock 更新成所有 partition 的 watermark 的最小值。如果 clock 向前走动，task 处理所有达到触发时间的 timers，并向下游 partitions 传递 watermark 。</p>
-<h2 id="状态管理"><a href="#状态管理" class="headerlink" title="状态管理"></a>状态管理</h2><p><img src="stateful_stream_processing_task.png" alt></p>
+<h2 id="状态管理"><a href="#状态管理" class="headerlink" title="状态管理"></a>状态管理</h2><p><img lazyload src="/images/loading.svg" data-src="stateful_stream_processing_task.png" alt></p>
 <p>task 接收输入数据，结合 state 作处理。例如，统计接收到记录的数量，接收到一个 record，会向 state 查询当前的 count 大小，此 count + 1，向 state 更新 count 值，向下发射新的 count 值。</p>
 <p>state 总是和一个具体的 operator 相关联的。为了让 Flink 运行时感知到 operator 的状态，operator 需要注册它的状态。有两种类型的 state ，分别为 operator state 和 keyed state 。</p>
 <h3 id="Operator-State"><a href="#Operator-State" class="headerlink" title="Operator State"></a>Operator State</h3><p>operator state 是 operator tasks 共享的。</p>
-<p><img src="Tasks_with_operator_state.png" alt></p>
+<p><img lazyload src="/images/loading.svg" data-src="Tasks_with_operator_state.png" alt></p>
 <ul>
 <li>List state</li>
 </ul>
@@ -505,7 +567,7 @@
 <li>Broadcast state</li>
 </ul>
 <p>当做checkpoints时或者扩展operator并行度时被使用。</p>
-<h3 id="Keyed-State"><a href="#Keyed-State" class="headerlink" title="Keyed State"></a>Keyed State</h3><p><img src="Tasks_with_keyed_state.png" alt></p>
+<h3 id="Keyed-State"><a href="#Keyed-State" class="headerlink" title="Keyed State"></a>Keyed State</h3><p><img lazyload src="/images/loading.svg" data-src="Tasks_with_keyed_state.png" alt></p>
 <ul>
 <li>Value state</li>
 </ul>
@@ -524,12 +586,12 @@
 <li>向远程存储做checkpointing</li>
 </ol>
 <h3 id="Scaling-Stateful-Operators"><a href="#Scaling-Stateful-Operators" class="headerlink" title="Scaling Stateful Operators"></a>Scaling Stateful Operators</h3><p>流式应用通常要调整并行度，状态也需要被重分区到新的task。Flink 将key组织成key group，分配到task上。</p>
-<p><img src="scaling_an_operator_with_keyed_state_out_and_in.png" alt></p>
+<p><img lazyload src="/images/loading.svg" data-src="scaling_an_operator_with_keyed_state_out_and_in.png" alt></p>
 <p>list state 会被按比例平均分配到新的 tasks。如果 list 中的 entries 小于 operator 的并发度，那么有些 task 将以 empty state 启动。</p>
-<p><img src="Scaling_an_operator_with_operator_list_state_out_and_in.png" alt></p>
+<p><img lazyload src="/images/loading.svg" data-src="Scaling_an_operator_with_operator_list_state_out_and_in.png" alt></p>
 <p>union list state 将被广播到新的 tasks，task 自己选择使用或丢弃其中的状态。         </p>
-<p><img src="scaling_an_operator_with_operator_union_list_state_out_and_in.png" alt></p>
-<p>broadcast state 将被复制到新的 tasks， 确保所有的tasks 拥有相同的状态。并发度变小的情况下，多余的 task 直接取消即可。<br><img src="Scaling_an_operator_with_operator_broadcase_state_out_and_in.png" alt></p>
+<p><img lazyload src="/images/loading.svg" data-src="scaling_an_operator_with_operator_union_list_state_out_and_in.png" alt></p>
+<p>broadcast state 将被复制到新的 tasks， 确保所有的tasks 拥有相同的状态。并发度变小的情况下，多余的 task 直接取消即可。<br><img lazyload src="/images/loading.svg" data-src="Scaling_an_operator_with_operator_broadcase_state_out_and_in.png" alt></p>
 <h2 id="Checkpoints，Savepoints-和状态恢复"><a href="#Checkpoints，Savepoints-和状态恢复" class="headerlink" title="Checkpoints，Savepoints 和状态恢复"></a>Checkpoints，Savepoints 和状态恢复</h2><p>需要处理进程被杀、机器故障、网络连接故障等问题。tasks 本地维护各自的状态，Flink 必须保证状态不丢失，并且在发生故障时可以持久化这些状态。</p>
 <h3 id="持久化Checkpoints"><a href="#持久化Checkpoints" class="headerlink" title="持久化Checkpoints"></a>持久化Checkpoints</h3><p>Flink 的恢复机制是基于应用状态做持久化 checkpoints。持久化 checkpoint 是在某一个时间点复制所有 tasks 的 state，此时所有的tasks都处理了相同的输入数据。<br>这个过程可以描述为 navie 算法，步骤如下：</p>
 <ol>
@@ -540,28 +602,28 @@
 </ol>
 <p>输入的是一组数字流，数字分奇数和偶数统计和。source task记录消费的offset作为其state，sum tasks记录奇数和与偶数和作为其state。图中记录了input offset为5，统计值为6和9。</p>
 <h3 id="从Checkpoint恢复"><a href="#从Checkpoint恢复" class="headerlink" title="从Checkpoint恢复"></a>从Checkpoint恢复</h3><p>发生故障时，Flink会从最后一次记录的checkpoint处恢复应用的状态并重启。</p>
-<p>持久化 input offset 为5，偶数和为6，奇数和为9。<br><img src="A_consitent_checkpoint_of_a_streaming_application.png" alt></p>
+<p>持久化 input offset 为5，偶数和为6，奇数和为9。<br><img lazyload src="/images/loading.svg" data-src="A_consitent_checkpoint_of_a_streaming_application.png" alt></p>
 <p>应用恢复的步骤如下：</p>
 <ol>
 <li>重启整个应用。</li>
 <li>根据上次完整的checkpoint重置状态。</li>
 <li>恢复tasks的所有相关进程。</li>
 </ol>
-<p><img src="Recovering_an_application_from_a_checkpoint.png" alt></p>
+<p><img lazyload src="/images/loading.svg" data-src="Recovering_an_application_from_a_checkpoint.png" alt></p>
 <h3 id="Checkpointing算法"><a href="#Checkpointing算法" class="headerlink" title="Checkpointing算法"></a>Checkpointing算法</h3><p>Chandy-Lamport算法。这个算法不会暂停整个应用去做 checkpoint ，解耦checkpointing操作，一些tasks接着处理数据，另一些tasks在持久化它们的状态。<br>Flink 的 checkpointing 算法使用了一种特殊的数据类型，叫做 checkpoint barrier。类似于 watermark，checkpoint barrier（checkpoint ID） 也随着数据流动。<br>checkpoint ID 标识 checkpoint barrier 属于那一次 checkpoint 操作，逻辑上讲数据流分成两部分。<br>所有在 checkpoint barrier 之前的数据状态改变，都属于本次 checkpoint 操作，之后的数据状态改变就属于下一次 checkpoint 操作了。 </p>
-<p><img src="application_with_two_stateful_sources_two_stateful_tasks_two_stateless_sinks.png" alt></p>
+<p><img lazyload src="/images/loading.svg" data-src="application_with_two_stateful_sources_two_stateful_tasks_two_stateless_sinks.png" alt></p>
 <p>一次 checkpoint 操作是通过 JobManager 向每一个 source task 发送一条带 checkpoint ID 的消息发起的。</p>
-<p><img src="JobManager_initiate_a_checkpoint_by_sending_a_message_to_all_sources.png" alt></p>
+<p><img lazyload src="/images/loading.svg" data-src="JobManager_initiate_a_checkpoint_by_sending_a_message_to_all_sources.png" alt></p>
 <p>当 source task 接收到上述消息，便会停止发射数据，在 state backend 做本地状态的 checkpoint ，并向所有的下游分区广播发送 checkpoint barrier。持久化完成之后会向 JobManager 发送确认消息，当所有的 checkpoint barrier 发送完毕之后，source task 会继续进行逻辑处理。</p>
-<p><img src="source%E5%81%9Acheckpoint%E5%B9%B6%E5%8F%91%E9%80%81%E4%B8%80%E4%B8%AAcheckpoint_barrier.png" alt></p>
+<p><img lazyload src="/images/loading.svg" data-src="source%E5%81%9Acheckpoint%E5%B9%B6%E5%8F%91%E9%80%81%E4%B8%80%E4%B8%AAcheckpoint_barrier.png" alt></p>
 <p>当一个下游 task 接收到 checkpoint barrier，会等待上游所有 input partitions 的 checkpoint barrier 到来。等待期间，会继续处理那些还没有发送 checkpoint barrier 的 input partition 的数据，<br>而已经接收到 checkpoint barrier 的分区数据将不能再被处理，而是会被缓存起来。这一过程叫做 barrier alignment。</p>
-<p><img src="task%E7%AD%89%E5%BE%85%E6%8E%A5%E6%94%B6%E6%9D%A5%E8%87%AA%E6%AF%8F%E4%B8%AApartition%E7%9A%84barrier.png" alt></p>
+<p><img lazyload src="/images/loading.svg" data-src="task%E7%AD%89%E5%BE%85%E6%8E%A5%E6%94%B6%E6%9D%A5%E8%87%AA%E6%AF%8F%E4%B8%AApartition%E7%9A%84barrier.png" alt></p>
 <p>当 task 接收到所有上游的 input partitions 的 checkpoint barrier，便发起本 task 的 checkpoint 并向下游所有相连的 tasks 发送 checkpoint barrier。</p>
-<p><img src="%E5%BD%93task%E6%8E%A5%E6%94%B6%E5%88%B0%E6%89%80%E6%9C%89%E5%88%86%E5%8C%BA%E7%9A%84checkpoint_barrier_%E4%BC%9A%E5%90%91%E5%89%8D%E7%BB%A7%E7%BB%AD%E5%8F%91%E9%80%81barrier.png" alt></p>
+<p><img lazyload src="/images/loading.svg" data-src="%E5%BD%93task%E6%8E%A5%E6%94%B6%E5%88%B0%E6%89%80%E6%9C%89%E5%88%86%E5%8C%BA%E7%9A%84checkpoint_barrier_%E4%BC%9A%E5%90%91%E5%89%8D%E7%BB%A7%E7%BB%AD%E5%8F%91%E9%80%81barrier.png" alt></p>
 <p>一旦所有的 checkpoint barrier 都发送完，task 开始处理之前缓存的数据 4 。</p>
-<p><img src="task%E5%90%91%E5%89%8D%E5%8F%91%E9%80%81%E5%AE%8Ccheckpoint_barrier%E4%B9%8B%E5%90%8E%E7%BB%A7%E7%BB%AD%E8%BF%9B%E8%A1%8C%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86.png" alt></p>
+<p><img lazyload src="/images/loading.svg" data-src="task%E5%90%91%E5%89%8D%E5%8F%91%E9%80%81%E5%AE%8Ccheckpoint_barrier%E4%B9%8B%E5%90%8E%E7%BB%A7%E7%BB%AD%E8%BF%9B%E8%A1%8C%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86.png" alt></p>
 <p>最终，checkpoint barriers 流到了 sink task。当 sink task 接收到 checkpint barrier ，会等待 barrier alignment，做 checkpoint ，并向 JobManager 汇报。JobManager 接收到所有 tasks 的 acknowledgement 之后，便标识本次 checkpoint 成功。</p>
-<p><img src="sinks%E6%8E%A5%E6%94%B6%E5%88%B0checkpoint_barrier%E4%B9%8B%E5%90%8E%E4%BC%9A%E5%90%91JobManager%E5%8F%91%E9%80%81%E8%AE%A4%E8%AF%81_%E4%B8%80%E6%AC%A1checkpoint%E5%AE%8C%E6%88%90.png" alt></p>
+<p><img lazyload src="/images/loading.svg" data-src="sinks%E6%8E%A5%E6%94%B6%E5%88%B0checkpoint_barrier%E4%B9%8B%E5%90%8E%E4%BC%9A%E5%90%91JobManager%E5%8F%91%E9%80%81%E8%AE%A4%E8%AF%81_%E4%B8%80%E6%AC%A1checkpoint%E5%AE%8C%E6%88%90.png" alt></p>
 <h3 id="Checkpoint的性能影响"><a href="#Checkpoint的性能影响" class="headerlink" title="Checkpoint的性能影响"></a>Checkpoint的性能影响</h3><h3 id="Savepoints"><a href="#Savepoints" class="headerlink" title="Savepoints"></a>Savepoints</h3><p>Flink的恢复算法是基于状态的 checkpoints ，checkpoints 定期产生并根据一定的策略丢弃，一般用于发生故障时应用重启。但是除此之外，持久化快照还有其他用途。<br>Flink中最有价值之一且独一无二的特性就是 savepoints ，savepoints 和 checkpoints 使用相同的算法，因此是在 checkpoints 的基础上额外添加了一些 metadata 。<br>Flink不会自动生成 savepoints ，用户必须额外明确触发 savepoints 的生成。Flink 也不会自动清除 savepoints 。</p>
 <h4 id="使用Savepoints"><a href="#使用Savepoints" class="headerlink" title="使用Savepoints"></a>使用Savepoints</h4><p>给定一个应用和一个与其兼容的 savepoint，可以从此 savepoint 启动应用。根据 savepoint 中记录的 state 初始化应用的 state。这整个操作类似于应用故障时从 checkpoint 恢复的过程，但是应用故障仅仅是其中一种场景，限制在相同的集群上使用相同的配置重启相同的应用。而从 savepoint 启动应用就没有那么多限制了，可以做如下操作：</p>
 <ol>
@@ -575,22 +637,22 @@
 <h4 id="从Savepoint启动application"><a href="#从Savepoint启动application" class="headerlink" title="从Savepoint启动application"></a>从Savepoint启动application</h4><p>Flink 是如何从 savepoint 中初始化 state 的？</p>
 <p>一个 application 由多个 operators 组成，一个 operator 可以定义一个或多个 keyed states 和 operator states，Opeators 被多个 Operator tasks 并发执行。因此一个典型的应用下，状态是分布到不同的 Operator tasks，在不同的 TaskManager 进程中执行的。</p>
 <p>以下 application 有3个Operators，OP-1 只有Operator state（OS-1），OP-2 有2个keyed states (KS-1, KS-2)。</p>
-<p><img src="Taking_a_savepoint_from_an_application_and_restoring_an_application_from_a_savepoint.png" alt></p>
-<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><h3 id="说说Flink中的checkpoint？从checkpoint的恢复流程？"><a href="#说说Flink中的checkpoint？从checkpoint的恢复流程？" class="headerlink" title="说说Flink中的checkpoint？从checkpoint的恢复流程？"></a>说说Flink中的checkpoint？从checkpoint的恢复流程？</h3><p><a href="https://ververica.cn/developers/flink-exactly-once-and-at-least-once/" target="_blank" rel="noopener">一文搞懂Flink的Exactly Once和At Least Once</a></p>
-<p><a href="https://ververica.cn/developers/flick-checkpoint-troubleshooting-practical-guide/" target="_blank" rel="noopener">Flink Checkpoint问题排查实用指南</a></p>
-<p><a href="https://ververica.cn/developers/manage-large-state-incremental-checkpoint/" target="_blank" rel="noopener">Apache Flink管理大型状态之增量Checkpoint详解</a></p>
-<p><a href="https://ververica.cn/developers/exactly-once-2/" target="_blank" rel="noopener">谈谈流计算中的Exactly Once特性</a></p>
-<h3 id="Flink中的反压是怎么实现的？"><a href="#Flink中的反压是怎么实现的？" class="headerlink" title="Flink中的反压是怎么实现的？"></a>Flink中的反压是怎么实现的？</h3><p><a href="https://ververica.cn/developers/how-to-analyze-and-deal-with-flink-back-pressure/" target="_blank" rel="noopener">如何分析及处理Flink反压</a></p>
+<p><img lazyload src="/images/loading.svg" data-src="Taking_a_savepoint_from_an_application_and_restoring_an_application_from_a_savepoint.png" alt></p>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><h3 id="说说Flink中的checkpoint？从checkpoint的恢复流程？"><a href="#说说Flink中的checkpoint？从checkpoint的恢复流程？" class="headerlink" title="说说Flink中的checkpoint？从checkpoint的恢复流程？"></a>说说Flink中的checkpoint？从checkpoint的恢复流程？</h3><p><a class="link" href="https://ververica.cn/developers/flink-exactly-once-and-at-least-once/" target="_blank" rel="noopener">一文搞懂Flink的Exactly Once和At Least Once <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p><a class="link" href="https://ververica.cn/developers/flick-checkpoint-troubleshooting-practical-guide/" target="_blank" rel="noopener">Flink Checkpoint问题排查实用指南 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p><a class="link" href="https://ververica.cn/developers/manage-large-state-incremental-checkpoint/" target="_blank" rel="noopener">Apache Flink管理大型状态之增量Checkpoint详解 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p><a class="link" href="https://ververica.cn/developers/exactly-once-2/" target="_blank" rel="noopener">谈谈流计算中的Exactly Once特性 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<h3 id="Flink中的反压是怎么实现的？"><a href="#Flink中的反压是怎么实现的？" class="headerlink" title="Flink中的反压是怎么实现的？"></a>Flink中的反压是怎么实现的？</h3><p><a class="link" href="https://ververica.cn/developers/how-to-analyze-and-deal-with-flink-back-pressure/" target="_blank" rel="noopener">如何分析及处理Flink反压 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
 <p>共享内存</p>
-<h3 id="Flink网络协议栈"><a href="#Flink网络协议栈" class="headerlink" title="Flink网络协议栈"></a>Flink网络协议栈</h3><p><a href="https://ververica.cn/developers/flink-network-protocol/" target="_blank" rel="noopener">深入了解Flink的网络协议栈</a></p>
-<h3 id="Flink中State管理"><a href="#Flink中State管理" class="headerlink" title="Flink中State管理"></a>Flink中State管理</h3><p><a href="https://ververica.cn/developers/state-processor-api/" target="_blank" rel="noopener">State Processor API：如何读取，写入和修改Flink应用程序的状态</a></p>
-<p><img src="%E7%AE%97%E5%AD%90%E8%8A%82%E7%82%B9%E7%9A%84state%E9%80%BB%E8%BE%91%E5%9B%BE.png" alt></p>
-<p><img src="%E7%AE%97%E5%AD%90%E8%8A%82%E7%82%B9%E7%9A%84state%E7%B1%BB%E6%AF%94%E6%88%90%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A1%A8.png" alt></p>
+<h3 id="Flink网络协议栈"><a href="#Flink网络协议栈" class="headerlink" title="Flink网络协议栈"></a>Flink网络协议栈</h3><p><a class="link" href="https://ververica.cn/developers/flink-network-protocol/" target="_blank" rel="noopener">深入了解Flink的网络协议栈 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<h3 id="Flink中State管理"><a href="#Flink中State管理" class="headerlink" title="Flink中State管理"></a>Flink中State管理</h3><p><a class="link" href="https://ververica.cn/developers/state-processor-api/" target="_blank" rel="noopener">State Processor API：如何读取，写入和修改Flink应用程序的状态 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p><img lazyload src="/images/loading.svg" data-src="%E7%AE%97%E5%AD%90%E8%8A%82%E7%82%B9%E7%9A%84state%E9%80%BB%E8%BE%91%E5%9B%BE.png" alt></p>
+<p><img lazyload src="/images/loading.svg" data-src="%E7%AE%97%E5%AD%90%E8%8A%82%E7%82%B9%E7%9A%84state%E7%B1%BB%E6%AF%94%E6%88%90%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A1%A8.png" alt></p>
 <p>先在DataSet API上构建该功能，并将其对DataSet API的依赖性降到最低。</p>
-<p><a href="https://ververica.cn/developers/is-it-possible-for-flink-state-to-replace-the-database/" target="_blank" rel="noopener">Flink state有可能代替数据库吗？</a></p>
-<h3 id="Flink的内存管理"><a href="#Flink的内存管理" class="headerlink" title="Flink的内存管理"></a>Flink的内存管理</h3><p><a href="https://ververica.cn/developers/flink-principle-memory-management/" target="_blank" rel="noopener">Flink原理与实现：内存管理</a></p>
-<h3 id="Flink中join的实现"><a href="#Flink中join的实现" class="headerlink" title="Flink中join的实现"></a>Flink中join的实现</h3><p><a href="https://ververica.cn/developers/how-does-flink-sql-realize-data-flow-join/" target="_blank" rel="noopener">Flink SQL如何实现数据流的Join？</a></p>
-<p><a href="https://ververica.cn/developers/flink-datastream-associated-dimension-table-practice/" target="_blank" rel="noopener">Flink DataStream关联维表实战</a></p>
+<p><a class="link" href="https://ververica.cn/developers/is-it-possible-for-flink-state-to-replace-the-database/" target="_blank" rel="noopener">Flink state有可能代替数据库吗？ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<h3 id="Flink的内存管理"><a href="#Flink的内存管理" class="headerlink" title="Flink的内存管理"></a>Flink的内存管理</h3><p><a class="link" href="https://ververica.cn/developers/flink-principle-memory-management/" target="_blank" rel="noopener">Flink原理与实现：内存管理 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<h3 id="Flink中join的实现"><a href="#Flink中join的实现" class="headerlink" title="Flink中join的实现"></a>Flink中join的实现</h3><p><a class="link" href="https://ververica.cn/developers/how-does-flink-sql-realize-data-flow-join/" target="_blank" rel="noopener">Flink SQL如何实现数据流的Join？ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p><a class="link" href="https://ververica.cn/developers/flink-datastream-associated-dimension-table-practice/" target="_blank" rel="noopener">Flink DataStream关联维表实战 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
 <h4 id="离线-Batch-SQL-join-的实现"><a href="#离线-Batch-SQL-join-的实现" class="headerlink" title="离线 Batch SQL join 的实现"></a>离线 Batch SQL join 的实现</h4><p>传统的离线 Batch SQL （面向有界数据集的 SQL）有三种基础的实现方式，分别是 Nested-loop Join、Sort-Merge Join 和 Hash Join。</p>
 <p>Nested-loop Join 最为简单直接，将两个数据集加载到内存，并用内嵌遍历的方式来逐个比较两个数据集内的元素是否符合 Join 条件。Nested-loop Join 虽然时间效率以及空间效率都是最低的，但胜在比较灵活适用范围广，因此其变体 BNL 常被传统数据库用作为 Join 的默认基础选项。</p>
 <p>Sort-Merge Join 顾名思义，分为两个 Sort 和 Merge 阶段。首先将两个数据集进行分别排序，然后对两个有序数据集分别进行遍历和匹配，类似于归并排序的合并。值得注意的是，Sort-Merge 只适用于 Equi-Join（Join 条件均使用等于作为比较算子）。Sort-Merge Join 要求对两个数据集进行排序，成本很高，通常作为输入本就是有序数据集的情况下的优化方案。</p>
@@ -598,9 +660,9 @@
 <p>实时领域 Streaming SQL 中的 Join 与离线 Batch SQL 中的 Join 最大不同点在于无法缓存完整数据集，而是要给缓存设定基于时间的清理条件以限制 Join 涉及的数据范围。根据清理策略的不同，Flink SQL 分别提供了 Regular Join、Time-Windowed Join 和 Temporal Table Join 来应对不同业务场景。</p>
 <h4 id="实时Streaming-SQL-join"><a href="#实时Streaming-SQL-join" class="headerlink" title="实时Streaming SQL join"></a>实时Streaming SQL join</h4><p>相对于离线的 Join，实时 Streaming SQL（面向无界数据集的 SQL）无法缓存所有数据，因此 Sort-Merge Join 要求的对数据集进行排序基本是无法做到的，而 Nested-loop Join 和 Hash Join 经过一定的改良则可以满足实时 SQL 的要求。</p>
 <p>Table A 有 1、42 两个元素，Table B 有 42 一个元素，所以此时的 Join 结果会输出 42：</p>
-<p><img src="join_in_continuous_query_1.png" alt></p>
-<p>接着 Table B 依次接受到三个新的元素，分别是 7、3、1。因为 1 匹配到 Table A 的元素，因此结果表再输出一个元素 1：<br><img src="join_in_continuous_query_2.png" alt></p>
-<p>随后 Table A 出现新的输入 2、3、6，3 匹配到 Table B 的元素，因此再输出 3 到结果表。<br><img src="join_in_continuous_query_3.png" alt></p>
+<p><img lazyload src="/images/loading.svg" data-src="join_in_continuous_query_1.png" alt></p>
+<p>接着 Table B 依次接受到三个新的元素，分别是 7、3、1。因为 1 匹配到 Table A 的元素，因此结果表再输出一个元素 1：<br><img lazyload src="/images/loading.svg" data-src="join_in_continuous_query_2.png" alt></p>
+<p>随后 Table A 出现新的输入 2、3、6，3 匹配到 Table B 的元素，因此再输出 3 到结果表。<br><img lazyload src="/images/loading.svg" data-src="join_in_continuous_query_3.png" alt></p>
 <p>可以看到在 Nested-Loop Join 中我们需要保存两个输入表的内容，而随着时间的增长 Table A 和 Table B 需要保存的历史数据无止境地增长，导致很不合理的内存磁盘资源占用，而且单个元素的匹配效率也会越来越低。类似的问题也存在于 Hash Join 中。</p>
 <h4 id="双流join的实现"><a href="#双流join的实现" class="headerlink" title="双流join的实现"></a>双流join的实现</h4><p>双流join与传统数据库表join的区别：</p>
 <ul>
@@ -611,39 +673,39 @@
 <p>数据Shuffle：<br>分布式流计算所有数据会进行Shuffle，怎么才能保障左右两边流的要JOIN的数据会在相同的节点进行处理呢？在双流JOIN的场景，我们会利用JOIN中ON的联接key进行partition，确保两个流相同的联接key会在同一个节点处理。</p>
 <p>数据的保存：<br>不论是INNER JOIN还是OUTER JOIN 都需要对左右两边的流的数据进行保存，JOIN算子会开辟左右两个State进行数据存储，左右两边的数据到来时候，进行如下操作：</p>
 <p>LeftEvent到来存储到LState，RightEvent到来的时候存储到RState；<br>LeftEvent会去RightState进行JOIN，并发出所有JOIN之后的Event到下游；<br>RightEvent会去LeftState进行JOIN，并发出所有JOIN之后的Event到下游。</p>
-<p><img src="%E5%8F%8C%E6%B5%81join%E4%B8%AD%E7%9A%84Lstate%E5%92%8CRstate%E5%AD%98%E5%82%A8.png" alt></p>
+<p><img lazyload src="/images/loading.svg" data-src="%E5%8F%8C%E6%B5%81join%E4%B8%AD%E7%9A%84Lstate%E5%92%8CRstate%E5%AD%98%E5%82%A8.png" alt></p>
 <h5 id="Flink-SQL的join"><a href="#Flink-SQL的join" class="headerlink" title="Flink SQL的join"></a>Flink SQL的join</h5><h6 id="Regular-join"><a href="#Regular-join" class="headerlink" title="Regular join"></a>Regular join</h6><p>Regular Join 是最为基础的没有缓存剔除策略的 Join。Regular Join 中两个表的输入和更新都会对全局可见，影响之后所有的 Join 结果。举例，在一个如下的 Join 查询里，Orders 表的新纪录会和 Product 表所有历史纪录以及未来的纪录进行匹配。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> Orders</span><br><span class="line"><span class="keyword">INNER</span> <span class="keyword">JOIN</span> Product</span><br><span class="line"><span class="keyword">ON</span> Orders.productId = Product.id</span><br></pre></td></tr></table></figure>
+<div class="highlight-container" data-rel="Sql"><figure class="iseeu highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> Orders</span><br><span class="line"><span class="keyword">INNER</span> <span class="keyword">JOIN</span> Product</span><br><span class="line"><span class="keyword">ON</span> Orders.productId = Product.id</span><br></pre></td></tr></table></figure></div>
 
 <p>因为历史数据不会被清理，所以 Regular Join 允许对输入表进行任意种类的更新操作（insert、update、delete）。然而因为资源问题 Regular Join 通常是不可持续的，一般只用做有界数据流的 Join。</p>
 <h6 id="Time-windowed-join"><a href="#Time-windowed-join" class="headerlink" title="Time-windowed join"></a>Time-windowed join</h6><p>Time-Windowed Join 利用窗口的给两个输入表设定一个 Join 的时间界限，超出时间范围的数据则对 JOIN 不可见并可以被清理掉。值得注意的是，这里涉及到的一个问题是时间的语义，时间可以是指计算发生的系统时间（即 Processing Time），也可以是指从数据本身的时间字段提取的 Event Time。如果是 Processing Time，Flink 根据系统时间自动划分 Join 的时间窗口并定时清理数据；如果是 Event Time，Flink 分配 Event Time 窗口并依据 Watermark 来清理数据。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> *</span><br><span class="line"><span class="keyword">FROM</span> </span><br><span class="line">    Orders o, </span><br><span class="line">    Shipments s</span><br><span class="line"><span class="keyword">WHERE</span> </span><br><span class="line">    o.id = s.orderId <span class="keyword">AND</span></span><br><span class="line">    s.shiptime <span class="keyword">BETWEEN</span> o.ordertime <span class="keyword">AND</span> o.ordertime + <span class="built_in">INTERVAL</span> <span class="string">'4'</span> <span class="keyword">HOUR</span></span><br></pre></td></tr></table></figure>
+<div class="highlight-container" data-rel="Sql"><figure class="iseeu highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> *</span><br><span class="line"><span class="keyword">FROM</span> </span><br><span class="line">    Orders o, </span><br><span class="line">    Shipments s</span><br><span class="line"><span class="keyword">WHERE</span> </span><br><span class="line">    o.id = s.orderId <span class="keyword">AND</span></span><br><span class="line">    s.shiptime <span class="keyword">BETWEEN</span> o.ordertime <span class="keyword">AND</span> o.ordertime + <span class="built_in">INTERVAL</span> <span class="string">'4'</span> <span class="keyword">HOUR</span></span><br></pre></td></tr></table></figure></div>
 
-<p>这个查询会为 Orders 表设置了 o.ordertime &gt; s.shiptime- INTERVAL ‘4’HOUR 的时间下界：<br><img src="Time-Windowed_Join%E7%9A%84%E6%97%B6%E9%97%B4%E4%B8%8B%E7%95%8C_Orders%E8%A1%A8.png" alt></p>
-<p>并为 Shipmenets 表设置了 s.shiptime &gt;= o.ordertime 的时间下界：<br><img src="Time-Windowed_Join%E7%9A%84%E6%97%B6%E9%97%B4%E4%B8%8B%E7%95%8C_Shipment%E8%A1%A8.png" alt></p>
+<p>这个查询会为 Orders 表设置了 o.ordertime &gt; s.shiptime- INTERVAL ‘4’HOUR 的时间下界：<br><img lazyload src="/images/loading.svg" data-src="Time-Windowed_Join%E7%9A%84%E6%97%B6%E9%97%B4%E4%B8%8B%E7%95%8C_Orders%E8%A1%A8.png" alt></p>
+<p>并为 Shipmenets 表设置了 s.shiptime &gt;= o.ordertime 的时间下界：<br><img lazyload src="/images/loading.svg" data-src="Time-Windowed_Join%E7%9A%84%E6%97%B6%E9%97%B4%E4%B8%8B%E7%95%8C_Shipment%E8%A1%A8.png" alt></p>
 <p>因此两个输入表都只需要缓存在时间下界以上的数据，将空间占用维持在合理的范围。</p>
 <h6 id="Temporal-Table-join"><a href="#Temporal-Table-join" class="headerlink" title="Temporal Table join"></a>Temporal Table join</h6><p>然 Timed-Windowed Join 解决了资源问题，但也限制了使用场景: Join 两个输入流都必须有时间下界，超过之后则不可访问。这对于很多 Join 维表的业务来说是不适用的，因为很多情况下维表并没有时间界限。针对这个问题，Flink 提供了 Temporal Table Join 来满足用户需求。</p>
 <p>Temporal Table Join 类似于 Hash Join，将输入分为 Build Table 和 Probe Table。前者一般是纬度表的 changelog，后者一般是业务数据流，典型情况下后者的数据量应该远大于前者。在 Temporal Table Join 中，Build Table 是一个基于 append-only 数据流的带时间版本的视图，所以又称为 Temporal Table。Temporal Table 要求定义一个主键和用于版本化的字段（通常就是 Event Time 时间字段），以反映记录内容在不同时间的内容。</p>
 <p>比如典型的一个例子是对商业订单金额进行汇率转换。假设有一个 Oders 流记录订单金额，需要和 RatesHistory 汇率流进行 Join。RatesHistory 代表不同货币转为日元的汇率，每当汇率有变化时就会有一条更新记录。</p>
-<p>我们将 RatesHistory 注册为一个名为 Rates 的 Temporal Table，设定主键为 currency，版本字段为 time：<br><img src="Temporal_Table_Content.png" alt></p>
-<p>此后给 Rates 指定时间版本，Rates 则会基于 RatesHistory 来计算符合时间版本的汇率转换内容：<br><img src="Temporable_Table_Join_Result.png" alt></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> </span><br><span class="line">    o.amount * r.rate</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">    Orders o,</span><br><span class="line">    <span class="keyword">LATERAL</span> <span class="keyword">Table</span>(Rates(o.time)) r</span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">    o.currency = r.currency</span><br></pre></td></tr></table></figure>
+<p>我们将 RatesHistory 注册为一个名为 Rates 的 Temporal Table，设定主键为 currency，版本字段为 time：<br><img lazyload src="/images/loading.svg" data-src="Temporal_Table_Content.png" alt></p>
+<p>此后给 Rates 指定时间版本，Rates 则会基于 RatesHistory 来计算符合时间版本的汇率转换内容：<br><img lazyload src="/images/loading.svg" data-src="Temporable_Table_Join_Result.png" alt></p>
+<div class="highlight-container" data-rel="Sql"><figure class="iseeu highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> </span><br><span class="line">    o.amount * r.rate</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">    Orders o,</span><br><span class="line">    <span class="keyword">LATERAL</span> <span class="keyword">Table</span>(Rates(o.time)) r</span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">    o.currency = r.currency</span><br></pre></td></tr></table></figure></div>
 
 <p>值得注意的是，不同于在 Regular Join 和 Time-Windowed Join 中两个表是平等的，任意一个表的新记录都可以与另一表的历史记录进行匹配，在 Temporal Table Join 中，Temoparal Table 的更新对另一表在该时间节点以前的记录是不可见的。这意味着我们只需要保存 Build Side 的记录直到 Watermark 超过记录的版本字段。因为 Probe Side 的输入理论上不会再有早于 Watermark 的记录，这些版本的数据可以安全地被清理掉。</p>
 <h5 id="inner-join的实现的示例"><a href="#inner-join的实现的示例" class="headerlink" title="inner join的实现的示例"></a>inner join的实现的示例</h5><p>最直接的两个进行INNER JOIN，比如查询产品库存和订单数量，库存变化事件流和订单事件流进行INNER JOIN，JION条件是产品ID。</p>
-<p><img src="inner_join%E7%9A%84%E5%AE%9E%E7%8E%B0%E7%A4%BA%E4%BE%8B%E5%9B%BE.png" alt></p>
+<p><img lazyload src="/images/loading.svg" data-src="inner_join%E7%9A%84%E5%AE%9E%E7%8E%B0%E7%A4%BA%E4%BE%8B%E5%9B%BE.png" alt></p>
 <p>双流JOIN两边事件都会存储到State里面，如上，事件流按照标号先后流入到join节点，我们假设右边流比较快，先流入了3个事件，3个事件会存储到state中，但因为左边还没有数据，所有右边前3个事件流入时候，没有join结果流出，当左边第一个事件序号为4的流入时候，先存储左边state，再与右边已经流入的3个事件进行join，join的结果如图 三行结果会流入到下游节点sink。当第5号事件流入时候，也会和左边第4号事件进行join，流出一条jion结果到下游节点。这里关于INNER JOIN的语义和大家强调两点：</p>
 <p>INNER JOIN只有符合JOIN条件时候才会有JOIN结果流出到下游，比如右边最先来的1，2，3个事件，流入时候没有任何输出，因为左边还没有可以JOIN的事件；<br>INNER JOIN两边的数据不论如何乱序，都能够保证和传统数据库语义一致，因为我们保存了左右两个流的所有事件到state中。</p>
-<h5 id="left-outer-join的实现"><a href="#left-outer-join的实现" class="headerlink" title="left outer join的实现"></a>left outer join的实现</h5><p>LEFT OUTER JOIN 可以简写 LEFT JOIN，语义上和INNER JOIN的区别是不论右流是否有JOIN的事件，左流的事件都需要流入下游节点，但右流没有可以JION的事件时候，右边的事件补NULL。同样我们以最简单的场景说明LEFT JOIN的实现，比如查询产品库存和订单数量，库存变化事件流和订单事件流进行LEFT JOIN，JION条件是产品ID。<br><img src="left_outer_join%E5%AE%9E%E7%8E%B0%E7%A4%BA%E4%BE%8B%E5%9B%BE.png" alt></p>
-<p><img src="left_outer_join%E5%AE%9E%E7%8E%B0%E7%A4%BA%E4%BE%8B2.png" alt><br>上图主要关注点是当左边先流入1，2事件时候，右边没有可以join的事件时候会向下游发送左边事件并补NULL向下游发出，当右边第一个相同的Join key到来的时候会将左边先来的事件发出的带有NULL的事件撤回（对应上面command的-记录，+代表正向记录，-代表撤回记录）。这里强调三点：</p>
+<h5 id="left-outer-join的实现"><a href="#left-outer-join的实现" class="headerlink" title="left outer join的实现"></a>left outer join的实现</h5><p>LEFT OUTER JOIN 可以简写 LEFT JOIN，语义上和INNER JOIN的区别是不论右流是否有JOIN的事件，左流的事件都需要流入下游节点，但右流没有可以JION的事件时候，右边的事件补NULL。同样我们以最简单的场景说明LEFT JOIN的实现，比如查询产品库存和订单数量，库存变化事件流和订单事件流进行LEFT JOIN，JION条件是产品ID。<br><img lazyload src="/images/loading.svg" data-src="left_outer_join%E5%AE%9E%E7%8E%B0%E7%A4%BA%E4%BE%8B%E5%9B%BE.png" alt></p>
+<p><img lazyload src="/images/loading.svg" data-src="left_outer_join%E5%AE%9E%E7%8E%B0%E7%A4%BA%E4%BE%8B2.png" alt><br>上图主要关注点是当左边先流入1，2事件时候，右边没有可以join的事件时候会向下游发送左边事件并补NULL向下游发出，当右边第一个相同的Join key到来的时候会将左边先来的事件发出的带有NULL的事件撤回（对应上面command的-记录，+代表正向记录，-代表撤回记录）。这里强调三点：</p>
 <p>左流的事件当右边没有JOIN的事件时候，将右边事件列补NULL后流向下游；* 当右边事件流入发现左边已经有可以JOIN的key的时候，并且是第一个可以JOIN上的右边事件（比如上面的3事件是第一个可以和左边JOIN key P001进行JOIN的事件）需要撤回左边下发的NULL记录，并下发JOIN完整（带有右边事件列）的事件到下游。后续来的4，5，6，8等待后续P001的事件是不会产生撤回记录的。<br>在Apache Flink系统内部事件类型分为正向事件标记为“+”和撤回事件标记为“-”。</p>
 <p>多级LEFT JOIN会让流上的数据不断膨胀，造成JOIN节点性能较慢，JOIN之后的下游节点边堵(数据量大导致，非热点)。</p>
 <h5 id="双流join的state数据结构"><a href="#双流join的state数据结构" class="headerlink" title="双流join的state数据结构"></a>双流join的state数据结构</h5><p>数据结构：<br>Map&lt;JoinKey,Map&lt;rowDara,count&gt;&gt;</p>
 <p>第一级MAP的key是Join key，比如示例中的P001， value是流上面的所有完整事件;<br>第二级MAP的key是行数据，比如示例中的P001, 2，value是相同事件值的个数。</p>
 <p>记录重复记录 - 利用第二级MAP的value记录重复记录的个数，这样大大减少存储和读取<br>正向记录和撤回记录 - 利用第二级MAP的value记录，当count=0时候删除该元素<br>判断右边是否产生撤回记录 - 根据第一级MAP的value的size来判断是否产生撤回，只有size由0变成1的时候（第一条和左可以JOIN的事件）才产生撤回。</p>
-<h5 id="双流join的应用优化"><a href="#双流join的应用优化" class="headerlink" title="双流join的应用优化"></a>双流join的应用优化</h5><h6 id="NULL造成的热点"><a href="#NULL造成的热点" class="headerlink" title="NULL造成的热点"></a>NULL造成的热点</h6><p>假设在实际业务中有这样的特点，大部分时候当A事件流入的时候，B还没有可以JOIN的数据，但是B来的时候，A已经有可以JOIN的数据了，这特点就会导致，A LEFT JOIN B 会产生大量的 (A, NULL),其中包括B里面的 cCol 列也是NULL，这时候当与C进行LEFT JOIN的时候，首先Blink内部会利用cCol对AB的JOIN产生的事件流进行Shuffle， cCol是NULL进而是下游节点大量的NULL事件流入，造成热点。<br><img src="A_B_C%E8%BF%9E%E7%BB%ADjoin%E4%BA%A7%E7%94%9FNULL%E7%83%AD%E7%82%B9.png" alt></p>
-<p>通过改变join的先后顺序，来保证A LEFT JOIN B后不会产生NULL热点问题：<br><img src="%E6%94%B9%E5%8F%98JOIN%E7%9A%84%E5%85%88%E5%90%8E%E9%A1%BA%E5%BA%8F.png" alt></p>
-<p>join reorder之后的结果，可以一定程度消除state存储的性能瓶颈：<br><img src="join_reorder%E4%B9%8B%E5%90%8E%E7%9A%84%E7%BB%93%E6%9E%9C.png" alt></p>
+<h5 id="双流join的应用优化"><a href="#双流join的应用优化" class="headerlink" title="双流join的应用优化"></a>双流join的应用优化</h5><h6 id="NULL造成的热点"><a href="#NULL造成的热点" class="headerlink" title="NULL造成的热点"></a>NULL造成的热点</h6><p>假设在实际业务中有这样的特点，大部分时候当A事件流入的时候，B还没有可以JOIN的数据，但是B来的时候，A已经有可以JOIN的数据了，这特点就会导致，A LEFT JOIN B 会产生大量的 (A, NULL),其中包括B里面的 cCol 列也是NULL，这时候当与C进行LEFT JOIN的时候，首先Blink内部会利用cCol对AB的JOIN产生的事件流进行Shuffle， cCol是NULL进而是下游节点大量的NULL事件流入，造成热点。<br><img lazyload src="/images/loading.svg" data-src="A_B_C%E8%BF%9E%E7%BB%ADjoin%E4%BA%A7%E7%94%9FNULL%E7%83%AD%E7%82%B9.png" alt></p>
+<p>通过改变join的先后顺序，来保证A LEFT JOIN B后不会产生NULL热点问题：<br><img lazyload src="/images/loading.svg" data-src="%E6%94%B9%E5%8F%98JOIN%E7%9A%84%E5%85%88%E5%90%8E%E9%A1%BA%E5%BA%8F.png" alt></p>
+<p>join reorder之后的结果，可以一定程度消除state存储的性能瓶颈：<br><img lazyload src="/images/loading.svg" data-src="join_reorder%E4%B9%8B%E5%90%8E%E7%9A%84%E7%BB%93%E6%9E%9C.png" alt></p>
 
       
     </div>
@@ -746,6 +808,8 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
+              <img class="site-author-image" itemprop="image" src="/images/2.JPG" alt="miaowenting">
+            
               <p class="site-author-name" itemprop="name">miaowenting</p>
               <p class="site-description motion-element" itemprop="description"></p>
           </div>
@@ -797,11 +861,39 @@
           
 
           
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/miaowenting" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
 
           
           
 
           
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://ci.apache.org/projects/flink/flink-docs-stable/" title="flink文档" target="_blank">flink文档</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href title="flink社区" target="_blank">flink社区</a>
+                  </li>
+                
+              </ul>
+            </div>
           
 
           
@@ -857,7 +949,7 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
 
 
 
@@ -1004,6 +1096,323 @@
 
 
   
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
 
 
 

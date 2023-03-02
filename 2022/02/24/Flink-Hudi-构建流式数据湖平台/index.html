@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -89,27 +89,27 @@
 <meta property="og:site_name" content="Matty&#39;s Blog">
 <meta property="og:description" content="Flink 和 Hudi 的集成使用。在查询时确认数据的 Schema ，湖存储成本低、灵活性高，非常适用于各种查询场景的中心化存储；基于云服务兴起及成熟的对象存储，在云上构建存算分离的架构；通过快照隔离，实现基础的 ACID 事务；对接不同的查询引擎，实现各自的查询分析场景，实现湖仓一体的架构；">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2022/02/24/Flink-Hudi-构建流式数据湖平台/%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90_Batch_Mode.png">
-<meta property="og:image" content="http://yoursite.com/2022/02/24/Flink-Hudi-构建流式数据湖平台/%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90_Streaming_Mode.png">
-<meta property="og:image" content="http://yoursite.com/2022/02/24/Flink-Hudi-构建流式数据湖平台/%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90_Incremental_Mode.png">
-<meta property="og:image" content="http://yoursite.com/2022/02/24/Flink-Hudi-构建流式数据湖平台/%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90_%E6%89%B9%E6%B5%81%E4%B8%80%E4%BD%93%E6%A8%A1%E5%BC%8F.png">
-<meta property="og:image" content="http://yoursite.com/2022/02/24/Flink-Hudi-构建流式数据湖平台/Timeline%E7%A4%BA%E6%84%8F%E5%9B%BE.png">
-<meta property="og:image" content="http://yoursite.com/2022/02/24/Flink-Hudi-构建流式数据湖平台/Timeline%E5%AE%9E%E4%BE%8B%E7%A4%BA%E6%84%8F%E5%9B%BE.png">
-<meta property="og:image" content="http://yoursite.com/2022/02/24/Flink-Hudi-构建流式数据湖平台/Hudi%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84%E7%A4%BA%E6%84%8F%E5%9B%BE.png">
-<meta property="og:image" content="http://yoursite.com/2022/02/24/Flink-Hudi-构建流式数据湖平台/Copy_On_Write_commit_%E7%A4%BA%E6%84%8F%E5%9B%BE.png">
-<meta property="og:image" content="http://yoursite.com/2022/02/24/Flink-Hudi-构建流式数据湖平台/Merge_On_Read_commit_%E7%A4%BA%E6%84%8F%E5%9B%BE.png">
-<meta property="og:image" content="http://yoursite.com/2022/02/24/Flink-Hudi-构建流式数据湖平台/Flink_Writer_%E5%86%99%E5%85%A5%E6%B5%81%E7%A8%8B.png">
-<meta property="og:image" content="http://yoursite.com/2022/02/24/Flink-Hudi-构建流式数据湖平台/Hudi_On_Flink%E5%86%99%E5%85%A5%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95.png">
-<meta property="og:image" content="http://yoursite.com/2022/02/24/Flink-Hudi-构建流式数据湖平台/Write_State_Machine_%E5%88%9D%E5%A7%8B%E5%8C%96%E5%90%AF%E5%8A%A8.png">
-<meta property="og:image" content="http://yoursite.com/2022/02/24/Flink-Hudi-构建流式数据湖平台/Write_State_Machine_%E8%BE%BE%E5%88%B0%E5%86%85%E5%AD%98%E9%98%88%E5%80%BC%E5%88%B7%E7%9B%98.png">
-<meta property="og:image" content="http://yoursite.com/2022/02/24/Flink-Hudi-构建流式数据湖平台/Write_State_Machine_Checkpoint_barrier%E5%88%B0%E8%BE%BE%E4%B9%8B%E6%97%B6%E5%88%B7%E7%9B%98.png">
-<meta property="og:image" content="http://yoursite.com/2022/02/24/Flink-Hudi-构建流式数据湖平台/Write_State_Machine_%E9%81%87%E5%88%B0%E9%97%AE%E9%A2%98%E6%97%B6%E5%8F%96%E6%B6%88%E5%88%B7%E7%9B%98.png">
-<meta property="og:image" content="http://yoursite.com/2022/02/24/Flink-Hudi-构建流式数据湖平台/%E5%8F%8C%E6%B5%81join%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF.png">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
 <meta property="og:updated_time" content="2023-03-02T08:55:40.749Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Flink-Hudi-构建流式数据湖平台">
 <meta name="twitter:description" content="Flink 和 Hudi 的集成使用。在查询时确认数据的 Schema ，湖存储成本低、灵活性高，非常适用于各种查询场景的中心化存储；基于云服务兴起及成熟的对象存储，在云上构建存算分离的架构；通过快照隔离，实现基础的 ACID 事务；对接不同的查询引擎，实现各自的查询分析场景，实现湖仓一体的架构；">
-<meta name="twitter:image" content="http://yoursite.com/2022/02/24/Flink-Hudi-构建流式数据湖平台/%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90_Batch_Mode.png">
+<meta name="twitter:image" content="http://yoursite.com/images/loading.svg">
 
 
 
@@ -117,7 +117,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Mist',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -210,6 +210,36 @@
         </li>
       
         
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
@@ -221,9 +251,41 @@
       
 
       
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
     </ul>
   
 
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
   
 </nav>
 
@@ -257,7 +319,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="miaowenting">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/2.JPG">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -369,24 +431,24 @@
 <h2 id="数据集成场景"><a href="#数据集成场景" class="headerlink" title="数据集成场景"></a>数据集成场景</h2><ul>
 <li>Batch Mode</li>
 </ul>
-<p><img src="%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90_Batch_Mode.png" alt></p>
+<p><img lazyload src="/images/loading.svg" data-src="%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90_Batch_Mode.png" alt></p>
 <ul>
 <li>Streaming Mode</li>
 </ul>
-<p><img src="%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90_Streaming_Mode.png" alt></p>
+<p><img lazyload src="/images/loading.svg" data-src="%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90_Streaming_Mode.png" alt></p>
 <ul>
 <li>Incremental Mode</li>
 </ul>
-<p><img src="%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90_Incremental_Mode.png" alt></p>
+<p><img lazyload src="/images/loading.svg" data-src="%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90_Incremental_Mode.png" alt></p>
 <ul>
 <li>批流一体解决方案</li>
 </ul>
-<p><img src="%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90_%E6%89%B9%E6%B5%81%E4%B8%80%E4%BD%93%E6%A8%A1%E5%BC%8F.png" alt></p>
+<p><img lazyload src="/images/loading.svg" data-src="%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90_%E6%89%B9%E6%B5%81%E4%B8%80%E4%BD%93%E6%A8%A1%E5%BC%8F.png" alt></p>
 <p>可以看出，借助 Flink 引擎的批流统一，将增量模式合并到流式模式中，摆脱对 Spark 的依赖，数据集成平台可以逐步实现计算引擎层的批流统一，同时实现批式、流式、增量三种数据集成场景。</p>
 <p>在增量模式上，提供和流模式相当的数据延迟，赋予用户近实时分析的能力，进一步提高效率和降低计算成本：<br>流处理管道面向行处理提供秒级处理延迟，增量管道中面向列处理应该也提供相同的延迟，支持高效的 upsert 和查询能力。</p>
 <h2 id="基础概念"><a href="#基础概念" class="headerlink" title="基础概念"></a>基础概念</h2><p>Hudi 是 Hadoop Updates and Incrementals 的简写，是由 Uber 开发并开源的 Data Lakes 解决方案。<br>它的设计目标是基于 Hadoop 兼容的文件系统（如 HDFS、S3 等），重度依赖 Spark 的数据处理能力来实现增量处理和丰富的查询能力。<br>Hudi 可以作为 Source、Sink ，它把数据存储到分布式文件系统（如 HDFS）中。<br>Hudi 有自己的数据表，从而具备将 Hudi 的 Bundle 整合进 Hive、Spark、Presto 等这类引擎中，<br>使得这些引擎可以查询 Hudi 表数据，从而具备 Hudi 所提供的 Snapshot Query 、Incremental Query 、Read Optimized Query 的能力。</p>
 <h3 id="Timeline"><a href="#Timeline" class="headerlink" title="Timeline"></a>Timeline</h3><p>Hudi 内部对每个表维护了一个 Timeline ，由一组作用在表上的 Instant 对象组成。Instant 表示在某个时间点对表进行操作达到某一个状态的表示，包含3部分内容：</p>
-<p><img src="Timeline%E7%A4%BA%E6%84%8F%E5%9B%BE.png" alt></p>
+<p><img lazyload src="/images/loading.svg" data-src="Timeline%E7%A4%BA%E6%84%8F%E5%9B%BE.png" alt></p>
 <ol>
 <li>Instant Action ： 对 Hudi 表的执行操作类型</li>
 </ol>
@@ -409,10 +471,10 @@
 <li>INFLIGHT ：当前正在执行 </li>
 <li>COMPLETED ：操作执行完成</li>
 </ul>
-<p><img src="Timeline%E5%AE%9E%E4%BE%8B%E7%A4%BA%E6%84%8F%E5%9B%BE.png" alt></p>
+<p><img lazyload src="/images/loading.svg" data-src="Timeline%E5%AE%9E%E4%BE%8B%E7%A4%BA%E6%84%8F%E5%9B%BE.png" alt></p>
 <p>上图为官网给出的例子，展示了 Hudi 表上 10:00 至 12:00 之间发生的 upserts ，大约每5分钟一次 ，Hudi Timeline 会记录 COMMIT 元数据，以及在后台进行 CLEANING/COMPACTION 。</p>
 <p>从数据生成到最终到达 Hudi 系统，可能存在延迟，如图中的 07:00、08:00、09:00 生成的数据，数据到达大约延迟了 3、2、1 小时，最终生成 COMIMIT 的时间才是 upsert 的时间。<br>对于数据到达时间（Arrival Time）和事件时间（Event Time）相关的数据延迟性（Latency）和完整性（Completeness）的权衡，Hudi 可以将数据 upsert 到更早时间的 buckets 或 folders 下。<br>通过使用 Timeline 管理，当增量查询 10:00 之后的最新数据时，可以高效的找到 10:00 之后发生过更新的文件，而不必根据延迟时间再去扫描更早时间的文件，比如这里，就不需要扫描 07:00、08:00、09:00 这些时刻对应的文件。</p>
-<h3 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h3><p><img src="Hudi%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84%E7%A4%BA%E6%84%8F%E5%9B%BE.png" alt></p>
+<h3 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h3><p><img lazyload src="/images/loading.svg" data-src="Hudi%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84%E7%A4%BA%E6%84%8F%E5%9B%BE.png" alt></p>
 <p>Hudi 采用 MVCC 设计，当执行 COMPACTION 操作时，会合并日志文件和 Base 文件，生成新的文件分片。<br>CLEAN 操作会清理掉不用的文件分片，释放存储空间。</p>
 <h3 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h3><p>Hudi 会通过记录 key 与分区 path 组成 Hoodie Key ，即 Record Key + Partition Path ， 通过将 Hoodie Key 映射到 file_group/file_id 。<br>一旦记录的第一个版本被写入文件中，对应的 Hoodie Key 就不会再改变了。</p>
 <p>Hudi 提供多种索引来适配不同场景，需要根据具体的数据分布进行取舍，从而达到最佳的写入和查询效率。</p>
@@ -436,49 +498,49 @@
 </li>
 </ol>
 <h3 id="Hudi-表类型"><a href="#Hudi-表类型" class="headerlink" title="Hudi 表类型"></a>Hudi 表类型</h3><h4 id="Copy-On-Write"><a href="#Copy-On-Write" class="headerlink" title="Copy On Write"></a>Copy On Write</h4><p>使用专门的列式文件格式存储数据，例如 parquet 格式，更新时保存多版本，并且在写的过程中通过异步的 Merge 来实现重写文件。Copy On Write 表只包含列式格式的 Base 文件，每次执行 COMMIT 操作会生成新版本的 Base 文件，最终执行 COMPACTION 操作时还是会生成列式格式的 Base 文件。所以，Copy On Write 表存在写放大的问题。</p>
-<p><img src="Copy_On_Write_commit_%E7%A4%BA%E6%84%8F%E5%9B%BE.png" alt></p>
+<p><img lazyload src="/images/loading.svg" data-src="Copy_On_Write_commit_%E7%A4%BA%E6%84%8F%E5%9B%BE.png" alt></p>
 <p>上图为官网给出的例子：</p>
 <p>在写入数据时，对现有文件组的 UPDATE 操作会为该文件组生成一个新的文件分片，并标记提交时间。<br>INSERT 操作会分配一个新的文件组，并为该文件组写入其第一个文件分片。</p>
 <p>写入的过程中也可以进行查询（例如：<code>select count(*)</code>），如果查询 COMMIT 为 10:10 之前的数据，<br>会首先检查最新提交的时间线，过滤出每个文件组中除了最新文件分片以外的所有文件分片，即把文件 ID 为 1、2、3 且版本为 10:05 的文件分片查询出来。<br>因此，查询不受任何写入失败/部分写入的影响，只查询已提交的数据。</p>
 <h4 id="Merge-On-Read"><a href="#Merge-On-Read" class="headerlink" title="Merge On Read"></a>Merge On Read</h4><p>使用列式和行式混合存储，列式文件格式如 parquet ，行式文件格式如 avro ，所以 Merge On Read 表存在列式的 Base 文件，也存在行式的 Delta 文件。更新时写入到增量 Delta 文件中，之后通过同步或异步的 COMPACTION 操作，生成新版本的列式文件。</p>
 <p>通常，需要有效的控制增量日志文件的大小，来平衡读放大和写方法的影响。</p>
-<p><img src="Merge_On_Read_commit_%E7%A4%BA%E6%84%8F%E5%9B%BE.png" alt></p>
+<p><img lazyload src="/images/loading.svg" data-src="Merge_On_Read_commit_%E7%A4%BA%E6%84%8F%E5%9B%BE.png" alt></p>
 <p>上图为官网给出的例子：</p>
 <pre><code>每个文件分组都对应一个增量日志文件（Delta Log File），COMPACTION 操作在后台定时执行，会把对应的增量日志文件合并到文件分组的 Base 文件中，生成新版本的 Base 文件。</code></pre><p>使用 Read Optimized Query 模式查询 10:10 之后的数据，只能查询到包含版本为 10:05 ，文件 ID 为 1、2、3 的文件；<br>使用 Snapshot Query 模式是可以查询到 10:05 之后的数据的。</p>
 <h2 id="Hudi-Flink-Writer"><a href="#Hudi-Flink-Writer" class="headerlink" title="Hudi Flink Writer"></a>Hudi Flink Writer</h2><ul>
 <li>大致写入流程</li>
 </ul>
-<p><img src="Flink_Writer_%E5%86%99%E5%85%A5%E6%B5%81%E7%A8%8B.png" alt></p>
+<p><img lazyload src="/images/loading.svg" data-src="Flink_Writer_%E5%86%99%E5%85%A5%E6%B5%81%E7%A8%8B.png" alt></p>
 <ul>
 <li>Hudi_On_Flink写入问题及解决办法</li>
 </ul>
-<p><img src="Hudi_On_Flink%E5%86%99%E5%85%A5%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95.png" alt></p>
+<p><img lazyload src="/images/loading.svg" data-src="Hudi_On_Flink%E5%86%99%E5%85%A5%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95.png" alt></p>
 <ul>
 <li>写入状态机</li>
 </ul>
-<p>在作业刚启动时， Coordinator 会尝试去文件系统上新建表，如果当前表不存在，会在文件目录上写一些 meta 信息，进行表构建。<br>在收到所有 task 的初始化 meta 信息后， Coordinator 会开启一个新的 transaction 。<br>    <img src="Write_State_Machine_%E5%88%9D%E5%A7%8B%E5%8C%96%E5%90%AF%E5%8A%A8.png" alt></p>
-<p>当 write task 看到了事务的发起之后，就会解锁当前数据的 flush 操作，writer 是会先在内存中积攒一批数据。<br>当达到内存阈值时，刷盘：<br>    <img src="Write_State_Machine_%E8%BE%BE%E5%88%B0%E5%86%85%E5%AD%98%E9%98%88%E5%80%BC%E5%88%B7%E7%9B%98.png" alt></p>
-<p>当上游的 checkpoint barrier 到达做快照时，刷盘：<br>    <img src="Write_State_Machine_Checkpoint_barrier%E5%88%B0%E8%BE%BE%E4%B9%8B%E6%97%B6%E5%88%B7%E7%9B%98.png" alt></p>
+<p>在作业刚启动时， Coordinator 会尝试去文件系统上新建表，如果当前表不存在，会在文件目录上写一些 meta 信息，进行表构建。<br>在收到所有 task 的初始化 meta 信息后， Coordinator 会开启一个新的 transaction 。<br>    <img lazyload src="/images/loading.svg" data-src="Write_State_Machine_%E5%88%9D%E5%A7%8B%E5%8C%96%E5%90%AF%E5%8A%A8.png" alt></p>
+<p>当 write task 看到了事务的发起之后，就会解锁当前数据的 flush 操作，writer 是会先在内存中积攒一批数据。<br>当达到内存阈值时，刷盘：<br>    <img lazyload src="/images/loading.svg" data-src="Write_State_Machine_%E8%BE%BE%E5%88%B0%E5%86%85%E5%AD%98%E9%98%88%E5%80%BC%E5%88%B7%E7%9B%98.png" alt></p>
+<p>当上游的 checkpoint barrier 到达做快照时，刷盘：<br>    <img lazyload src="/images/loading.svg" data-src="Write_State_Machine_Checkpoint_barrier%E5%88%B0%E8%BE%BE%E4%B9%8B%E6%97%B6%E5%88%B7%E7%9B%98.png" alt></p>
 <p>write task 在每次 flush 之后，都会发送 meta 信息给 Coordinator ，当 Coordinator 收到 checkpoint 的 success 事件之后，会提交对应的事务，并发起新一轮事务。<br>write task 看到新事务后，会解锁下一轮事务的写入。</p>
-<p>遇到错误时，取消刷盘：<br>    <img src="Write_State_Machine_%E9%81%87%E5%88%B0%E9%97%AE%E9%A2%98%E6%97%B6%E5%8F%96%E6%B6%88%E5%88%B7%E7%9B%98.png" alt></p>
+<p>遇到错误时，取消刷盘：<br>    <img lazyload src="/images/loading.svg" data-src="Write_State_Machine_%E9%81%87%E5%88%B0%E9%97%AE%E9%A2%98%E6%97%B6%E5%8F%96%E6%B6%88%E5%88%B7%E7%9B%98.png" alt></p>
 <h2 id="使用用例"><a href="#使用用例" class="headerlink" title="使用用例"></a>使用用例</h2><p>创建 Hudi 表：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> h_table(</span><br><span class="line">	<span class="keyword">uuid</span> <span class="built_in">varchar</span>(<span class="number">20</span>),</span><br><span class="line">	<span class="keyword">name</span> <span class="built_in">varchar</span>(<span class="number">10</span>),</span><br><span class="line">	age <span class="built_in">int</span>,</span><br><span class="line">	ts <span class="built_in">timestamp</span>(<span class="number">3</span>),</span><br><span class="line">	<span class="string">`partition`</span> <span class="built_in">varchar</span>(<span class="number">20</span>)</span><br><span class="line">) <span class="keyword">WITH</span> (</span><br><span class="line">    <span class="string">'connetor'</span> = <span class="string">'hudi'</span>,</span><br><span class="line">    <span class="string">'path'</span> = <span class="string">'xxx/h_table'</span>,</span><br><span class="line">    <span class="string">'table.type'</span> = <span class="string">'MERGE_ON_READ'</span>,</span><br><span class="line">    <span class="string">'write.operation'</span> = <span class="string">'upsert'</span>,</span><br><span class="line">    <span class="string">'write.precombine.field'</span> = <span class="string">'ts'</span>,</span><br><span class="line">    <span class="string">'write.payload.class'</span> = <span class="string">'OverwriteWithLatestAvroPayload.class'</span>,</span><br><span class="line">    <span class="string">'write.insert.drop.duplicates'</span> = <span class="string">'false'</span>,</span><br><span class="line">    <span class="string">'write.ignore.failed'</span> = <span class="string">'true'</span>,</span><br><span class="line">    <span class="string">'hoodie.datasource.write.recordkey.field'</span> = <span class="string">'uuid'</span>,</span><br><span class="line">    <span class="string">'hoodie.datasource.write.keygenerator.class'</span> = <span class="string">'SimpleAvroKeyGenerator.class'</span>,   </span><br><span class="line">    <span class="string">'write.bucket_assign.tasks'</span> = <span class="string">'4'</span>,</span><br><span class="line">    <span class="string">'read.streaming.enabled'</span> = <span class="string">'true'</span>,</span><br><span class="line">    <span class="string">'read.streaming.check-interval'</span> = <span class="string">'4'</span>,</span><br><span class="line">    <span class="string">'write.tasks'</span> = <span class="string">'4'</span>,</span><br><span class="line">    <span class="string">'write.batch.size.MB'</span> = <span class="string">'128'</span>,</span><br><span class="line">    <span class="string">'compaction.async.enabled'</span> = <span class="string">'true'</span>,</span><br><span class="line">    <span class="string">'compaction.trigger.strategy'</span> = <span class="string">'num_commits'</span>,</span><br><span class="line">    <span class="string">'compaction.delta_commits'</span> = <span class="string">'5'</span>,</span><br><span class="line">    <span class="string">'compaction.delta_seconds'</span> = <span class="string">'3600'</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<div class="highlight-container" data-rel="Sql"><figure class="iseeu highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> h_table(</span><br><span class="line">	<span class="keyword">uuid</span> <span class="built_in">varchar</span>(<span class="number">20</span>),</span><br><span class="line">	<span class="keyword">name</span> <span class="built_in">varchar</span>(<span class="number">10</span>),</span><br><span class="line">	age <span class="built_in">int</span>,</span><br><span class="line">	ts <span class="built_in">timestamp</span>(<span class="number">3</span>),</span><br><span class="line">	<span class="string">`partition`</span> <span class="built_in">varchar</span>(<span class="number">20</span>)</span><br><span class="line">) <span class="keyword">WITH</span> (</span><br><span class="line">    <span class="string">'connetor'</span> = <span class="string">'hudi'</span>,</span><br><span class="line">    <span class="string">'path'</span> = <span class="string">'xxx/h_table'</span>,</span><br><span class="line">    <span class="string">'table.type'</span> = <span class="string">'MERGE_ON_READ'</span>,</span><br><span class="line">    <span class="string">'write.operation'</span> = <span class="string">'upsert'</span>,</span><br><span class="line">    <span class="string">'write.precombine.field'</span> = <span class="string">'ts'</span>,</span><br><span class="line">    <span class="string">'write.payload.class'</span> = <span class="string">'OverwriteWithLatestAvroPayload.class'</span>,</span><br><span class="line">    <span class="string">'write.insert.drop.duplicates'</span> = <span class="string">'false'</span>,</span><br><span class="line">    <span class="string">'write.ignore.failed'</span> = <span class="string">'true'</span>,</span><br><span class="line">    <span class="string">'hoodie.datasource.write.recordkey.field'</span> = <span class="string">'uuid'</span>,</span><br><span class="line">    <span class="string">'hoodie.datasource.write.keygenerator.class'</span> = <span class="string">'SimpleAvroKeyGenerator.class'</span>,   </span><br><span class="line">    <span class="string">'write.bucket_assign.tasks'</span> = <span class="string">'4'</span>,</span><br><span class="line">    <span class="string">'read.streaming.enabled'</span> = <span class="string">'true'</span>,</span><br><span class="line">    <span class="string">'read.streaming.check-interval'</span> = <span class="string">'4'</span>,</span><br><span class="line">    <span class="string">'write.tasks'</span> = <span class="string">'4'</span>,</span><br><span class="line">    <span class="string">'write.batch.size.MB'</span> = <span class="string">'128'</span>,</span><br><span class="line">    <span class="string">'compaction.async.enabled'</span> = <span class="string">'true'</span>,</span><br><span class="line">    <span class="string">'compaction.trigger.strategy'</span> = <span class="string">'num_commits'</span>,</span><br><span class="line">    <span class="string">'compaction.delta_commits'</span> = <span class="string">'5'</span>,</span><br><span class="line">    <span class="string">'compaction.delta_seconds'</span> = <span class="string">'3600'</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure></div>
 
 <p>更改 Hudi 表名：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> h0 <span class="keyword">rename</span> <span class="keyword">to</span> h0_1;</span><br></pre></td></tr></table></figure>
+<div class="highlight-container" data-rel="Sql"><figure class="iseeu highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> h0 <span class="keyword">rename</span> <span class="keyword">to</span> h0_1;</span><br></pre></td></tr></table></figure></div>
 
 <p>插入 Hudi 表：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> hudi_table </span><br><span class="line"><span class="keyword">SELECT</span> ...</span><br><span class="line"><span class="keyword">FROM</span> ...</span><br></pre></td></tr></table></figure>
+<div class="highlight-container" data-rel="Sql"><figure class="iseeu highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> hudi_table </span><br><span class="line"><span class="keyword">SELECT</span> ...</span><br><span class="line"><span class="keyword">FROM</span> ...</span><br></pre></td></tr></table></figure></div>
 
 <p>Flink-CDC 整库同步：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- mysql catalog</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">CATALOG</span> mysql</span><br><span class="line"><span class="keyword">WITH</span>(</span><br><span class="line">	<span class="string">'type'</span> = <span class="string">'mysql'</span>,</span><br><span class="line">	<span class="string">'hostname'</span> = <span class="string">'localhost'</span>,</span><br><span class="line">	<span class="string">'port'</span> = <span class="string">'3306'</span>,</span><br><span class="line">	<span class="string">'username'</span> = <span class="string">'root'</span>,</span><br><span class="line">	<span class="string">'password'</span> = <span class="string">'123456'</span>,</span><br><span class="line">	<span class="string">'default-database'</span> = <span class="string">'benchmark_db'</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- hudi catalog</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">CATALOG</span> hudi</span><br><span class="line"><span class="keyword">WITH</span>(</span><br><span class="line">	<span class="string">'type'</span> = <span class="string">'hudi'</span>,</span><br><span class="line">	<span class="string">'catalog.path'</span> = <span class="string">'oss://hudi-ffa/'</span>,</span><br><span class="line">	<span class="string">'default-database'</span> = <span class="string">'db1'</span>,</span><br><span class="line">	<span class="string">'oss.endpoint'</span> = <span class="string">'xxx'</span>,</span><br><span class="line">	<span class="string">'accessKeyId'</span> = <span class="string">'xxx'</span>,</span><br><span class="line">	<span class="string">'accessKeySecret'</span> = <span class="string">'xxx'</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 执行整库、多表同步作业，写入 Hudi, 过程中会自动创建 Hudi 目标表</span></span><br><span class="line"><span class="keyword">BEGIN</span> <span class="keyword">STATEMENT</span> <span class="keyword">SET</span>;</span><br><span class="line">    <span class="comment">-- CDAS 语法</span></span><br><span class="line">	<span class="keyword">CREATE</span> <span class="keyword">DATABASE</span> <span class="keyword">IF</span> <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> hudi.cdas_demo</span><br><span class="line">	<span class="keyword">AS</span> <span class="keyword">DATABASE</span> <span class="string">`mysql`</span>.<span class="string">`benchmark1`</span> <span class="keyword">INCLUDING</span> <span class="keyword">ALL</span> <span class="keyword">TABLES</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">-- CTAS 语法</span></span><br><span class="line">	<span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="keyword">IF</span> <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> <span class="string">`hudi`</span>.<span class="string">`db1`</span>.<span class="string">`ctas_demo`</span></span><br><span class="line">	<span class="keyword">AS</span> <span class="keyword">TABLE</span> <span class="string">`mysql`</span>.<span class="string">`benchmark2`</span>.<span class="string">`sbtest.*`</span></span><br><span class="line"><span class="keyword">END</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查询hudi</span></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> hudi.cdas_demo.sbtest1;</span><br></pre></td></tr></table></figure>
+<div class="highlight-container" data-rel="Sql"><figure class="iseeu highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- mysql catalog</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">CATALOG</span> mysql</span><br><span class="line"><span class="keyword">WITH</span>(</span><br><span class="line">	<span class="string">'type'</span> = <span class="string">'mysql'</span>,</span><br><span class="line">	<span class="string">'hostname'</span> = <span class="string">'localhost'</span>,</span><br><span class="line">	<span class="string">'port'</span> = <span class="string">'3306'</span>,</span><br><span class="line">	<span class="string">'username'</span> = <span class="string">'root'</span>,</span><br><span class="line">	<span class="string">'password'</span> = <span class="string">'123456'</span>,</span><br><span class="line">	<span class="string">'default-database'</span> = <span class="string">'benchmark_db'</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- hudi catalog</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">CATALOG</span> hudi</span><br><span class="line"><span class="keyword">WITH</span>(</span><br><span class="line">	<span class="string">'type'</span> = <span class="string">'hudi'</span>,</span><br><span class="line">	<span class="string">'catalog.path'</span> = <span class="string">'oss://hudi-ffa/'</span>,</span><br><span class="line">	<span class="string">'default-database'</span> = <span class="string">'db1'</span>,</span><br><span class="line">	<span class="string">'oss.endpoint'</span> = <span class="string">'xxx'</span>,</span><br><span class="line">	<span class="string">'accessKeyId'</span> = <span class="string">'xxx'</span>,</span><br><span class="line">	<span class="string">'accessKeySecret'</span> = <span class="string">'xxx'</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 执行整库、多表同步作业，写入 Hudi, 过程中会自动创建 Hudi 目标表</span></span><br><span class="line"><span class="keyword">BEGIN</span> <span class="keyword">STATEMENT</span> <span class="keyword">SET</span>;</span><br><span class="line">    <span class="comment">-- CDAS 语法</span></span><br><span class="line">	<span class="keyword">CREATE</span> <span class="keyword">DATABASE</span> <span class="keyword">IF</span> <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> hudi.cdas_demo</span><br><span class="line">	<span class="keyword">AS</span> <span class="keyword">DATABASE</span> <span class="string">`mysql`</span>.<span class="string">`benchmark1`</span> <span class="keyword">INCLUDING</span> <span class="keyword">ALL</span> <span class="keyword">TABLES</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">-- CTAS 语法</span></span><br><span class="line">	<span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="keyword">IF</span> <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> <span class="string">`hudi`</span>.<span class="string">`db1`</span>.<span class="string">`ctas_demo`</span></span><br><span class="line">	<span class="keyword">AS</span> <span class="keyword">TABLE</span> <span class="string">`mysql`</span>.<span class="string">`benchmark2`</span>.<span class="string">`sbtest.*`</span></span><br><span class="line"><span class="keyword">END</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查询hudi</span></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> hudi.cdas_demo.sbtest1;</span><br></pre></td></tr></table></figure></div>
 
 <p>应用场景：</p>
 <ol>
 <li>CDC 数据库数据入仓库，使用 Flink-CDC connector 一次性导入或者消费 Kafka 中的 changelog</li>
 <li>对接 Presto 等 OLAP 引擎，满足近实时分析场景</li>
 <li>增量 ETL ，Hudi 支持存储流计算过程中的行级别变更，通过流读消费变更，可以实现端到端的近实时 ETL 生产</li>
-<li>双流 join 应用场景<br><img src="%E5%8F%8C%E6%B5%81join%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF.png" alt></li>
+<li>双流 join 应用场景<br><img lazyload src="/images/loading.svg" data-src="%E5%8F%8C%E6%B5%81join%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF.png" alt></li>
 </ol>
 <p>Roadmap：</p>
 <ol>
@@ -489,7 +551,7 @@
 <li>Metastore Catalog</li>
 <li>支持 Trino Connector</li>
 </ol>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://hudi.apache.org/cn/docs/overview" target="_blank" rel="noopener">Hudi 官网</a><br><a href="https://cloud.tencent.com/developer/article/1694530" target="_blank" rel="noopener">Apache Hudi 架构设计和基本概念</a><br>FFA 2021</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a class="link" href="https://hudi.apache.org/cn/docs/overview" target="_blank" rel="noopener">Hudi 官网 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a><br><a class="link" href="https://cloud.tencent.com/developer/article/1694530" target="_blank" rel="noopener">Apache Hudi 架构设计和基本概念 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a><br>FFA 2021</p>
 
       
     </div>
@@ -598,6 +660,8 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
+              <img class="site-author-image" itemprop="image" src="/images/2.JPG" alt="miaowenting">
+            
               <p class="site-author-name" itemprop="name">miaowenting</p>
               <p class="site-description motion-element" itemprop="description"></p>
           </div>
@@ -649,11 +713,39 @@
           
 
           
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/miaowenting" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
 
           
           
 
           
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://ci.apache.org/projects/flink/flink-docs-stable/" title="flink文档" target="_blank">flink文档</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href title="flink社区" target="_blank">flink社区</a>
+                  </li>
+                
+              </ul>
+            </div>
           
 
           
@@ -709,7 +801,7 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
 
 
 
@@ -856,6 +948,323 @@
 
 
   
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
 
 
 

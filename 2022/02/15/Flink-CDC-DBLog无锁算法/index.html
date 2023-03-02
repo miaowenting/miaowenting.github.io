@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -88,18 +88,18 @@
 <meta property="og:site_name" content="Matty&#39;s Blog">
 <meta property="og:description" content="DBLog 是一个 java 框架，可以从数据库的事务日志中捕获变更行，也可以通过执行表 select 语句获得数据库的全量数据。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2022/02/15/Flink-CDC-DBLog无锁算法/MySQL%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5%E5%8E%9F%E7%90%86%E5%9B%BE.png">
-<meta property="og:image" content="http://yoursite.com/2022/02/15/Flink-CDC-DBLog无锁算法/DBLog_Architecture.png">
-<meta property="og:image" content="http://yoursite.com/2022/02/15/Flink-CDC-DBLog无锁算法/Chunk%E5%88%87%E5%88%86.png">
-<meta property="og:image" content="http://yoursite.com/2022/02/15/Flink-CDC-DBLog无锁算法/Watermar-based_Chunk_Selection%E7%AE%97%E6%B3%95%E4%BC%AA%E4%BB%A3%E7%A0%81.png">
-<meta property="og:image" content="http://yoursite.com/2022/02/15/Flink-CDC-DBLog无锁算法/Watermar-based_Chunk_Selection%E7%94%9F%E6%88%90%E4%BD%8E%E9%AB%98%E7%82%B9%E4%BD%8D.png">
-<meta property="og:image" content="http://yoursite.com/2022/02/15/Flink-CDC-DBLog无锁算法/Watermar-based_Chunk_Selection%E5%90%88%E5%B9%B6%E5%A2%9E%E9%87%8F%E5%88%B0%E5%85%A8%E9%87%8F.png">
-<meta property="og:image" content="http://yoursite.com/2022/02/15/Flink-CDC-DBLog无锁算法/%E5%85%A8%E9%87%8F%E5%90%8C%E6%AD%A5%E4%B8%8E%E5%A2%9E%E9%87%8F%E5%90%8C%E6%AD%A5%E4%BA%A4%E5%8F%89%E8%BE%93%E5%87%BA.png">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
 <meta property="og:updated_time" content="2023-03-02T08:36:01.857Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Flink-CDC-DBLog无锁算法">
 <meta name="twitter:description" content="DBLog 是一个 java 框架，可以从数据库的事务日志中捕获变更行，也可以通过执行表 select 语句获得数据库的全量数据。">
-<meta name="twitter:image" content="http://yoursite.com/2022/02/15/Flink-CDC-DBLog无锁算法/MySQL%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5%E5%8E%9F%E7%90%86%E5%9B%BE.png">
+<meta name="twitter:image" content="http://yoursite.com/images/loading.svg">
 
 
 
@@ -107,7 +107,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Mist',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -200,6 +200,36 @@
         </li>
       
         
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
@@ -211,9 +241,41 @@
       
 
       
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
     </ul>
   
 
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
   
 </nav>
 
@@ -247,7 +309,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="miaowenting">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/2.JPG">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -345,7 +407,7 @@
         <p>DBLog 是一个 java 框架，可以从数据库的事务日志中捕获变更行，也可以通过执行表 select 语句获得数据库的全量数据。</p>
 <a id="more"></a>
 
-<h2 id="MySQL-主从同步原理"><a href="#MySQL-主从同步原理" class="headerlink" title="MySQL 主从同步原理"></a>MySQL 主从同步原理</h2><p><img src="MySQL%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5%E5%8E%9F%E7%90%86%E5%9B%BE.png" alt></p>
+<h2 id="MySQL-主从同步原理"><a href="#MySQL-主从同步原理" class="headerlink" title="MySQL 主从同步原理"></a>MySQL 主从同步原理</h2><p><img lazyload src="/images/loading.svg" data-src="MySQL%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5%E5%8E%9F%E7%90%86%E5%9B%BE.png" alt></p>
 <ol>
 <li>Master 主库，启动 binlog 机制，将变更数据写入 binlog 文件。（binary log，记录的是二进制日志事件 log events，可以通过 <code>show binlog events</code> 命令查看）</li>
 <li>Slave (I/O thread)，从 Master 主库拉取 binlog 数据，将它拷贝到 Slave 的中继日志（relay log）中</li>
@@ -413,11 +475,11 @@
 <td>Yes</td>
 </tr>
 </tbody></table>
-<h2 id="DBLog"><a href="#DBLog" class="headerlink" title="DBLog"></a>DBLog</h2><p><img src="DBLog_Architecture.png" alt></p>
-<h3 id="全量状态捕获"><a href="#全量状态捕获" class="headerlink" title="全量状态捕获"></a>全量状态捕获</h3><p><img src="Chunk%E5%88%87%E5%88%86.png" alt><br>通过表的主键对表中的数据进行分片。假设每个 Chunk 的步长为 3 ，按照这个规则进行切分，只需要把这些 Chunk 的区间做成左开右闭或者左闭右开的区间，保证衔接后的区间能够等于表的主键区间即可。<br>Chunk2 的查询条件为 <code>c1 &gt; 4</code>。</p>
+<h2 id="DBLog"><a href="#DBLog" class="headerlink" title="DBLog"></a>DBLog</h2><p><img lazyload src="/images/loading.svg" data-src="DBLog_Architecture.png" alt></p>
+<h3 id="全量状态捕获"><a href="#全量状态捕获" class="headerlink" title="全量状态捕获"></a>全量状态捕获</h3><p><img lazyload src="/images/loading.svg" data-src="Chunk%E5%88%87%E5%88%86.png" alt><br>通过表的主键对表中的数据进行分片。假设每个 Chunk 的步长为 3 ，按照这个规则进行切分，只需要把这些 Chunk 的区间做成左开右闭或者左闭右开的区间，保证衔接后的区间能够等于表的主键区间即可。<br>Chunk2 的查询条件为 <code>c1 &gt; 4</code>。</p>
 <p>在 Zookeeper 中存储最新 Chunk 的最后一行，以便从最新的 Chunk 中暂停和恢复读取。</p>
 <p>针对全量读取，DBLog 提出的算法叫做 <code>Watermark-based Chunk Selection</code>，通过在源数据库中维护一个单行单列的表作为信号表，在查询每个 chunk 数据前后分别更新该记录使得在事务日志中生产两个事件<br>lw（低水位）和 hw（高水位），然后将 select 数据和 [lw,hw] 之间的日志进行处理，获得该 chunk 的 point-in-time 为 hw 的一组数据。</p>
-<p>Chunk 读取算法步骤：<br><img src="Watermar-based_Chunk_Selection%E7%AE%97%E6%B3%95%E4%BC%AA%E4%BB%A3%E7%A0%81.png" alt></p>
+<p>Chunk 读取算法步骤：<br><img lazyload src="/images/loading.svg" data-src="Watermar-based_Chunk_Selection%E7%AE%97%E6%B3%95%E4%BC%AA%E4%BB%A3%E7%A0%81.png" alt></p>
 <ol>
 <li>暂停日志事件处理</li>
 <li>更新 watermark 表的 uuid，生成 lw</li>
@@ -432,14 +494,14 @@
 </li>
 <li><p>然后通过 SELECT 读取全量数据的快照 snapshot ，在读取的过程中无锁操作，允许数据的插入和更新；</p>
 </li>
-<li><p>读取完快照 Snapshot ，再通过 <code>SHOW MASTER STATUS</code> 获取当前 binlog 文件的偏移量当作 hw；<br>更新信号表分别生成 lw 和 hw，并通过 change log 接收到：<br><img src="Watermar-based_Chunk_Selection%E7%94%9F%E6%88%90%E4%BD%8E%E9%AB%98%E7%82%B9%E4%BD%8D.png" alt></p>
+<li><p>读取完快照 Snapshot ，再通过 <code>SHOW MASTER STATUS</code> 获取当前 binlog 文件的偏移量当作 hw；<br>更新信号表分别生成 lw 和 hw，并通过 change log 接收到：<br><img lazyload src="/images/loading.svg" data-src="Watermar-based_Chunk_Selection%E7%94%9F%E6%88%90%E4%BD%8E%E9%AB%98%E7%82%B9%E4%BD%8D.png" alt></p>
 </li>
-<li><p>读取 lw ～ hw 中的数据集 delta，设置 Snapshot = Snapshot - delta；<br>窗口中发生变更的数据将被移除出内存，没有变更的数据将被拼接到 output buffer 中：<br><img src="Watermar-based_Chunk_Selection%E5%90%88%E5%B9%B6%E5%A2%9E%E9%87%8F%E5%88%B0%E5%85%A8%E9%87%8F.png" alt></p>
+<li><p>读取 lw ～ hw 中的数据集 delta，设置 Snapshot = Snapshot - delta；<br>窗口中发生变更的数据将被移除出内存，没有变更的数据将被拼接到 output buffer 中：<br><img lazyload src="/images/loading.svg" data-src="Watermar-based_Chunk_Selection%E5%90%88%E5%B9%B6%E5%A2%9E%E9%87%8F%E5%88%B0%E5%85%A8%E9%87%8F.png" alt></p>
 </li>
-<li><p>基于最新的 snapshot ，从 lw 开始消费 binlog ，执行 binlog 回放；<br>全量同步与增量同步交叉合并输出结果：<br><img src="%E5%85%A8%E9%87%8F%E5%90%8C%E6%AD%A5%E4%B8%8E%E5%A2%9E%E9%87%8F%E5%90%8C%E6%AD%A5%E4%BA%A4%E5%8F%89%E8%BE%93%E5%87%BA.png" alt></p>
+<li><p>基于最新的 snapshot ，从 lw 开始消费 binlog ，执行 binlog 回放；<br>全量同步与增量同步交叉合并输出结果：<br><img lazyload src="/images/loading.svg" data-src="%E5%85%A8%E9%87%8F%E5%90%8C%E6%AD%A5%E4%B8%8E%E5%A2%9E%E9%87%8F%E5%90%8C%E6%AD%A5%E4%BA%A4%E5%8F%89%E8%BE%93%E5%87%BA.png" alt></p>
 </li>
 </ol>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://dev.mysql.com/doc/dev/mysql-server/latest/page_protocol_replication.html" target="_blank" rel="noopener">MySQL Replication Protocol</a><br><a href="https://netflixtechblog.com/dblog-a-generic-change-data-capture-framework-69351fb9099b" target="_blank" rel="noopener">DBLog: A Generic Change-Data-Capture Framework</a></p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a class="link" href="https://dev.mysql.com/doc/dev/mysql-server/latest/page_protocol_replication.html" target="_blank" rel="noopener">MySQL Replication Protocol <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a><br><a class="link" href="https://netflixtechblog.com/dblog-a-generic-change-data-capture-framework-69351fb9099b" target="_blank" rel="noopener">DBLog: A Generic Change-Data-Capture Framework <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
 
       
     </div>
@@ -542,6 +604,8 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
+              <img class="site-author-image" itemprop="image" src="/images/2.JPG" alt="miaowenting">
+            
               <p class="site-author-name" itemprop="name">miaowenting</p>
               <p class="site-description motion-element" itemprop="description"></p>
           </div>
@@ -593,11 +657,39 @@
           
 
           
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/miaowenting" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
 
           
           
 
           
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://ci.apache.org/projects/flink/flink-docs-stable/" title="flink文档" target="_blank">flink文档</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href title="flink社区" target="_blank">flink社区</a>
+                  </li>
+                
+              </ul>
+            </div>
           
 
           
@@ -653,7 +745,7 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
 
 
 
@@ -800,6 +892,323 @@
 
 
   
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
 
 
 

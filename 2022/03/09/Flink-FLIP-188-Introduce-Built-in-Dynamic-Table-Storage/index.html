@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -88,21 +88,21 @@
 <meta property="og:site_name" content="Matty&#39;s Blog">
 <meta property="og:description" content="动态表：全新的 Flink 内置存储。 Flink Dynamic Table 可以理解为一套流批一体的存储，并无缝对接 Flink SQL 。原来 Flink 只能读写像 Kafka 、 HBase 这样的外部表，现在用一套 Flink SQL 语法就可以像原来创建源表和目标表一样，创建一个 Dynamic Table。流式数仓的分层数据可以全部放到 Flink Dynamic Table 中，">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2022/03/09/Flink-FLIP-188-Introduce-Built-in-Dynamic-Table-Storage/Dynamic_Table_Storage%E5%A4%A7%E8%87%B4%E7%BB%93%E6%9E%84.png">
-<meta property="og:image" content="http://yoursite.com/2022/03/09/Flink-FLIP-188-Introduce-Built-in-Dynamic-Table-Storage/Flink_Dynamic_Table%E7%9A%84%E5%A4%A7%E4%BD%93%E6%A0%BC%E5%BC%8F.png">
-<meta property="og:image" content="http://yoursite.com/2022/03/09/Flink-FLIP-188-Introduce-Built-in-Dynamic-Table-Storage/FileStore%E7%9A%84%E5%AD%98%E5%82%A8%E6%A0%BC%E5%BC%8F.png">
-<meta property="og:image" content="http://yoursite.com/2022/03/09/Flink-FLIP-188-Introduce-Built-in-Dynamic-Table-Storage/FileStore%E7%B1%BB%E5%9B%BE.png">
-<meta property="og:image" content="http://yoursite.com/2022/03/09/Flink-FLIP-188-Introduce-Built-in-Dynamic-Table-Storage/FileStoreSource%E7%B1%BB%E5%9B%BE.png">
-<meta property="og:image" content="http://yoursite.com/2022/03/09/Flink-FLIP-188-Introduce-Built-in-Dynamic-Table-Storage/StoreSink%E7%B1%BB%E5%9B%BE.png">
-<meta property="og:image" content="http://yoursite.com/2022/03/09/Flink-FLIP-188-Introduce-Built-in-Dynamic-Table-Storage/mergetree%E5%8C%85%E7%B1%BB%E5%9B%BE.png">
-<meta property="og:image" content="http://yoursite.com/2022/03/09/Flink-FLIP-188-Introduce-Built-in-Dynamic-Table-Storage/kafkaLogStore%E7%B1%BB%E5%9B%BE.png">
-<meta property="og:image" content="http://yoursite.com/2022/03/09/Flink-FLIP-188-Introduce-Built-in-Dynamic-Table-Storage/Demo1-%E6%B5%81%E5%BC%8F%E6%95%B0%E4%BB%93-pipeline.png">
-<meta property="og:image" content="http://yoursite.com/2022/03/09/Flink-FLIP-188-Introduce-Built-in-Dynamic-Table-Storage/Demo2-%E7%A6%BB%E7%BA%BF%E6%95%B0%E4%BB%93-%E6%95%B0%E6%8D%AE%E8%AE%A2%E6%AD%A3.png">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
 <meta property="og:updated_time" content="2023-02-10T07:15:48.034Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Flink-FLIP-188: Introduce Built-in Dynamic Table Storage">
 <meta name="twitter:description" content="动态表：全新的 Flink 内置存储。 Flink Dynamic Table 可以理解为一套流批一体的存储，并无缝对接 Flink SQL 。原来 Flink 只能读写像 Kafka 、 HBase 这样的外部表，现在用一套 Flink SQL 语法就可以像原来创建源表和目标表一样，创建一个 Dynamic Table。流式数仓的分层数据可以全部放到 Flink Dynamic Table 中，">
-<meta name="twitter:image" content="http://yoursite.com/2022/03/09/Flink-FLIP-188-Introduce-Built-in-Dynamic-Table-Storage/Dynamic_Table_Storage%E5%A4%A7%E8%87%B4%E7%BB%93%E6%9E%84.png">
+<meta name="twitter:image" content="http://yoursite.com/images/loading.svg">
 
 
 
@@ -110,7 +110,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Mist',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -203,6 +203,36 @@
         </li>
       
         
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
@@ -214,9 +244,41 @@
       
 
       
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
     </ul>
   
 
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
   
 </nav>
 
@@ -250,7 +312,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="miaowenting">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/2.JPG">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -348,11 +410,11 @@
         <p>动态表：全新的 Flink 内置存储。</p>
 <p>Flink Dynamic Table 可以理解为一套流批一体的存储，并无缝对接 Flink SQL 。原来 Flink 只能读写像 Kafka 、 HBase 这样的外部表，现在用一套 Flink SQL 语法就可以像原来创建源表和目标表一样，创建一个 Dynamic Table。流式数仓的分层数据可以全部放到 Flink Dynamic Table 中，通过 Flink SQL 就能实时地串联起整个数仓的分层，既可以对 Dynamic Table 中不同明细层的数据做实时查询和分析，也可以对不同分层做批量 ETL 处理。</p>
 <p>最终，利用 Flink CDC 、Flink SQL 、Flink Dynamic Table 就可以构建一套完整的流式数仓，实现实时离线一体化的体验。</p>
-<p>目前，作为一个独立的开源项目 <a href="https://github.com/apache/flink-table-store" target="_blank" rel="noopener">flink-table-store</a> 开发中，该功能预计在 Flink 1.15 中发布。</p>
+<p>目前，作为一个独立的开源项目 <a class="link" href="https://github.com/apache/flink-table-store" target="_blank" rel="noopener">flink-table-store <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 开发中，该功能预计在 Flink 1.15 中发布。</p>
 <a id="more"></a>
 
 
-<p><img src="Dynamic_Table_Storage%E5%A4%A7%E8%87%B4%E7%BB%93%E6%9E%84.png" alt></p>
+<p><img lazyload src="/images/loading.svg" data-src="Dynamic_Table_Storage%E5%A4%A7%E8%87%B4%E7%BB%93%E6%9E%84.png" alt></p>
 <h2 id="基本思路"><a href="#基本思路" class="headerlink" title="基本思路"></a>基本思路</h2><p>生产应用中，用户倾向于使用 Kafka 存储 logs ，使用 hudi/iceberg/click 作为一张表。<code>FLIP-188</code> 提议引入一种内置的存储：动态表，从 Flink SQL 视角，真正统一 changelog&amp;table 实现，未来也可以支持点查。</p>
 <p>内置存储有以下几个特点：</p>
 <ol>
@@ -378,9 +440,9 @@
 <li>表可以有主键，也可以没有主键</li>
 </ol>
 <h2 id="存储结构"><a href="#存储结构" class="headerlink" title="存储结构"></a>存储结构</h2><p>从数据结构上看， Dynamic Table 内部有两个核心组件，File Storage 和 Log Storage ：</p>
-<p><img src="Flink_Dynamic_Table%E7%9A%84%E5%A4%A7%E4%BD%93%E6%A0%BC%E5%BC%8F.png" alt></p>
+<p><img lazyload src="/images/loading.svg" data-src="Flink_Dynamic_Table%E7%9A%84%E5%A4%A7%E4%BD%93%E6%A0%BC%E5%BC%8F.png" alt></p>
 <h3 id="File-Storage"><a href="#File-Storage" class="headerlink" title="File Storage"></a>File Storage</h3><p>Table 的文件存储形式，采用 LSM 架构，支持流式的更新、删除、增加等。采用开放的列存结构，支持压缩等优化。对应 Flink SQL 的批模式，支持全量批式读取。</p>
-<p><img src="FileStore%E7%9A%84%E5%AD%98%E5%82%A8%E6%A0%BC%E5%BC%8F.png" alt></p>
+<p><img lazyload src="/images/loading.svg" data-src="FileStore%E7%9A%84%E5%AD%98%E5%82%A8%E6%A0%BC%E5%BC%8F.png" alt></p>
 <ol>
 <li>Data 目录</li>
 </ol>
@@ -400,23 +462,23 @@
 </ul>
 <ul>
 <li><p>table path 文件夹</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">staff@localhost:/var/folders/px/n0m4_bp13077qbk54k30yy340000gp/T/junit1120128347261300405/junit4490023537149085262$     ll</span><br><span class="line">total 0</span><br><span class="line">drwx------  6 staff  staff  192  3 11 17:55 ./</span><br><span class="line">drwx------  3 staff  staff   96  3 11 17:51 ../</span><br><span class="line">drwxr-xr-x  5 staff  staff  160  3 11 17:55 manifest/</span><br><span class="line">drwxr-xr-x  4 staff  staff  128  3 11 17:55 p=p1/</span><br><span class="line">drwxr-xr-x  4 staff  staff  128  3 11 17:55 p=p2/</span><br><span class="line">drwxr-xr-x  3 staff  staff   96  3 11 17:55 snapshot/</span><br></pre></td></tr></table></figure>
+<div class="highlight-container" data-rel="Code"><figure class="iseeu highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">staff@localhost:/var/folders/px/n0m4_bp13077qbk54k30yy340000gp/T/junit1120128347261300405/junit4490023537149085262$     ll</span><br><span class="line">total 0</span><br><span class="line">drwx------  6 staff  staff  192  3 11 17:55 ./</span><br><span class="line">drwx------  3 staff  staff   96  3 11 17:51 ../</span><br><span class="line">drwxr-xr-x  5 staff  staff  160  3 11 17:55 manifest/</span><br><span class="line">drwxr-xr-x  4 staff  staff  128  3 11 17:55 p=p1/</span><br><span class="line">drwxr-xr-x  4 staff  staff  128  3 11 17:55 p=p2/</span><br><span class="line">drwxr-xr-x  3 staff  staff   96  3 11 17:55 snapshot/</span><br></pre></td></tr></table></figure></div>
 </li>
 <li><p>分区 p1、分桶 bucket-1</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">staff@localhost:/var/folders/px/n0m4_bp13077qbk54k30yy340000gp/T/junit1120128347261300405/junit4490023537149085262/p=p1$     ll</span><br><span class="line">total 0</span><br><span class="line">drwxr-xr-x  4 staff  staff  128  3 11 17:55 ./</span><br><span class="line">drwx------  6 staff  staff  192  3 11 17:55 ../</span><br><span class="line">drwxr-xr-x  3 staff  staff   96  3 11 17:57 bucket-1/</span><br><span class="line">drwxr-xr-x  3 staff  staff   96  3 11 17:57 bucket-2/</span><br><span class="line"></span><br><span class="line">staff@localhost:/var/folders/px/n0m4_bp13077qbk54k30yy340000gp/T/junit1120128347261300405/junit4490023537149085262/p=p1/bucket-1$     ll</span><br><span class="line">total 8</span><br><span class="line">drwxr-xr-x  3 staff  staff   96  3 11 17:57 ./</span><br><span class="line">drwxr-xr-x  4 staff  staff  128  3 11 17:55 ../</span><br><span class="line">-rw-r--r--  1 staff  staff  426  3 11 17:55 sst-90911871-51d6-4323-aa55-f25c8a29021d-0</span><br></pre></td></tr></table></figure>
+<div class="highlight-container" data-rel="Code"><figure class="iseeu highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">staff@localhost:/var/folders/px/n0m4_bp13077qbk54k30yy340000gp/T/junit1120128347261300405/junit4490023537149085262/p=p1$     ll</span><br><span class="line">total 0</span><br><span class="line">drwxr-xr-x  4 staff  staff  128  3 11 17:55 ./</span><br><span class="line">drwx------  6 staff  staff  192  3 11 17:55 ../</span><br><span class="line">drwxr-xr-x  3 staff  staff   96  3 11 17:57 bucket-1/</span><br><span class="line">drwxr-xr-x  3 staff  staff   96  3 11 17:57 bucket-2/</span><br><span class="line"></span><br><span class="line">staff@localhost:/var/folders/px/n0m4_bp13077qbk54k30yy340000gp/T/junit1120128347261300405/junit4490023537149085262/p=p1/bucket-1$     ll</span><br><span class="line">total 8</span><br><span class="line">drwxr-xr-x  3 staff  staff   96  3 11 17:57 ./</span><br><span class="line">drwxr-xr-x  4 staff  staff  128  3 11 17:55 ../</span><br><span class="line">-rw-r--r--  1 staff  staff  426  3 11 17:55 sst-90911871-51d6-4323-aa55-f25c8a29021d-0</span><br></pre></td></tr></table></figure></div>
 </li>
 <li><p>manifest 目录</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">staff@localhost:/var/folders/px/n0m4_bp13077qbk54k30yy340000gp/T/junit1120128347261300405/junit4490023537149085262/manifest$     ll</span><br><span class="line">total 24</span><br><span class="line">drwxr-xr-x  5 staff  staff   160  3 11 17:55 ./</span><br><span class="line">drwx------  6 staff  staff   192  3 11 17:55 ../</span><br><span class="line">-rw-r--r--  1 staff  staff  2681  3 11 17:55 manifest-5a53de30-1d30-43f0-a837-078ca61e0b93-0</span><br><span class="line">-rw-r--r--  1 staff  staff   837  3 11 17:55 manifest-list-0267739b-40f7-4c33-b433-d8f73b50af17-0</span><br><span class="line">-rw-r--r--  1 staff  staff   931  3 11 17:55 manifest-list-0267739b-40f7-4c33-b433-d8f73b50af17-1</span><br></pre></td></tr></table></figure>
+<div class="highlight-container" data-rel="Code"><figure class="iseeu highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">staff@localhost:/var/folders/px/n0m4_bp13077qbk54k30yy340000gp/T/junit1120128347261300405/junit4490023537149085262/manifest$     ll</span><br><span class="line">total 24</span><br><span class="line">drwxr-xr-x  5 staff  staff   160  3 11 17:55 ./</span><br><span class="line">drwx------  6 staff  staff   192  3 11 17:55 ../</span><br><span class="line">-rw-r--r--  1 staff  staff  2681  3 11 17:55 manifest-5a53de30-1d30-43f0-a837-078ca61e0b93-0</span><br><span class="line">-rw-r--r--  1 staff  staff   837  3 11 17:55 manifest-list-0267739b-40f7-4c33-b433-d8f73b50af17-0</span><br><span class="line">-rw-r--r--  1 staff  staff   931  3 11 17:55 manifest-list-0267739b-40f7-4c33-b433-d8f73b50af17-1</span><br></pre></td></tr></table></figure></div>
 </li>
 <li><p>snapshot-1</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">staff@localhost:/var/folders/px/n0m4_bp13077qbk54k30yy340000gp/T/junit1120128347261300405/junit4490023537149085262/snapshot$     ll</span><br><span class="line">total 8</span><br><span class="line">drwxr-xr-x  3 staff  staff   96  3 11 17:55 ./</span><br><span class="line">drwx------  6 staff  staff  192  3 11 17:55 ../</span><br><span class="line">-rw-r--r--  1 staff  staff  283  3 11 17:55 snapshot-1</span><br></pre></td></tr></table></figure>
+<div class="highlight-container" data-rel="Code"><figure class="iseeu highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">staff@localhost:/var/folders/px/n0m4_bp13077qbk54k30yy340000gp/T/junit1120128347261300405/junit4490023537149085262/snapshot$     ll</span><br><span class="line">total 8</span><br><span class="line">drwxr-xr-x  3 staff  staff   96  3 11 17:55 ./</span><br><span class="line">drwx------  6 staff  staff  192  3 11 17:55 ../</span><br><span class="line">-rw-r--r--  1 staff  staff  283  3 11 17:55 snapshot-1</span><br></pre></td></tr></table></figure></div>
 
 </li>
 </ul>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"id"</span>:<span class="number">1</span>,</span><br><span class="line">    <span class="attr">"baseManifestList"</span>:<span class="string">"manifest-list-0267739b-40f7-4c33-b433-d8f73b50af17-0"</span>,</span><br><span class="line">    <span class="attr">"deltaManifestList"</span>:<span class="string">"manifest-list-0267739b-40f7-4c33-b433-d8f73b50af17-1"</span>,</span><br><span class="line">    <span class="attr">"commitUser"</span>:<span class="string">"user"</span>,</span><br><span class="line">    <span class="attr">"commitIdentifier"</span>:<span class="string">"9223372036854775807"</span>,</span><br><span class="line">    <span class="attr">"commitKind"</span>:<span class="string">"APPEND"</span>,</span><br><span class="line">    <span class="attr">"timeMillis"</span>:<span class="number">1646992531086</span>,</span><br><span class="line">    <span class="attr">"logOffsets"</span>:&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<div class="highlight-container" data-rel="Json"><figure class="iseeu highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"id"</span>:<span class="number">1</span>,</span><br><span class="line">    <span class="attr">"baseManifestList"</span>:<span class="string">"manifest-list-0267739b-40f7-4c33-b433-d8f73b50af17-0"</span>,</span><br><span class="line">    <span class="attr">"deltaManifestList"</span>:<span class="string">"manifest-list-0267739b-40f7-4c33-b433-d8f73b50af17-1"</span>,</span><br><span class="line">    <span class="attr">"commitUser"</span>:<span class="string">"user"</span>,</span><br><span class="line">    <span class="attr">"commitIdentifier"</span>:<span class="string">"9223372036854775807"</span>,</span><br><span class="line">    <span class="attr">"commitKind"</span>:<span class="string">"APPEND"</span>,</span><br><span class="line">    <span class="attr">"timeMillis"</span>:<span class="number">1646992531086</span>,</span><br><span class="line">    <span class="attr">"logOffsets"</span>:&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
 <h3 id="Log-Storage"><a href="#Log-Storage" class="headerlink" title="Log Storage"></a>Log Storage</h3><p>Table 的操作记录，是一个不可变更序列，对应 Flink SQL 的流模式，可以通过 Flink SQL 订阅 Dynamic Table 的增量变化做实时分析，支持插件化实现。<br>依赖 Kafka 作为底层存储，Log Storage 中的 bucket 就对应 Kafka Partition 。</p>
-<h2 id="源码阅读准备"><a href="#源码阅读准备" class="headerlink" title="源码阅读准备"></a>源码阅读准备</h2><p><a href="https://github.com/apache/flink" target="_blank" rel="noopener">flink git仓库</a> 切换到 master 分支，当前是 1.15-SNAPSHOT 分支，需要 install 到本地，flink-table-store 需要引用这个版本。<br><a href="https://github.com/apache/flink-table-store" target="_blank" rel="noopener">flink-table-store git仓库</a>，切换到 master 分支。</p>
+<h2 id="源码阅读准备"><a href="#源码阅读准备" class="headerlink" title="源码阅读准备"></a>源码阅读准备</h2><p><a class="link" href="https://github.com/apache/flink" target="_blank" rel="noopener">flink git仓库 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 切换到 master 分支，当前是 1.15-SNAPSHOT 分支，需要 install 到本地，flink-table-store 需要引用这个版本。<br><a class="link" href="https://github.com/apache/flink-table-store" target="_blank" rel="noopener">flink-table-store git仓库 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>，切换到 master 分支。</p>
 <p><code>FileStoreITCase</code> </p>
 <ol>
 <li>分区表</li>
@@ -476,66 +538,66 @@
 <ul>
 <li>获得要读取的 SourceSplit ，生成 LSM 的 MergeIterator ，并读取数据</li>
 </ul>
-<h2 id="几个关键类图"><a href="#几个关键类图" class="headerlink" title="几个关键类图"></a>几个关键类图</h2><h3 id="FileStore-类图"><a href="#FileStore-类图" class="headerlink" title="FileStore 类图"></a>FileStore 类图</h3><p><img src="FileStore%E7%B1%BB%E5%9B%BE.png" alt></p>
-<h3 id="FileStoreSource-类图"><a href="#FileStoreSource-类图" class="headerlink" title="FileStoreSource 类图"></a>FileStoreSource 类图</h3><p><img src="FileStoreSource%E7%B1%BB%E5%9B%BE.png" alt></p>
-<h3 id="StoreSink-类图"><a href="#StoreSink-类图" class="headerlink" title="StoreSink 类图"></a>StoreSink 类图</h3><p><img src="StoreSink%E7%B1%BB%E5%9B%BE.png" alt></p>
-<h3 id="mergetree-包类图"><a href="#mergetree-包类图" class="headerlink" title="mergetree 包类图"></a>mergetree 包类图</h3><p><img src="mergetree%E5%8C%85%E7%B1%BB%E5%9B%BE.png" alt></p>
+<h2 id="几个关键类图"><a href="#几个关键类图" class="headerlink" title="几个关键类图"></a>几个关键类图</h2><h3 id="FileStore-类图"><a href="#FileStore-类图" class="headerlink" title="FileStore 类图"></a>FileStore 类图</h3><p><img lazyload src="/images/loading.svg" data-src="FileStore%E7%B1%BB%E5%9B%BE.png" alt></p>
+<h3 id="FileStoreSource-类图"><a href="#FileStoreSource-类图" class="headerlink" title="FileStoreSource 类图"></a>FileStoreSource 类图</h3><p><img lazyload src="/images/loading.svg" data-src="FileStoreSource%E7%B1%BB%E5%9B%BE.png" alt></p>
+<h3 id="StoreSink-类图"><a href="#StoreSink-类图" class="headerlink" title="StoreSink 类图"></a>StoreSink 类图</h3><p><img lazyload src="/images/loading.svg" data-src="StoreSink%E7%B1%BB%E5%9B%BE.png" alt></p>
+<h3 id="mergetree-包类图"><a href="#mergetree-包类图" class="headerlink" title="mergetree 包类图"></a>mergetree 包类图</h3><p><img lazyload src="/images/loading.svg" data-src="mergetree%E5%8C%85%E7%B1%BB%E5%9B%BE.png" alt></p>
 <h3 id="KafkaLogStore类图"><a href="#KafkaLogStore类图" class="headerlink" title="KafkaLogStore类图"></a>KafkaLogStore类图</h3><p>在 flink-table-store/flink-table-store-kafka/src/main/resources/META-INF/services 路径上有一个文件 <code>org.apache.flink.table.factories.Factory</code>  中定义了 <code>KafkaLogStoreFactory</code> ，用 SPI 机制来实现 flink-table-store 的 <code>LogStoreTableFactory</code> 。</p>
-<p><img src="kafkaLogStore%E7%B1%BB%E5%9B%BE.png" alt></p>
-<h4 id="KafkaLogSourceProvider"><a href="#KafkaLogSourceProvider" class="headerlink" title="KafkaLogSourceProvider"></a>KafkaLogSourceProvider</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">KafkaLogSourceProvider</span> <span class="keyword">implements</span> <span class="title">LogSourceProvider</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> KafkaSource&lt;RowData&gt; <span class="title">createSource</span><span class="params">(@Nullable Map&lt;Integer, Long&gt; bucketOffsets)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">switch</span> (consistency) &#123;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 开启 Kafka 读取事务</span></span><br><span class="line">            <span class="keyword">case</span> TRANSACTIONAL:</span><br><span class="line"></span><br><span class="line">                <span class="comment">// Add read committed for transactional consistency mode.</span></span><br><span class="line">                properties.setProperty(ISOLATION_LEVEL_CONFIG, <span class="string">"read_committed"</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 满足最终一致性</span></span><br><span class="line">            <span class="keyword">case</span> EVENTUAL:</span><br><span class="line">                <span class="keyword">if</span> (keyDeserializer == <span class="keyword">null</span>) &#123;</span><br><span class="line">                    <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(</span><br><span class="line">                            <span class="string">"Can not use EVENTUAL consistency mode for non-pk table."</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                properties.setProperty(ISOLATION_LEVEL_CONFIG, <span class="string">"read_uncommitted"</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> KafkaSource.&lt;RowData&gt;builder()</span><br><span class="line">                .setTopics(topic)</span><br><span class="line">                .setStartingOffsets(toOffsetsInitializer(bucketOffsets))</span><br><span class="line">                .setProperties(properties)</span><br><span class="line">                .setDeserializer(createDeserializationSchema())</span><br><span class="line">                .build();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@VisibleForTesting</span></span><br><span class="line">    <span class="function">KafkaRecordDeserializationSchema&lt;RowData&gt; <span class="title">createDeserializationSchema</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> primaryKey.length &gt; <span class="number">0</span></span><br><span class="line">                ? KafkaRecordDeserializationSchema.of(</span><br><span class="line">                        <span class="keyword">new</span> KafkaLogKeyedDeserializationSchema(</span><br><span class="line">                                physicalType, primaryKey, keyDeserializer, valueDeserializer))</span><br><span class="line">                : KafkaRecordDeserializationSchema.valueOnly(valueDeserializer);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img lazyload src="/images/loading.svg" data-src="kafkaLogStore%E7%B1%BB%E5%9B%BE.png" alt></p>
+<h4 id="KafkaLogSourceProvider"><a href="#KafkaLogSourceProvider" class="headerlink" title="KafkaLogSourceProvider"></a>KafkaLogSourceProvider</h4><div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">KafkaLogSourceProvider</span> <span class="keyword">implements</span> <span class="title">LogSourceProvider</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> KafkaSource&lt;RowData&gt; <span class="title">createSource</span><span class="params">(@Nullable Map&lt;Integer, Long&gt; bucketOffsets)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">switch</span> (consistency) &#123;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 开启 Kafka 读取事务</span></span><br><span class="line">            <span class="keyword">case</span> TRANSACTIONAL:</span><br><span class="line"></span><br><span class="line">                <span class="comment">// Add read committed for transactional consistency mode.</span></span><br><span class="line">                properties.setProperty(ISOLATION_LEVEL_CONFIG, <span class="string">"read_committed"</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 满足最终一致性</span></span><br><span class="line">            <span class="keyword">case</span> EVENTUAL:</span><br><span class="line">                <span class="keyword">if</span> (keyDeserializer == <span class="keyword">null</span>) &#123;</span><br><span class="line">                    <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(</span><br><span class="line">                            <span class="string">"Can not use EVENTUAL consistency mode for non-pk table."</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                properties.setProperty(ISOLATION_LEVEL_CONFIG, <span class="string">"read_uncommitted"</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> KafkaSource.&lt;RowData&gt;builder()</span><br><span class="line">                .setTopics(topic)</span><br><span class="line">                .setStartingOffsets(toOffsetsInitializer(bucketOffsets))</span><br><span class="line">                .setProperties(properties)</span><br><span class="line">                .setDeserializer(createDeserializationSchema())</span><br><span class="line">                .build();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@VisibleForTesting</span></span><br><span class="line">    <span class="function">KafkaRecordDeserializationSchema&lt;RowData&gt; <span class="title">createDeserializationSchema</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> primaryKey.length &gt; <span class="number">0</span></span><br><span class="line">                ? KafkaRecordDeserializationSchema.of(</span><br><span class="line">                        <span class="keyword">new</span> KafkaLogKeyedDeserializationSchema(</span><br><span class="line">                                physicalType, primaryKey, keyDeserializer, valueDeserializer))</span><br><span class="line">                : KafkaRecordDeserializationSchema.valueOnly(valueDeserializer);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
-<h4 id="KafkaLogSinkProvider"><a href="#KafkaLogSinkProvider" class="headerlink" title="KafkaLogSinkProvider"></a>KafkaLogSinkProvider</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">KafkaLogSinkProvider</span> <span class="keyword">implements</span> <span class="title">LogSinkProvider</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> KafkaSink&lt;SinkRecord&gt; <span class="title">createSink</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        KafkaSinkBuilder&lt;SinkRecord&gt; builder = KafkaSink.builder();</span><br><span class="line">        <span class="keyword">switch</span> (consistency) &#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">case</span> TRANSACTIONAL:</span><br><span class="line">                builder.setDeliverGuarantee(DeliveryGuarantee.EXACTLY_ONCE)</span><br><span class="line">                        .setTransactionalIdPrefix(<span class="string">"log-store-"</span> + topic);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">                </span><br><span class="line">            <span class="keyword">case</span> EVENTUAL:</span><br><span class="line">                <span class="keyword">if</span> (keySerializer == <span class="keyword">null</span>) &#123;</span><br><span class="line">                    <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(</span><br><span class="line">                            <span class="string">"Can not use EVENTUAL consistency mode for non-pk table."</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                builder.setDeliverGuarantee(DeliveryGuarantee.AT_LEAST_ONCE);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> builder.setBootstrapServers(</span><br><span class="line">                        properties.get(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG).toString())</span><br><span class="line">                .setKafkaProducerConfig(properties)</span><br><span class="line">                .setRecordSerializer(createSerializationSchema())</span><br><span class="line">                .build();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Consumer&lt;RecordMetadata&gt; <span class="title">createMetadataConsumer</span><span class="params">(WriteCallback callback)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> meta -&gt; callback.onCompletion(meta.partition(), meta.offset());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@VisibleForTesting</span></span><br><span class="line">    <span class="function">KafkaLogSerializationSchema <span class="title">createSerializationSchema</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> KafkaLogSerializationSchema(</span><br><span class="line">                topic, keySerializer, valueSerializer, changelogMode);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="KafkaLogSinkProvider"><a href="#KafkaLogSinkProvider" class="headerlink" title="KafkaLogSinkProvider"></a>KafkaLogSinkProvider</h4><div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">KafkaLogSinkProvider</span> <span class="keyword">implements</span> <span class="title">LogSinkProvider</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> KafkaSink&lt;SinkRecord&gt; <span class="title">createSink</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        KafkaSinkBuilder&lt;SinkRecord&gt; builder = KafkaSink.builder();</span><br><span class="line">        <span class="keyword">switch</span> (consistency) &#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">case</span> TRANSACTIONAL:</span><br><span class="line">                builder.setDeliverGuarantee(DeliveryGuarantee.EXACTLY_ONCE)</span><br><span class="line">                        .setTransactionalIdPrefix(<span class="string">"log-store-"</span> + topic);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">                </span><br><span class="line">            <span class="keyword">case</span> EVENTUAL:</span><br><span class="line">                <span class="keyword">if</span> (keySerializer == <span class="keyword">null</span>) &#123;</span><br><span class="line">                    <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(</span><br><span class="line">                            <span class="string">"Can not use EVENTUAL consistency mode for non-pk table."</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                builder.setDeliverGuarantee(DeliveryGuarantee.AT_LEAST_ONCE);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> builder.setBootstrapServers(</span><br><span class="line">                        properties.get(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG).toString())</span><br><span class="line">                .setKafkaProducerConfig(properties)</span><br><span class="line">                .setRecordSerializer(createSerializationSchema())</span><br><span class="line">                .build();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Consumer&lt;RecordMetadata&gt; <span class="title">createMetadataConsumer</span><span class="params">(WriteCallback callback)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> meta -&gt; callback.onCompletion(meta.partition(), meta.offset());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@VisibleForTesting</span></span><br><span class="line">    <span class="function">KafkaLogSerializationSchema <span class="title">createSerializationSchema</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> KafkaLogSerializationSchema(</span><br><span class="line">                topic, keySerializer, valueSerializer, changelogMode);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
-<h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><p><img src="Demo1-%E6%B5%81%E5%BC%8F%E6%95%B0%E4%BB%93-pipeline.png" alt></p>
+<h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><p><img lazyload src="/images/loading.svg" data-src="Demo1-%E6%B5%81%E5%BC%8F%E6%95%B0%E4%BB%93-pipeline.png" alt></p>
 <h3 id="Stream"><a href="#Stream" class="headerlink" title="Stream"></a>Stream</h3><ul>
 <li>MySql CDC : 订单表</li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TEMPORARY</span> <span class="keyword">TABLE</span> orders (</span><br><span class="line">	order_id <span class="built_in">VARCHAR</span>,</span><br><span class="line">	cate_id <span class="built_in">VARCHAR</span>,</span><br><span class="line">	trans_amount <span class="built_in">BIGINT</span>,</span><br><span class="line">	gmt_create <span class="built_in">VARCHAR</span>,</span><br><span class="line">	dt <span class="keyword">AS</span> <span class="keyword">DATE_FORMAT</span>(gmt_create, <span class="string">'yyyy-MM-dd'</span>),</span><br><span class="line">	PRIMARY <span class="keyword">KEY</span> (order_id) <span class="keyword">NOT</span> <span class="keyword">ENFORCED</span></span><br><span class="line">) <span class="keyword">WITH</span> (</span><br><span class="line">	<span class="string">'connector'</span> = <span class="string">'mysql-cdc'</span>,</span><br><span class="line">	<span class="string">'hostname'</span> = <span class="string">'localhost'</span>,</span><br><span class="line">	<span class="string">'port'</span> = <span class="string">'3306'</span>,</span><br><span class="line">	<span class="string">'username'</span> = <span class="string">'root'</span>,</span><br><span class="line">	<span class="string">'password'</span> = <span class="string">'123456'</span>,</span><br><span class="line">	<span class="string">'database-name'</span> = <span class="string">'retail'</span>,</span><br><span class="line">	<span class="string">'table-name'</span> = <span class="string">'orders'</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<div class="highlight-container" data-rel="Sql"><figure class="iseeu highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TEMPORARY</span> <span class="keyword">TABLE</span> orders (</span><br><span class="line">	order_id <span class="built_in">VARCHAR</span>,</span><br><span class="line">	cate_id <span class="built_in">VARCHAR</span>,</span><br><span class="line">	trans_amount <span class="built_in">BIGINT</span>,</span><br><span class="line">	gmt_create <span class="built_in">VARCHAR</span>,</span><br><span class="line">	dt <span class="keyword">AS</span> <span class="keyword">DATE_FORMAT</span>(gmt_create, <span class="string">'yyyy-MM-dd'</span>),</span><br><span class="line">	PRIMARY <span class="keyword">KEY</span> (order_id) <span class="keyword">NOT</span> <span class="keyword">ENFORCED</span></span><br><span class="line">) <span class="keyword">WITH</span> (</span><br><span class="line">	<span class="string">'connector'</span> = <span class="string">'mysql-cdc'</span>,</span><br><span class="line">	<span class="string">'hostname'</span> = <span class="string">'localhost'</span>,</span><br><span class="line">	<span class="string">'port'</span> = <span class="string">'3306'</span>,</span><br><span class="line">	<span class="string">'username'</span> = <span class="string">'root'</span>,</span><br><span class="line">	<span class="string">'password'</span> = <span class="string">'123456'</span>,</span><br><span class="line">	<span class="string">'database-name'</span> = <span class="string">'retail'</span>,</span><br><span class="line">	<span class="string">'table-name'</span> = <span class="string">'orders'</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure></div>
 
 <ul>
 <li>MySql CDC : 类目表</li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TEMPORARY</span> <span class="keyword">TABLE</span> cate_dim (</span><br><span class="line">	cate_id <span class="built_in">VARCHAR</span>,</span><br><span class="line">    parent_cate_id <span class="built_in">VARCHAR</span>,</span><br><span class="line">	PRIMARY <span class="keyword">KEY</span> (cate_id) <span class="keyword">NOT</span> <span class="keyword">ENFORCED</span></span><br><span class="line">) <span class="keyword">WITH</span> (</span><br><span class="line">	<span class="string">'connector'</span> = <span class="string">'mysql-cdc'</span>,</span><br><span class="line">	<span class="string">'hostname'</span> = <span class="string">'localhost'</span>,</span><br><span class="line">	<span class="string">'port'</span> = <span class="string">'3306'</span>,</span><br><span class="line">	<span class="string">'username'</span> = <span class="string">'root'</span>,</span><br><span class="line">	<span class="string">'password'</span> = <span class="string">'123456'</span>,</span><br><span class="line">	<span class="string">'database-name'</span> = <span class="string">'retail'</span>,</span><br><span class="line">	<span class="string">'table-name'</span> = <span class="string">'category'</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<div class="highlight-container" data-rel="Sql"><figure class="iseeu highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TEMPORARY</span> <span class="keyword">TABLE</span> cate_dim (</span><br><span class="line">	cate_id <span class="built_in">VARCHAR</span>,</span><br><span class="line">    parent_cate_id <span class="built_in">VARCHAR</span>,</span><br><span class="line">	PRIMARY <span class="keyword">KEY</span> (cate_id) <span class="keyword">NOT</span> <span class="keyword">ENFORCED</span></span><br><span class="line">) <span class="keyword">WITH</span> (</span><br><span class="line">	<span class="string">'connector'</span> = <span class="string">'mysql-cdc'</span>,</span><br><span class="line">	<span class="string">'hostname'</span> = <span class="string">'localhost'</span>,</span><br><span class="line">	<span class="string">'port'</span> = <span class="string">'3306'</span>,</span><br><span class="line">	<span class="string">'username'</span> = <span class="string">'root'</span>,</span><br><span class="line">	<span class="string">'password'</span> = <span class="string">'123456'</span>,</span><br><span class="line">	<span class="string">'database-name'</span> = <span class="string">'retail'</span>,</span><br><span class="line">	<span class="string">'table-name'</span> = <span class="string">'category'</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure></div>
 
 <ul>
 <li>Flink 动态表：DWD 订单类目宽表</li>
 </ul>
 <p>创建动态表的 DDL ，不用再指定 connector options ，就像在离线平台创建表一样，只需要指定表字段、主键、分区即可。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TEMPORARY</span> <span class="keyword">TABLE</span> dwd_orders_cate (</span><br><span class="line">	dt <span class="keyword">STRING</span>,</span><br><span class="line">	cate_id <span class="built_in">VARCHAR</span>,</span><br><span class="line">    parent_cate_id <span class="built_in">VARCHAR</span>,</span><br><span class="line">    order_id <span class="built_in">VARCHAR</span>,</span><br><span class="line">    trans_amount <span class="built_in">BIGINT</span>,</span><br><span class="line">    gmt_create <span class="built_in">VARCHAR</span>,</span><br><span class="line">	PRIMARY <span class="keyword">KEY</span> (order_id, dt) <span class="keyword">NOT</span> <span class="keyword">ENFORCED</span></span><br><span class="line">) PARTITIONED <span class="keyword">BY</span> (dt);</span><br></pre></td></tr></table></figure>
+<div class="highlight-container" data-rel="Sql"><figure class="iseeu highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TEMPORARY</span> <span class="keyword">TABLE</span> dwd_orders_cate (</span><br><span class="line">	dt <span class="keyword">STRING</span>,</span><br><span class="line">	cate_id <span class="built_in">VARCHAR</span>,</span><br><span class="line">    parent_cate_id <span class="built_in">VARCHAR</span>,</span><br><span class="line">    order_id <span class="built_in">VARCHAR</span>,</span><br><span class="line">    trans_amount <span class="built_in">BIGINT</span>,</span><br><span class="line">    gmt_create <span class="built_in">VARCHAR</span>,</span><br><span class="line">	PRIMARY <span class="keyword">KEY</span> (order_id, dt) <span class="keyword">NOT</span> <span class="keyword">ENFORCED</span></span><br><span class="line">) PARTITIONED <span class="keyword">BY</span> (dt);</span><br></pre></td></tr></table></figure></div>
 
 <ul>
 <li>Flink 动态表：DWS 类目指标聚合表</li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> dws_cate_day (</span><br><span class="line">	dt <span class="keyword">STRING</span>,</span><br><span class="line">	parent_cate_id <span class="built_in">VARCHAR</span>,</span><br><span class="line">	cate_gmv <span class="built_in">BIGINT</span>,</span><br><span class="line">	PRIMARY <span class="keyword">KEY</span> (parent_cate_id, dt) <span class="keyword">NOT</span> <span class="keyword">ENFORCED</span></span><br><span class="line">)  PARTITIONED <span class="keyword">BY</span> (dt);</span><br></pre></td></tr></table></figure>
+<div class="highlight-container" data-rel="Sql"><figure class="iseeu highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> dws_cate_day (</span><br><span class="line">	dt <span class="keyword">STRING</span>,</span><br><span class="line">	parent_cate_id <span class="built_in">VARCHAR</span>,</span><br><span class="line">	cate_gmv <span class="built_in">BIGINT</span>,</span><br><span class="line">	PRIMARY <span class="keyword">KEY</span> (parent_cate_id, dt) <span class="keyword">NOT</span> <span class="keyword">ENFORCED</span></span><br><span class="line">)  PARTITIONED <span class="keyword">BY</span> (dt);</span><br></pre></td></tr></table></figure></div>
 
 <ul>
 <li>流作业：两张 MySql CDC 表 join 写入 DWD</li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> dwd_orders_cate</span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	s.dt,</span><br><span class="line">	s.parent_cate_id,</span><br><span class="line">	s.cate_id,</span><br><span class="line">	s.order_id,</span><br><span class="line">	s.trans_amount,</span><br><span class="line">	s.gmt_create</span><br><span class="line"><span class="keyword">FROM</span> <span class="string">`orders`</span> s <span class="keyword">INNER</span> <span class="keyword">JOIN</span> <span class="string">`cate_dim`</span> d</span><br><span class="line"><span class="keyword">ON</span> s.cate_id = d.cate_id;</span><br></pre></td></tr></table></figure>
+<div class="highlight-container" data-rel="Sql"><figure class="iseeu highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> dwd_orders_cate</span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	s.dt,</span><br><span class="line">	s.parent_cate_id,</span><br><span class="line">	s.cate_id,</span><br><span class="line">	s.order_id,</span><br><span class="line">	s.trans_amount,</span><br><span class="line">	s.gmt_create</span><br><span class="line"><span class="keyword">FROM</span> <span class="string">`orders`</span> s <span class="keyword">INNER</span> <span class="keyword">JOIN</span> <span class="string">`cate_dim`</span> d</span><br><span class="line"><span class="keyword">ON</span> s.cate_id = d.cate_id;</span><br></pre></td></tr></table></figure></div>
 
 <ul>
 <li>流作业：DWD 经过聚合写入 DWS</li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> dws_cate_day</span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	dt,</span><br><span class="line">	parent_cate_id,</span><br><span class="line">	<span class="keyword">SUM</span>(trans_amount) <span class="keyword">AS</span> cate_gmv</span><br><span class="line"><span class="keyword">FROM</span> dwd_orders_cate</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> parent_cate_id, dt;</span><br></pre></td></tr></table></figure>
+<div class="highlight-container" data-rel="Sql"><figure class="iseeu highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> dws_cate_day</span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	dt,</span><br><span class="line">	parent_cate_id,</span><br><span class="line">	<span class="keyword">SUM</span>(trans_amount) <span class="keyword">AS</span> cate_gmv</span><br><span class="line"><span class="keyword">FROM</span> dwd_orders_cate</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> parent_cate_id, dt;</span><br></pre></td></tr></table></figure></div>
 
 <h3 id="OLAP"><a href="#OLAP" class="headerlink" title="OLAP"></a>OLAP</h3><ul>
 <li>实时 OLAP：join 订单宽表和类目指标表，得出订单在这个类目下金额的占比</li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	order_id,</span><br><span class="line">	trans_amount,</span><br><span class="line">	<span class="keyword">CAST</span>(trans_amount <span class="keyword">AS</span> <span class="keyword">DOUBLE</span>) / cate_gmv <span class="keyword">AS</span> ratio</span><br><span class="line"><span class="keyword">FROM</span> dwd_orders_cate d </span><br><span class="line"><span class="keyword">JOIN</span> dws_cate_day s</span><br><span class="line"><span class="keyword">ON</span> d.parent_cate_id = s.parent_cate_id</span><br><span class="line"><span class="keyword">WHERE</span> d.dt = <span class="string">'2021-12-08'</span> <span class="keyword">AND</span> s.dt = <span class="string">'2021-12-08'</span> <span class="comment">-- 分区裁剪</span></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> ratio <span class="keyword">DESC</span></span><br><span class="line"><span class="keyword">LIMIT</span> <span class="number">10</span>;</span><br></pre></td></tr></table></figure>
+<div class="highlight-container" data-rel="Sql"><figure class="iseeu highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	order_id,</span><br><span class="line">	trans_amount,</span><br><span class="line">	<span class="keyword">CAST</span>(trans_amount <span class="keyword">AS</span> <span class="keyword">DOUBLE</span>) / cate_gmv <span class="keyword">AS</span> ratio</span><br><span class="line"><span class="keyword">FROM</span> dwd_orders_cate d </span><br><span class="line"><span class="keyword">JOIN</span> dws_cate_day s</span><br><span class="line"><span class="keyword">ON</span> d.parent_cate_id = s.parent_cate_id</span><br><span class="line"><span class="keyword">WHERE</span> d.dt = <span class="string">'2021-12-08'</span> <span class="keyword">AND</span> s.dt = <span class="string">'2021-12-08'</span> <span class="comment">-- 分区裁剪</span></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> ratio <span class="keyword">DESC</span></span><br><span class="line"><span class="keyword">LIMIT</span> <span class="number">10</span>;</span><br></pre></td></tr></table></figure></div>
 
 <ul>
 <li>历史 OLAP：查询订单宽表三天前的数据</li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> dwd_orders_cate <span class="keyword">WHERE</span> dt = <span class="string">'2021-12-05'</span>;</span><br></pre></td></tr></table></figure>
+<div class="highlight-container" data-rel="Sql"><figure class="iseeu highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> dwd_orders_cate <span class="keyword">WHERE</span> dt = <span class="string">'2021-12-05'</span>;</span><br></pre></td></tr></table></figure></div>
 
-<h3 id="Batch"><a href="#Batch" class="headerlink" title="Batch"></a>Batch</h3><p><img src="Demo2-%E7%A6%BB%E7%BA%BF%E6%95%B0%E4%BB%93-%E6%95%B0%E6%8D%AE%E8%AE%A2%E6%AD%A3.png" alt></p>
+<h3 id="Batch"><a href="#Batch" class="headerlink" title="Batch"></a>Batch</h3><p><img lazyload src="/images/loading.svg" data-src="Demo2-%E7%A6%BB%E7%BA%BF%E6%95%B0%E4%BB%93-%E6%95%B0%E6%8D%AE%E8%AE%A2%E6%AD%A3.png" alt></p>
 <ul>
 <li>Batch 数据订正：覆写指定分区</li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> OVERWRITE dws_cate_day <span class="keyword">PARTITION</span> (dt = <span class="string">'2021-12-05'</span>)</span><br><span class="line"><span class="keyword">SELECT</span> </span><br><span class="line">	parent_cate_id,</span><br><span class="line">	<span class="keyword">SUM</span>(trans_amount) <span class="keyword">AS</span> cate_gmv</span><br><span class="line"><span class="keyword">FROM</span> dwd_orders_cate</span><br><span class="line"><span class="keyword">WHERE</span> dt = <span class="string">'2021-12-05'</span> <span class="keyword">AND</span> trans_amount &gt; <span class="number">0</span></span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> parent_cate_id;</span><br></pre></td></tr></table></figure>
+<div class="highlight-container" data-rel="Sql"><figure class="iseeu highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> OVERWRITE dws_cate_day <span class="keyword">PARTITION</span> (dt = <span class="string">'2021-12-05'</span>)</span><br><span class="line"><span class="keyword">SELECT</span> </span><br><span class="line">	parent_cate_id,</span><br><span class="line">	<span class="keyword">SUM</span>(trans_amount) <span class="keyword">AS</span> cate_gmv</span><br><span class="line"><span class="keyword">FROM</span> dwd_orders_cate</span><br><span class="line"><span class="keyword">WHERE</span> dt = <span class="string">'2021-12-05'</span> <span class="keyword">AND</span> trans_amount &gt; <span class="number">0</span></span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> parent_cate_id;</span><br></pre></td></tr></table></figure></div>
 
 <h2 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h2><p>Flink 要统一存储，就必须要提供高质量的查询服务，如 OLAP 交互查询，这其中包括 Flink SQL 在 OLAP 交互场景下的优化、动态表存储性能和一致性的优化以及构建动态表服务化能力等诸多工作。</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://cwiki.apache.org/confluence/display/FLINK/FLIP-188%3A+Introduce+Built-in+Dynamic+Table+Storage" target="_blank" rel="noopener">FLIP-188: Introduce Built-in Dynamic Table Storage</a><br><a href="https://lists.apache.org/thread/tqyn1cro5ohl3c3fkjb1zvxbo03sofn7" target="_blank" rel="noopener">FLIP-188 讨论列表</a><br><a href="https://www.infoq.cn/article/ndur1dzox8g2muuddi56" target="_blank" rel="noopener">Apache Flink 不止于计算，数仓架构或兴起新一轮变革</a><br><a href="https://blog.csdn.net/u013516966/article/details/127581865?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522167599596716800213022633%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=167599596716800213022633&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-2-127581865-null-null.142^v73^control_1,201^v4^add_ask,239^v1^control&utm_term=Flink%20Table%20Store&spm=1018.2226.3001.4187" target="_blank" rel="noopener">Flink Table Store：流批一体存储</a><br><a href="https://developer.aliyun.com/article/1080869" target="_blank" rel="noopener">基于 Apache Flink Table Store 的全增量一体实时入湖</a><br><a href="https://developer.aliyun.com/article/1009052" target="_blank" rel="noopener">Apache Flink Table Store 0.2.0 发布</a><br><a href="https://developer.aliyun.com/article/1151116?spm=a2c6h.14164896.0.0.3dc73c04heP4nq" target="_blank" rel="noopener">Flink Table Store 典型应用场景</a><br><a href="https://flink.apache.org/news/2023/01/13/release-table-store-0.3.0.html?spm=a2c6h.12873639.article-detail.7.7d6b1d4cf8EsYJ" target="_blank" rel="noopener">Apache Flink Table Store 0.3.0 Release Announcement</a><br><a href="https://developer.aliyun.com/live/251137?spm=a2c6h.14164896.0.0.24623c04pxV8HC" target="_blank" rel="noopener">Flink Table Store 0.3 构建流式数仓最佳实践</a><br><a href="https://blog.csdn.net/Aquester/article/details/127834798?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522167599596716800213022633%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=167599596716800213022633&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-3-127834798-null-null.142^v73^control_1,201^v4^add_ask,239^v1^control&utm_term=Flink%20Table%20Store&spm=1018.2226.3001.4187" target="_blank" rel="noopener">快速体验 Flink Table Store 入门</a></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a class="link" href="https://cwiki.apache.org/confluence/display/FLINK/FLIP-188%3A+Introduce+Built-in+Dynamic+Table+Storage" target="_blank" rel="noopener">FLIP-188: Introduce Built-in Dynamic Table Storage <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a><br><a class="link" href="https://lists.apache.org/thread/tqyn1cro5ohl3c3fkjb1zvxbo03sofn7" target="_blank" rel="noopener">FLIP-188 讨论列表 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a><br><a class="link" href="https://www.infoq.cn/article/ndur1dzox8g2muuddi56" target="_blank" rel="noopener">Apache Flink 不止于计算，数仓架构或兴起新一轮变革 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a><br><a class="link" href="https://blog.csdn.net/u013516966/article/details/127581865?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522167599596716800213022633%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=167599596716800213022633&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-2-127581865-null-null.142^v73^control_1,201^v4^add_ask,239^v1^control&utm_term=Flink%20Table%20Store&spm=1018.2226.3001.4187" target="_blank" rel="noopener">Flink Table Store：流批一体存储 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a><br><a class="link" href="https://developer.aliyun.com/article/1080869" target="_blank" rel="noopener">基于 Apache Flink Table Store 的全增量一体实时入湖 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a><br><a class="link" href="https://developer.aliyun.com/article/1009052" target="_blank" rel="noopener">Apache Flink Table Store 0.2.0 发布 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a><br><a class="link" href="https://developer.aliyun.com/article/1151116?spm=a2c6h.14164896.0.0.3dc73c04heP4nq" target="_blank" rel="noopener">Flink Table Store 典型应用场景 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a><br><a class="link" href="https://flink.apache.org/news/2023/01/13/release-table-store-0.3.0.html?spm=a2c6h.12873639.article-detail.7.7d6b1d4cf8EsYJ" target="_blank" rel="noopener">Apache Flink Table Store 0.3.0 Release Announcement <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a><br><a class="link" href="https://developer.aliyun.com/live/251137?spm=a2c6h.14164896.0.0.24623c04pxV8HC" target="_blank" rel="noopener">Flink Table Store 0.3 构建流式数仓最佳实践 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a><br><a class="link" href="https://blog.csdn.net/Aquester/article/details/127834798?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522167599596716800213022633%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=167599596716800213022633&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-3-127834798-null-null.142^v73^control_1,201^v4^add_ask,239^v1^control&utm_term=Flink%20Table%20Store&spm=1018.2226.3001.4187" target="_blank" rel="noopener">快速体验 Flink Table Store 入门 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
 
       
     </div>
@@ -638,6 +700,8 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
+              <img class="site-author-image" itemprop="image" src="/images/2.JPG" alt="miaowenting">
+            
               <p class="site-author-name" itemprop="name">miaowenting</p>
               <p class="site-description motion-element" itemprop="description"></p>
           </div>
@@ -689,11 +753,39 @@
           
 
           
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/miaowenting" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
 
           
           
 
           
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://ci.apache.org/projects/flink/flink-docs-stable/" title="flink文档" target="_blank">flink文档</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href title="flink社区" target="_blank">flink社区</a>
+                  </li>
+                
+              </ul>
+            </div>
           
 
           
@@ -749,7 +841,7 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
 
 
 
@@ -896,6 +988,323 @@
 
 
   
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
 
 
 

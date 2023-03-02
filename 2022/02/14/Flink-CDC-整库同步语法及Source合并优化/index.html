@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -99,7 +99,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Mist',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -192,6 +192,36 @@
         </li>
       
         
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
@@ -203,9 +233,41 @@
       
 
       
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
     </ul>
   
 
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
   
 </nav>
 
@@ -239,7 +301,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="miaowenting">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/2.JPG">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -340,7 +402,7 @@
     <label for="hbePass">Hey, password is required here.</label>
     <div class="bottom-line"></div>
   </div>
-  <script id="hbeData" type="hbeData" data-hmacdigest="9020e3808c30b25b16dff743fdaf1b0d1bcc147b54ba9fe52e15b73960d739d2">d1dec04d5d63f2a84f3c2560c37aae469752446a81cb91bac7034cf5e410474fbdaf9590c898af394fa33f0b7b8973a755c3535c1523dfa6fa415df27095b3261f99bc61c3f4e07de59f1ac8c84f0f7683b7713a4527ea3d150e055c191ff0708d0aecb1dba430a6ca13f8cd4950ed744a131a3a0968a9c287365d59802538006fe0eaf0127abb34dca8b1bce7a563a36078bc7a05d09a8a4d93cc7153089302e433ee842aadfc6a29bdf9d7513d2ce4f6552b8108fff55fd8e0a8dfc45cc7106988999796595c98617f59f3263861a5a679ddb6a160d0476e2edb579ed55b006f83d85ab44b240be127bf1088da0a247f603fe60dc2b10757a211fff99ac9d74777b0da09f6fc912e4e88869c74e9f5cc4ac259a88e92548275c1b0c784da6bdf48347bd8d26dea9fa42f7dea61241bbba007203bf755bd021306d0a0d65ed295de180cdf2fa1ef1570edcfb9a93734b8715d7cffcb10b58917c8c265ba94497bffaf23fadc3f54545d248e918d12b8268387b8c95ea7204fe5ee837d3fe4ba7ce10af12b16534c16ff3dde12903331c9a0eeb9c08a24c4c456d684b4ba12e8eeeeacb200e5b2b7c84dd786ab7dbd9fe2d6598010453697da098a15bc951101737754b7d33e1dc0453615f540c46516cf8f87a6c4bd08d3839fb524ac48815630794d8bbf0e6c8a3edbf4e3b08edfa365b557a84b17740a4a949ba7e5cbfc8369cef2eb19f42c09bd8441ef5f4c660a105661e1115bfb1b67c84ecc87c7bff4eaa99e766becc36f1a9788d2a4d032ce226a229e32522f302378d16de96115e29063c53ef976d4ee772c8256e2ccaab7c598cff8d49a086978aad626f6eeb5a76aff0c9e88fb0822ff71864c4e842d4fc217895c2682a2857c691edb851a5ae3cb01a1de196796e2d171021949605ce13e08ee0af10d61fc1f9d8abcdea587f407da9825a6e1db21e1ac423e1f69c8999bc2602c19c273a3aa4e390b7722a392e88342e5874c2e6c4b96c1e98bca2a1c503f8c7e9a12fb7c5a03bcb52825648e1174dc8ce91c0863a48a8349359436797f379b32de131d28a675d78485bdc05e6862583fd571eb15fe3d7640d27df139d656f3f61f1cda7239d0bd86176c2c1f42bee52e11774c50f62c9df4eb447909a061dae1d1af9aa49d2a9266152e146d3606a6318a70f7a93916823aaebaa6b1e962810d12e6543d048630851ad8679c518a09a765e99766ae5dc6e8ff4eff56d35c6bd7351a6ec6b4854ea3d1a47738f5defa8c600d7a0c4f832e0749617d43bfd17180854dd03067fa8f026b80bbec86f22f834de4aa10bb1e69d88d956ccbbf4d9a30ac44b37c23610be615555a4e74cd833ceaac6ddb18650f133d514373ca0e3655fbf073a0887b1122ff3095e8941053cfbc245a5753cb41d712d9328d38c438fc664d0fd705558c2b871f58147b1756173597d75b1e0d29e817a42a0dd67cbf6a7caf1197b99b13f98d4b0401fcd7a048a05ffefc86754e0fded33bece75eb146c56913c63e41f3dff1973f3a84ff29cd3af2a9a1522b879575162f3f854f9b83c8be39f18ca0632b7c1ecf9dac3e5461ce553b6018c082f120bc928286e2ecfd0120c3b70b42d82b6c254efedd33f5728175f033e853f255ee616a2709977eb1a68e891d040d3457d862323031dfd88920cebdb4be9a4c98f32f30826125bb0591c987b10f666506e23ba5f4a817ee97cbf2ba3a4407ac4bbc70b255f8df1ea1d9c31ef76da824c975c775e73227068a187c565fae02fc7c65e90202bd0083c4dbcc431ce78406b357aee89f991ff365b1446b5c1834c368289bc77bb12c6930cdb04913e526c8a977c79c102a064d206c6aaad4fbab67c31bafbd0d345a3f1b540c9800b851315aa1f15b9fc71ab65262d1aad47e75c7c93d798303d7a0ca8bd27fe1febff0cf02d5fcb0b26f63f3466ac9cfee271395b6d9eb57a607e9a420f8008d4870966f556187b0f2cbc667202b76b5d89b55dbc4ef50873e92d25cc5b2065937eca56631ca14adba8df981ccc9758978f8bef4fd7011630cf6b2f9edb45ef3650c97c5a7fe0ab7695d3b5fd4ec80a734346ab4f9ba39ef58b9019d4b8098ec9fccc67ae093d54946ede70e0bde1b391b1ea2b96e84a7a9f5a78afb85cba15f3d229e75bde231e976431e57dac243cf56a29532ee1d670c436957e00d62da0b140ca2e516b6b60c100896eb4c1d3e86a9d03f8b3813c48429a059403db0889d36cc17cad2451edf332ec217c0a2c7b61312bd8de0bf36287eb4d636aa0841db0087bce037059a7b8e698443f534fcae216e5340c660d491ec8834f2cbaaabca50f0bc8f3b1f901d465a01612fe7a39eb70452c2502cbce9a3e2d779c7635365dd9d6561ae7d40903ea19144bae512e34d669dac079a0da7c55e006e792ac32ee88772e4abfe65a709525cd76a6fe8758f642b7da4cfe5c21f5642889672c133f44d75f74476987f95aef747dfa43b44a9fac8d1061389598ec1354d3ee7d061094ff69a2add75b2fd6bc673e920020cd3ebeafc2dfd5beae190e451fcd7a748c51e499fcfa2bf6d0d4be8b2ba196360324f0a6d7cb13a09f9b713aac368176ad580f146579577dc59397eb9da16ab6800b8b04dbf20f37c68376302251a8b537eaa06822509cc46ccc5ee8d8ecee61a5e4efd6b0916907754f9e43802dd0c85b0c06f6f1903f3513e2baf56e54dd756717510b2e41474ebad08c42fda49c3b4cab838b7a9198189b8268f2084e2ce6df100cdd43f01b8fdf9fbb361a97315bd99f40526d2aa7577a7061dd95e85d02bf234f09b9bdd6f89f1b6a4c315c404086f596a892659cb3f84b41316fc2b037914392b5eb524e2809542a2f0d60a9baf61381dc0ae0f05497c94d80e7f753ffea8483c9730026b6ea4e9faea1261a08d49e1f0c4cc03411205d353941eddb843ee1db9194d660cfe443b00554548caf1d46ea56286cc440135b0acddfa77107ef61d2e6bb651e9ad0432d86d7c89d75bfe7fb06b77d9c7d751fb6bb5d9886d6f4168f8e2c09ce2c22d7a0e0276b6a5c4fd82d30ec0b74c13608374668b8730e078b6a1acfea5e7557d0095a4dc39173279a01a1f89bdcc73b84273932fef9fdb676d0946ec1ce5e136b74dba9ceeb13b959f1babb3bbf1549a165ff5eb5db424eca48fe548a2d584f92ee70640a1f55964fa13826ddf120c90</script>
+  <script id="hbeData" type="hbeData" data-hmacdigest="981c308d054949ae6bbb7d10434c841bef9fe8de770d0c68dff045ec28ea75ca">d1dec04d5d63f2a84f3c2560c37aae469752446a81cb91bac7034cf5e410474fbdaf9590c898af394fa33f0b7b8973a755c3535c1523dfa6fa415df27095b3261f99bc61c3f4e07de59f1ac8c84f0f7683b7713a4527ea3d150e055c191ff0708d0aecb1dba430a6ca13f8cd4950ed744a131a3a0968a9c287365d59802538006fe0eaf0127abb34dca8b1bce7a563a36078bc7a05d09a8a4d93cc7153089302e433ee842aadfc6a29bdf9d7513d2ce4f6552b8108fff55fd8e0a8dfc45cc7106988999796595c98617f59f3263861a5a679ddb6a160d0476e2edb579ed55b006f83d85ab44b240be127bf1088da0a247f603fe60dc2b10757a211fff99ac9d74777b0da09f6fc912e4e88869c74e9f5cc4ac259a88e92548275c1b0c784da6bdf48347bd8d26dea9fa42f7dea61241bbba007203bf755bd021306d0a0d65ed295de180cdf2fa1ef1570edcfb9a93734b8715d7cffcb10b58917c8c265ba94497bffaf23fadc3f54545d248e918d12b8268387b8c95ea7204fe5ee837d3fe4ba7ce10af12b16534c16ff3dde12903331c9a0eeb9c08a24c4c456d684b4ba12e8eeeeacb200e5b2b7c84dd786ab7dbd9fe2d6598010453697da098a15bc951101737754b7d33e1dc0453615f540c46516cf8f87a6c4bd08d3839fb524ac48815630794d8bbf0e6c8a3edbf4e3b08edfa365b557a84b17740a4a949ba7e5cbfc83541deb0566e4aa86fe66fcea17f550f4258dd548cae109e884232eeedb5045d793a645771a775239bd3302c43ddc176ad4d9a889fbcdbda33fc25dc51c97b36b724ae24ada4805c271d9ac09b8a2f9867f242fadc0bfd15ee6b06547b176d3ffbad84b7974b70b0d77d8dbb9dfdde2d9d1474bf72e9361a28b6a04e9f2e000e3e247bec7f11ae8ebadfd71cef0fc3997cc0b7a292c398ca00b4b19c75cebd1a4911d49bf59ff013b8c6dd29ea82dc68564599d32a6823c023c42c8df61d7657bc493c2497f783efa515c82ce4c8ed434c979025234e5c9637da58f7d64a5fbd7296a10078b47842b4455680db877fa63ceb5857a0d8ea02a663a16b04ecd9aa6ac57f47a62f23e1d10cf232e4fc9d8db17e64e3a6950fa91516e978f18b1f54f7f173ac9c9124230edde3ef8723f22e042e8c72c20a0887843e5d9350ccf96b87de1cedded6df30f1cc5abcf4ff85bc674c78eccd3ea8278a6fb03445ebbcf02034a05977a356e3462f82f3b37d474677c56680ab64d1e9c2606a77ba02de58ff216e73b73f4ca37c4fd4b92eb0c31f23f37522d663ab8aea86ef1b093033e7bd2da81931f9483bf870564bb0509f3425886a889f31a35c789dd1a789efedd921d495da1c31051ce68d46cabb1d357839f6f8c4f197ab8bd0a6514ef0daab8b03b979bfebbaf4b0c9e17b4d17741ccab27fa66ef6fb80591f204848e522547747b1993823270b29bf23f2deb74ec438d549b70627245ee86a6648913f075a2b3275b32c5b2daa1eb08a9f0d60fe7468fb8bd25730e898bb71962c879b1d0fe66fed6d0d0bbcc79d6807a612bb13a18f7448d619b92a913a4aa9deaed7714fe0dec143a73f430bc75b50bae4f97f27c5570421fe9ba1b9aaf3644596765073bd4c7f89d268d30ce0f9def94d616bea65b3f054d3d8fca2b781866b3e15641b042b4f717ab3c370b5933e4bb69849860124b214aa4246249f7551fa3b5e45ffd42d3c77308202841c7700d6e49d8a0daa4ced8602d88d89257593e61277d73535d2842e5f8eaa034e463b6f667a25f8503772dfad2e5f3addec6fe7872dd2e8760a94d16a8dda6e0dff09f5e3f999380f87bb117d68da77c0556c4bc2b2feade4556ceb2d63aad6087c2cbc9ace396631f1211058a157131bcbf4d5a367bf9038234b27f3b14746042e0965641c8249e819bd437695994af92086ca6f574bb81424b5eb75e4cc208b2a9308b190872efb157c8fcf074bcf0686300606910712f4e25abefe13e7536e3a50abd43c44910a7d666e6373de74184f708d6552a025a6c98c889cc231ddaf4fa7a8ad84290299aeb664ee2f141024908db279314913451300368973728fb9d1c659e7613aafa7e465ff3c09a2dbaef3b9bbb9d7fedd16b7a3029929aedea166fa282bfef868ced800f912ebd2a43f04d75211b7ab1fd406f14fd844097dc9fda55efd4f2f44f3ea1cb2c1d28d65b49985edbffd374fa95b8a8c05d42b2e8ffb1fabe51be436001baa260e3e40a8f2812ad1b7adf970390ecedc1c9155a3504104a7de60834ec6f5e8a3d99d3a0fbf4266dcb7c2181e267a933834a27ec754be9d07b5d2d1a54f57a0329a27009d6d8dc03596e60d67304600c0c2a119fa130ea4687f588bbc74f72e42f6508e50a454355bb05b297a81a86d7a14c11592e038660627456437341f1372ea46da0885100493603c496bf6c4a77574fcbc6bb052358b92c8d2c38138a32410057ee1968acdf02dc2e70ce9014f42db25ff8a5b847363959613ae4e7aa9eb79bd87480b707a805a8c637bb75d4bf28fbe08e3f33bb7d5ee02a25e0c8b0c3b77e33955536e1e287d8f50fb3668b3f927a4619b8034a5fd39ea6b97bac91c3b302859b051ad5ca73b10f70587d1b37f3644652bca139ca09ce7a6ba0e6054a1b680c67e37daee7fefdd6ea2b95ea48ade16566a7bf5ae6edfd75c159beb03db321cd9aecd1d1443cbe65317a0ed0a0f3e1590ab54b58be1d9573a8374e4445ad812711ff8e09162793d169b4174cc114a5e63dac640e061830c5011af0ad0720d634b97708887f12a944b2b2d967ec66e7c46da637798329941ffa1364c0ff88b06b985966cc625299d618cd3ddbb58fb9639cbc9938be47f335ea2d91ebed3c03a5f10f4e085b5af6c14c47856b30f6b4ebdc4ba70bc24a899a60a90bcd101e22092736807d59a50460ea9c7fea372b61b9f71852a9946998143691b4558e454751f07472ba85f493568dea1e4d4391d5fcea74afc91881136272e75a5967fe2f908cf933740440ce7d9dfe8c1717bd0091c3cd5e8519ee4a503284bfb6d57627eef8d79a573529ad7e138bce4afbad84a3313b50893780a436a35ff8acf2ae0a71e9862db6c0e77e68a2495002eab64e7b79b9a794c9da7ee6187c456001271e848f9406fe197a5ada0b8e304677a178902fb782e0aa0ad8689c9624217ce4372e5a90eca0cfcb67d2560fedbf2bb3c6278c417d1be346c147c03383890a8b595b3485f981038d6f63a3a182bf3dda3caf1bd094071b9b312308839557249dc02674e9f8efbad2a6bd89681b7cb0afcbc6aa032d3afd03a7383800b5a2e52171ba44c5af8fc115c48dd8130c4ca630ff3f699d8e858c8a1dec73b0191e56955f046c3175e5d35c437e67c701</script>
 </div>
 <script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">
       
@@ -435,6 +497,8 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
+              <img class="site-author-image" itemprop="image" src="/images/2.JPG" alt="miaowenting">
+            
               <p class="site-author-name" itemprop="name">miaowenting</p>
               <p class="site-description motion-element" itemprop="description"></p>
           </div>
@@ -486,11 +550,39 @@
           
 
           
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/miaowenting" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
 
           
           
 
           
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://ci.apache.org/projects/flink/flink-docs-stable/" title="flink文档" target="_blank">flink文档</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href title="flink社区" target="_blank">flink社区</a>
+                  </li>
+                
+              </ul>
+            </div>
           
 
           
@@ -530,7 +622,7 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
 
 
 
@@ -677,6 +769,323 @@
 
 
   
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
 
 
 

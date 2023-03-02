@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -99,7 +99,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Mist',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -192,6 +192,36 @@
         </li>
       
         
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
@@ -203,9 +233,41 @@
       
 
       
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
     </ul>
   
 
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
   
 </nav>
 
@@ -239,7 +301,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="miaowenting">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/2.JPG">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -339,44 +401,44 @@
 
 <h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>Mac：10.15.7<br>Hadoop：2.7.4<br>JDK：1.8.0_151<br>Hive：2.2.0</p>
 <h2 id="下载并解压"><a href="#下载并解压" class="headerlink" title="下载并解压"></a>下载并解压</h2><p>从官网下载解压到某个目录下，并在 /etc/profile 设置环境变量：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export HIVE_HOME=/usr/local/hive</span><br><span class="line">export PATH=$PATH:$HIVE_HOME/bin:$HIVE_HOME/conf</span><br></pre></td></tr></table></figure>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export HIVE_HOME=/usr/local/hive</span><br><span class="line">export PATH=$PATH:$HIVE_HOME/bin:$HIVE_HOME/conf</span><br></pre></td></tr></table></figure></div>
 
 <p>使环境变量生效：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure></div>
 
 <p>查看是否安装成功：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hive</span><br></pre></td></tr></table></figure>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hive</span><br></pre></td></tr></table></figure></div>
 
-<h2 id="修改-Hive-配置"><a href="#修改-Hive-配置" class="headerlink" title="修改 Hive 配置"></a>修改 Hive 配置</h2><h3 id="修改-hive-site-xml-文件"><a href="#修改-hive-site-xml-文件" class="headerlink" title="修改 hive-site.xml 文件"></a>修改 hive-site.xml 文件</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 数据库的用户名 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>javax.jdo.option.ConnectionUserName<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">value</span>&gt;</span>root<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 数据库密码 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>javax.jdo.option.ConnectionPassword<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">value</span>&gt;</span>123456<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 数据库连接 url --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>javax.jdo.option.ConnectionURL<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">value</span>&gt;</span>jdbc:mysql://localhost:3306/hive_metadata?createDatabaseIfNotExsit=true&amp;amp;characterEncoding=UTF-8&amp;amp;verifyServerCertificate=false&amp;amp;useSSL=false<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 数据库连接驱动 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>javax.jdo.option.ConnectionDriverName<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">value</span>&gt;</span>com.mysql.jdbc.Driver<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>hive.metastore.warehouse.dir<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">value</span>&gt;</span>/user/hive/warehouse<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>hive.exec.scratchdir<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">value</span>&gt;</span>/tmp/hive<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>hive.metastore.schema.verification<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">value</span>&gt;</span>false<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="修改-Hive-配置"><a href="#修改-Hive-配置" class="headerlink" title="修改 Hive 配置"></a>修改 Hive 配置</h2><h3 id="修改-hive-site-xml-文件"><a href="#修改-hive-site-xml-文件" class="headerlink" title="修改 hive-site.xml 文件"></a>修改 hive-site.xml 文件</h3><div class="highlight-container" data-rel="Xml"><figure class="iseeu highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 数据库的用户名 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>javax.jdo.option.ConnectionUserName<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">value</span>&gt;</span>root<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 数据库密码 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>javax.jdo.option.ConnectionPassword<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">value</span>&gt;</span>123456<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 数据库连接 url --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>javax.jdo.option.ConnectionURL<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">value</span>&gt;</span>jdbc:mysql://localhost:3306/hive_metadata?createDatabaseIfNotExsit=true&amp;amp;characterEncoding=UTF-8&amp;amp;verifyServerCertificate=false&amp;amp;useSSL=false<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 数据库连接驱动 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>javax.jdo.option.ConnectionDriverName<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">value</span>&gt;</span>com.mysql.jdbc.Driver<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>hive.metastore.warehouse.dir<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">value</span>&gt;</span>/user/hive/warehouse<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>hive.exec.scratchdir<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">value</span>&gt;</span>/tmp/hive<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>hive.metastore.schema.verification<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">value</span>&gt;</span>false<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure></div>
 
-<h3 id="修改-hive-env-sh-文件"><a href="#修改-hive-env-sh-文件" class="headerlink" title="修改 hive-env.sh 文件"></a>修改 hive-env.sh 文件</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> HADOOP_HOME=/usr/<span class="built_in">local</span>/hadoop</span><br><span class="line"><span class="built_in">export</span> HIVE_CONF_DIR=/usr/<span class="built_in">local</span>/hive/conf</span><br><span class="line"><span class="built_in">export</span> HIVE_AUX_JARS_PATH=/usr/<span class="built_in">local</span>/hive/lib</span><br></pre></td></tr></table></figure>
+<h3 id="修改-hive-env-sh-文件"><a href="#修改-hive-env-sh-文件" class="headerlink" title="修改 hive-env.sh 文件"></a>修改 hive-env.sh 文件</h3><div class="highlight-container" data-rel="Sh"><figure class="iseeu highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> HADOOP_HOME=/usr/<span class="built_in">local</span>/hadoop</span><br><span class="line"><span class="built_in">export</span> HIVE_CONF_DIR=/usr/<span class="built_in">local</span>/hive/conf</span><br><span class="line"><span class="built_in">export</span> HIVE_AUX_JARS_PATH=/usr/<span class="built_in">local</span>/hive/lib</span><br></pre></td></tr></table></figure></div>
 
 <h3 id="初始化-Hive-metastore-数据库表"><a href="#初始化-Hive-metastore-数据库表" class="headerlink" title="初始化 Hive metastore 数据库表"></a>初始化 Hive metastore 数据库表</h3><ol>
 <li><p>复制 mysql 驱动包到 hive lib 目录</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp mysql-connector-java-5.1.43.jar  $HIVE_HOME/lib</span><br></pre></td></tr></table></figure>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp mysql-connector-java-5.1.43.jar  $HIVE_HOME/lib</span><br></pre></td></tr></table></figure></div>
 </li>
 <li><p>创建 hive_metadata 数据库</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -uroot -p123456</span><br></pre></td></tr></table></figure>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -uroot -p123456</span><br></pre></td></tr></table></figure></div>
 
 </li>
 </ol>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">database</span> hive_metadata;</span><br></pre></td></tr></table></figure>
+<div class="highlight-container" data-rel="Sql"><figure class="iseeu highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">database</span> hive_metadata;</span><br></pre></td></tr></table></figure></div>
 
 <ol start="3">
-<li>初始化创建 Hive metastore 数据库表<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">HIVE_HOME/bin/schematool -dbType mysql -initSchema</span></span><br></pre></td></tr></table></figure>
+<li>初始化创建 Hive metastore 数据库表<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">HIVE_HOME/bin/schematool -dbType mysql -initSchema</span></span><br></pre></td></tr></table></figure></div>
 
 </li>
 </ol>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; </span><br><span class="line">mysql&gt; use hive_metadata;</span><br><span class="line">Database changed</span><br><span class="line">mysql&gt; </span><br><span class="line">mysql&gt; show tables;</span><br><span class="line">+<span class="comment">---------------------------+</span></span><br><span class="line">| Tables_in_hive_metadata   |</span><br><span class="line">+<span class="comment">---------------------------+</span></span><br><span class="line">| AUX_TABLE                 |</span><br><span class="line">| BUCKETING_COLS            |</span><br><span class="line">| CDS                       |</span><br><span class="line">| COLUMNS_V2                |</span><br><span class="line">| COMPACTION_QUEUE          |</span><br><span class="line">| COMPLETED_COMPACTIONS     |</span><br><span class="line">| COMPLETED_TXN_COMPONENTS  |</span><br><span class="line">| DATABASE_PARAMS           |</span><br><span class="line">| DBS                       |</span><br><span class="line">| DB_PRIVS                  |</span><br><span class="line">| DELEGATION_TOKENS         |</span><br><span class="line">| FUNCS                     |</span><br><span class="line">| FUNC_RU                   |</span><br><span class="line">| GLOBAL_PRIVS              |</span><br><span class="line">| HIVE_LOCKS                |</span><br><span class="line">| IDXS                      |</span><br><span class="line">| INDEX_PARAMS              |</span><br><span class="line">| KEY_CONSTRAINTS           |</span><br><span class="line">| MASTER_KEYS               |</span><br><span class="line">| NEXT_COMPACTION_QUEUE_ID  |</span><br><span class="line">| NEXT_LOCK_ID              |</span><br><span class="line">| NEXT_TXN_ID               |</span><br><span class="line">| NOTIFICATION_LOG          |</span><br><span class="line">| NOTIFICATION_SEQUENCE     |</span><br><span class="line">| NUCLEUS_TABLES            |</span><br><span class="line">| PARTITIONS                |</span><br><span class="line">| PARTITION_EVENTS          |</span><br><span class="line">| PARTITION_KEYS            |</span><br><span class="line">| PARTITION_KEY_VALS        |</span><br><span class="line">| PARTITION_PARAMS          |</span><br><span class="line">| PART_COL_PRIVS            |</span><br><span class="line">| PART_COL_STATS            |</span><br><span class="line">| PART_PRIVS                |</span><br><span class="line">| ROLES                     |</span><br><span class="line">| ROLE_MAP                  |</span><br><span class="line">| SDS                       |</span><br><span class="line">| SD_PARAMS                 |</span><br><span class="line">| SEQUENCE_TABLE            |</span><br><span class="line">| SERDES                    |</span><br><span class="line">| SERDE_PARAMS              |</span><br><span class="line">| SKEWED_COL_NAMES          |</span><br><span class="line">| SKEWED_COL_VALUE_LOC_MAP  |</span><br><span class="line">| SKEWED_STRING_LIST        |</span><br><span class="line">| SKEWED_STRING_LIST_VALUES |</span><br><span class="line">| SKEWED_VALUES             |</span><br><span class="line">| SORT_COLS                 |</span><br><span class="line">| TABLE_PARAMS              |</span><br><span class="line">| TAB_COL_STATS             |</span><br><span class="line">| TBLS                      |</span><br><span class="line">| TBL_COL_PRIVS             |</span><br><span class="line">| TBL_PRIVS                 |</span><br><span class="line">| TXNS                      |</span><br><span class="line">| TXN_COMPONENTS            |</span><br><span class="line">| TYPES                     |</span><br><span class="line">| TYPE_FIELDS               |</span><br><span class="line">| VERSION                   |</span><br><span class="line">| WRITE_SET                 |</span><br><span class="line">+<span class="comment">---------------------------+</span></span><br><span class="line">57 rows in <span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br><span class="line"></span><br><span class="line">mysql&gt;</span><br></pre></td></tr></table></figure>
+<div class="highlight-container" data-rel="Sql"><figure class="iseeu highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; </span><br><span class="line">mysql&gt; use hive_metadata;</span><br><span class="line">Database changed</span><br><span class="line">mysql&gt; </span><br><span class="line">mysql&gt; show tables;</span><br><span class="line">+<span class="comment">---------------------------+</span></span><br><span class="line">| Tables_in_hive_metadata   |</span><br><span class="line">+<span class="comment">---------------------------+</span></span><br><span class="line">| AUX_TABLE                 |</span><br><span class="line">| BUCKETING_COLS            |</span><br><span class="line">| CDS                       |</span><br><span class="line">| COLUMNS_V2                |</span><br><span class="line">| COMPACTION_QUEUE          |</span><br><span class="line">| COMPLETED_COMPACTIONS     |</span><br><span class="line">| COMPLETED_TXN_COMPONENTS  |</span><br><span class="line">| DATABASE_PARAMS           |</span><br><span class="line">| DBS                       |</span><br><span class="line">| DB_PRIVS                  |</span><br><span class="line">| DELEGATION_TOKENS         |</span><br><span class="line">| FUNCS                     |</span><br><span class="line">| FUNC_RU                   |</span><br><span class="line">| GLOBAL_PRIVS              |</span><br><span class="line">| HIVE_LOCKS                |</span><br><span class="line">| IDXS                      |</span><br><span class="line">| INDEX_PARAMS              |</span><br><span class="line">| KEY_CONSTRAINTS           |</span><br><span class="line">| MASTER_KEYS               |</span><br><span class="line">| NEXT_COMPACTION_QUEUE_ID  |</span><br><span class="line">| NEXT_LOCK_ID              |</span><br><span class="line">| NEXT_TXN_ID               |</span><br><span class="line">| NOTIFICATION_LOG          |</span><br><span class="line">| NOTIFICATION_SEQUENCE     |</span><br><span class="line">| NUCLEUS_TABLES            |</span><br><span class="line">| PARTITIONS                |</span><br><span class="line">| PARTITION_EVENTS          |</span><br><span class="line">| PARTITION_KEYS            |</span><br><span class="line">| PARTITION_KEY_VALS        |</span><br><span class="line">| PARTITION_PARAMS          |</span><br><span class="line">| PART_COL_PRIVS            |</span><br><span class="line">| PART_COL_STATS            |</span><br><span class="line">| PART_PRIVS                |</span><br><span class="line">| ROLES                     |</span><br><span class="line">| ROLE_MAP                  |</span><br><span class="line">| SDS                       |</span><br><span class="line">| SD_PARAMS                 |</span><br><span class="line">| SEQUENCE_TABLE            |</span><br><span class="line">| SERDES                    |</span><br><span class="line">| SERDE_PARAMS              |</span><br><span class="line">| SKEWED_COL_NAMES          |</span><br><span class="line">| SKEWED_COL_VALUE_LOC_MAP  |</span><br><span class="line">| SKEWED_STRING_LIST        |</span><br><span class="line">| SKEWED_STRING_LIST_VALUES |</span><br><span class="line">| SKEWED_VALUES             |</span><br><span class="line">| SORT_COLS                 |</span><br><span class="line">| TABLE_PARAMS              |</span><br><span class="line">| TAB_COL_STATS             |</span><br><span class="line">| TBLS                      |</span><br><span class="line">| TBL_COL_PRIVS             |</span><br><span class="line">| TBL_PRIVS                 |</span><br><span class="line">| TXNS                      |</span><br><span class="line">| TXN_COMPONENTS            |</span><br><span class="line">| TYPES                     |</span><br><span class="line">| TYPE_FIELDS               |</span><br><span class="line">| VERSION                   |</span><br><span class="line">| WRITE_SET                 |</span><br><span class="line">+<span class="comment">---------------------------+</span></span><br><span class="line">57 rows in <span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br><span class="line"></span><br><span class="line">mysql&gt;</span><br></pre></td></tr></table></figure></div>
 
 <h2 id="运行-Hive"><a href="#运行-Hive" class="headerlink" title="运行 Hive"></a>运行 Hive</h2><h3 id="启动命令"><a href="#启动命令" class="headerlink" title="启动命令"></a>启动命令</h3><p>启动 metastore 服务：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">HIVE_HOME/bin/hive --service metastore &amp;</span></span><br></pre></td></tr></table></figure>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">HIVE_HOME/bin/hive --service metastore &amp;</span></span><br></pre></td></tr></table></figure></div>
 
 <p>启动 HiveServer2 ：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">HIVE_HOME/bin/hive --service metastore &amp;</span></span><br></pre></td></tr></table></figure>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">HIVE_HOME/bin/hive --service metastore &amp;</span></span><br></pre></td></tr></table></figure></div>
 
 <h3 id="查看相关进程"><a href="#查看相关进程" class="headerlink" title="查看相关进程"></a>查看相关进程</h3><p>显示为两个 RunJar 进程：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">jps</span><br><span class="line"></span><br><span class="line">4929 org.apache.hadoop.util.RunJar /usr/local/hive/lib/hive-service-2.2.0.jar org.apache.hive.service.server.HiveServer2 --hiveconf hive.aux.jars.path=file:///usr/local/hive/lib/HikariCP-2.5.1.jar,file:///usr/local/hive/lib/RoaringBitmap-0.5.18.jar,file:///usr/local/hive/lib/ST4-4.0.4.jar,file:///usr/local/hive/lib/accumulo-core-1.6.0.jar,file:///usr/local/hive/lib/accumulo-fate-1.6.0.jar,file:///usr/local/hive/lib/accumulo-start-1.6.0.jar,file:///usr/local/hive/lib/accumulo-trace-1.6.0.jar,file:///usr/local/hive/lib/activation-1.1.jar,file:///usr/local/hive/lib/aether-api-0.9.0.M2.jar,file:///usr/local/hive/lib/aether-connector-file-0.9.0.M2.jar,file:///usr/local/hive/lib/aether-connector-okhttp-0.0.9.jar,file:///usr/local/hive/lib/aether-impl-0.9.0.M2.jar,file:///usr/local/hive/lib/aether-spi-0.9.0.M2.jar,file:///usr/local/hive/lib/aether-util-0.9.0.M2.jar,file:///usr/local/hive/lib/airline-0.7.jar,file:///usr/local/hive/lib/ant-1.6.5.jar,file:///usr/local/hive/lib/ant-1.9.1.jar,file:///usr/local/hive/lib/ant-la</span><br><span class="line"></span><br><span class="line">4870 org.apache.hadoop.util.RunJar /usr/local/hive/lib/hive-metastore-2.2.0.jar org.apache.hadoop.hive.metastore.HiveMetaStore</span><br></pre></td></tr></table></figure>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">jps</span><br><span class="line"></span><br><span class="line">4929 org.apache.hadoop.util.RunJar /usr/local/hive/lib/hive-service-2.2.0.jar org.apache.hive.service.server.HiveServer2 --hiveconf hive.aux.jars.path=file:///usr/local/hive/lib/HikariCP-2.5.1.jar,file:///usr/local/hive/lib/RoaringBitmap-0.5.18.jar,file:///usr/local/hive/lib/ST4-4.0.4.jar,file:///usr/local/hive/lib/accumulo-core-1.6.0.jar,file:///usr/local/hive/lib/accumulo-fate-1.6.0.jar,file:///usr/local/hive/lib/accumulo-start-1.6.0.jar,file:///usr/local/hive/lib/accumulo-trace-1.6.0.jar,file:///usr/local/hive/lib/activation-1.1.jar,file:///usr/local/hive/lib/aether-api-0.9.0.M2.jar,file:///usr/local/hive/lib/aether-connector-file-0.9.0.M2.jar,file:///usr/local/hive/lib/aether-connector-okhttp-0.0.9.jar,file:///usr/local/hive/lib/aether-impl-0.9.0.M2.jar,file:///usr/local/hive/lib/aether-spi-0.9.0.M2.jar,file:///usr/local/hive/lib/aether-util-0.9.0.M2.jar,file:///usr/local/hive/lib/airline-0.7.jar,file:///usr/local/hive/lib/ant-1.6.5.jar,file:///usr/local/hive/lib/ant-1.9.1.jar,file:///usr/local/hive/lib/ant-la</span><br><span class="line"></span><br><span class="line">4870 org.apache.hadoop.util.RunJar /usr/local/hive/lib/hive-metastore-2.2.0.jar org.apache.hadoop.hive.metastore.HiveMetaStore</span><br></pre></td></tr></table></figure></div>
 
 
       
@@ -480,6 +542,8 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
+              <img class="site-author-image" itemprop="image" src="/images/2.JPG" alt="miaowenting">
+            
               <p class="site-author-name" itemprop="name">miaowenting</p>
               <p class="site-description motion-element" itemprop="description"></p>
           </div>
@@ -531,11 +595,39 @@
           
 
           
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/miaowenting" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
 
           
           
 
           
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://ci.apache.org/projects/flink/flink-docs-stable/" title="flink文档" target="_blank">flink文档</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href title="flink社区" target="_blank">flink社区</a>
+                  </li>
+                
+              </ul>
+            </div>
           
 
           
@@ -591,7 +683,7 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
 
 
 
@@ -738,6 +830,323 @@
 
 
   
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
 
 
 

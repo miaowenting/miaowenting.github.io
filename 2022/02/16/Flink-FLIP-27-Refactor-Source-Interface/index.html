@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -89,17 +89,17 @@
 <meta property="og:site_name" content="Matty&#39;s Blog">
 <meta property="og:description" content="FLIP-27: Refactor Source Interface ，是对 SourceFunction 的重构，旨在解决 SourceFunction 中存在的几个痛点。SplitEnumerator 负责发现并 split，SourceReader 负责读取 split 的实际数据。也是批流一体 API 推进的产物。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2022/02/16/Flink-FLIP-27-Refactor-Source-Interface/FLIP-27_Refactor-Source-Interface%E7%BB%84%E4%BB%B6%E5%85%B3%E7%B3%BB%E5%9B%BE.png">
-<meta property="og:image" content="http://yoursite.com/2022/02/16/Flink-FLIP-27-Refactor-Source-Interface/SplitEnumerator%E5%92%8CSourceReader%E4%B9%8B%E9%97%B4%E7%9A%84%E9%80%9A%E4%BF%A1%E6%A0%88.png">
-<meta property="og:image" content="http://yoursite.com/2022/02/16/Flink-FLIP-27-Refactor-Source-Interface/SourceReaderBase%E5%AE%9E%E7%8E%B0%E9%80%BB%E8%BE%91.png">
-<meta property="og:image" content="http://yoursite.com/2022/02/16/Flink-FLIP-27-Refactor-Source-Interface/Sequential_Single_Split.png">
-<meta property="og:image" content="http://yoursite.com/2022/02/16/Flink-FLIP-27-Refactor-Source-Interface/Multi-split_Multiplexed.png">
-<meta property="og:image" content="http://yoursite.com/2022/02/16/Flink-FLIP-27-Refactor-Source-Interface/Multi-split_Multi-threaded.png">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
 <meta property="og:updated_time" content="2022-03-29T18:24:19.181Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Flink-FLIP-27: Refactor Source Interface">
 <meta name="twitter:description" content="FLIP-27: Refactor Source Interface ，是对 SourceFunction 的重构，旨在解决 SourceFunction 中存在的几个痛点。SplitEnumerator 负责发现并 split，SourceReader 负责读取 split 的实际数据。也是批流一体 API 推进的产物。">
-<meta name="twitter:image" content="http://yoursite.com/2022/02/16/Flink-FLIP-27-Refactor-Source-Interface/FLIP-27_Refactor-Source-Interface%E7%BB%84%E4%BB%B6%E5%85%B3%E7%B3%BB%E5%9B%BE.png">
+<meta name="twitter:image" content="http://yoursite.com/images/loading.svg">
 
 
 
@@ -107,7 +107,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Mist',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -200,6 +200,36 @@
         </li>
       
         
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
@@ -211,9 +241,41 @@
       
 
       
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
     </ul>
   
 
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
   
 </nav>
 
@@ -247,7 +309,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="miaowenting">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/2.JPG">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -349,25 +411,25 @@
 <li>Reader: 读取 splits 中的真实数据<br>从分配到的 splits 中读取数据。可以一个接一个的读取有界 splits ，也可以并发读取多个 splits。</li>
 </ul>
 <p>这两个组件组成了核心功能，主要的 Source 接口是一个创建 split enumerators 和 readers 的工厂：</p>
-<p><img src="FLIP-27_Refactor-Source-Interface%E7%BB%84%E4%BB%B6%E5%85%B3%E7%B3%BB%E5%9B%BE.png" alt></p>
+<p><img lazyload src="/images/loading.svg" data-src="FLIP-27_Refactor-Source-Interface%E7%BB%84%E4%BB%B6%E5%85%B3%E7%B3%BB%E5%9B%BE.png" alt></p>
 <h3 id="统一批流-API"><a href="#统一批流-API" class="headerlink" title="统一批流 API"></a>统一批流 API</h3><p>任意 source 都应该既能作为 batch source ，也能作为 streaming source 。有界性是 source 接口的内在属性，大多数情况下，仅 SplitEnumerator 需要识别有界性属性，而 SplitReaders 不需要。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();</span><br><span class="line">env.setRuntimeMode(RuntimeMode.BATCH);</span><br></pre></td></tr></table></figure>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();</span><br><span class="line">env.setRuntimeMode(RuntimeMode.BATCH);</span><br></pre></td></tr></table></figure></div>
 
-<h3 id="通用-enumerator-reader-通信机制"><a href="#通用-enumerator-reader-通信机制" class="headerlink" title="通用 enumerator-reader 通信机制"></a>通用 enumerator-reader 通信机制</h3><p>SplitEnumerator 和 SourceReader 都有各自的实现类，两个组件之间需要通信，在二者之间引入了一种通用的消息传递机制。<br>需要在 JobMasterGateway 和 TaskExecutorGateway 中分别实现 RPC 方法。消息传递栈如下图：<br><img src="SplitEnumerator%E5%92%8CSourceReader%E4%B9%8B%E9%97%B4%E7%9A%84%E9%80%9A%E4%BF%A1%E6%A0%88.png" alt></p>
+<h3 id="通用-enumerator-reader-通信机制"><a href="#通用-enumerator-reader-通信机制" class="headerlink" title="通用 enumerator-reader 通信机制"></a>通用 enumerator-reader 通信机制</h3><p>SplitEnumerator 和 SourceReader 都有各自的实现类，两个组件之间需要通信，在二者之间引入了一种通用的消息传递机制。<br>需要在 JobMasterGateway 和 TaskExecutorGateway 中分别实现 RPC 方法。消息传递栈如下图：<br><img lazyload src="/images/loading.svg" data-src="SplitEnumerator%E5%92%8CSourceReader%E4%B9%8B%E9%97%B4%E7%9A%84%E9%80%9A%E4%BF%A1%E6%A0%88.png" alt></p>
 <p>SourceCoordinator 和 SourceOperator 作为上图中 OperatorCoordinator 和 Operator 针对 FLIP-27 的实现，其类图和时序图如下：</p>
 <p><code>SourceEvent</code> 是在 SplitEnumerator 和 SourceReader 之间传递消息的接口，<code>OperatorEvent</code> 是在 OperatorCoordinator 和 Operator 之间传递消息的接口。<br>在这个 FLIP 中，SourceCoordinator 将是封装 SplitEnumerator 的 OperatorCoordinator 的实现。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">JobMasterGateway</span> </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="function">CompletableFuture&lt;Acknowledge&gt; <span class="title">sendOperatorEventToCoordinator</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">            ExecutionAttemptID task,</span></span></span><br><span class="line"><span class="function"><span class="params">            OperatorID operatorID,</span></span></span><br><span class="line"><span class="function"><span class="params">            SerializedValue&lt;OperatorEvent&gt; event)</span></span>;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">JobMasterGateway</span> </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="function">CompletableFuture&lt;Acknowledge&gt; <span class="title">sendOperatorEventToCoordinator</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">            ExecutionAttemptID task,</span></span></span><br><span class="line"><span class="function"><span class="params">            OperatorID operatorID,</span></span></span><br><span class="line"><span class="function"><span class="params">            SerializedValue&lt;OperatorEvent&gt; event)</span></span>;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">TaskExecutorGateway</span> <span class="keyword">extends</span> <span class="title">RpcGateway</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line">    ...</span><br><span class="line"> </span><br><span class="line">    <span class="function">CompletableFuture&lt;Acknowledge&gt; <span class="title">sendOperatorEvent</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">            ExecutionAttemptID task,</span></span></span><br><span class="line"><span class="function"><span class="params">            OperatorID operator,</span></span></span><br><span class="line"><span class="function"><span class="params">            SerializedValue&lt;OperatorEvent&gt; evt)</span></span>;</span><br><span class="line">     </span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">TaskExecutorGateway</span> <span class="keyword">extends</span> <span class="title">RpcGateway</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line">    ...</span><br><span class="line"> </span><br><span class="line">    <span class="function">CompletableFuture&lt;Acknowledge&gt; <span class="title">sendOperatorEvent</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">            ExecutionAttemptID task,</span></span></span><br><span class="line"><span class="function"><span class="params">            OperatorID operator,</span></span></span><br><span class="line"><span class="function"><span class="params">            SerializedValue&lt;OperatorEvent&gt; evt)</span></span>;</span><br><span class="line">     </span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
-<h3 id="SplitEnumerator"><a href="#SplitEnumerator" class="headerlink" title="SplitEnumerator"></a>SplitEnumerator</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">SplitEnumerator</span>&lt;<span class="title">SplitT</span> <span class="keyword">extends</span> <span class="title">SourceSplit</span>, <span class="title">CheckpointT</span>&gt;</span></span><br><span class="line"><span class="class">        <span class="keyword">extends</span> <span class="title">AutoCloseable</span>, <span class="title">CheckpointListener</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">handleSplitRequest</span><span class="params">(<span class="keyword">int</span> subtaskId, @Nullable String requesterHostname)</span></span>;</span><br><span class="line">    </span><br><span class="line">  </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">addSplitsBack</span><span class="params">(List&lt;SplitT&gt; splits, <span class="keyword">int</span> subtaskId)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 根据 subTaskId 添加一个新的 source reader</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">addReader</span><span class="params">(<span class="keyword">int</span> subtaskId)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="SplitEnumerator"><a href="#SplitEnumerator" class="headerlink" title="SplitEnumerator"></a>SplitEnumerator</h3><div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">SplitEnumerator</span>&lt;<span class="title">SplitT</span> <span class="keyword">extends</span> <span class="title">SourceSplit</span>, <span class="title">CheckpointT</span>&gt;</span></span><br><span class="line"><span class="class">        <span class="keyword">extends</span> <span class="title">AutoCloseable</span>, <span class="title">CheckpointListener</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">handleSplitRequest</span><span class="params">(<span class="keyword">int</span> subtaskId, @Nullable String requesterHostname)</span></span>;</span><br><span class="line">    </span><br><span class="line">  </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">addSplitsBack</span><span class="params">(List&lt;SplitT&gt; splits, <span class="keyword">int</span> subtaskId)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 根据 subTaskId 添加一个新的 source reader</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">addReader</span><span class="params">(<span class="keyword">int</span> subtaskId)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">SplitEnumeratorContext</span>&lt;<span class="title">SplitT</span> <span class="keyword">extends</span> <span class="title">SourceSplit</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 发送 source event 到 source reader</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">sendEventToSourceReader</span><span class="params">(<span class="keyword">int</span> subtaskId, SourceEvent event)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取已经注册的 source reader 信息</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function">Map&lt;Integer, ReaderInfo&gt; <span class="title">registeredReaders</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 分配 splits</span></span><br><span class="line"><span class="comment">     * 根据 subTaskId 构建 gateway ，并下发 SourceSplits</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">assignSplits</span><span class="params">(SplitsAssignment&lt;SplitT&gt; newSplitAssignments)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">SplitEnumeratorContext</span>&lt;<span class="title">SplitT</span> <span class="keyword">extends</span> <span class="title">SourceSplit</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 发送 source event 到 source reader</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">sendEventToSourceReader</span><span class="params">(<span class="keyword">int</span> subtaskId, SourceEvent event)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取已经注册的 source reader 信息</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function">Map&lt;Integer, ReaderInfo&gt; <span class="title">registeredReaders</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 分配 splits</span></span><br><span class="line"><span class="comment">     * 根据 subTaskId 构建 gateway ，并下发 SourceSplits</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">assignSplits</span><span class="params">(SplitsAssignment&lt;SplitT&gt; newSplitAssignments)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">SplitsAssignment</span>&lt;<span class="title">SplitT</span> <span class="keyword">extends</span> <span class="title">SourceSplit</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * subTaskId, SourceSplit 列表</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Map&lt;Integer, List&lt;SplitT&gt;&gt; assignment;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">SplitsAssignment</span>&lt;<span class="title">SplitT</span> <span class="keyword">extends</span> <span class="title">SourceSplit</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * subTaskId, SourceSplit 列表</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Map&lt;Integer, List&lt;SplitT&gt;&gt; assignment;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
 <h3 id="SourceReader-抽象"><a href="#SourceReader-抽象" class="headerlink" title="SourceReader 抽象"></a>SourceReader 抽象</h3><p>首先，看下 Flink 的 Source 核心接口被设计地非常通用，但是 Reader 的实现复杂。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Source</span>&lt;<span class="title">T</span>, <span class="title">SplitT</span> <span class="keyword">extends</span> <span class="title">SourceSplit</span>, <span class="title">EnumChkT</span>&gt; <span class="keyword">extends</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取 source 的有界性，BOUNDED ｜ CONTINUOUS_UNBOUNDED</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function">Boundedness <span class="title">getBoundedness</span><span class="params">()</span></span>;</span><br><span class="line"> </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 创建 reader</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function">SourceReader&lt;T, SplitT&gt; <span class="title">createReader</span><span class="params">(SourceReaderContext readerContext)</span></span>;</span><br><span class="line"> </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 创建 enumerator</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function">SplitEnumerator&lt;SplitT, EnumChkT&gt; <span class="title">createEnumerator</span><span class="params">(SplitEnumeratorContext&lt;SplitT&gt; enumContext)</span></span>;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Source</span>&lt;<span class="title">T</span>, <span class="title">SplitT</span> <span class="keyword">extends</span> <span class="title">SourceSplit</span>, <span class="title">EnumChkT</span>&gt; <span class="keyword">extends</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取 source 的有界性，BOUNDED ｜ CONTINUOUS_UNBOUNDED</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function">Boundedness <span class="title">getBoundedness</span><span class="params">()</span></span>;</span><br><span class="line"> </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 创建 reader</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function">SourceReader&lt;T, SplitT&gt; <span class="title">createReader</span><span class="params">(SourceReaderContext readerContext)</span></span>;</span><br><span class="line"> </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 创建 enumerator</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function">SplitEnumerator&lt;SplitT, EnumChkT&gt; <span class="title">createEnumerator</span><span class="params">(SplitEnumeratorContext&lt;SplitT&gt; enumContext)</span></span>;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
 <p>因此，在 FLIP-27 中封装了一个抽象类来提供更简单的接口以允许阻塞调用，SourceReaderBase 作为 SourceReader 的一个抽象实现，基于生产者消费者模式，提供了主线程和内部读取线程之间的同步机制。用户只需专注于：</p>
 <ul>
@@ -376,25 +438,25 @@
 <li>发送数据到下游 (实现 RecordEmitter 接口)</li>
 <li>watermark 相关处理</li>
 </ul>
-<h4 id="SourceReaderBase"><a href="#SourceReaderBase" class="headerlink" title="SourceReaderBase"></a>SourceReaderBase</h4><p>SourceReaderBase 的工作流程如下图：<br><img src="SourceReaderBase%E5%AE%9E%E7%8E%B0%E9%80%BB%E8%BE%91.png" alt></p>
+<h4 id="SourceReaderBase"><a href="#SourceReaderBase" class="headerlink" title="SourceReaderBase"></a>SourceReaderBase</h4><p>SourceReaderBase 的工作流程如下图：<br><img lazyload src="/images/loading.svg" data-src="SourceReaderBase%E5%AE%9E%E7%8E%B0%E9%80%BB%E8%BE%91.png" alt></p>
 <ol>
 <li>当 SplitEnumerator 将一个新的 split 分配给 SourceReader ，SourceReader 先为该 split 初始化 state ，再经过 SplitFetcherManager -&gt; SplitFetcher -&gt; SplitReader 分配到指定的 SplitReader</li>
 <li>外部数据经过 SplitReader -&gt; SplitFetcher.elementQueues -&gt; SourceReaderBase.elementQueues -&gt; RecordsWithSplitIds<e> -&gt; RecordEmitter ，数据批形式地入队列出队列，性能更好</e></li>
 <li>SourceReaderBase 遍历每一条数据，并查询数据对应的 split state ，二者会通过 RecordEmitter 发送到下游</li>
 </ol>
 <p>SourceReaderBase 类的关键属性和方法：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">SourceReaderBase</span>&lt;<span class="title">E</span>, <span class="title">T</span>, <span class="title">SplitT</span> <span class="keyword">extends</span> <span class="title">SourceSplit</span>, <span class="title">SplitStateT</span>&gt;</span></span><br><span class="line"><span class="class">        <span class="keyword">implements</span> <span class="title">SourceReader</span>&lt;<span class="title">T</span>, <span class="title">SplitT</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ==============================================================================</span></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 生产者消费者模式的阻塞队列，存放 SplitFetcher 线程从外部系统读取的数据</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> FutureCompletingBlockingQueue&lt;RecordsWithSplitIds&lt;E&gt;&gt; elementsQueue;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * SplitFetcher 线程池管理</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">final</span> SplitFetcherManager&lt;E, SplitT&gt; splitFetcherManager;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * SplitReader最新读取的records-by-split批</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    RecordsWithSplitIds&lt;E&gt; currentFetch;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 当前遍历处理到的 Output</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> SourceOutput&lt;T&gt; currentSplitOutput;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 处理 SplitReaders 读取的数据</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">final</span> RecordEmitter&lt;E, T, SplitStateT&gt; recordEmitter;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * source reader 上下文</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">protected</span> SourceReaderContext context;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * splits 的状态后端</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Map&lt;String, SplitContext&lt;T, SplitStateT&gt;&gt; splitStates;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">// ==============================================================================</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 拉取下一批数据</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> InputStatus <span class="title">pollNext</span><span class="params">(ReaderOutput&lt;T&gt; output)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 被分配到新一批 splits</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addSplits</span><span class="params">(List&lt;SplitT&gt; splits)</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">SourceReaderBase</span>&lt;<span class="title">E</span>, <span class="title">T</span>, <span class="title">SplitT</span> <span class="keyword">extends</span> <span class="title">SourceSplit</span>, <span class="title">SplitStateT</span>&gt;</span></span><br><span class="line"><span class="class">        <span class="keyword">implements</span> <span class="title">SourceReader</span>&lt;<span class="title">T</span>, <span class="title">SplitT</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ==============================================================================</span></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 生产者消费者模式的阻塞队列，存放 SplitFetcher 线程从外部系统读取的数据</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> FutureCompletingBlockingQueue&lt;RecordsWithSplitIds&lt;E&gt;&gt; elementsQueue;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * SplitFetcher 线程池管理</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">final</span> SplitFetcherManager&lt;E, SplitT&gt; splitFetcherManager;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * SplitReader最新读取的records-by-split批</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    RecordsWithSplitIds&lt;E&gt; currentFetch;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 当前遍历处理到的 Output</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> SourceOutput&lt;T&gt; currentSplitOutput;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 处理 SplitReaders 读取的数据</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">final</span> RecordEmitter&lt;E, T, SplitStateT&gt; recordEmitter;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * source reader 上下文</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">protected</span> SourceReaderContext context;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * splits 的状态后端</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Map&lt;String, SplitContext&lt;T, SplitStateT&gt;&gt; splitStates;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">// ==============================================================================</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 拉取下一批数据</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> InputStatus <span class="title">pollNext</span><span class="params">(ReaderOutput&lt;T&gt; output)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 被分配到新一批 splits</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addSplits</span><span class="params">(List&lt;SplitT&gt; splits)</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
 <h4 id="SplitReader"><a href="#SplitReader" class="headerlink" title="SplitReader"></a>SplitReader</h4><p>大多数 readers 可以分为以下几类：</p>
 <ul>
-<li>顺序单 split （file，数据库查询，大多数有界 splits）<br><img src="Sequential_Single_Split.png" alt></li>
-<li>多 split 多路 （Kafka，Pulsar，Pravega…）<br><img src="Multi-split_Multiplexed.png" alt></li>
-<li>多 split 多线程 (Kinesis…)<br><img src="Multi-split_Multi-threaded.png" alt></li>
+<li>顺序单 split （file，数据库查询，大多数有界 splits）<br><img lazyload src="/images/loading.svg" data-src="Sequential_Single_Split.png" alt></li>
+<li>多 split 多路 （Kafka，Pulsar，Pravega…）<br><img lazyload src="/images/loading.svg" data-src="Multi-split_Multiplexed.png" alt></li>
+<li>多 split 多线程 (Kinesis…)<br><img lazyload src="/images/loading.svg" data-src="Multi-split_Multi-threaded.png" alt></li>
 </ul>
 <p>SourceReader 实现如下接口中的方法，fetch 和 handleSplitsChanges 需要在相同线程中执行，无需在 connector 中进行任何并发处理。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">SplitReader</span>&lt;<span class="title">E</span>, <span class="title">SplitT</span> <span class="keyword">extends</span> <span class="title">SourceSplit</span>&gt; </span>&#123;</span><br><span class="line"> </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 从外部系统读取记录，转换数据格式，写入到 blocking queue，传递给 &#123;<span class="doctag">@link</span> RecordEmitter&#125;</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function">RecordsWithSplitIds&lt;E&gt; <span class="title">fetch</span><span class="params">()</span> <span class="keyword">throws</span> InterruptedException</span>;</span><br><span class="line"> </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 处理 split change</span></span><br><span class="line"><span class="comment">     */</span> </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">handleSplitsChanges</span><span class="params">(Queue&lt;SplitsChange&lt;SplitT&gt;&gt; splitsChanges)</span></span>;</span><br><span class="line"> </span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">     * fetcher 线程阻塞时唤醒 split reader</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">wakeUp</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">SplitReader</span>&lt;<span class="title">E</span>, <span class="title">SplitT</span> <span class="keyword">extends</span> <span class="title">SourceSplit</span>&gt; </span>&#123;</span><br><span class="line"> </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 从外部系统读取记录，转换数据格式，写入到 blocking queue，传递给 &#123;<span class="doctag">@link</span> RecordEmitter&#125;</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function">RecordsWithSplitIds&lt;E&gt; <span class="title">fetch</span><span class="params">()</span> <span class="keyword">throws</span> InterruptedException</span>;</span><br><span class="line"> </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 处理 split change</span></span><br><span class="line"><span class="comment">     */</span> </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">handleSplitsChanges</span><span class="params">(Queue&lt;SplitsChange&lt;SplitT&gt;&gt; splitsChanges)</span></span>;</span><br><span class="line"> </span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">     * fetcher 线程阻塞时唤醒 split reader</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">wakeUp</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://cwiki.apache.org/confluence/display/FLINK/FLIP-27%3A+Refactor+Source+Interface" target="_blank" rel="noopener">FLIP-27: Refactor Source Interface</a><br><a href="https://zhjwpku.com/2022/01/16/flink-cdc-2-0-analysis.html" target="_blank" rel="noopener">Flink CDC 2.0实现原理剖析</a></p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a class="link" href="https://cwiki.apache.org/confluence/display/FLINK/FLIP-27%3A+Refactor+Source+Interface" target="_blank" rel="noopener">FLIP-27: Refactor Source Interface <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a><br><a class="link" href="https://zhjwpku.com/2022/01/16/flink-cdc-2-0-analysis.html" target="_blank" rel="noopener">Flink CDC 2.0实现原理剖析 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
 
       
     </div>
@@ -503,6 +565,8 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
+              <img class="site-author-image" itemprop="image" src="/images/2.JPG" alt="miaowenting">
+            
               <p class="site-author-name" itemprop="name">miaowenting</p>
               <p class="site-description motion-element" itemprop="description"></p>
           </div>
@@ -554,11 +618,39 @@
           
 
           
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/miaowenting" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
 
           
           
 
           
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://ci.apache.org/projects/flink/flink-docs-stable/" title="flink文档" target="_blank">flink文档</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href title="flink社区" target="_blank">flink社区</a>
+                  </li>
+                
+              </ul>
+            </div>
           
 
           
@@ -614,7 +706,7 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
 
 
 
@@ -761,6 +853,323 @@
 
 
   
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
 
 
 

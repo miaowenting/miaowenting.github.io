@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -88,17 +88,17 @@
 <meta property="og:site_name" content="Matty&#39;s Blog">
 <meta property="og:description" content="收集一些 Hadoop 相关问题。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2020/01/10/About-Hadoop/Yarn%E7%9A%84%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84.png">
-<meta property="og:image" content="http://yoursite.com/2020/01/10/About-Hadoop/Spark%E7%9A%84%E8%BF%90%E8%A1%8C%E6%9E%B6%E6%9E%84.png">
-<meta property="og:image" content="http://yoursite.com/2020/01/10/About-Hadoop/Spark%E7%A8%8B%E5%BA%8F%E7%9A%84%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B.png">
-<meta property="og:image" content="http://yoursite.com/2020/01/10/About-Hadoop/HBase%E8%A1%A8%E7%9A%84%E9%80%BB%E8%BE%91%E7%BB%93%E6%9E%84.png">
-<meta property="og:image" content="http://yoursite.com/2020/01/10/About-Hadoop/HBase%E7%AE%80%E7%95%A5%E6%9E%B6%E6%9E%84%E5%9B%BE.png">
-<meta property="og:image" content="http://yoursite.com/2020/01/10/About-Hadoop/HFile%E7%BB%93%E6%9E%84.png">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
+<meta property="og:image" content="http://yoursite.com/images/loading.svg">
 <meta property="og:updated_time" content="2021-06-03T11:24:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="About Hadoop">
 <meta name="twitter:description" content="收集一些 Hadoop 相关问题。">
-<meta name="twitter:image" content="http://yoursite.com/2020/01/10/About-Hadoop/Yarn%E7%9A%84%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84.png">
+<meta name="twitter:image" content="http://yoursite.com/images/loading.svg">
 
 
 
@@ -106,7 +106,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Mist',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -199,6 +199,36 @@
         </li>
       
         
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
@@ -210,9 +240,41 @@
       
 
       
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
     </ul>
   
 
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
   
 </nav>
 
@@ -246,7 +308,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="miaowenting">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/2.JPG">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -344,7 +406,7 @@
         <p>收集一些 Hadoop 相关问题。</p>
 <a id="more"></a>
 
-<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><h3 id="Hadoop"><a href="#Hadoop" class="headerlink" title="Hadoop"></a>Hadoop</h3><h4 id="Yarn架构"><a href="#Yarn架构" class="headerlink" title="Yarn架构"></a>Yarn架构</h4><p><img src="Yarn%E7%9A%84%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84.png" alt></p>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><h3 id="Hadoop"><a href="#Hadoop" class="headerlink" title="Hadoop"></a>Hadoop</h3><h4 id="Yarn架构"><a href="#Yarn架构" class="headerlink" title="Yarn架构"></a>Yarn架构</h4><p><img lazyload src="/images/loading.svg" data-src="Yarn%E7%9A%84%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84.png" alt></p>
 <ol>
 <li>ResourceManager（RM）<br>RM 是一个全局的资源管理器，负责整个系统的资源管理和分配，它主要有两个组件构成：</li>
 </ol>
@@ -478,19 +540,19 @@
 </ol>
 <h4 id="Hive-UDF简单介绍"><a href="#Hive-UDF简单介绍" class="headerlink" title="Hive UDF简单介绍"></a>Hive UDF简单介绍</h4><p>在Hive中，用户可以自定义一些函数，用于扩展HiveQL的功能，而这类函数叫做UDF（用户自定义函数）。UDF分为两大类：UDAF（用户自定义聚合函数）和UDTF（用户自定义表生成函数）。<br>Hive有两个不同的接口编写UDF程序。一个是基础的UDF接口，一个是复杂的GenericUDF接口。<br>org.apache.hadoop.hive.ql. exec.UDF 基础UDF的函数读取和返回基本类型，即Hadoop和Hive的基本类型。如，Text、IntWritable、LongWritable、DoubleWritable等。<br>org.apache.hadoop.hive.ql.udf.generic.GenericUDF 复杂的GenericUDF可以处理Map、List、Set类型。</p>
 <h4 id="按照学生科目取每个科目的TopN"><a href="#按照学生科目取每个科目的TopN" class="headerlink" title="按照学生科目取每个科目的TopN"></a>按照学生科目取每个科目的TopN</h4><p>原始数据：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">id,name,subject,score</span><br><span class="line">1,小明,语文,87</span><br><span class="line">2,张三,语文,27</span><br><span class="line">3,王五,语文,69</span><br><span class="line">4,李四,语文,99</span><br><span class="line">5,小明,数学,86</span><br><span class="line">6,马六,数学,33</span><br><span class="line">7,李四,数学,44</span><br><span class="line">8,小红,数学,50</span><br></pre></td></tr></table></figure>
+<div class="highlight-container" data-rel="Code"><figure class="iseeu highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">id,name,subject,score</span><br><span class="line">1,小明,语文,87</span><br><span class="line">2,张三,语文,27</span><br><span class="line">3,王五,语文,69</span><br><span class="line">4,李四,语文,99</span><br><span class="line">5,小明,数学,86</span><br><span class="line">6,马六,数学,33</span><br><span class="line">7,李四,数学,44</span><br><span class="line">8,小红,数学,50</span><br></pre></td></tr></table></figure></div>
 
 <p>sql：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> a.* <span class="keyword">from</span></span><br><span class="line">(<span class="keyword">select</span> <span class="keyword">id</span>,<span class="keyword">name</span>,subject,score,row_number() <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> subject <span class="keyword">order</span> <span class="keyword">by</span> score <span class="keyword">desc</span>) <span class="keyword">rank</span> <span class="keyword">from</span> student) a</span><br><span class="line"><span class="keyword">where</span> a.rank &lt;= <span class="number">3</span></span><br></pre></td></tr></table></figure>
+<div class="highlight-container" data-rel="Sql"><figure class="iseeu highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> a.* <span class="keyword">from</span></span><br><span class="line">(<span class="keyword">select</span> <span class="keyword">id</span>,<span class="keyword">name</span>,subject,score,row_number() <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> subject <span class="keyword">order</span> <span class="keyword">by</span> score <span class="keyword">desc</span>) <span class="keyword">rank</span> <span class="keyword">from</span> student) a</span><br><span class="line"><span class="keyword">where</span> a.rank &lt;= <span class="number">3</span></span><br></pre></td></tr></table></figure></div>
 
-<h3 id="Spark"><a href="#Spark" class="headerlink" title="Spark"></a>Spark</h3><h4 id="讲一下Spark的运行架构"><a href="#讲一下Spark的运行架构" class="headerlink" title="讲一下Spark的运行架构"></a>讲一下Spark的运行架构</h4><p><img src="Spark%E7%9A%84%E8%BF%90%E8%A1%8C%E6%9E%B6%E6%9E%84.png" alt><br>Cluster Manager(Master)：在standalone模式中即为Master主节点，控制整个集群，监控worker。在YARN模式中为资源管理器<br>Worker节点：从节点，负责控制计算节点，启动Executor或者Driver。<br>Driver： 运行Application 的main()函数<br>Executor：执行器，是为某个Application运行在worker node上的一个进程</p>
-<h4 id="一个Spark程序的执行流程"><a href="#一个Spark程序的执行流程" class="headerlink" title="一个Spark程序的执行流程"></a>一个Spark程序的执行流程</h4><p><img src="Spark%E7%A8%8B%E5%BA%8F%E7%9A%84%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B.png" alt></p>
+<h3 id="Spark"><a href="#Spark" class="headerlink" title="Spark"></a>Spark</h3><h4 id="讲一下Spark的运行架构"><a href="#讲一下Spark的运行架构" class="headerlink" title="讲一下Spark的运行架构"></a>讲一下Spark的运行架构</h4><p><img lazyload src="/images/loading.svg" data-src="Spark%E7%9A%84%E8%BF%90%E8%A1%8C%E6%9E%B6%E6%9E%84.png" alt><br>Cluster Manager(Master)：在standalone模式中即为Master主节点，控制整个集群，监控worker。在YARN模式中为资源管理器<br>Worker节点：从节点，负责控制计算节点，启动Executor或者Driver。<br>Driver： 运行Application 的main()函数<br>Executor：执行器，是为某个Application运行在worker node上的一个进程</p>
+<h4 id="一个Spark程序的执行流程"><a href="#一个Spark程序的执行流程" class="headerlink" title="一个Spark程序的执行流程"></a>一个Spark程序的执行流程</h4><p><img lazyload src="/images/loading.svg" data-src="Spark%E7%A8%8B%E5%BA%8F%E7%9A%84%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B.png" alt></p>
 <p>A -&gt; 当 Driver 进程被启动之后,首先它将发送请求到Master节点上,进行Spark应用程序的注册<br>B -&gt; Master在接受到Spark应用程序的注册申请之后,会发送给Worker,让其进行资源的调度和分配.<br>C -&gt; Worker 在接受Master的请求之后,会为Spark应用程序启动Executor, 来分配资源<br>D -&gt; Executor启动分配资源好后,就会想Driver进行反注册,这是Driver已经知道哪些Executor为他服务了<br>E -&gt; 当Driver得到注册了Executor之后,就可以开始正式执行spark应用程序了. 首先第一步,就是创建初始RDD,读取数据源,再执行之后的一系列算子. HDFS文件内容被读取到多个worker节点上,形成内存中的分布式数据集,也就是初始RDD<br>F -&gt; Driver就会根据 Job 任务任务中的算子形成对应的task,最后提交给 Executor, 来分配给task进行计算的线程<br>G -&gt; task就会去调用对应的任务数据来计算,并task会对调用过来的RDD的partition数据执行指定的算子操作,形成新的RDD的partition,这时一个大的循环就结束了<br>后续的RDD的partition数据又通过Driver形成新的一批task提交给Executor执行,循环这个操作,直到所有的算子结束</p>
 <h3 id="HBase"><a href="#HBase" class="headerlink" title="HBase"></a>HBase</h3><h4 id="HBase的架构和基本原理"><a href="#HBase的架构和基本原理" class="headerlink" title="HBase的架构和基本原理"></a>HBase的架构和基本原理</h4><p>Hbase以表的方式组织数据，<br>表由行（Row）以及列（Column）组成，行由row key和一个或多个列及其值组成（存储是按照row key的字典顺序排序，row key的设计非常重要！！），<br>列必须属于某一列族（Column family），一个列族可以有一各或多个列（一列由列簇和列修饰符组成，他们通常由冒号（：） 分隔），其在存储架构中就是一个Hfile。<br>Hbase中的列可以达到百万级，列中的数据可以是稀疏的，空值并不占用存储空间。<br>数据按主键排序，同时表按主键划分为多个Region。底层是LSM树（Long-Structed Merge Tree）。</p>
 <p>对于以上叙述，表的简略结构（逻辑模型）：</p>
-<p><img src="HBase%E8%A1%A8%E7%9A%84%E9%80%BB%E8%BE%91%E7%BB%93%E6%9E%84.png" alt></p>
+<p><img lazyload src="/images/loading.svg" data-src="HBase%E8%A1%A8%E7%9A%84%E9%80%BB%E8%BE%91%E7%BB%93%E6%9E%84.png" alt></p>
 <p>HBase简略架构图：</p>
-<p><img src="HBase%E7%AE%80%E7%95%A5%E6%9E%B6%E6%9E%84%E5%9B%BE.png" alt></p>
+<p><img lazyload src="/images/loading.svg" data-src="HBase%E7%AE%80%E7%95%A5%E6%9E%B6%E6%9E%84%E5%9B%BE.png" alt></p>
 <p>接下来对Zookeeper、HMaster、HRegionServer、HRegion、Store、MemStore、StoreFile、HFile、HLog做简单叙述。</p>
 <h5 id="Zookeeper"><a href="#Zookeeper" class="headerlink" title="Zookeeper"></a>Zookeeper</h5><ul>
 <li>保证任何时候，集群中只有一个master（负责多HMaster的选举）</li>
@@ -538,7 +600,7 @@
 <li>每个Data块除了开头的Magic以外就是一个个KeyValue对拼接而成</li>
 <li>Magic内容就是一些随机数字，目的是防止数据损坏</li>
 </ul>
-<p><img src="HFile%E7%BB%93%E6%9E%84.png" alt></p>
+<p><img lazyload src="/images/loading.svg" data-src="HFile%E7%BB%93%E6%9E%84.png" alt></p>
 <h5 id="HLog"><a href="#HLog" class="headerlink" title="HLog"></a>HLog</h5><p>HLog是WAL的核心实现类。</p>
 <ul>
 <li>WAL意为write ahead log，HBase中的预写日志，用来做灾难恢复使用，底层实现是HLog，HLog记录数据的所有变更。使用WAL的原因：因为MemStore存储的数据是驻留在内存中的，是不稳定的（比如宕机时），所以采用了WAL预写日志来解决这个问题。（运行MApReduce作业时，可以通过关闭WAL功能来获得性能的提升——setWriteToWAL(boolean)）</li>
@@ -706,6 +768,8 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
+              <img class="site-author-image" itemprop="image" src="/images/2.JPG" alt="miaowenting">
+            
               <p class="site-author-name" itemprop="name">miaowenting</p>
               <p class="site-description motion-element" itemprop="description"></p>
           </div>
@@ -757,11 +821,39 @@
           
 
           
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/miaowenting" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
 
           
           
 
           
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://ci.apache.org/projects/flink/flink-docs-stable/" title="flink文档" target="_blank">flink文档</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href title="flink社区" target="_blank">flink社区</a>
+                  </li>
+                
+              </ul>
+            </div>
           
 
           
@@ -817,7 +909,7 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
 
 
 
@@ -964,6 +1056,323 @@
 
 
   
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
 
 
 

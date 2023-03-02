@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -99,7 +99,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Mist',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -192,6 +192,36 @@
         </li>
       
         
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
@@ -203,9 +233,41 @@
       
 
       
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
     </ul>
   
 
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
   
 </nav>
 
@@ -239,7 +301,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="miaowenting">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/2.JPG">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -340,7 +402,7 @@
     <label for="hbePass">Hey, password is required here.</label>
     <div class="bottom-line"></div>
   </div>
-  <script id="hbeData" type="hbeData" data-hmacdigest="b07b2bf95d5355e84e89fc3b83484fbd5dd62a73979a5d02c35fdd9c24586f72">222ec45fd13e67b363d71355220fbc02f0f75dc1c37e788db1c8b03c0526c84e89dcb6c8a574244f4e50e2831fad7178a14079ce32abff7dbf26bd80688e26e852c508bb2bf98767897501f36d0dc41c7d11f1caca83248d4abff2338dc3a66b1d68d1e9e3e52ee85997535a7529361998e9ca406553e32466a9482e683291b064033da97dd7a9d179d3ccedad5c88f0e4c580eb616778b5800d352c22c940845931d29618532a855de75ac6ca9271515380d56ef3a6abf3262822898d44b4813d4344e586021a206fc6f9264d6a330a5792d4577e723995d9582978305684bddeeb65c409f3450ae5f749d49809da99401be1b0f42fe6b5c93cd7c047aecb7632b4c73be5a6103b893d16b89f1d1fabd3ef4d69c6c39bff947c2c031f574ea95ab45d4ce0a5037f417b15371e09ffb390e4b54b65c010f7d05690f30187d5a996b902e7f23d19d1c170691c727d9d5ad2c98031493c1d6c1882ef7bb10ded56fa6364e57796fb6190ffe1b24647c539fc9937ce3f9726bc9a0c99cabbc9b464a02972324d615ce3cbecc46e8fca154828f7dd60312c130a40d4f1e3af5b706c58fa1d8b844d057b62d5e3622daae0976d49266f636990f56192975dfa2554f9557aaf3b9e511f4ad421d4a54df60e68689181bca5671193fbb30cd12d608f7c0885386e1a66003947f9777324290e33c5883c478e661aef7ff8afa0fa6b0393efa737984359d5f3cee616c861b255eb36c0b7214585746cc495936beac6d79ba6f5297ebae1a401641b185a198015c0967f03e003f0664ffa4b8047ec2492a979edb483f4f03e48f8b6cf58120fda7f4531a6cb6619e3184281d1224c3c1fe2b651be42ef54e4e97884f8786996909a8608b694401b07c895518d5a56b1e228301df2786bc88beef9d60e7c7d0984efbb531fbf16b81a484c9da4a97bfe1504bf583b7b450e96f1b0d331bb7ba2b06b175069b9b49958c6e908c47681e0b03991b84fb7be741cb1cd7d2a29a5b0cf0f30ccde532d6e93f930d3bce3fb8da49ab2d98c152d363e6a0683bd034cf3d08c125f1c563c10cf22f705dd689c532b1a43d9341f2a778d83448600794af8098778998d780b867ff9ff15d4cbcbe9b38019062a206bea95a2447fa7d6c4185945059d0391ea11954b2f74503f7189d013c0d8730a03de447c655662525066b13e38953800adfb1195341c0552587141028a7289bf58e023a6a5c0959ee1f2d6bdf2b8ec6a0cad4129de188a8fbddc7f01120fc07441abe72d2393242d801da66dcf0121b848f3679bf36a9adc1a46559b3a036b59294f09f4ae054f597bd537d3b4666c9fd61385ae191478c75848d407</script>
+  <script id="hbeData" type="hbeData" data-hmacdigest="ef691f97c4ad71439d7405702dc3cf56cd2e285601d55ca8d5502185a854719a">222ec45fd13e67b363d71355220fbc02f0f75dc1c37e788db1c8b03c0526c84e89dcb6c8a574244f4e50e2831fad7178a14079ce32abff7dbf26bd80688e26e852c508bb2bf98767897501f36d0dc41c7d11f1caca83248d4abff2338dc3a66b1d68d1e9e3e52ee85997535a7529361998e9ca406553e32466a9482e683291b064033da97dd7a9d179d3ccedad5c88f0e4c580eb616778b5800d352c22c940845931d29618532a855de75ac6ca9271515380d56ef3a6abf3262822898d44b4813d4344e586021a206fc6f9264d6a330a5792d4577e723995d9582978305684bddeeb65c409f3450ae5f749d49809da99401be1b0f42fe6b5c93cd7c047aecb7632b4c73be5a6103b893d16b89f1d1fabd3ef4d69c6c39bff947c2c031f574ea95ab45d4ce0a5037f417b15371e09ffb390e4b54b65c010f7d05690f30187d5a996b902e7f23d19d1c170691c727d9d5ad2c98031493c1d6c1882ef7bb10ded56fa6364e57796fb6190ffe1b24647c539fc9937ce3f9726bc9a0c99cabbc9b464a02972324d615ce3cbecc46e8fca154828f7dd60312c130a40d4f1e3af5b706c58fa1d8b844d057b62d5e3622daae0976d49266f636990f56192975dfa2554f9557aaf3b9e511f4ad421d4a54df60e68689181bca5671193fbb30cd12d608f7c0885386e1a66003947f9777324290e33c5883c478e661aef7ff8afa0fa6b0393efa737984359d5f3cee616c861b255eb36c0b7214585746cc495936beac6d79ba6f5297ebae1a401641b185a198015c0967f03e003f0664ffa4b8047ec2492a979edb483f4f03e48f8b6cf58120fda7f4531a6cb6619e3184281d1224c3c1fe2b651be42ef54e4e97884f8786996909a8608b694401b07c895518d5a56b1e228301df2786bc88beef9d60e7c7d0984efbb531fbf16b81a484c9da4a97bfe1504bf583b7b450e96f1b0d331bb7ba2b06b175069b9b49958c6e908c47681e0b03991b84fb7be741cb1cd7d2a29a5b0cf0f30ccde532d6e93f930d3bce3fb8da49ab2d98c152d363e6a0683bd034cf3d08c125f1c563c10cf22f705dd689c532b1a43d9341f2a778d83448600794af8098778998d780b867ff9ff15d4cbcbe9b38019062a206bea95a2447fa7d6c4185945059d0391ea11954b2f74503f7189d013c0d8730a03de447c655662525066b13e2b1d5f5bfd8479c25378dbb88191530a3f12ea11a3d753ef495b40ef0c0f450317eef48cf344e4394ce657b1523f10edaba98134325973b5f8a546518a7ec93b22ec480667e1cccce152facba2089178b1405be22f3b58da2595bee065713b123437e232fa1b0bffaf3d120ddc90db54f6cd90f2f9fd24ce2540180634eaff4472e6cab5af988b59181a84ac022052cdb38789eb836a6e0009973967eb922116df54973d506229cfe8a37a03a4bad1bd31f3aebb9e4b3fb9494926d6d7ea2281</script>
 </div>
 <script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">
       
@@ -435,6 +497,8 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
+              <img class="site-author-image" itemprop="image" src="/images/2.JPG" alt="miaowenting">
+            
               <p class="site-author-name" itemprop="name">miaowenting</p>
               <p class="site-description motion-element" itemprop="description"></p>
           </div>
@@ -486,11 +550,39 @@
           
 
           
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/miaowenting" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
 
           
           
 
           
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://ci.apache.org/projects/flink/flink-docs-stable/" title="flink文档" target="_blank">flink文档</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href title="flink社区" target="_blank">flink社区</a>
+                  </li>
+                
+              </ul>
+            </div>
           
 
           
@@ -530,7 +622,7 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
 
 
 
@@ -677,6 +769,323 @@
 
 
   
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
 
 
 
