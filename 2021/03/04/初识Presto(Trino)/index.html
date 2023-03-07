@@ -486,110 +486,137 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
-    
     <div class="sidebar-inner">
 
       
-
+      
+        
+          <ul class="sidebar-nav motion-element">
+            <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+              文章目录
+            </li>
+            <li class="sidebar-nav-overview" data-target="site-overview">
+              站点概览
+            </li>
+          </ul>
+        
       
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <img class="site-author-image" itemprop="image" src="/images/2.JPG" alt="miaowenting">
-            
-              <p class="site-author-name" itemprop="name">miaowenting</p>
+
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/2.JPG" alt="miaowenting">
+          <p class="site-author-name" itemprop="name">miaowenting</p>
+           
               <p class="site-description motion-element" itemprop="description"></p>
-          </div>
-
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/archives/">
-              
-                  <span class="site-state-item-count">90</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
-                  <span class="site-state-item-count">32</span>
-                  <span class="site-state-item-name">分类</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">2</span>
-                  <span class="site-state-item-name">标签</span>
-                </a>
-              </div>
-            
-
-          </nav>
+          
+        </div>
+        <nav class="site-state motion-element">
 
           
-            <div class="feed-link motion-element">
-              <a href="/atom.xml" rel="alternate">
-                <i class="fa fa-rss"></i>
-                RSS
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/ || archive">
+                <span class="site-state-item-count">90</span>
+                <span class="site-state-item-name">日志</span>
               </a>
             </div>
           
 
           
-            <div class="links-of-author motion-element">
-                
-                  <span class="links-of-author-item">
-                    <a href="https://github.com/miaowenting" target="_blank" title="GitHub">
-                      
-                        <i class="fa fa-fw fa-github"></i>GitHub</a>
-                  </span>
-                
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
             </div>
           
 
           
-          
-
-          
-          
-            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
-              <div class="links-of-blogroll-title">
-                <i class="fa  fa-fw fa-link"></i>
-                Links
-              </div>
-              <ul class="links-of-blogroll-list">
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://ci.apache.org/projects/flink/flink-docs-stable/" title="flink文档" target="_blank">flink文档</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href title="flink社区" target="_blank">flink社区</a>
-                  </li>
-                
-              </ul>
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
             </div>
           
 
-          
+        </nav>
 
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/miaowenting || github" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
         </div>
-      </section>
 
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-link"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://ci.apache.org/projects/flink/flink-docs-stable/" title="flink文档" target="_blank">flink文档</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href title="flink社区" target="_blank">flink社区</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+      
+        
+        <!--noindex-->
+          <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+            <div class="post-toc">
+
+              
+                
+              
+
+              
+                <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Presto-简介"><span class="nav-number">1.</span> <span class="nav-text">Presto 简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#背景及发展"><span class="nav-number">1.1.</span> <span class="nav-text">背景及发展</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特点"><span class="nav-number">1.2.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#概念"><span class="nav-number">1.3.</span> <span class="nav-text">概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Presto-服务进程"><span class="nav-number">1.3.1.</span> <span class="nav-text">Presto 服务进程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Presto-模型"><span class="nav-number">1.3.2.</span> <span class="nav-text">Presto 模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Presto-查询执行模型"><span class="nav-number">1.3.3.</span> <span class="nav-text">Presto 查询执行模型</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Presto-使用场景"><span class="nav-number">1.4.</span> <span class="nav-text">Presto 使用场景</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#单一的-SQL-分析访问点"><span class="nav-number">1.4.1.</span> <span class="nav-text">单一的 SQL 分析访问点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据仓库和数据源系统的访问点"><span class="nav-number">1.4.2.</span> <span class="nav-text">数据仓库和数据源系统的访问点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#提供对任何内容的-SQL-访问"><span class="nav-number">1.4.3.</span> <span class="nav-text">提供对任何内容的 SQL 访问</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#联邦查询"><span class="nav-number">1.4.4.</span> <span class="nav-text">联邦查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#虚拟数据仓库的语义层"><span class="nav-number">1.4.5.</span> <span class="nav-text">虚拟数据仓库的语义层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据湖查询引擎"><span class="nav-number">1.4.6.</span> <span class="nav-text">数据湖查询引擎</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SQL-转换和-ETL"><span class="nav-number">1.4.7.</span> <span class="nav-text">SQL 转换和 ETL</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#更快的响应带来更好的数据见解"><span class="nav-number">1.4.8.</span> <span class="nav-text">更快的响应带来更好的数据见解</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装和配置-Presto"><span class="nav-number">2.</span> <span class="nav-text">安装和配置 Presto</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#编译"><span class="nav-number">2.1.</span> <span class="nav-text">编译</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务端部署"><span class="nav-number">2.2.</span> <span class="nav-text">服务端部署</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Presto-CLI"><span class="nav-number">2.3.</span> <span class="nav-text">Presto CLI</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#简单-SQL-语法"><span class="nav-number">2.4.</span> <span class="nav-text">简单 SQL 语法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">3.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+              
+
+            </div>
+          </section>
+        <!--/noindex-->
+        
       
 
       

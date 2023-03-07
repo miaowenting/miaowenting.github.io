@@ -486,110 +486,137 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
-    
     <div class="sidebar-inner">
 
       
-
+      
+        
+          <ul class="sidebar-nav motion-element">
+            <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+              文章目录
+            </li>
+            <li class="sidebar-nav-overview" data-target="site-overview">
+              站点概览
+            </li>
+          </ul>
+        
       
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <img class="site-author-image" itemprop="image" src="/images/2.JPG" alt="miaowenting">
-            
-              <p class="site-author-name" itemprop="name">miaowenting</p>
+
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/2.JPG" alt="miaowenting">
+          <p class="site-author-name" itemprop="name">miaowenting</p>
+           
               <p class="site-description motion-element" itemprop="description"></p>
-          </div>
-
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/archives/">
-              
-                  <span class="site-state-item-count">90</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
-                  <span class="site-state-item-count">32</span>
-                  <span class="site-state-item-name">分类</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">2</span>
-                  <span class="site-state-item-name">标签</span>
-                </a>
-              </div>
-            
-
-          </nav>
+          
+        </div>
+        <nav class="site-state motion-element">
 
           
-            <div class="feed-link motion-element">
-              <a href="/atom.xml" rel="alternate">
-                <i class="fa fa-rss"></i>
-                RSS
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/ || archive">
+                <span class="site-state-item-count">90</span>
+                <span class="site-state-item-name">日志</span>
               </a>
             </div>
           
 
           
-            <div class="links-of-author motion-element">
-                
-                  <span class="links-of-author-item">
-                    <a href="https://github.com/miaowenting" target="_blank" title="GitHub">
-                      
-                        <i class="fa fa-fw fa-github"></i>GitHub</a>
-                  </span>
-                
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
             </div>
           
 
           
-          
-
-          
-          
-            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
-              <div class="links-of-blogroll-title">
-                <i class="fa  fa-fw fa-link"></i>
-                Links
-              </div>
-              <ul class="links-of-blogroll-list">
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://ci.apache.org/projects/flink/flink-docs-stable/" title="flink文档" target="_blank">flink文档</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href title="flink社区" target="_blank">flink社区</a>
-                  </li>
-                
-              </ul>
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
             </div>
           
 
-          
+        </nav>
 
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/miaowenting || github" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
         </div>
-      </section>
 
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-link"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://ci.apache.org/projects/flink/flink-docs-stable/" title="flink文档" target="_blank">flink文档</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href title="flink社区" target="_blank">flink社区</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+      
+        
+        <!--noindex-->
+          <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+            <div class="post-toc">
+
+              
+                
+              
+
+              
+                <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Zookeeper分布式锁"><span class="nav-number">1.</span> <span class="nav-text">Zookeeper分布式锁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Zookeeper的Leader选举"><span class="nav-number">2.</span> <span class="nav-text">Zookeeper的Leader选举</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#服务器启动时期的Leader选举"><span class="nav-number">2.1.</span> <span class="nav-text">服务器启动时期的Leader选举</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务器运行时期的Leader选举"><span class="nav-number">2.2.</span> <span class="nav-text">服务器运行时期的Leader选举</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Zookeeper队列"><span class="nav-number">3.</span> <span class="nav-text">Zookeeper队列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他问题"><span class="nav-number">4.</span> <span class="nav-text">其他问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Zookeeper-是什么？"><span class="nav-number">4.1.</span> <span class="nav-text">Zookeeper 是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Zookeeper-集群如何保证数据的一致性？"><span class="nav-number">4.2.</span> <span class="nav-text">Zookeeper 集群如何保证数据的一致性？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Zookeeper-如何存储数据？"><span class="nav-number">4.3.</span> <span class="nav-text">Zookeeper 如何存储数据？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Zookeeper-的节点类型有哪些？"><span class="nav-number">4.4.</span> <span class="nav-text">Zookeeper 的节点类型有哪些？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Zookeeper-应用场景"><span class="nav-number">4.5.</span> <span class="nav-text">Zookeeper 应用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Zookeeper-通知机制"><span class="nav-number">4.6.</span> <span class="nav-text">Zookeeper 通知机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Zookeeper-做了什么"><span class="nav-number">4.7.</span> <span class="nav-text">Zookeeper 做了什么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Zookeeper-工作原理"><span class="nav-number">4.8.</span> <span class="nav-text">Zookeeper 工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Zookeeper-是如何保证事务的顺序一致性"><span class="nav-number">4.9.</span> <span class="nav-text">Zookeeper 是如何保证事务的顺序一致性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Zookeeper-下Server工作状态"><span class="nav-number">4.10.</span> <span class="nav-text">Zookeeper 下Server工作状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Zookeeper-是如何选取主leader的"><span class="nav-number">4.11.</span> <span class="nav-text">Zookeeper 是如何选取主leader的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#机器中为什么会有leader？"><span class="nav-number">4.12.</span> <span class="nav-text">机器中为什么会有leader？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Zookeeper负载均衡和nginx负载均衡区别"><span class="nav-number">4.13.</span> <span class="nav-text">Zookeeper负载均衡和nginx负载均衡区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Zab协议"><span class="nav-number">4.14.</span> <span class="nav-text">Zab协议</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#写-Leader"><span class="nav-number">4.14.1.</span> <span class="nav-text">写 Leader</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#写-Follower-Observer"><span class="nav-number">4.14.2.</span> <span class="nav-text">写 Follower/Observer</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#读操作"><span class="nav-number">4.14.3.</span> <span class="nav-text">读操作</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#支持的Leader选举算法"><span class="nav-number">4.15.</span> <span class="nav-text">支持的Leader选举算法</span></a></li></ol></li></ol></div>
+              
+
+            </div>
+          </section>
+        <!--/noindex-->
+        
       
 
       

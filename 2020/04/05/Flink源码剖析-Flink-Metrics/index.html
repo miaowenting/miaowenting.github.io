@@ -862,135 +862,137 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
-    
     <div class="sidebar-inner">
 
       
-
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
+        
+          <ul class="sidebar-nav motion-element">
+            <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+              文章目录
+            </li>
+            <li class="sidebar-nav-overview" data-target="site-overview">
+              站点概览
+            </li>
+          </ul>
+        
       
 
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <img class="site-author-image" itemprop="image" src="/images/2.JPG" alt="miaowenting">
-            
-              <p class="site-author-name" itemprop="name">miaowenting</p>
+
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/2.JPG" alt="miaowenting">
+          <p class="site-author-name" itemprop="name">miaowenting</p>
+           
               <p class="site-description motion-element" itemprop="description"></p>
-          </div>
-
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/archives/">
-              
-                  <span class="site-state-item-count">90</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
-                  <span class="site-state-item-count">32</span>
-                  <span class="site-state-item-name">分类</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">2</span>
-                  <span class="site-state-item-name">标签</span>
-                </a>
-              </div>
-            
-
-          </nav>
+          
+        </div>
+        <nav class="site-state motion-element">
 
           
-            <div class="feed-link motion-element">
-              <a href="/atom.xml" rel="alternate">
-                <i class="fa fa-rss"></i>
-                RSS
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/ || archive">
+                <span class="site-state-item-count">90</span>
+                <span class="site-state-item-name">日志</span>
               </a>
             </div>
           
 
           
-            <div class="links-of-author motion-element">
-                
-                  <span class="links-of-author-item">
-                    <a href="https://github.com/miaowenting" target="_blank" title="GitHub">
-                      
-                        <i class="fa fa-fw fa-github"></i>GitHub</a>
-                  </span>
-                
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
             </div>
           
 
           
-          
-
-          
-          
-            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
-              <div class="links-of-blogroll-title">
-                <i class="fa  fa-fw fa-link"></i>
-                Links
-              </div>
-              <ul class="links-of-blogroll-list">
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://ci.apache.org/projects/flink/flink-docs-stable/" title="flink文档" target="_blank">flink文档</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href title="flink社区" target="_blank">flink社区</a>
-                  </li>
-                
-              </ul>
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
             </div>
           
 
-          
+        </nav>
 
-        </div>
-      </section>
-
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#flink-metrics-core"><span class="nav-number">1.</span> <span class="nav-text">flink-metrics-core</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#指标-Reporters"><span class="nav-number">2.</span> <span class="nav-text">指标 Reporters</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#flink-metrics-dropwizard"><span class="nav-number">2.1.</span> <span class="nav-text">flink-metrics-dropwizard</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flink-metrics-graphite"><span class="nav-number">2.2.</span> <span class="nav-text">flink-metrics-graphite</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#配置"><span class="nav-number">2.2.1.</span> <span class="nav-text">配置</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flink-metrics-influxdb"><span class="nav-number">2.3.</span> <span class="nav-text">flink-metrics-influxdb</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#influxdb基本概念"><span class="nav-number">2.3.1.</span> <span class="nav-text">influxdb基本概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Reporter实现"><span class="nav-number">2.3.2.</span> <span class="nav-text">Reporter实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置-1"><span class="nav-number">2.3.3.</span> <span class="nav-text">配置</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flink-metrics-prometheus"><span class="nav-number">2.4.</span> <span class="nav-text">flink-metrics-prometheus</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#prometheus基本概念"><span class="nav-number">2.4.1.</span> <span class="nav-text">prometheus基本概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Reporter实现-1"><span class="nav-number">2.4.2.</span> <span class="nav-text">Reporter实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置-2"><span class="nav-number">2.4.3.</span> <span class="nav-text">配置</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flink-metrics-jmx"><span class="nav-number">2.5.</span> <span class="nav-text">flink-metrics-jmx</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#jmx基本概念"><span class="nav-number">2.5.1.</span> <span class="nav-text">jmx基本概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Reporter实现-2"><span class="nav-number">2.5.2.</span> <span class="nav-text">Reporter实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置-3"><span class="nav-number">2.5.3.</span> <span class="nav-text">配置</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flink-metrics-slf4j"><span class="nav-number">2.6.</span> <span class="nav-text">flink-metrics-slf4j</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#配置-4"><span class="nav-number">2.6.1.</span> <span class="nav-text">配置</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flink-metrics-statsd"><span class="nav-number">2.7.</span> <span class="nav-text">flink-metrics-statsd</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#statsd基本概念"><span class="nav-number">2.7.1.</span> <span class="nav-text">statsd基本概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Reporter实现-3"><span class="nav-number">2.7.2.</span> <span class="nav-text">Reporter实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置-5"><span class="nav-number">2.7.3.</span> <span class="nav-text">配置</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flink-metrics-datadog"><span class="nav-number">2.8.</span> <span class="nav-text">flink-metrics-datadog</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#配置-6"><span class="nav-number">2.8.1.</span> <span class="nav-text">配置</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#flink中的指标项"><span class="nav-number">3.</span> <span class="nav-text">flink中的指标项</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Overview"><span class="nav-number">3.1.</span> <span class="nav-text">Overview</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Checkpoint"><span class="nav-number">3.2.</span> <span class="nav-text">Checkpoint</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Watermark"><span class="nav-number">3.3.</span> <span class="nav-text">Watermark</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BackPressure"><span class="nav-number">3.4.</span> <span class="nav-text">BackPressure</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Kafka-Connector"><span class="nav-number">3.5.</span> <span class="nav-text">Kafka Connector</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JVM"><span class="nav-number">3.6.</span> <span class="nav-text">JVM</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#指标平台化实践"><span class="nav-number">4.</span> <span class="nav-text">指标平台化实践</span></a></li></ol></div>
-            
-
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
           </div>
-        </section>
-      <!--/noindex-->
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/miaowenting || github" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-link"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://ci.apache.org/projects/flink/flink-docs-stable/" title="flink文档" target="_blank">flink文档</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href title="flink社区" target="_blank">flink社区</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+      
+        
+        <!--noindex-->
+          <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+            <div class="post-toc">
+
+              
+                
+              
+
+              
+                <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#flink-metrics-core"><span class="nav-number">1.</span> <span class="nav-text">flink-metrics-core</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#指标-Reporters"><span class="nav-number">2.</span> <span class="nav-text">指标 Reporters</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#flink-metrics-dropwizard"><span class="nav-number">2.1.</span> <span class="nav-text">flink-metrics-dropwizard</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flink-metrics-graphite"><span class="nav-number">2.2.</span> <span class="nav-text">flink-metrics-graphite</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#配置"><span class="nav-number">2.2.1.</span> <span class="nav-text">配置</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flink-metrics-influxdb"><span class="nav-number">2.3.</span> <span class="nav-text">flink-metrics-influxdb</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#influxdb基本概念"><span class="nav-number">2.3.1.</span> <span class="nav-text">influxdb基本概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Reporter实现"><span class="nav-number">2.3.2.</span> <span class="nav-text">Reporter实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置-1"><span class="nav-number">2.3.3.</span> <span class="nav-text">配置</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flink-metrics-prometheus"><span class="nav-number">2.4.</span> <span class="nav-text">flink-metrics-prometheus</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#prometheus基本概念"><span class="nav-number">2.4.1.</span> <span class="nav-text">prometheus基本概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Reporter实现-1"><span class="nav-number">2.4.2.</span> <span class="nav-text">Reporter实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置-2"><span class="nav-number">2.4.3.</span> <span class="nav-text">配置</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flink-metrics-jmx"><span class="nav-number">2.5.</span> <span class="nav-text">flink-metrics-jmx</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#jmx基本概念"><span class="nav-number">2.5.1.</span> <span class="nav-text">jmx基本概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Reporter实现-2"><span class="nav-number">2.5.2.</span> <span class="nav-text">Reporter实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置-3"><span class="nav-number">2.5.3.</span> <span class="nav-text">配置</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flink-metrics-slf4j"><span class="nav-number">2.6.</span> <span class="nav-text">flink-metrics-slf4j</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#配置-4"><span class="nav-number">2.6.1.</span> <span class="nav-text">配置</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flink-metrics-statsd"><span class="nav-number">2.7.</span> <span class="nav-text">flink-metrics-statsd</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#statsd基本概念"><span class="nav-number">2.7.1.</span> <span class="nav-text">statsd基本概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Reporter实现-3"><span class="nav-number">2.7.2.</span> <span class="nav-text">Reporter实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置-5"><span class="nav-number">2.7.3.</span> <span class="nav-text">配置</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flink-metrics-datadog"><span class="nav-number">2.8.</span> <span class="nav-text">flink-metrics-datadog</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#配置-6"><span class="nav-number">2.8.1.</span> <span class="nav-text">配置</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#flink中的指标项"><span class="nav-number">3.</span> <span class="nav-text">flink中的指标项</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Overview"><span class="nav-number">3.1.</span> <span class="nav-text">Overview</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Checkpoint"><span class="nav-number">3.2.</span> <span class="nav-text">Checkpoint</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Watermark"><span class="nav-number">3.3.</span> <span class="nav-text">Watermark</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BackPressure"><span class="nav-number">3.4.</span> <span class="nav-text">BackPressure</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Kafka-Connector"><span class="nav-number">3.5.</span> <span class="nav-text">Kafka Connector</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JVM"><span class="nav-number">3.6.</span> <span class="nav-text">JVM</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#指标平台化实践"><span class="nav-number">4.</span> <span class="nav-text">指标平台化实践</span></a></li></ol></div>
+              
+
+            </div>
+          </section>
+        <!--/noindex-->
+        
       
 
       

@@ -532,8 +532,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/01/09/Mac单机安装Apache-Hive/" rel="prev" title="Mac单机安装Apache Hive">
-                Mac单机安装Apache Hive <i class="fa fa-chevron-right"></i>
+              <a href="/2020/01/09/Mac单机安装Apache-Hadoop/" rel="prev" title="Mac单机安装Apache Hadoop">
+                Mac单机安装Apache Hadoop <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -580,135 +580,137 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
-    
     <div class="sidebar-inner">
 
       
-
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
+        
+          <ul class="sidebar-nav motion-element">
+            <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+              文章目录
+            </li>
+            <li class="sidebar-nav-overview" data-target="site-overview">
+              站点概览
+            </li>
+          </ul>
+        
       
 
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <img class="site-author-image" itemprop="image" src="/images/2.JPG" alt="miaowenting">
-            
-              <p class="site-author-name" itemprop="name">miaowenting</p>
+
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/2.JPG" alt="miaowenting">
+          <p class="site-author-name" itemprop="name">miaowenting</p>
+           
               <p class="site-description motion-element" itemprop="description"></p>
-          </div>
-
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/archives/">
-              
-                  <span class="site-state-item-count">90</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
-                  <span class="site-state-item-count">32</span>
-                  <span class="site-state-item-name">分类</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">2</span>
-                  <span class="site-state-item-name">标签</span>
-                </a>
-              </div>
-            
-
-          </nav>
+          
+        </div>
+        <nav class="site-state motion-element">
 
           
-            <div class="feed-link motion-element">
-              <a href="/atom.xml" rel="alternate">
-                <i class="fa fa-rss"></i>
-                RSS
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/ || archive">
+                <span class="site-state-item-count">90</span>
+                <span class="site-state-item-name">日志</span>
               </a>
             </div>
           
 
           
-            <div class="links-of-author motion-element">
-                
-                  <span class="links-of-author-item">
-                    <a href="https://github.com/miaowenting" target="_blank" title="GitHub">
-                      
-                        <i class="fa fa-fw fa-github"></i>GitHub</a>
-                  </span>
-                
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
             </div>
           
 
           
-          
-
-          
-          
-            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
-              <div class="links-of-blogroll-title">
-                <i class="fa  fa-fw fa-link"></i>
-                Links
-              </div>
-              <ul class="links-of-blogroll-list">
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://ci.apache.org/projects/flink/flink-docs-stable/" title="flink文档" target="_blank">flink文档</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href title="flink社区" target="_blank">flink社区</a>
-                  </li>
-                
-              </ul>
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
             </div>
           
 
-          
+        </nav>
 
-        </div>
-      </section>
-
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Flink中的exactly-once语义"><span class="nav-number">1.</span> <span class="nav-text">Flink中的exactly-once语义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Flink中的端到端的exactly-once应用"><span class="nav-number">2.</span> <span class="nav-text">Flink中的端到端的exactly-once应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Kafka的幂等性和事务"><span class="nav-number">2.1.</span> <span class="nav-text">Kafka的幂等性和事务</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#幂等性"><span class="nav-number">2.1.1.</span> <span class="nav-text">幂等性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#事务"><span class="nav-number">2.1.2.</span> <span class="nav-text">事务</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#端到端的exactly-once实现过程"><span class="nav-number">2.2.</span> <span class="nav-text">端到端的exactly-once实现过程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#预提交阶段"><span class="nav-number">2.2.1.</span> <span class="nav-text">预提交阶段</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TwoPhaseCommitSinkFunction"><span class="nav-number">3.</span> <span class="nav-text">TwoPhaseCommitSinkFunction</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#几个重要的方法"><span class="nav-number">3.1.</span> <span class="nav-text">几个重要的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#initializeState-FunctionSnapshotContext-context"><span class="nav-number">3.1.1.</span> <span class="nav-text">initializeState(FunctionSnapshotContext context)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#snapshotState-FunctionSnapshotContext-context"><span class="nav-number">3.1.2.</span> <span class="nav-text">snapshotState(FunctionSnapshotContext context)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#notifyCheckpointComplete-long-checkpointId"><span class="nav-number">3.1.3.</span> <span class="nav-text">notifyCheckpointComplete(long checkpointId)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#需要子类实现的方法"><span class="nav-number">3.2.</span> <span class="nav-text">需要子类实现的方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现file-sink-exactly-once的示例"><span class="nav-number">4.</span> <span class="nav-text">实现file sink exactly-once的示例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实现逻辑"><span class="nav-number">4.1.</span> <span class="nav-text">实现逻辑</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试"><span class="nav-number">4.2.</span> <span class="nav-text">测试</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#场景1-测试完整的两阶段提交流程"><span class="nav-number">4.2.1.</span> <span class="nav-text">场景1:测试完整的两阶段提交流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#场景2-测试通知checkpoint完成之前出现故障"><span class="nav-number">4.2.2.</span> <span class="nav-text">场景2:测试通知checkpoint完成之前出现故障</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#场景3-忽略commit阶段超时提交的异常"><span class="nav-number">4.2.3.</span> <span class="nav-text">场景3:忽略commit阶段超时提交的异常</span></a></li></ol></li></ol></li></ol></div>
-            
-
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
           </div>
-        </section>
-      <!--/noindex-->
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/miaowenting || github" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-link"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://ci.apache.org/projects/flink/flink-docs-stable/" title="flink文档" target="_blank">flink文档</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href title="flink社区" target="_blank">flink社区</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+      
+        
+        <!--noindex-->
+          <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+            <div class="post-toc">
+
+              
+                
+              
+
+              
+                <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Flink中的exactly-once语义"><span class="nav-number">1.</span> <span class="nav-text">Flink中的exactly-once语义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Flink中的端到端的exactly-once应用"><span class="nav-number">2.</span> <span class="nav-text">Flink中的端到端的exactly-once应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Kafka的幂等性和事务"><span class="nav-number">2.1.</span> <span class="nav-text">Kafka的幂等性和事务</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#幂等性"><span class="nav-number">2.1.1.</span> <span class="nav-text">幂等性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#事务"><span class="nav-number">2.1.2.</span> <span class="nav-text">事务</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#端到端的exactly-once实现过程"><span class="nav-number">2.2.</span> <span class="nav-text">端到端的exactly-once实现过程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#预提交阶段"><span class="nav-number">2.2.1.</span> <span class="nav-text">预提交阶段</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TwoPhaseCommitSinkFunction"><span class="nav-number">3.</span> <span class="nav-text">TwoPhaseCommitSinkFunction</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#几个重要的方法"><span class="nav-number">3.1.</span> <span class="nav-text">几个重要的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#initializeState-FunctionSnapshotContext-context"><span class="nav-number">3.1.1.</span> <span class="nav-text">initializeState(FunctionSnapshotContext context)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#snapshotState-FunctionSnapshotContext-context"><span class="nav-number">3.1.2.</span> <span class="nav-text">snapshotState(FunctionSnapshotContext context)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#notifyCheckpointComplete-long-checkpointId"><span class="nav-number">3.1.3.</span> <span class="nav-text">notifyCheckpointComplete(long checkpointId)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#需要子类实现的方法"><span class="nav-number">3.2.</span> <span class="nav-text">需要子类实现的方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现file-sink-exactly-once的示例"><span class="nav-number">4.</span> <span class="nav-text">实现file sink exactly-once的示例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实现逻辑"><span class="nav-number">4.1.</span> <span class="nav-text">实现逻辑</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试"><span class="nav-number">4.2.</span> <span class="nav-text">测试</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#场景1-测试完整的两阶段提交流程"><span class="nav-number">4.2.1.</span> <span class="nav-text">场景1:测试完整的两阶段提交流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#场景2-测试通知checkpoint完成之前出现故障"><span class="nav-number">4.2.2.</span> <span class="nav-text">场景2:测试通知checkpoint完成之前出现故障</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#场景3-忽略commit阶段超时提交的异常"><span class="nav-number">4.2.3.</span> <span class="nav-text">场景3:忽略commit阶段超时提交的异常</span></a></li></ol></li></ol></li></ol></div>
+              
+
+            </div>
+          </section>
+        <!--/noindex-->
+        
       
 
       

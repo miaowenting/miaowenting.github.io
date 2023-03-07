@@ -554,135 +554,137 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
-    
     <div class="sidebar-inner">
 
       
-
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
+        
+          <ul class="sidebar-nav motion-element">
+            <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+              文章目录
+            </li>
+            <li class="sidebar-nav-overview" data-target="site-overview">
+              站点概览
+            </li>
+          </ul>
+        
       
 
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <img class="site-author-image" itemprop="image" src="/images/2.JPG" alt="miaowenting">
-            
-              <p class="site-author-name" itemprop="name">miaowenting</p>
+
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/2.JPG" alt="miaowenting">
+          <p class="site-author-name" itemprop="name">miaowenting</p>
+           
               <p class="site-description motion-element" itemprop="description"></p>
-          </div>
-
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/archives/">
-              
-                  <span class="site-state-item-count">90</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
-                  <span class="site-state-item-count">32</span>
-                  <span class="site-state-item-name">分类</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">2</span>
-                  <span class="site-state-item-name">标签</span>
-                </a>
-              </div>
-            
-
-          </nav>
+          
+        </div>
+        <nav class="site-state motion-element">
 
           
-            <div class="feed-link motion-element">
-              <a href="/atom.xml" rel="alternate">
-                <i class="fa fa-rss"></i>
-                RSS
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/ || archive">
+                <span class="site-state-item-count">90</span>
+                <span class="site-state-item-name">日志</span>
               </a>
             </div>
           
 
           
-            <div class="links-of-author motion-element">
-                
-                  <span class="links-of-author-item">
-                    <a href="https://github.com/miaowenting" target="_blank" title="GitHub">
-                      
-                        <i class="fa fa-fw fa-github"></i>GitHub</a>
-                  </span>
-                
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
             </div>
           
 
           
-          
-
-          
-          
-            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
-              <div class="links-of-blogroll-title">
-                <i class="fa  fa-fw fa-link"></i>
-                Links
-              </div>
-              <ul class="links-of-blogroll-list">
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://ci.apache.org/projects/flink/flink-docs-stable/" title="flink文档" target="_blank">flink文档</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href title="flink社区" target="_blank">flink社区</a>
-                  </li>
-                
-              </ul>
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
             </div>
           
 
-          
+        </nav>
 
-        </div>
-      </section>
-
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Netty内存池化管理"><span class="nav-number">1.</span> <span class="nav-text">Netty内存池化管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PooledBufferAllocator"><span class="nav-number">2.</span> <span class="nav-text">PooledBufferAllocator</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#PoolThreadCache"><span class="nav-number">2.1.</span> <span class="nav-text">PoolThreadCache</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JEMalloc分配算法"><span class="nav-number">2.2.</span> <span class="nav-text">JEMalloc分配算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PoolArena"><span class="nav-number">2.3.</span> <span class="nav-text">PoolArena</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PoolChunkList"><span class="nav-number">2.4.</span> <span class="nav-text">PoolChunkList</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PoolChunk"><span class="nav-number">2.5.</span> <span class="nav-text">PoolChunk</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PoolSubpage"><span class="nav-number">2.6.</span> <span class="nav-text">PoolSubpage</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DirectByteBuffer"><span class="nav-number">2.7.</span> <span class="nav-text">DirectByteBuffer</span></a></li></ol></li></ol></div>
-            
-
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
           </div>
-        </section>
-      <!--/noindex-->
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/miaowenting || github" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-link"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://ci.apache.org/projects/flink/flink-docs-stable/" title="flink文档" target="_blank">flink文档</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href title="flink社区" target="_blank">flink社区</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+      
+        
+        <!--noindex-->
+          <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+            <div class="post-toc">
+
+              
+                
+              
+
+              
+                <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Netty内存池化管理"><span class="nav-number">1.</span> <span class="nav-text">Netty内存池化管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PooledBufferAllocator"><span class="nav-number">2.</span> <span class="nav-text">PooledBufferAllocator</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#PoolThreadCache"><span class="nav-number">2.1.</span> <span class="nav-text">PoolThreadCache</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JEMalloc分配算法"><span class="nav-number">2.2.</span> <span class="nav-text">JEMalloc分配算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PoolArena"><span class="nav-number">2.3.</span> <span class="nav-text">PoolArena</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PoolChunkList"><span class="nav-number">2.4.</span> <span class="nav-text">PoolChunkList</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PoolChunk"><span class="nav-number">2.5.</span> <span class="nav-text">PoolChunk</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PoolSubpage"><span class="nav-number">2.6.</span> <span class="nav-text">PoolSubpage</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DirectByteBuffer"><span class="nav-number">2.7.</span> <span class="nav-text">DirectByteBuffer</span></a></li></ol></li></ol></div>
+              
+
+            </div>
+          </section>
+        <!--/noindex-->
+        
       
 
       

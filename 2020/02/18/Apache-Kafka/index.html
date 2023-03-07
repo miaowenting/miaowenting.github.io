@@ -709,135 +709,137 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
-    
     <div class="sidebar-inner">
 
       
-
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
+        
+          <ul class="sidebar-nav motion-element">
+            <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+              文章目录
+            </li>
+            <li class="sidebar-nav-overview" data-target="site-overview">
+              站点概览
+            </li>
+          </ul>
+        
       
 
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <img class="site-author-image" itemprop="image" src="/images/2.JPG" alt="miaowenting">
-            
-              <p class="site-author-name" itemprop="name">miaowenting</p>
+
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/2.JPG" alt="miaowenting">
+          <p class="site-author-name" itemprop="name">miaowenting</p>
+           
               <p class="site-description motion-element" itemprop="description"></p>
-          </div>
-
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/archives/">
-              
-                  <span class="site-state-item-count">90</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
-                  <span class="site-state-item-count">32</span>
-                  <span class="site-state-item-name">分类</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">2</span>
-                  <span class="site-state-item-name">标签</span>
-                </a>
-              </div>
-            
-
-          </nav>
+          
+        </div>
+        <nav class="site-state motion-element">
 
           
-            <div class="feed-link motion-element">
-              <a href="/atom.xml" rel="alternate">
-                <i class="fa fa-rss"></i>
-                RSS
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/ || archive">
+                <span class="site-state-item-count">90</span>
+                <span class="site-state-item-name">日志</span>
               </a>
             </div>
           
 
           
-            <div class="links-of-author motion-element">
-                
-                  <span class="links-of-author-item">
-                    <a href="https://github.com/miaowenting" target="_blank" title="GitHub">
-                      
-                        <i class="fa fa-fw fa-github"></i>GitHub</a>
-                  </span>
-                
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
             </div>
           
 
           
-          
-
-          
-          
-            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
-              <div class="links-of-blogroll-title">
-                <i class="fa  fa-fw fa-link"></i>
-                Links
-              </div>
-              <ul class="links-of-blogroll-list">
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://ci.apache.org/projects/flink/flink-docs-stable/" title="flink文档" target="_blank">flink文档</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href title="flink社区" target="_blank">flink社区</a>
-                  </li>
-                
-              </ul>
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
             </div>
           
 
-          
+        </nav>
 
-        </div>
-      </section>
-
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#消息"><span class="nav-number">1.1.</span> <span class="nav-text">消息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Topic"><span class="nav-number">1.2.</span> <span class="nav-text">Topic</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Partition"><span class="nav-number">1.3.</span> <span class="nav-text">Partition</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Log"><span class="nav-number">1.4.</span> <span class="nav-text">Log</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#保留策略-Retention-Policy-和日志压缩-Log-Compaction"><span class="nav-number">1.5.</span> <span class="nav-text">保留策略(Retention Policy)和日志压缩(Log Compaction)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Replica"><span class="nav-number">1.6.</span> <span class="nav-text">Replica</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ISR集合"><span class="nav-number">1.7.</span> <span class="nav-text">ISR集合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HW-amp-LEO"><span class="nav-number">1.8.</span> <span class="nav-text">HW &amp; LEO</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Broker"><span class="nav-number">1.9.</span> <span class="nav-text">Broker</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Controller"><span class="nav-number">1.10.</span> <span class="nav-text">Controller</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Producer"><span class="nav-number">1.11.</span> <span class="nav-text">Producer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Consumer"><span class="nav-number">1.12.</span> <span class="nav-text">Consumer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Consumer-Group"><span class="nav-number">1.13.</span> <span class="nav-text">Consumer Group</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Broker模块功能"><span class="nav-number">2.</span> <span class="nav-text">Broker模块功能</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#LogManager"><span class="nav-number">2.1.</span> <span class="nav-text">LogManager</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ReplicaManager"><span class="nav-number">2.2.</span> <span class="nav-text">ReplicaManager</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#KafkaController"><span class="nav-number">2.3.</span> <span class="nav-text">KafkaController</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GroupCoordinator"><span class="nav-number">2.4.</span> <span class="nav-text">GroupCoordinator</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网络层实现"><span class="nav-number">3.</span> <span class="nav-text">网络层实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Selector"><span class="nav-number">3.1.</span> <span class="nav-text">Selector</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络线程模型"><span class="nav-number">3.2.</span> <span class="nav-text">网络线程模型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#写流程"><span class="nav-number">4.</span> <span class="nav-text">写流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#消息格式"><span class="nav-number">4.1.</span> <span class="nav-text">消息格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Producer客户端"><span class="nav-number">4.2.</span> <span class="nav-text">Producer客户端</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Delay机制"><span class="nav-number">5.</span> <span class="nav-text">Delay机制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#TimingWheel"><span class="nav-number">5.1.</span> <span class="nav-text">TimingWheel</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DelayedOperation组件"><span class="nav-number">5.2.</span> <span class="nav-text">DelayedOperation组件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题"><span class="nav-number">6.</span> <span class="nav-text">问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Kafka实现高吞吐的原因？"><span class="nav-number">6.1.</span> <span class="nav-text">Kafka实现高吞吐的原因？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#消息中间件的比较选型？"><span class="nav-number">6.2.</span> <span class="nav-text">消息中间件的比较选型？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#kafka中副本的概念？"><span class="nav-number">6.3.</span> <span class="nav-text">kafka中副本的概念？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#kafka副本如何进行leader选举？"><span class="nav-number">6.4.</span> <span class="nav-text">kafka副本如何进行leader选举？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#kafka中consumer-group与consumer的关系？新加入一个consumer后，kafka内部如何做rebalance的？"><span class="nav-number">6.5.</span> <span class="nav-text">kafka中consumer group与consumer的关系？新加入一个consumer后，kafka内部如何做rebalance的？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#kafka的事务实现？"><span class="nav-number">6.6.</span> <span class="nav-text">kafka的事务实现？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Kafka怎样保证不重复消费消息？"><span class="nav-number">6.7.</span> <span class="nav-text">Kafka怎样保证不重复消费消息？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Kafka怎样保证数据不丢失，不重复？"><span class="nav-number">6.8.</span> <span class="nav-text">Kafka怎样保证数据不丢失，不重复？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Kafka多数据中心部署灾备？"><span class="nav-number">6.9.</span> <span class="nav-text">Kafka多数据中心部署灾备？</span></a></li></ol></li></ol></div>
-            
-
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
           </div>
-        </section>
-      <!--/noindex-->
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/miaowenting || github" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-link"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://ci.apache.org/projects/flink/flink-docs-stable/" title="flink文档" target="_blank">flink文档</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href title="flink社区" target="_blank">flink社区</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+      
+        
+        <!--noindex-->
+          <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+            <div class="post-toc">
+
+              
+                
+              
+
+              
+                <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#消息"><span class="nav-number">1.1.</span> <span class="nav-text">消息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Topic"><span class="nav-number">1.2.</span> <span class="nav-text">Topic</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Partition"><span class="nav-number">1.3.</span> <span class="nav-text">Partition</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Log"><span class="nav-number">1.4.</span> <span class="nav-text">Log</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#保留策略-Retention-Policy-和日志压缩-Log-Compaction"><span class="nav-number">1.5.</span> <span class="nav-text">保留策略(Retention Policy)和日志压缩(Log Compaction)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Replica"><span class="nav-number">1.6.</span> <span class="nav-text">Replica</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ISR集合"><span class="nav-number">1.7.</span> <span class="nav-text">ISR集合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HW-amp-LEO"><span class="nav-number">1.8.</span> <span class="nav-text">HW &amp; LEO</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Broker"><span class="nav-number">1.9.</span> <span class="nav-text">Broker</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Controller"><span class="nav-number">1.10.</span> <span class="nav-text">Controller</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Producer"><span class="nav-number">1.11.</span> <span class="nav-text">Producer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Consumer"><span class="nav-number">1.12.</span> <span class="nav-text">Consumer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Consumer-Group"><span class="nav-number">1.13.</span> <span class="nav-text">Consumer Group</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Broker模块功能"><span class="nav-number">2.</span> <span class="nav-text">Broker模块功能</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#LogManager"><span class="nav-number">2.1.</span> <span class="nav-text">LogManager</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ReplicaManager"><span class="nav-number">2.2.</span> <span class="nav-text">ReplicaManager</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#KafkaController"><span class="nav-number">2.3.</span> <span class="nav-text">KafkaController</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GroupCoordinator"><span class="nav-number">2.4.</span> <span class="nav-text">GroupCoordinator</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网络层实现"><span class="nav-number">3.</span> <span class="nav-text">网络层实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Selector"><span class="nav-number">3.1.</span> <span class="nav-text">Selector</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络线程模型"><span class="nav-number">3.2.</span> <span class="nav-text">网络线程模型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#写流程"><span class="nav-number">4.</span> <span class="nav-text">写流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#消息格式"><span class="nav-number">4.1.</span> <span class="nav-text">消息格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Producer客户端"><span class="nav-number">4.2.</span> <span class="nav-text">Producer客户端</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Delay机制"><span class="nav-number">5.</span> <span class="nav-text">Delay机制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#TimingWheel"><span class="nav-number">5.1.</span> <span class="nav-text">TimingWheel</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DelayedOperation组件"><span class="nav-number">5.2.</span> <span class="nav-text">DelayedOperation组件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题"><span class="nav-number">6.</span> <span class="nav-text">问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Kafka实现高吞吐的原因？"><span class="nav-number">6.1.</span> <span class="nav-text">Kafka实现高吞吐的原因？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#消息中间件的比较选型？"><span class="nav-number">6.2.</span> <span class="nav-text">消息中间件的比较选型？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#kafka中副本的概念？"><span class="nav-number">6.3.</span> <span class="nav-text">kafka中副本的概念？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#kafka副本如何进行leader选举？"><span class="nav-number">6.4.</span> <span class="nav-text">kafka副本如何进行leader选举？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#kafka中consumer-group与consumer的关系？新加入一个consumer后，kafka内部如何做rebalance的？"><span class="nav-number">6.5.</span> <span class="nav-text">kafka中consumer group与consumer的关系？新加入一个consumer后，kafka内部如何做rebalance的？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#kafka的事务实现？"><span class="nav-number">6.6.</span> <span class="nav-text">kafka的事务实现？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Kafka怎样保证不重复消费消息？"><span class="nav-number">6.7.</span> <span class="nav-text">Kafka怎样保证不重复消费消息？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Kafka怎样保证数据不丢失，不重复？"><span class="nav-number">6.8.</span> <span class="nav-text">Kafka怎样保证数据不丢失，不重复？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Kafka多数据中心部署灾备？"><span class="nav-number">6.9.</span> <span class="nav-text">Kafka多数据中心部署灾备？</span></a></li></ol></li></ol></div>
+              
+
+            </div>
+          </section>
+        <!--/noindex-->
+        
       
 
       

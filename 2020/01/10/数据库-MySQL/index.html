@@ -475,110 +475,137 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
-    
     <div class="sidebar-inner">
 
       
-
+      
+        
+          <ul class="sidebar-nav motion-element">
+            <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+              文章目录
+            </li>
+            <li class="sidebar-nav-overview" data-target="site-overview">
+              站点概览
+            </li>
+          </ul>
+        
       
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <img class="site-author-image" itemprop="image" src="/images/2.JPG" alt="miaowenting">
-            
-              <p class="site-author-name" itemprop="name">miaowenting</p>
+
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/2.JPG" alt="miaowenting">
+          <p class="site-author-name" itemprop="name">miaowenting</p>
+           
               <p class="site-description motion-element" itemprop="description"></p>
-          </div>
-
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/archives/">
-              
-                  <span class="site-state-item-count">90</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
-                  <span class="site-state-item-count">32</span>
-                  <span class="site-state-item-name">分类</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">2</span>
-                  <span class="site-state-item-name">标签</span>
-                </a>
-              </div>
-            
-
-          </nav>
+          
+        </div>
+        <nav class="site-state motion-element">
 
           
-            <div class="feed-link motion-element">
-              <a href="/atom.xml" rel="alternate">
-                <i class="fa fa-rss"></i>
-                RSS
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/ || archive">
+                <span class="site-state-item-count">90</span>
+                <span class="site-state-item-name">日志</span>
               </a>
             </div>
           
 
           
-            <div class="links-of-author motion-element">
-                
-                  <span class="links-of-author-item">
-                    <a href="https://github.com/miaowenting" target="_blank" title="GitHub">
-                      
-                        <i class="fa fa-fw fa-github"></i>GitHub</a>
-                  </span>
-                
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
             </div>
           
 
           
-          
-
-          
-          
-            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
-              <div class="links-of-blogroll-title">
-                <i class="fa  fa-fw fa-link"></i>
-                Links
-              </div>
-              <ul class="links-of-blogroll-list">
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://ci.apache.org/projects/flink/flink-docs-stable/" title="flink文档" target="_blank">flink文档</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href title="flink社区" target="_blank">flink社区</a>
-                  </li>
-                
-              </ul>
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
             </div>
           
 
-          
+        </nav>
 
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/miaowenting || github" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
         </div>
-      </section>
 
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-link"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://ci.apache.org/projects/flink/flink-docs-stable/" title="flink文档" target="_blank">flink文档</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href title="flink社区" target="_blank">flink社区</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+      
+        
+        <!--noindex-->
+          <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+            <div class="post-toc">
+
+              
+                
+              
+
+              
+                <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题"><span class="nav-number">1.</span> <span class="nav-text">问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#EXPLAIN你的Select查询"><span class="nav-number">1.1.</span> <span class="nav-text">EXPLAIN你的Select查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#当只有一行数据时，使用LIMIT-1"><span class="nav-number">1.2.</span> <span class="nav-text">当只有一行数据时，使用LIMIT 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为搜索字段建索引"><span class="nav-number">1.3.</span> <span class="nav-text">为搜索字段建索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在Join表的时候使用相当类型的列，并将其索引"><span class="nav-number">1.4.</span> <span class="nav-text">在Join表的时候使用相当类型的列，并将其索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#千万不要-order-by-rand"><span class="nav-number">1.5.</span> <span class="nav-text">千万不要 order by rand()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#避免-select"><span class="nav-number">1.6.</span> <span class="nav-text">避免 select *</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#永远为每张表设置一个ID"><span class="nav-number">1.7.</span> <span class="nav-text">永远为每张表设置一个ID</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-enum-而不是-varchar"><span class="nav-number">1.8.</span> <span class="nav-text">使用 enum 而不是 varchar</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#无缓冲的查询"><span class="nav-number">1.9.</span> <span class="nav-text">无缓冲的查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#把-IP-地址换成-unsigned-int"><span class="nav-number">1.10.</span> <span class="nav-text">把 IP 地址换成 unsigned int</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#固定长度的表会更快"><span class="nav-number">1.11.</span> <span class="nav-text">固定长度的表会更快</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#垂直分割"><span class="nav-number">1.12.</span> <span class="nav-text">垂直分割</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拆分大的-delete-或-insert-语句"><span class="nav-number">1.13.</span> <span class="nav-text">拆分大的 delete 或 insert 语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#越小的列会越快"><span class="nav-number">1.14.</span> <span class="nav-text">越小的列会越快</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选择正确的存储引擎"><span class="nav-number">1.15.</span> <span class="nav-text">选择正确的存储引擎</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#小心“永久链接”"><span class="nav-number">1.16.</span> <span class="nav-text">小心“永久链接”</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#尽可能的使用-not-null"><span class="nav-number">1.17.</span> <span class="nav-text">尽可能的使用 not null</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MySQL中有哪几种锁？"><span class="nav-number">1.18.</span> <span class="nav-text">MySQL中有哪几种锁？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库设计范式"><span class="nav-number">1.19.</span> <span class="nav-text">数据库设计范式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#第一范式（1NF）"><span class="nav-number">1.19.1.</span> <span class="nav-text">第一范式（1NF）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第二范式（2NF）"><span class="nav-number">1.19.2.</span> <span class="nav-text">第二范式（2NF）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第三范式（3NF）"><span class="nav-number">1.19.3.</span> <span class="nav-text">第三范式（3NF）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#列举常见的关系型数据库和非关系型数据库？"><span class="nav-number">1.20.</span> <span class="nav-text">列举常见的关系型数据库和非关系型数据库？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#关系型数据库"><span class="nav-number">1.20.1.</span> <span class="nav-text">关系型数据库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#非关系型数据库"><span class="nav-number">1.20.2.</span> <span class="nav-text">非关系型数据库</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常见的MySQL数据库引擎是MyiSAM和inmoDB"><span class="nav-number">1.21.</span> <span class="nav-text">常见的MySQL数据库引擎是MyiSAM和inmoDB</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是事务？什么是锁？MySQL如何支持事务？"><span class="nav-number">1.22.</span> <span class="nav-text">什么是事务？什么是锁？MySQL如何支持事务？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#简述触发器、函数、视图、存储过程"><span class="nav-number">1.23.</span> <span class="nav-text">简述触发器、函数、视图、存储过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MySQL索引种类"><span class="nav-number">1.24.</span> <span class="nav-text">MySQL索引种类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#索引在什么情况下遵循最左前缀的规则？"><span class="nav-number">1.25.</span> <span class="nav-text">索引在什么情况下遵循最左前缀的规则？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#列举创建索引但是无法命中索引的8种情况"><span class="nav-number">1.26.</span> <span class="nav-text">列举创建索引但是无法命中索引的8种情况</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何开启慢日志查询？"><span class="nav-number">1.27.</span> <span class="nav-text">如何开启慢日志查询？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库导入导出命令（结构和数据）？"><span class="nav-number">1.28.</span> <span class="nav-text">数据库导入导出命令（结构和数据）？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库优化思路"><span class="nav-number">1.29.</span> <span class="nav-text">数据库优化思路</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#SQL语句优化"><span class="nav-number">1.29.1.</span> <span class="nav-text">SQL语句优化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#索引优化"><span class="nav-number">1.29.2.</span> <span class="nav-text">索引优化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据库结构优化"><span class="nav-number">1.29.3.</span> <span class="nav-text">数据库结构优化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#服务器硬件优化"><span class="nav-number">1.29.4.</span> <span class="nav-text">服务器硬件优化</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#limit-1"><span class="nav-number">1.30.</span> <span class="nav-text">limit 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是数据库约束，常见的约束有哪几种？"><span class="nav-number">1.31.</span> <span class="nav-text">什么是数据库约束，常见的约束有哪几种？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#从数据库中随机取50条数据"><span class="nav-number">1.32.</span> <span class="nav-text">从数据库中随机取50条数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是sql注入？"><span class="nav-number">1.33.</span> <span class="nav-text">什么是sql注入？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于sql语句应该考虑哪些安全性？"><span class="nav-number">1.34.</span> <span class="nav-text">关于sql语句应该考虑哪些安全性？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一张表，里面有ID自增主键，当insert了17条记录之后，删除了第15，16，17条记录，再把MySQL重启，再insert一条记录，这条记录的ID是18还是15？"><span class="nav-number">1.35.</span> <span class="nav-text">一张表，里面有ID自增主键，当insert了17条记录之后，删除了第15，16，17条记录，再把MySQL重启，再insert一条记录，这条记录的ID是18还是15？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#简述数据库的读写分离？"><span class="nav-number">1.36.</span> <span class="nav-text">简述数据库的读写分离？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#简述数据库分库分表？（水平、垂直）"><span class="nav-number">1.37.</span> <span class="nav-text">简述数据库分库分表？（水平、垂直）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mysql的锁类型"><span class="nav-number">1.38.</span> <span class="nav-text">mysql的锁类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#排他锁和共享锁"><span class="nav-number">1.39.</span> <span class="nav-text">排他锁和共享锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mysql索引是怎么实现的？大致描述下B-树的大致结构"><span class="nav-number">1.40.</span> <span class="nav-text">mysql索引是怎么实现的？大致描述下B+树的大致结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事务及其特性"><span class="nav-number">1.41.</span> <span class="nav-text">事务及其特性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mysql事务隔离级别"><span class="nav-number">1.42.</span> <span class="nav-text">mysql事务隔离级别</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#READ-UNCOMMITTED（读未提交）"><span class="nav-number">1.42.1.</span> <span class="nav-text">READ UNCOMMITTED（读未提交）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#READ-COMMITTED-读提交"><span class="nav-number">1.42.2.</span> <span class="nav-text">READ COMMITTED (读提交)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#REPEATABLE-READ-可重复读"><span class="nav-number">1.42.3.</span> <span class="nav-text">REPEATABLE READ (可重复读)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SERIALIZABLE-序列化"><span class="nav-number">1.42.4.</span> <span class="nav-text">SERIALIZABLE (序列化)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mysql中的锁"><span class="nav-number">1.43.</span> <span class="nav-text">mysql中的锁</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#锁的类型"><span class="nav-number">1.43.1.</span> <span class="nav-text">锁的类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#行锁的算法"><span class="nav-number">1.43.2.</span> <span class="nav-text">行锁的算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#死锁"><span class="nav-number">1.43.3.</span> <span class="nav-text">死锁</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#锁的优化建议"><span class="nav-number">1.43.4.</span> <span class="nav-text">锁的优化建议</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL语法"><span class="nav-number">2.</span> <span class="nav-text">SQL语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SQL查询用户的最长连续登录天数"><span class="nav-number">2.1.</span> <span class="nav-text">SQL查询用户的最长连续登录天数</span></a></li></ol></li></ol></div>
+              
+
+            </div>
+          </section>
+        <!--/noindex-->
+        
       
 
       
